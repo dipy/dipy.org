@@ -1,4 +1,0 @@
-# Ignore everything in this directory apart from gitignore and the README file
-*
-!.gitignore
-!README
