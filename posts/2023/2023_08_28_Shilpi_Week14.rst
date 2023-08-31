@@ -1,5 +1,5 @@
-Writing Tests & Making Documentation: Week 13
-=============================================
+Doing Final Touch-Ups: Week 14
+==============================
 
 .. post:: August 28, 2023
      :author: Shilpi Prasad
@@ -23,5 +23,6 @@ What is coming up Next Week
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that almost everything is completed and all the unit tests are passing, I'll just focus on getting the PR merged.
+I will also aim to achieve a 100% coverage report, thereby ensuring that every line of code is thoroughly tested.
 At present, the merging of my PR is on hold as we're actively seeking a pair of reviewers who can conduct a thorough examination of the entire codebase and provide their expert feedback.
 Additionally, I'll try to get the QTI simulation merged as well .
