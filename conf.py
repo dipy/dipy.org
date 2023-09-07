@@ -15,13 +15,7 @@ import os
 import re
 import sys
 import ablog
-import json
 
-# Doc generation depends on being able to import dipy
-try:
-    import dipy
-except ImportError:
-    raise RuntimeError('Cannot import dipy, please investigate')
 
 from packaging.version import Version
 import sphinx
@@ -34,42 +28,22 @@ if Version(sphinx.__version__) < Version('2'):
 sys.path.append(os.path.abspath('sphinxext'))
 
 # -- General configuration -----------------------------------------------------
-
-# We load the nibabel release info into a dict by explicit execution
-rel = {}
-with open(os.path.join('..', 'dipy', 'info.py')) as f:
-    exec(f.read(), rel)
-
-
+rel={}
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.doctest',
-              'sphinx.ext.intersphinx',
-              'sphinx.ext.todo',
-              'sphinx.ext.coverage',
+extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.mathjax',
               'sphinx.ext.ifconfig',
               'sphinx.ext.autosummary',
               'prepare_gallery',
               'math_dollar',  # has to go before numpydoc
-              'sphinx_gallery.gen_gallery',
-            #   'numpydoc',
               'github',
               'ablog',
               'jinja'
 ]
 
-# Providing different contexts for the jinja directive
-jinja_contexts = {
-    "documentation": json.load(open("./context/documentation.json"))
-}
-
-numpydoc_show_class_members = True
-numpydoc_class_members_toctree = False
-
 # ghissue config
-github_project_url = "https://github.com/dipy/dipy"
+github_project_url = "https://github.com/dipy/dipy.org"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -255,30 +229,6 @@ latex_preamble = r"""
 # If false, no module index is generated.
 #latex_use_modindex = True
 
-
-# -- Options for sphinx gallery -------------------------------------------
-from docimage_scrap import ImageFileScraper
-from sphinx_gallery.sorting import ExplicitOrder
-from prepare_gallery import folder_explicit_order
-
-sc = ImageFileScraper()
-ordered_folders = [f'examples_revamped/{f}' for f in folder_explicit_order()]
-
-sphinx_gallery_conf = {
-     'doc_module': ('dipy',),
-     # path to your examples scripts
-     'examples_dirs': ['examples_revamped', ],
-     # path where to save gallery generated examples
-    #  'gallery_dirs': ['examples_built', ],
-     'subsection_order': ExplicitOrder(ordered_folders),
-     'image_scrapers': (sc),
-     'backreferences_dir': 'examples_built',
-     'reference_url': {'dipy': None, },
-     'abort_on_example_error': False,
-     'filename_pattern': re.escape(os.sep),
-     'default_thumb_file': '_static/dipy-logo.png',
-     'pypandoc': {'extra_args': ['--mathjax',]},
-}
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'http://docs.python.org/': None}
