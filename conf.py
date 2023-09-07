@@ -12,9 +12,7 @@
 # serve to show the default.
 
 import os
-import re
 import sys
-import ablog
 
 
 from packaging.version import Version
@@ -31,11 +29,10 @@ sys.path.append(os.path.abspath('sphinxext'))
 rel={}
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.intersphinx',
+extensions = ['sphinx.ext.autodoc',
+              'sphinx.ext.intersphinx',
               'sphinx.ext.mathjax',
               'sphinx.ext.ifconfig',
-              'sphinx.ext.autosummary',
-              'prepare_gallery',
               'math_dollar',  # has to go before numpydoc
               'github',
               'ablog',
@@ -58,17 +55,17 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'dipy'
-copyright = u'2008-2023, %(AUTHOR)s <%(AUTHOR_EMAIL)s>' % rel
+# project = u'dipy'
+# copyright = u'2008-2023, %(AUTHOR)s <%(AUTHOR_EMAIL)s>' % rel
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = rel['__version__']
+# version = rel['__version__']
 # The full version, including alpha/beta/rc tags.
-release = version
+# release = version
 
 # Include common links
 # We don't use this any more because it causes conflicts with the gitwash docs
