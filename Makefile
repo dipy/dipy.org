@@ -16,7 +16,6 @@ ALLSPHINXOPTS   = -d _build/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo "  html      to make standalone HTML files"
-	@echo "  api       to make the auto-generated API files"
 	@echo "  dirhtml   to make HTML files named index.html in directories"
 	@echo "  pickle    to make pickle files"
 	@echo "  json      to make JSON files"
@@ -27,54 +26,18 @@ help:
 	@echo "  linkcheck to check all external links for integrity"
 	@echo "  doctest   to run all doctests embedded in the documentation (if enabled)"
 
-clean: api-clean examples-clean
+clean:
 	-rm -rf _build/*
 	-rm *-stamp
-
-api-clean:
-	rm -rf reference/*.rst
-	rm -rf reference_cmd/*.rst
-
-api:
-	@mkdir -p reference
-	$(PYTHON) tools/build_modref_templates.py dipy reference
-	@mkdir -p reference_cmd
-	$(PYTHON) tools/docgen_cmd.py dipy reference_cmd
-	@echo "Build API docs...done."
-
-examples-clean:
-	rm -rf examples_revamped
-	-cd examples_built && rm -rf *.py *.rst *.png fig *.zip *.db *.examples
-
-examples-clean-tgz: examples-clean examples-tgz
-	../tools/pack_examples.py ../dist
-
-examples-tgz: rstexamples
-	../tools/pack_examples.py ../dist
 
 gitwash-update:
 	python ../tools/gitwash_dumper.py devel dipy --repo-name=dipy --github-user=dipy \
             --project-url=https://dipy.org \
             --project-ml-url=https://mail.python.org/mailman/listinfo/neuroimaging
 
-html-legacy: api rstexamples html-after-examples-legacy
-	# build full docs including examples
-
-html-after-examples-legacy:
-	# Standard html build after examples have been prepared
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) _build/html
-	@echo
-	@echo "Build finished. The HTML pages are in _build/html."
-
-html: api
+html:
 	#  Standard html build after examples have been prepared
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) _build/html
-	@echo
-	@echo "Build finished. The HTML pages are in _build/html."
-
-html-no-examples: api
-	# Standard html build after examples have been prepared
-	$(SPHINXBUILD) -D plot_gallery=0 -b html $(ALLSPHINXOPTS) _build/html
 	@echo
 	@echo "Build finished. The HTML pages are in _build/html."
 
