@@ -113,7 +113,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  Major themes that come with
 # Sphinx are currently 'default' and 'sphinxdoc'.
-html_theme = "pydata_sphinx_theme"
+html_theme = "grg_sphinx_theme"
 
 # The style sheet to use for HTML and HTML Help pages. A file of that name
 # must exist either in Sphinx' static/ path, or in one of the custom paths
@@ -125,7 +125,20 @@ html_style = 'css/dipy.css'
 # documentation.
 html_theme_options = {
   "secondary_sidebar_items": ["page-toc"],
-  "show_toc_level": 2
+  "show_toc_level": 1,
+  # To remove search icon
+  "navbar_persistent": "",
+  "icon_links": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/dipy",
+      "icon": "fa-brands fa-github"
+    }
+  ],
+  "logo": {
+    "image_dark": "_static/images/logos/dipy-logo.png",
+    "alt_text": "DIPY",
+  }
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -140,12 +153,12 @@ html_theme_options = {
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#html_logo = None
+html_logo = "_static/images/logos/dipy-logo.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-#html_favicon = None
+html_favicon = "_static/images/logos/dipy-favicon.png"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -165,7 +178,9 @@ html_static_path = ['_static']
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
-#html_additional_pages = {}
+html_additional_pages = {
+    "index": "home.html"
+}
 
 # If false, no module index is generated.
 # Setting to false fixes double module listing under header

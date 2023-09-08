@@ -1,0 +1,40 @@
+{# Extending the incoming html page to handle everything from pydata/grg theme #}
+{% extends "layout.html" %}
+
+{# Reimplementing the main content #}
+{% block docs_main %}
+<div class="intro">
+
+  <h1 class="tagline">
+    <span class="dipy-highlight">D</span>iffusion <span class="dipy-highlight">I</span>maging in <span
+      class="dipy-highlight">Py</span>thon
+  </h1>
+  <p class="description">
+    An open-source, user-friendly and growing imaging library for 3D/4D+ imaging.
+  </p>
+  <p class="actions">
+    <a href="{{ pathto('installation') }}" class="mar-h-5 btn-link">
+      <button class="btn btn-primary">
+        Getting Started
+        <i class="fa-solid fa-rocket pad-l-5"></i>
+      </button>
+    </a>
+    <a href="{{ pathto('installation') }}" class="mar-h-5 btn-link">
+      <button class="btn btn-regular">
+        Install
+        <i class="fa-solid fa-download pad-l-5"></i>
+      </button>
+    </a>
+  </p>
+</div>
+<div>
+  <h2 class="section-title">Explore <span class="dipy-highlight">DIPY</span></h2>
+  <div class="explore">
+    <div class="explore-tile pad-20">
+      <div class="explore-tile-icon pad-5">
+        <img src="_static/images/icons/cli.png" alt="" srcset="">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock docs_main %}

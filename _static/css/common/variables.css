@@ -1,7 +1,9 @@
 html[data-theme="light"] {
-  --pst-color-primary: #FD8D25;
-  --pst-color-secondary: #1B8BF4;
+  --gst-color-primary: #FD8D25;
+  --gst-color-secondary: #1B8BF4;
+}
 
-  --pst-color-link-hover: var(--pst-color-secondary);
-  --pst-color-border: rgb(229,229,229);
+html[data-theme="dark"] {
+  --gst-color-primary: #FD8D25;
+  --gst-color-secondary: #1B8BF4;
 }
