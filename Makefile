@@ -28,7 +28,6 @@ help:
 
 clean:
 	-rm -rf _build/*
-	-rm *-stamp
 
 gitwash-update:
 	python ../tools/gitwash_dumper.py devel dipy --repo-name=dipy --github-user=dipy \
@@ -71,9 +70,7 @@ qthelp:
 	@echo "To view the help file:"
 	@echo "# assistant -collectionFile _build/qthelp/dipy.qhc"
 
-latex: rstexamples latex-after-examples
-
-latex-after-examples:
+latex:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) _build/latex
 	@echo
 	@echo "Build finished; the LaTeX files are in _build/latex."
@@ -95,22 +92,3 @@ doctest:
 	$(SPHINXBUILD) -b doctest $(ALLSPHINXOPTS) _build/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in _build/doctest/output.txt."
-
-rstexamples: rstexamples-stamp
-rstexamples-stamp:
-	cd examples_built && ../../tools/make_examples.py
-	touch $@
-
-pdf: pdf-stamp
-pdf-stamp: latex
-	cd _build/latex && make all-pdf
-	touch $@
-
-upload: html
-	./upload-gh-pages.sh _build/html/ dipy dipy
-
-xvfb:
-	export TEST_WITH_XVFB=true && make html
-
-memory_profile:
-	export TEST_WITH_MEMPROF=true && make html
