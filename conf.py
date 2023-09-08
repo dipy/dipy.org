@@ -127,6 +127,140 @@ html_style = 'css/dipy.css'
 html_theme_options = {
   "secondary_sidebar_items": ["page-toc"],
   "show_toc_level": 1,
+  "navbar_center": ["components/navbar-links.html"],
+  "navbar_links": [
+     {
+        "name": "Docs",
+        "children": [
+          {
+            "name": "Quick Start",
+            "url": "https://docs.dipy.org",
+          },
+          {
+            "name": "Tutorials",
+            "url": "https://docs.dipy.org/tutorials",
+          },
+          {
+            "name": "Recipes",
+            "url": "https://docs.dipy.org/recipes",
+          },
+          {
+            "name": "CLI / Workflows",
+            "url": "https://docs.dipy.org/cli",
+          },
+          {
+            "name": "API",
+            "url": "https://docs.dipy.org/reference",
+          },
+          {
+            "name": "CLI API",
+            "url": "https://docs.dipy.org/cli/reference",
+          }
+        ]
+     },
+     {
+        "name": "Workshops",
+        "children": [
+          {
+            "name": "DIPY Workshop 2024",
+            "url": "https://dipy.org/workshops/dipy-workshop-2024",
+            "external": True
+          },
+          {
+            "name": "DIPY Workshop 2023",
+            "url": "https://dipy.org/workshops/dipy-workshop-2023",
+            "external": True
+          },
+          {
+            "name": "DIPY Workshop 2022",
+            "url": "https://dipy.org/workshops/dipy-workshop-2022",
+            "external": True
+          },
+          {
+            "name": "DIPY Workshop 2021",
+            "url": "https://dipy.org/workshops/dipy-workshop-2021",
+            "external": True
+          },
+          {
+            "name": "DIPY Workshop 2020",
+            "url": "https://dipy.org/workshops/dipy-workshop-2020",
+            "external": True
+          },
+          {
+            "name": "DIPY Workshop 2019",
+            "url": "https://dipy.org/workshops/dipy-workshop-2019",
+            "external": True
+          },
+        ]
+     },
+     {
+        "name": "Community",
+        "sections": [
+            {
+              "name": "News",
+              "children": [
+                  {
+                    "name": "Newsletters",
+                    "url": "",
+                    "external": True
+                  },
+                  {
+                    "name": "Blog",
+                    "url": "blog"
+                  },
+                  {
+                    "name": "Youtube",
+                    "url": "blog",
+                    "external": True
+                  }
+              ]
+            },
+            {
+              "name": "Help",
+              "children": [
+                  {
+                    "name": "Live Chat (Gitter)",
+                    "url": ""
+                  },
+                  {
+                    "name": "Github Discussions",
+                    "url": "",
+                    "external": True
+                  }
+              ]
+            }
+        ]
+     },
+     {
+        "name": "About",
+        "children": [
+          {
+            "name": "Team",
+            "url": "team",
+          },
+          {
+            "name": "FAQ",
+            "url": "faq",
+          },
+          {
+            "name": "Mission Statement",
+            "url": "mission",
+          },
+          {
+            "name": "Releases",
+            "url": "releases",
+          },
+          {
+            "name": "Cite",
+            "url": "cite",
+          },
+          {
+            "name": "Glossary",
+            "url": "glossary",
+          },
+        ]
+     },
+  ],
   # To remove search icon
   "navbar_persistent": "",
   "icon_links": [
