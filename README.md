@@ -3,7 +3,7 @@
 ## Background
 
 This site makes use of [Sphinx](https://www.sphinx-doc.org/en/stable/) and was built upon [Bootstrap](https://getbootstrap.com) via the [GRG Sphinx theme](https://github.com/GRG-Projects/grg-sphinx-theme) and [PYData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/en/latest/).
-We use Github Action to deploy the website and Github Page to host the [website](https://dipy.org.github.io).
+We use Github Action to deploy the website and Github Page to host the [website](https://dipy.github.io/dipy.org/).
 ## Index
 
 - `_static`: Contains all assets (images, CSS, JS) for Sphinx to look at.
