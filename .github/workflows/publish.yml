@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   deploy:
@@ -24,7 +25,7 @@ jobs:
         uses: hasura/comment-progress@v2.3.0
         if: github.ref != 'refs/heads/master'
         with:
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
           number: ${{ github.event.number }}
           id: deploy-preview
@@ -80,7 +81,7 @@ jobs:
         uses: hasura/comment-progress@v2.3.0
         if: github.ref != 'refs/heads/master'
         with:
-            github-token: ${{ secrets.GH_TOKEN }}
+            github-token: ${{ secrets.GITHUB_TOKEN }}
             repository: ${{ github.repository }}
             number: ${{ github.event.number }}
             id: deploy-preview
