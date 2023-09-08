@@ -9,15 +9,16 @@ jobs:
     env:
       PR_PATH: pull/${{github.event.number}}
     steps:
-      - name: make empty dir
-        run: mkdir ${{ env.PR_PATH }}
-
-      - name: delete folder
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Checkout website repo
+        uses: actions/checkout@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.PR_PATH }}
-          destination_dir: ${{ env.PR_PATH }}
+          ref: gh-pages
+
+      - name: Delete preview
+        run: |
+            git rm -r ${{ env.PR_PATH }}
+            git commit -m "Delete preview for PR #${{ github.event.number }}"
+            git push origin gh-pages
 
       - name: Comment on PR
         uses: hasura/comment-progress@v2.2.0
