@@ -7,7 +7,6 @@
 
 @import url("./common/variables.css");
 @import url("./common/override.css");
-@import url("./common/util.css");
 
 /* Home CSS */
 @import "./home/index.css";
