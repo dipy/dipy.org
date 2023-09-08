@@ -126,6 +126,7 @@ html_style = 'css/dipy.css'
 # documentation.
 html_theme_options = {
   "secondary_sidebar_items": ["page-toc"],
+  "show_toc_level": 1,
   "navbar_center": ["components/navbar-links.html"],
   "navbar_links": [
      {
