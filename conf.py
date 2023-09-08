@@ -37,7 +37,7 @@ extensions = ['sphinx.ext.autodoc',
               'github',
               'ablog',
               'jinja'
-]
+              ]
 
 # ghissue config
 github_project_url = "https://github.com/dipy/dipy.org"

@@ -13,7 +13,7 @@ guidelines and try the :ref:`examples`. Didn't find what you are looking for?
 Then try :ref:`faq` and then if this doesn't help send an e-mail to our
 e-mail list neuroimaging@python.org with subject starting with ``[DIPY]``.
 
-.. figure:: _static/pretty_tracks.png
+.. figure:: _static/images/pretty_tracks.png
    :align: center
 
    This is a depiction of tractography created with DIPY.
