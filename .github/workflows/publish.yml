@@ -21,10 +21,10 @@ jobs:
         BASE_URL: https://dipy.github.io/dipy.org
     steps:
       - name: Comment on PR
-        uses: hasura/comment-progress@v2.2.0
+        uses: hasura/comment-progress@v2.3.0
         if: github.ref != 'refs/heads/master'
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_TOKEN }}
           repository: ${{ github.repository }}
           number: ${{ github.event.number }}
           id: deploy-preview
@@ -77,10 +77,10 @@ jobs:
           commit_message: ${{ github.event.head_commit.message }}
 
       - name: Update comment
-        uses: hasura/comment-progress@v2.2.0
+        uses: hasura/comment-progress@v2.3.0
         if: github.ref != 'refs/heads/master'
         with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
+            github-token: ${{ secrets.GH_TOKEN }}
             repository: ${{ github.repository }}
             number: ${{ github.event.number }}
             id: deploy-preview
