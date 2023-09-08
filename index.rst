@@ -79,7 +79,7 @@ As an exercise, you can try to calculate `color FA` with your datasets. You will
 to replace the filepaths `fdwi`, `fbval` and `fbvec`. Here is what
 a slice should look like.
 
-.. image:: _static/colorfa.png
+.. image:: _static/images/colorfa.png
     :align: center
 
 **********
