@@ -1,0 +1,1366 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIPY &#8212; Python  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=80c83778" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script src="../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/author/shilpi-prasad';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+  <meta name="keywords" content="DIPY, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="Posts by Shilpi Prasad"
+/>
+
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../documentation.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../stateoftheart.html">
+                        A quick overview of features
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../documentation.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../stateoftheart.html">
+                        A quick overview of features
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">DIPY</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+
+<div class="section ablog__collection">
+  <h1>
+    
+      Posts by
+      
+    Shilpi Prasad
+    
+  </h1>
+  
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_08_28_Shilpi_Week14.html">Doing Final Touch-Ups: Week 14</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        28 August 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>This week I fixed the test for the isotropic source of kurtosis so now it’s working for all DTDs. I also created tests for the <code class="docutils literal notranslate"><span class="pre">K_micro</span></code> function. Initially while running the test, I got some errors which made me look deeper into the actual function. The error was that I was doing sqrt of some elements when actually I was supposed to calculate square of them. Also I was using a ‘1/5’ factor which was not actually required. On fixing these issues, the overall map image of <code class="docutils literal notranslate"><span class="pre">K_micro</span></code> improved significantly.
+Previously the multi-voxel test case was failing due to different eigenvalues in the isotropic total diffusion tensors simulations. Removing the eigenvalue assertion made the test pass, as verifying the kt, cvt, and evals values sufficed.
+I also provided documentation to some functions in the test file such as <code class="docutils literal notranslate"><span class="pre">_perpendicular_directions_temp_</span></code> and <code class="docutils literal notranslate"><span class="pre">from_qte_to_cti</span></code> etc.
+Also had to change the name of some functions to make it sound more relatable to what they were actually doing.
+This week I almost finished with the CTI tutorial. The only thing remaining is to create a fetcher for the data so that all the users can download the data and use it. Currently the path given for the data retrieval is of my local system.
+I also added some references and overall improved the wording and information in the tutorial.
+I also finished up writing my final work report and get it reviewed by my mentors and then updated it.
+Finally, before pushing the file onto the main PR, I cleaned up the code by removing all the extra comments and some unnecessary code and overall made sure that the entire code was following the pep8 standard.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_08_28_Shilpi_Week14.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_08_22_Shilpi_Week13.html">Writing Tests & Making Documentation: Week 13</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        22 August 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>This week, I finished writing tests for the sources of kurtosis. While the isotropic source passed the test for the anisotropic DTD, the anisotropic source passed tests for all DTDs. As a result, I integrated the test for the anisotropic source within the <code class="docutils literal notranslate"><span class="pre">test_cti_fits</span></code> function, eliminating the need for a separate function.
+I also created tests for multi-voxel cases but the tests passed only for single voxel cases. One reason I think this might be happening is because of the way we’re accessing the covariance and diffusion tensor elements. I intend to look further into this.
+I worked on the real life data, trying to plot maps, but it didn’t work out because the problem was really related to the fact that the current kurtosis source implementations do not handle multiple voxel cases.
+I worked on real life data, attempting to plot maps. Even though I was not able to get the desired result, I’m sure I’ll figure it out with further research and possible collaboration.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_08_22_Shilpi_Week13.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_08_15_Shilpi_week12.html">Week12: Making Test Functions Work</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        15 August 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>According to last week’s situation, I was trying to make the <code class="docutils literal notranslate"><span class="pre">test_cti_fits</span></code> function work as well as the <code class="docutils literal notranslate"><span class="pre">test_split_cti_params</span></code> function. This week I figured out the problem with these functions and was able to fix it. The major problem was occurring while I was trying to compare the parameters. Firstly, I started by removing all the extra fit methods in <code class="docutils literal notranslate"><span class="pre">common_fit_method</span></code> list such as NLS, CLS and CWLS as I realized that we won’t immediately be needing an extra <code class="docutils literal notranslate"><span class="pre">multi_tensor_fit</span></code> function in CTI.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_08_15_Shilpi_week12.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_08_08_Shilpi_week11.html">Making the Tests Work : Week 11</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        08 August 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>Previously, I had the function for different sources of kurtosis outside the Fit class. Upon suggestion from my mentor, this week I put them inside the Fit class. This required me to make changes to how certain variables were being called inside those functions. I also had to determine what arguments needed to be passed to those functions.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_08_08_Shilpi_week11.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_07_31_Shilpi_week10.html">Adding Tests : Week 10</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        31 July 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>Last week, we decided to generate a DTD to make the model more robust. This decision accounted for situations where almost all the parameters were non-zero. However, the signals weren’t matching exactly in that situation. This week, I fixed that issue. We can now safely say that all DTDs will match the ground truth signals, regardless of which parameters are non-zero or what changes we make. We accomplished this by figuring out the correct order of ccti parameters. These are covariance parameters that take the root2 and ‘2’ factor into consideration.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_07_31_Shilpi_week10.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_07_27_Shilpi_week_8_9.html">Generating Fit Functions : Week 8 & 9</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        27 July 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>This week, I started by figuring out how to run Spyder on Ubuntu. After resolving technical problems, I needed to ensure I could edit code to meet pep8 standards but the automatic formatting of code wasn’t working. I made changes in the <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> file to increase the design matrix readability and fixed a typo in the <code class="docutils literal notranslate"><span class="pre">B[:,3]</span></code> and <code class="docutils literal notranslate"><span class="pre">B[:,</span> <span class="pre">4]</span></code> diffusion tensor elements. This is because we realized that the sign needed to be negative to show that it’s representing a signal decay.
+I implemented mapping all of the covariance parameters from paper to its actual code, creating a need to talk to the original paper’s authors as the conversion shown in the paper didn’t quite match its implementation.
+I also worked on matching the ground truth signal values in case of anisotropic and combined DTDs. This is because the isotropic DTD signals that were being generated matched exactly the QTI signals, as in case of isotropic we’ve 6 non zero elements, and the rest are 0s. However in anisotropic case we had more non-zero covariance parameters (9 non-zero), similarly as in the case of combined DTD. So we figured out that the non-zero elements are being multiplied to some value which isn’t correct and that this needs modifying the <code class="docutils literal notranslate"><span class="pre">ccti</span></code> conversion.
+So, I worked on reading more about voigt notation, as the QTI parameters were implemented using that notation.
+Then we looked again into the QTI paper, and felt the need to contact their author and code implementer and realized that the coding was done while keeping in mind the voigt notation conversion as well as some other factors. At the end of this we figured out the correct conversion of the <code class="docutils literal notranslate"><span class="pre">ccti</span></code> parameters. We noticed that some factors needed the (root2) division, while some others needed (2). Therefore, we were able to successfully figure out the correct factors that needed to be multiplied/ divided to each of the covariance parameters.
+And hence, now the signal values of all the DTDs match as expected.
+Then the other major ongoing task this week has been the implementation of the Fit class in CTI. This required me to implement some functions which might’ve been implemented in DKI/ QTI. This is an ongoing task and would require more work.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_07_27_Shilpi_week_8_9.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_07_12_Shilpi_week7.html">Modifying Test Signal Generation</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        12 July 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>One of the tasks I did this week was modify the <code class="docutils literal notranslate"><span class="pre">cti_design_matrix</span></code> again, as asked by my mentor to make the code more readable. The initial code was following pep8 standard but it wasn’t very easy to read, but now it is.
+Also, I realized that the main reason my signals weren’t matching the ground truth values before at all was because the eigenvalues and eigenvectors of the diffusion tensor distribution were wrong. This was because, before I tried getting D_flat by doing: <code class="docutils literal notranslate"><span class="pre">np.squeeze(from_3x3_to_6x1(D))</span></code> which returned a tensor of shape ( 6, ). But in this case, it returned the diffusion tensor elements in the order : Dxx, Dyy, Dzz  and so on which isn’t the correct format of input expected for the “from_lower_triangular” function. So, initially, we were doing : <code class="docutils literal notranslate"><span class="pre">evals,</span> <span class="pre">evecs</span> <span class="pre">=</span> <span class="pre">decompose_tensor(from_lower_triangular(D_flat))</span></code> where the from_lower_triangular function is returning a tensor of shape: (3,3). But then I realized that rather than calculating D_flat, we can simply do: <code class="docutils literal notranslate"><span class="pre">evals,</span> <span class="pre">evecs</span> <span class="pre">=</span> <span class="pre">decompose_tensor(D_flat)</span></code>. Following this approach gave the correct value of “evals and evecs”. So, now we have the correct values of “evals and evecs” which made the signals come closer to the ground truth signals, but we still don’t have the signals completely matching the ground truth signals.
+Another problem we realized was that while passing “C”, covariance tensor parameters, we needed to make sure that we were passing the modified C parameters, that is “ccti”. This again helped in bringing the signals to the expected values.
+So, after talking things through with my mentor, and analyzing the QTI paper, we came to a few conclusions which could be done to improve the signal values.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_07_12_Shilpi_week7.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_07_06_shilpi_week5.html">Design Matrix Implementation and Coding with PEP8: Week 5</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        06 July 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>This week, my work focused on two main areas: improving the design matrix and implementing methods under the Fit class in CTI.
+For the design matrix improvement, I noticed that the design matrix I had previously created was not according to PEP8 standards. After some effort, I managed to modify it to comply with the appropriate format.
+This week, my time was mostly consumed by implementing methods under the Fit class in CTI. As CTI is an extension of DKI and shares similarities with the QTI model, I had to look into methods already implemented in DKI and QTI. My approach involved going through these two different modules, comparing the methods, and making notes on which ones would need to be implemented in CTI. This was challenging, as CTI’s design matrix is significantly different.
+Although this implementation is not completely done, I was able to learn a lot.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_07_06_shilpi_week5.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_07_06_shilpi_week6.html">Creating signal_predict Method: Testing Signal Generation</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        06 July 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>This week, I worked together with my mentor to come up with a new way of arranging the elements of the design matrix. So, first I rearranged all the parameters of the covariance parameters so that they’d match with the ones in QTI. So now, the order is: the diffusion tensor, the covariance tensor, and then the kurtosis tensors. But then we decided that it would be better to put the kurtosis tensors first because then we wouldn’t have to re-implement all the kurtosis methods again. So, I changed the order of kurtosis and the covariance tensors.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_07_06_shilpi_week6.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_06_19_Shilpi_week4.html">Re-Engineering Simulation Codes with the QTI Model and Design Matrix</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        19 June 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>I had to change the <code class="docutils literal notranslate"><span class="pre">cti_test.py</span></code> file as the signals generated were not exactly correct. I was advised to follow the multiple gaussian signal generation method. While doing this I had to look closely at several already implemented methods and go in depth to understand how those functions were achieving the desired output.
+The multiple gaussian signal generation method is preferred because the CTI signal generation closely resembles the multiple gaussian signals. We’re using the multiple gaussian signals so that we can have a priori of what to expect from the outcome, if we fit our model to this signal.
+I also managed to implement the design matrix for the CTI tensor and managed to save it up in the <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> file. The design matrix is a crucial component of the CTI tensor as it represents the relationships between the different variables in our model. By accurately modeling these relationships, we can generate more realistic simulations and gain a deeper understanding of the CTI tensor.
+The link of my work: <cite>Here &lt;https://github.com/dipy/dipy/pull/2816&gt;__</cite></p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_06_19_Shilpi_week4.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_06_13_Shipi_week3.html">CTI Simulation and QTI tutorial : Week 3</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        13 June 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>This week I worked on finishing the simulations with the appropriate documentation. I also worked on creating a general tutorial for CTI/ QTI as one doesn’t already exist for QTI.
+The idea behind this general tutorial was that there isn’t any tutorial for advanced diffusion encoding. The closest documentation QTI has is <span class="xref std std-ref">here</span>. However, there are several youtube videos. So, in this tutorial we started with simulating qti, and then we make things a little more complex by adding information on CTI as QTI can only handle a single Gradient Table whereas CTI can handle multiple Gradient Tables.
+This week I also started by initializing <code class="docutils literal notranslate"><span class="pre">cti_tests.py</span></code> file by adding relevant simulations to it.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_06_13_Shipi_week3.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_06_05_Shilpi_week2.html">Signal Creation & Paper Research: Week2 Discoveries</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        05 June 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>I worked through this research paper, and found some relevant facts to the tasks at hand, such as the different sources of kurtosis. One other important fact I found out was that DDE comprises 2 diffusion encoding modules characterized by different q-vectors (q1 and q2 ) and diffusion times. This fact is important because, CTI approach is based on DDE’s cumulant expansion, and the signal is expressed in terms of 5 unique second and fourth-order tensors. I also found out about how the synthetic signals could be created using 2 different scenarios, which comprises a mix of Gaussian components and a mix of Gaussian and/or restricted compartments.
+The major time I spent this week was in creating synthetic signals, and therefore in creating simulations.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_06_05_Shilpi_week2.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2023/2023_05_29_Shilpi_Week_0_1.html">Community Bonding and Week 1 Insights</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        29 May 2023
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Shilpi Prasad</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>Hey there! I’m Shilpi, a Computer Science and Engineering undergrad at Dayananda Sagar College of Engineering, Bangalore. I’m on track to grab my degree in 2024.
+My relationship with Python started just before I started college - got my hands dirty with this awesome Python Specialization course on Coursera.
+When it comes to what makes me tick, it’s all things tech. I mean, new technology always excites me. Ubuntu, with its fancy terminal and all, used to intimidate me at first, but now, I get a thrill out of using it to do even the simplest things.
+Up until 2nd year I used to do competitive programming and a bit of ML. But from 3rd year I’ve been into ML very seriously, doing several courses on ML as well solving ML problems on kaggle. ML is very fun and I’ve done a few project on ML as well.
+Coding? Absolutely love it. It’s like, this is what I was meant to do, y’know? I got introduced to git and GitHub in my first year - was super curious about how the whole version control thing worked. And then, I stumbled upon the world of open source in my second year and made my first contribution to Tardis: (<a class="github reference external" href="https://github.com/tardis-sn/tardis/pull/1825">tardis-sn/tardis#1825</a>)
+Initially, I intended on doing GSoC during my second year but ended up stepping back for reasons. This time, though, I was fired up to send in a proposal to at least one organization in GSoC. And, well, here we are!</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2023/2023_05_29_Shilpi_Week_0_1.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.5.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

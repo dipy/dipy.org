@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DIPY &#8212; Python  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/dipy.css?v=80c83778" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script src="../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'theory/b_and_q';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+  <meta name="keywords" content="DIPY, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../documentation.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../stateoftheart.html">
+                        A quick overview of features
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../documentation.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../stateoftheart.html">
+                        A quick overview of features
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">DIPY</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+<section id="diy-stuff-about-b-and-q">
+<span id="b-and-q"></span><h1>DIY Stuff about b and q<a class="headerlink" href="#diy-stuff-about-b-and-q" title="Link to this heading">#</a></h1>
+<p>This is a short note to explain the nature of the <code class="docutils literal notranslate"><span class="pre">B_matrix</span></code> found in the
+Siemens private (CSA) fields of the DICOM headers of a diffusion weighted
+acquisition.  We trying to explain the relationship between the <code class="docutils literal notranslate"><span class="pre">B_matrix</span></code> and
+the <em>b value</em> and the <em>gradient vector</em>.  The acquisition is made with a planned
+(requested) <span class="math notranslate nohighlight">\(b\)</span>-value - say <span class="math notranslate nohighlight">\(b_{req} = 1000\)</span>, and with a requested gradient
+direction <span class="math notranslate nohighlight">\(\mathbf{g}_{req} = [g_x, g_y, g_z]\)</span> (supposedly a unit vector) and
+peak amplitude <span class="math notranslate nohighlight">\(G\)</span>. When the sequence runs the gradient is modulated by an
+amplitude envelope <span class="math notranslate nohighlight">\(\rho(t)\)</span> with <span class="math notranslate nohighlight">\(\max |\rho(t)| = 1\)</span> so that the time course
+of the gradient is <span class="math notranslate nohighlight">\(G\rho(t)\mathbf{g}.\)</span> <span class="math notranslate nohighlight">\(G\)</span> is measured in units of <span class="math notranslate nohighlight">\(T
+\mathrm{mm}^-1.\)</span> This leads to an important temporal weighting parameter of the
+acquisition:</p>
+<div class="math notranslate nohighlight">
+\[R = \int_0^T ( \int_0^t \rho ( \tau ) \, d{ \tau } )^2 \, d{t}.\]</div>
+<p>(See Basser, Matiello and LeBihan, 1994.) Another formulation involves
+the introduction of k-space. In standard in-plane MR image encoding</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{k} = \gamma \int \mathbf{g}(t)dt.\]</div>
+<p>For the classical Stejskal and Tanner pulsed gradient spin echo (PGSE)
+paradigm where two rectangular pulses of width <span class="math notranslate nohighlight">\(\delta\)</span> seconds are
+spaced with their onsets <span class="math notranslate nohighlight">\(\Delta\)</span> seconds apart <span class="math notranslate nohighlight">\(R = \Delta
+(\Delta-\delta/3)^2.\)</span> The units of <span class="math notranslate nohighlight">\(R\)</span> are <span class="math notranslate nohighlight">\(s^3\)</span>. The <span class="math notranslate nohighlight">\(b\)</span>-matrix has
+entries</p>
+<div class="math notranslate nohighlight">
+\[b_{ij} = \gamma^2 G^2 g_i g_j R,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma\)</span> is the gyromagnetic radius (units
+<span class="math notranslate nohighlight">\(\mathrm{radians}.\mathrm{seconds}^{-1}.T^{-1}\)</span>) and <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are
+axis direcrtions from <span class="math notranslate nohighlight">\(x,y,z\)</span> . The units of the B-matrix are
+<span class="math notranslate nohighlight">\(\mathrm{radians}^2 . \mathrm{seconds} .  \mathrm{mm}^{-2}.\)</span></p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B} = \gamma^2 G^2 R \mathbf{g} \mathbf{g}^T.\]</div>
+<p>The b-value for the acquisition is the trace of <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> and is
+given by</p>
+<div class="math notranslate nohighlight">
+\[b = \gamma^2 G^2 R \|\mathbf{g}\|^2 = \gamma^2 G^2 R.\]</div>
+</section>
+<section id="the-b-matrix-and-siemens-dicom">
+<h1>The B matrix and Siemens DICOM<a class="headerlink" href="#the-b-matrix-and-siemens-dicom" title="Link to this heading">#</a></h1>
+<p>Though the Stejskal and Tanner formula is available for the classic
+PGSE sequence, a different sequence may be used (e.g. TRSE on Siemens
+Trio), and anyway the ramps up and down on the gradient field will not
+be rectangular. The Siemens scanner software calculates the actual
+values of the <span class="math notranslate nohighlight">\(b_{ij}\)</span> by numerical integration of the formula above
+for <span class="math notranslate nohighlight">\(R\)</span>. These values are in the form of the 6 ‘B-matrix’ values
+<span class="math notranslate nohighlight">\([b_{xx}, b_{xy}, b_{xz}, b_{yy}, b_{yz}, b_{zz}]\)</span>.</p>
+<p>In this form they are suitable for use in a least squares estimation of
+the diffusion tensor via the equations across the set of acquisitions:</p>
+<div class="math notranslate nohighlight">
+\[\log(A(\mathbf{q})/A(0)) = -(b_{xx}D_{xx} + 2b_{xy}D_{xy} + 2b_{xz}D_{xz} + \
+   b_{yy}D_{yy} + 2b_{yz}D_{yz} + b_{zz}D_{zz})\]</div>
+<p>The gradient field typically stays in the one gradient direction, in
+this case the relationship between <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(\mathbf{g}\)</span> and the <span class="math notranslate nohighlight">\(b_{ij}\)</span> is as
+follows. If we fill out the symmetric B-matrix as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{B} = \begin{pmatrix}
+              b_{xx} &amp; b_{yx} &amp; b_{yz}\\
+              b_{xy} &amp; b_{yy} &amp; b_{xz}\\
+              b_{xz} &amp; b_{yz} &amp; b_{zz}
+              \end{pmatrix}\end{split}\]</div>
+<p>then <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> is equal to the rank 2 tensor <span class="math notranslate nohighlight">\(\gamma^2 G^2 R
+\mathbf{g} \mathbf{g}^T\)</span>. By performing an eigenvalue and
+eigenvector decomposition of <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> we obtain</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B} = \lambda_1\mathbf{v}_1\mathbf{v}_1^T +
+             \lambda_2\mathbf{v}_2\mathbf{v}_2^T +
+             \lambda_3\mathbf{v}_3\mathbf{v}_3^T,\]</div>
+<p>where only one of the <span class="math notranslate nohighlight">\(\lambda_i\)</span>, say <span class="math notranslate nohighlight">\(\lambda_1\)</span>, is (effectively)
+non-zero. (Because the gradient is always a multiple of a constant
+direction <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> is a effectively a rank 1 tensor.) Then
+<span class="math notranslate nohighlight">\(\mathbf{g} = \pm\mathbf{v}_1\)</span>, and <span class="math notranslate nohighlight">\(b = \gamma^2 G^2 R =
+\lambda_1\)</span>. The <code class="docutils literal notranslate"><span class="pre">b-vector</span></code> <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{b}_{\mathrm{actual}} = \gamma^2 G^2 R \mathbf{g}_{\mathrm{actual}}
+ = \lambda_1 \mathbf{v}_1.\]</div>
+<p>Once we have <span class="math notranslate nohighlight">\(\mathbf{b}_{actual}\)</span> we can calculate <span class="math notranslate nohighlight">\(b_{actual} =
+\|\mathbf{b}_{actual}\|\)</span> and <span class="math notranslate nohighlight">\(\mathbf{g}_{actual} = \mathbf{b}_{actual}
+/ b_{actual}\)</span>. Various software packages (e.g. FSL’s DFT-DTIFIT) expect
+to get N x 3 and N x 1 arrays of <span class="math notranslate nohighlight">\(\mathbf{g}_{actual}\)</span> (<code class="docutils literal notranslate"><span class="pre">bvecs</span></code>) and
+<span class="math notranslate nohighlight">\(b_{actual}\)</span> values (<code class="docutils literal notranslate"><span class="pre">bvals</span></code>) as their inputs.</p>
+</section>
+<section id="and-what-about-q">
+<h1>… and what about ‘q’?<a class="headerlink" href="#and-what-about-q" title="Link to this heading">#</a></h1>
+<p>Callaghan, Eccles and Xia (1988) showed that the signal from the
+narrow pulse PGSE paradigm measured the Fourier transform of the
+diffusion displacement propagator. Propagation space is measured in
+displacement per unit time <span class="math notranslate nohighlight">\((\mathrm{mm}.\mathrm{seconds}^{-1})\)</span>. They
+named the reciprocal space <code class="docutils literal notranslate"><span class="pre">q-space</span></code> with units of
+<span class="math notranslate nohighlight">\(\mathrm{seconds}.\mathrm{mm}^{-1}\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-fourier">
+<span class="eqno">(1)<a class="headerlink" href="#equation-fourier" title="Link to this equation">#</a></span>\[q = \gamma \delta G /{2\pi}\]</div>
+<div class="math notranslate nohighlight">
+\[b = 4 \pi^2 q^2 \Delta\]</div>
+<p>Diffusion spectroscopy measures signal over a wide range of <span class="math notranslate nohighlight">\(b\)</span>-values
+(or <span class="math notranslate nohighlight">\(q\)</span>-values) and diffusion times (<span class="math notranslate nohighlight">\(\Delta\)</span>) and performs a <span class="math notranslate nohighlight">\(q\)</span>-space
+analysis (Fourier transform of the diffusion signal decay).</p>
+<p>There remains a bit of mystery as to how <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> (as a vector in
+<span class="math notranslate nohighlight">\(q\)</span>-space) is specified for other paradigms. We think that (a) it only
+matters up to a scale factor, and (b) we can loosely identify
+<span class="math notranslate nohighlight">\(\mathbf{q}\)</span> with <span class="math notranslate nohighlight">\(b\mathbf{g}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{g}\)</span> is the unit
+vector in the gradient direction.</p>
+</section>
+
+<div class="section ablog__blog_comments">
+  
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DIY Stuff about b and q</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-b-matrix-and-siemens-dicom">The B matrix and Siemens DICOM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#and-what-about-q">… and what about ‘q’?</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.5.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

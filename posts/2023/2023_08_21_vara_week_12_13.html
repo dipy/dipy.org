@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DIPY &#8212; Python  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=80c83778" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script src="../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_08_21_vara_week_12_13';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+  <meta name="keywords" content="DIPY, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../documentation.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../stateoftheart.html">
+                        A quick overview of features
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../documentation.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../stateoftheart.html">
+                        A quick overview of features
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">DIPY</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+<section id="finalized-experiments-using-both-datasets-week-12-week13">
+<h1>Finalized experiments using both datasets: Week 12 &amp; Week13<a class="headerlink" href="#finalized-experiments-using-both-datasets-week-12-week13" title="Link to this heading">#</a></h1>
+<section id="what-i-did-this-week">
+<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
+<p>Monai’s VQVAE results on T1-weighted NFBS dataset, 125 samples, for batch size of 5 were qualitatively and quantitatively superior to all previous results. I continued the same experiments on the T1-weighted CC359(Calgary-Campinas-359) public dataset consisting of 359 anatomical MRI volumes of healthy individuals. Preprocessed the data using existing <code class="docutils literal notranslate"><span class="pre">transform_img</span></code> function -</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>skull-strips the volume using the respective mask</p></li>
+<li><p>dipy’s <code class="docutils literal notranslate"><span class="pre">resize</span></code> &amp; scipy’s <code class="docutils literal notranslate"><span class="pre">affine_transform</span></code> scale the volume to (128,128,128,1) shape &amp; (1,1,1) voxel size</p></li>
+<li><p>MinMax normalization to limit the range of intensities to (0,1)</p></li>
+</ol>
+</div></blockquote>
+<p>Using existing training parameters, carried out two experiments, one on CC359 alone &amp; another on both datasets combined. Additionally, I made a slight modification in the loss definition by attributing different weights of 0.5 &amp; 1 to background &amp; foreground pixels compared to equal weights from previous experiments. This resulted in faster convergence as shown in the red, blue &amp; purple lines in the combined plot shown below. (Naming convention for each each training curve is <code class="docutils literal notranslate"><span class="pre">B&lt;batch_size&gt;-&lt;dataset_used&gt;</span></code>, where CC=CC359, NFBS=NFBS, both=[NFBS,CC359])</p>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-training-plots.png"><img alt="Combined trainings plots for all experiments" src="../../_images/vqvae3d-monai-training-plots.png" style="width: 800px;" /></a>
+<p>Inference results on the best performing model, B12-both, is shown below, where every two rows correspond to reconstructions &amp; original volumes respectively, with equally spaced slices in each row. These slices visualised are anterior-posterior topdown &amp; ventral-dorsal LR.</p>
+<a class="reference internal image-reference" href="../../_images/vqvae-monai-B12-both.png"><img alt="VQVAE-Monai-B12-both reconstructions &amp; originals showing equally spaced 5 slices for 2 different test samples" src="../../_images/vqvae-monai-B12-both.png" style="width: 800px;" /></a>
+<p>Here’s a similar visualization of the inference on the next best performing model, B12-CC.</p>
+<a class="reference internal image-reference" href="../../_images/vqvae-monai-B12-CC.png"><img alt="VQVAE-Monai-B12-CC reconstructions &amp; originals showing equally spaced 5 slices for 2 different test samples" src="../../_images/vqvae-monai-B12-CC.png" style="width: 800px;" /></a>
+<p>This shows that our training not only converged quickly but also improved visually. Here’s a comparison of our current best performing model i.e., VQVAE-Monai-B12-both &amp; the previous one on NFBS i.e., VQVAE-Monai-B5-NFBS. The test reconstruction loss is 0.0013 &amp; 0.0015 respectively.</p>
+<a class="reference internal image-reference" href="../../_images/vqvae-reconstructions-comparison.png"><img alt="VQVAE reconstruction comparison for B12-both &amp; B5-NFBS" src="../../_images/vqvae-reconstructions-comparison.png" style="width: 800px;" /></a>
+<p>I also carried out Diffusion Model training on the best performing VQVAE-Monai-B12-both model for 300 &amp; 500 diffusion steps and the training curves obtained are as follows-</p>
+<a class="reference internal image-reference" href="../../_images/dm3d-monai-training-curves.png"><img alt="Diffusion Model training plots for 300 &amp; 500 diffusion steps" src="../../_images/dm3d-monai-training-curves.png" style="width: 800px;" /></a>
+<p>These curves seemed to converge pretty quickly but the sampling outputs in the generation pipeline are still pure noise as shown below-</p>
+<a class="reference internal image-reference" href="../../_images/dm3d-monai-B8-DM500.png"><img alt="Diffusion Model training plots for 300 &amp; 500 diffusion steps" src="../../_images/dm3d-monai-B8-DM500.png" style="width: 800px;" /></a>
+<p>The best performance of KL encoders/VAEs/VQVAEs have been shown to deliver blurry reconstructions on Medical datasets. Despite using a pretty less complex VQVAE model, with only <code class="docutils literal notranslate"><span class="pre">num_res_channels=(32,</span> <span class="pre">64)</span></code>, we consistently achieved improved reconstruction results with every experiment. From capturing only the brain outer structure through VQAVE-B5-NFBS model to able to capture the volumetric details of the inner microstructure of the brain through VQVAE-Monai-B10-both model, we’ve stretched the capabilities of the VQVAE model.</p>
+<p>For future work we should look into two things - debugging Diffusion Model, scaling VQVAE model.</p>
+<p>As a first priority, we could analyze the reason for pure noise output in DM3D generations, this would help us rule out any implementation errors(although I already did that, a second pair of eyes would be helpful). Because MONAI’s work shows that even without a stable convergence on their diffusion model they achieved visualizations resembling a brain. Whereas our model despite achieving a stable looking training curve, our generations are not close to being convincing.</p>
+<p>As a second step, we could also try scaling up both VQVAE as well as Diffusion Model in terms of complexity, such as increasing intermediate channel dimensions from 64 to 128 or 256 as done in MONAI’s 3D LDM. This hopefully may help us achieve the state-of-art on NFBS &amp; CC359 datasets.</p>
+</section>
+<section id="what-is-coming-up-next-week">
+<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
+<p>Wrapping up documentation &amp; final report</p>
+</section>
+<section id="did-i-get-stuck-anywhere">
+<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
+<p>Yes, I carried out debugging to understand the generation pipeline of the Diffusion Model. Cross-checked implementations of posterior mean &amp; variance in the code base with respective formulas from the paper, as well as with MONAI’s DDPM implementation. Didn’t come across any error, yet the generated samples are erroneous.</p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+  
+  
+
+
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+    
+    
+    <a href="2023_08_15_Shilpi_week12.html">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Week12: Making Test Functions Work</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+    
+    
+    <a href="2023_08_22_Shilpi_Week13.html">
+      <span>Writing Tests & Making Documentation: Week 13</span>
+      
+      <i class="fa fa-arrow-circle-right" ></i>
+      
+    </a>
+    
+  </span>
+</div>
+
+  
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.5.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DIPY &#8212; Python  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=80c83778" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script src="../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_05_29_Shilpi_Week_0_1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+  <meta name="keywords" content="DIPY, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../documentation.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../stateoftheart.html">
+                        A quick overview of features
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../documentation.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../stateoftheart.html">
+                        A quick overview of features
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">DIPY</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+<section id="community-bonding-and-week-1-insights">
+<h1>Community Bonding and Week 1 Insights<a class="headerlink" href="#community-bonding-and-week-1-insights" title="Link to this heading">#</a></h1>
+<section id="about-myself">
+<h2>About Myself<a class="headerlink" href="#about-myself" title="Link to this heading">#</a></h2>
+<p>Hey there! I’m Shilpi, a Computer Science and Engineering undergrad at Dayananda Sagar College of Engineering, Bangalore. I’m on track to grab my degree in 2024.
+My relationship with Python started just before I started college - got my hands dirty with this awesome Python Specialization course on Coursera.
+When it comes to what makes me tick, it’s all things tech. I mean, new technology always excites me. Ubuntu, with its fancy terminal and all, used to intimidate me at first, but now, I get a thrill out of using it to do even the simplest things.
+Up until 2nd year I used to do competitive programming and a bit of ML. But from 3rd year I’ve been into ML very seriously, doing several courses on ML as well solving ML problems on kaggle. ML is very fun and I’ve done a few project on ML as well.
+Coding? Absolutely love it. It’s like, this is what I was meant to do, y’know? I got introduced to git and GitHub in my first year - was super curious about how the whole version control thing worked. And then, I stumbled upon the world of open source in my second year and made my first contribution to Tardis: (<a class="github reference external" href="https://github.com/tardis-sn/tardis/pull/1825">tardis-sn/tardis#1825</a>)
+Initially, I intended on doing GSoC during my second year but ended up stepping back for reasons. This time, though, I was fired up to send in a proposal to at least one organization in GSoC. And, well, here we are!</p>
+</section>
+<section id="intro-to-open-source-and-gsoc">
+<h2>Intro to Open-Source and GSoC<a class="headerlink" href="#intro-to-open-source-and-gsoc" title="Link to this heading">#</a></h2>
+<p>So, I started off finding out about GSoC - how many hours do selected folks put in, the kind of projects people usually tackle, and all that stuff. To get a handle on what they want in a proposal, I turned to some successful ones from previous years. Really gave me an idea of the kind of stuff they expect you to bring to the table.
+Trying to find the organization that’d go with my skill set, I stumbled upon Python Software Foundation, and I was like, “This is it!”. And under PSF, there was DIPY.
+Diving into DIPY’s docs was a breeze as they’ve got it so well put together that I managed to get my head around a completely new topic, “Diffusion MRI”, just by going through their introductory docs and a bit of gpt.
+While exploring DIPY, I noticed this issue that needed a new feature. It took a good bit of reading to really understand what they were looking for and how to actually build that feature. And then, I submitted my first PR (<a class="reference external" href="https://github.com/dipy/dipy/pull/2749">check it out here</a>)! Getting it merged wasn’t exactly easy - there was a lot of room for improvement up in my code, but honestly, I feel like it’s all part of the learning curve.
+I was a bit of a latecomer to GSoC, so I didn’t have much time to make up a ton of PRs. Plus, by the time I’d submitted my first PR, the proposal submission period had already begun. So, I focused all my energy on increasing my knowledge on the topic and polishing my proposal. Plus, I’d wanted to get my proposal reviewed at least once before I submitted it.</p>
+<p>Code contributions:</p>
+<ol class="arabic simple">
+<li><p>[<a class="github reference external" href="https://github.com/dipy/dipy/pull/2749">dipy/dipy#2749</a>]</p></li>
+</ol>
+</section>
+<section id="the-day">
+<h2>The Day<a class="headerlink" href="#the-day" title="Link to this heading">#</a></h2>
+<p>May 4th: I woke up feeling like a nervous wreck. That interview with my organization? Let’s just say it didn’t go very well. Yet, I couldn’t help but hope for the best. The results were supposed to drop at 11:45pm, a moment I wasn’t exactly looking forward to.
+I tried logging into Google to check, but couldn’t. Too many people doing the same thing. I threw my hands up, gave up on the login battle, and got back to work, hoping to distract myself.
+Fast forward to 1:30am - I figured by now, the log-in rush should have calmed down. I gave it another shot and… I got in! I clicked over to the dashboard, and there it was. My project. Right there, listed under the Projects section. I had heard that if you get selected, your proposal shows up there.
+To confirm that it was actually happening, I picked my phone to check if I’d gotten any official email yet. And yes!! I’d gotten it at 12:49 am. I just hadn’t checked.
+I whooped, woke up my roomies, rushed to call my parents.
+Honestly, words can’t even begin to capture how I felt at that moment.
+Pure, undiluted joy, that’s what it was. My parents, surprisingly actually picked up my call. But the minute I told them I’d made the cut, they congratulated me. It was heck of a day, (^^).</p>
+</section>
+<section id="what-i-did-this-week">
+<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
+<p>As this was my first week I majorly spent a lot of time knowing about the codebase of the organization. I also went through a couple of research papers of projects which have already been implemented to get information related to my branch.
+I’m currently in the middle of reading through the research paper, which is directly related to my project: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811920300926">here</a>
+I also went through some of the videos related to information on cti, a couple of them are: <a class="reference external" href="https://www.youtube.com/watch?v=bTFLGdbSi9M">this</a> and also, <a class="reference external" href="https://www.youtube.com/watch?v=2WtGl3YQou8&amp;list=PLRZ9VSqV-6srrTAcDh4JYwrlef2Zpjucw&amp;index=16">this</a>
+I also submitted <a class="reference external" href="https://github.com/dipy/dipy/pull/2813">this</a> PR. In this PR members of my organization are supposed to submit all the
+blogs.
+But mostly I spent a lot of time in implementing the already existing MultiTensor Simulation on my local system , and also completing the assignment which my mentor gave me.
+In this assignment, I was given a specific number of directions, ‘n’ and some steps on how to produce bvals and bvecs. I had to create <code class="docutils literal notranslate"><span class="pre">gtab1</span></code> and <code class="docutils literal notranslate"><span class="pre">gtab2</span></code>. and then taking <code class="docutils literal notranslate"><span class="pre">gtab1</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">gtab2</span></code> as input, I was supposed to create a function which would give output btensor i.e btens.
+The purpose of this assignment was to strengthen my knowledge on concepts I’ve already read and also to give me some coding experience, as this is critical in order for me to be able to implement the rest of my project.</p>
+</section>
+<section id="what-is-coming-up-next-week">
+<h2>What is coming up next Week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
+<p>These simulations were basically the first task of the proposal.
+So after the btensor I intend on producing the synthetic signals using the qti model (hint on how
+it is done in qti tests).
+make a figure similar to figure 1 of the 2021 CTI paper:
+<a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1002/mrm.28938">here</a></p>
+</section>
+<section id="did-i-get-stuck-anywhere">
+<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
+<p>I got stuck while creating <a class="reference external" href="https://github.com/dipy/dipy/pull/2813">this</a> PR. I had to rebase a bunch of commits, and this was a new concept to me, so it took me a while to figure it out. Due to rebasing, I ended up creating a bunch of other commits, which made the commit history of this PR a mess. So, I had to learn about the concept of squashing the commits.</p>
+<p>I also got stuck a lot while trying to find out the perpendicular directions to the vectors used in <code class="docutils literal notranslate"><span class="pre">gtab1</span></code>. I was supposed to implement the following formula:</p>
+<a class="reference internal image-reference" href="https://github.com/dipy/dipy/blob/09a8c4f8436f995e55231fb3d11fbfe6749610a9/_static/images/formula_.png?raw=true"><img alt="formula cti gtab" src="https://github.com/dipy/dipy/blob/09a8c4f8436f995e55231fb3d11fbfe6749610a9/_static/images/formula_.png?raw=true" style="width: 400px;" /></a>
+<p>I had to spend a lot of time figuring out how to combine 3 vectors of shape (81, 3) to get V. And also working on the function which would give me the perpendicular vector to the vector in <code class="docutils literal notranslate"><span class="pre">gtab1</span></code>.</p>
+<p>I got a bunch of <code class="docutils literal notranslate"><span class="pre">ValueErrors</span></code> saying: could not broadcast input array from shape (3,3,1) into shape (3,3) and some <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> saying: shape mismatch: indexing arrays could not be broadcast together with shapes (81,) (3,1) (3,).</p>
+<p>I also had to experiment on how to concatenate different vectors to get the vector of the right shape, since there are a bunch of possible options while stacking, such as vstack, hstack, stack, etc.</p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+  
+  
+
+
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+    
+    
+    <a href="2023_05_19_vara_week0.html">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Journey of GSOC application & acceptance : Week 0</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+    
+    
+    <a href="2023_05_29_vara_week1.html">
+      <span>Community bonding and Project kickstart : Week 1</span>
+      
+      <i class="fa fa-arrow-circle-right" ></i>
+      
+    </a>
+    
+  </span>
+</div>
+
+  
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-myself">About Myself</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-open-source-and-gsoc">Intro to Open-Source and GSoC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-day">The Day</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next Week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.5.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

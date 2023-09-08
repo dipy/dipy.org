@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DIPY &#8212; Python  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=80c83778" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script src="../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_07_24_vara_week_8_9';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+  <meta name="keywords" content="DIPY, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../documentation.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../stateoftheart.html">
+                        A quick overview of features
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../documentation.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../stateoftheart.html">
+                        A quick overview of features
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">DIPY</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+<section id="vqvae-monai-models-checkerboard-artifacts-week-8-week-9">
+<h1>VQVAE MONAI models &amp; checkerboard artifacts: Week 8 &amp; Week 9<a class="headerlink" href="#vqvae-monai-models-checkerboard-artifacts-week-8-week-9" title="Link to this heading">#</a></h1>
+<section id="what-i-did-this-week">
+<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
+<p>We observed in our previous results that the Diffusion Model’s performance may depend on better and effective latents from VQVAE. After playing around with convolutional &amp; residual components in the existing architecture that yielded unsatisfactory results, we decided to move to a more proven model on 3D MRIs. It is not necessary that a model that worked well on MNIST dataset would also deliver similarly on 3D MRI datasets, owing to the differences in complexity of the data distributions. Changing the convolutions to 3D filters alone clearly did not do the job.</p>
+<p>MONAI is an open source organization for Machine Learning in Medical Imaging, it has repositories and tutorials for various high performing networks tested on multiple Medical Image datasets. We adopted the deep learning architecture for VQVAE from MONAI’s PyTorch implementation that was trained &amp; tested on BRATS(400 data elements). The predominant difference is that the encoder &amp; the decoder of VQVAE use Residual units differently than our existing setup. These Residual units are alternated between downsampling/upsampling convolutions in the encoder/decoder. Additionally, MONAI’s VectorQuantizer uses non-trainable embeddings with statistical updates(Laplace Smoothing) on them at every iteration.</p>
+<p>I implemented MONAI’s VQVAE architecture in Tensorflow from scratch, excluding the VectorQuantizer. This architecture has 46.5M trainable parameters. The training objective is to minimize the sum of reconstruction &amp; quantization loss - same training paradigm as our previous experiments. In addition, to address the checkerboard artifacts, I referred to the <a class="reference external" href="https://arxiv.org/abs/1707.02937">Sub-Pixel Convolution paper</a>.</p>
+<p>This paper proposes two methods to overcome the deconvolution overlap, a phenomenon that causes checkerboarded outputs in deconvolution/upsampling layers. These two methods are - Sub Pixel Convolution &amp; NN Resize Convolution.</p>
+<p>For an upsampling rate <span class="math notranslate nohighlight">\(r\)</span>, Sub Pixel Convolution outputs <span class="math notranslate nohighlight">\(3r^2\)</span> output channels &amp; later reshuffles channel dimension along spatial dimensions (upsamples them by <span class="math notranslate nohighlight">\(r\)</span> across each) resulting in 3(desired) output channels.</p>
+<p>Whereas NN Resize performs interpolation on the kernel to upsample its size by <span class="math notranslate nohighlight">\(r\)</span> before carrying out convolution that outputs 3 channels. The former method relies on shuffling &amp; the later method relies on nearest neighbor interpolation to obtain an upsampled output respectively.</p>
+<p>Both methods have shown to perform better qualitatively in dealing with the checkerboards, on random initialization. The authors also go ahead and prove mathematically that with an efficient initialization, both methods prove to be equivalent. They call it the ICNR initialization - Initialization of Convolution with NN Resize.</p>
+<p>I ran multiple experiments with batch_size=5,10,10(with ICNR). The training loss curves obtained are as follows, all of them trained on 1 GPU for 24hrs. We see that all of them converge except the last one(B=10 with ICNR).</p>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-training.png"><img alt="../../_images/vqvae3d-monai-training.png" src="../../_images/vqvae3d-monai-training.png" style="width: 800px;" /></a>
+<p>The best training checkpoint has been used to reconstruct test images. Following images depict 2 such reconstructions in 2 rows, where 5 slices from each of these reconstructions have been displayed in columns.</p>
+<p>The first one is for B=10, the best training checkpoint had training loss=0.0037. Compared to our previous VQVAE model, we see a better performance in capturing the brain outer structure. Moreover, we don’t see white blobs or artifacts as inner matter, rather some curvatures contributing to the inner microstructure of a human brain.</p>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B10.png"><img alt="../../_images/vqvae3d-monai-B10.png" src="../../_images/vqvae3d-monai-B10.png" style="width: 800px;" /></a>
+<p>The second one is for B=10 with ICNR kernel initialization, the best training checkpoint had training loss=0.0067. Although, the test results do not look complete. I implemented ICNR through DIPY’s resize function to achieve NN resize equivalent output on the kernel filters. This initialization didn’t work as it was intended to, further proving that the training is yet to be converged.</p>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B10-ICNR.png"><img alt="../../_images/vqvae3d-monai-B10-ICNR.png" src="../../_images/vqvae3d-monai-B10-ICNR.png" style="width: 800px;" /></a>
+<p>The next &amp; last image is for B=5, the best training checkpoint had training loss = 0.0031. By far the best one quantitatively as well as visually. The test loss for the below reconstructions is 0.0013. The superior performance of this batch size can be owed to the Batch Normalization(BN) layers in the architecture that calculate mean &amp; average of the batch to perform normalization over all batch elements using these statistics. Having lesser batch size may contribute to least variation in the output of the layer &amp; helps in achieving converging outputs faster. This explanation stems from the concept of Contrastive Learning, where BN layers are used as the source of implicit negative loss learners. Higher the batch size, more implicit negative samples to move away from. Whereas our objective is to minimize the reconstruction loss, having lesser batch size consequently may help in lesser variation.</p>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B5.png"><img alt="../../_images/vqvae3d-monai-B5.png" src="../../_images/vqvae3d-monai-B5.png" style="width: 800px;" /></a>
+</section>
+<section id="what-is-coming-up-next-week">
+<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
+<p>As the next step, I can focus on training the LDM(Latent Diffusion Model) from the best performing model from the above experiments.</p>
+</section>
+<section id="did-i-get-stuck-anywhere">
+<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
+<p>In both weeks, I had issues accessing resources &amp; specifically multiple GPUs.</p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+  
+  
+
+
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+    
+    
+    <a href="2023_07_12_Shilpi_week7.html">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Modifying Test Signal Generation</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+    
+    
+    <a href="2023_07_27_Shilpi_week_8_9.html">
+      <span>Generating Fit Functions : Week 8 & 9</span>
+      
+      <i class="fa fa-arrow-circle-right" ></i>
+      
+    </a>
+    
+  </span>
+</div>
+
+  
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.5.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
