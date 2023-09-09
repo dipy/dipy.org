@@ -14,8 +14,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-        contents: write
-        pull-requests: write
+        contents: 'write'
+        pull-requests: 'write'
         issues: 'write'
     env:
         PR_PATH: pull/${{github.event.number}}
