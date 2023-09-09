@@ -10,18 +10,22 @@ on:
   schedule:
     - cron: '0 0 * * 1'
 
-permissions:
-  contents: write
+permissions: write-all
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions: write-all
+        # contents: 'write'
+        # pull-requests: 'write'
+        # issues: 'write'
+        # id-token: 'write'
     env:
         PR_PATH: pull/${{github.event.number}}
         BASE_URL: https://dipy.github.io/dipy.org
     steps:
       - name: Comment on PR
-        uses: hasura/comment-progress@v2.2.0
+        uses: hasura/comment-progress@v2.3.0
         if: github.ref != 'refs/heads/master'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -77,7 +81,7 @@ jobs:
           commit_message: ${{ github.event.head_commit.message }}
 
       - name: Update comment
-        uses: hasura/comment-progress@v2.2.0
+        uses: hasura/comment-progress@v2.3.0
         if: github.ref != 'refs/heads/master'
         with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
