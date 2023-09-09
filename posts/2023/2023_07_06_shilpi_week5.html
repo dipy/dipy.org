@@ -12,6 +12,7 @@
   
   
   
+  
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
@@ -34,6 +35,9 @@
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+  
+<link rel="stylesheet" href="../../_static/styles/grg-sphinx-theme.css"/>
 
     <script src="../../_static/documentation_options.js?v=8a448e45"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
@@ -91,7 +95,7 @@
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
 <div class="bd-header__inner bd-page-width">
   <label class="sidebar-toggle primary-toggle" for="__primary">
     <span class="fa-solid fa-bars"></span>
@@ -126,22 +130,196 @@
      aria-label="Site Navigation">
     Site Navigation
   </p>
+  
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../documentation.html">
-                        Documentation
-                      </a>
-                    </li>
-                
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Docs
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org.html">
+          Quick Start
+        </a>
+      </li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../stateoftheart.html">
-                        A quick overview of features
-                      </a>
-                    </li>
-                
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org/tutorials.html">
+          Tutorials
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org/recipes.html">
+          Recipes
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org/cli.html">
+          CLI / Workflows
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org/reference.html">
+          API
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org/cli/reference.html">
+          CLI API
+        </a>
+      </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Workshops
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2024">
+          DIPY Workshop 2024
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2023">
+          DIPY Workshop 2023
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2022">
+          DIPY Workshop 2022
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2021">
+          DIPY Workshop 2021
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2020">
+          DIPY Workshop 2020
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2019">
+          DIPY Workshop 2019
+        </a>
+      </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Community
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        News
+      </p>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="">
+          Newsletters
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../blog.html">
+          Blog
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="blog">
+          Youtube
+        </a>
+      </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Help
+      </p>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../.html">
+          Live Chat (Gitter)
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="">
+          Github Discussions
+        </a>
+      </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    About
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link " href="../../team.html">
+          Team
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../faq.html">
+          FAQ
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../mission.html">
+          Mission Statement
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../releases.html">
+          Releases
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../cite.html">
+          Cite
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../glossary.html">
+          Glossary
+        </a>
+      </li>
+                </ul>
+            </li>
+          
   </ul>
+  
 </nav></div>
       
     </div>
@@ -195,8 +373,7 @@ document.write(`
   
 </div>
 
-    </nav>
-  
+</nav>
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
@@ -216,22 +393,196 @@ document.write(`
      aria-label="Site Navigation">
     Site Navigation
   </p>
+  
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../documentation.html">
-                        Documentation
-                      </a>
-                    </li>
-                
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Docs
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org.html">
+          Quick Start
+        </a>
+      </li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../stateoftheart.html">
-                        A quick overview of features
-                      </a>
-                    </li>
-                
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org/tutorials.html">
+          Tutorials
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org/recipes.html">
+          Recipes
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org/cli.html">
+          CLI / Workflows
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org/reference.html">
+          API
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../https%3A//docs.dipy.org/cli/reference.html">
+          CLI API
+        </a>
+      </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Workshops
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2024">
+          DIPY Workshop 2024
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2023">
+          DIPY Workshop 2023
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2022">
+          DIPY Workshop 2022
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2021">
+          DIPY Workshop 2021
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2020">
+          DIPY Workshop 2020
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="https://dipy.org/workshops/dipy-workshop-2019">
+          DIPY Workshop 2019
+        </a>
+      </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Community
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        News
+      </p>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="">
+          Newsletters
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../blog.html">
+          Blog
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="blog">
+          Youtube
+        </a>
+      </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Help
+      </p>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../.html">
+          Live Chat (Gitter)
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-external" href="">
+          Github Discussions
+        </a>
+      </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    About
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link " href="../../team.html">
+          Team
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../faq.html">
+          FAQ
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../mission.html">
+          Mission Statement
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../releases.html">
+          Releases
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../cite.html">
+          Cite
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="../../glossary.html">
+          Glossary
+        </a>
+      </li>
+                </ul>
+            </li>
+          
   </ul>
+  
 </nav></div>
         
       </div>
@@ -401,9 +752,13 @@ I also intend on changing the order of parameters of covariance tensor as CTI ha
     </div>
   </div>
   
+  
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
 <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  
+<script type="module" src="../../_static/scripts/grg-sphinx-theme.js"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
