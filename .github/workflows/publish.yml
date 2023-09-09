@@ -13,9 +13,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-        contents: write
-        pull-requests: write
+    permissions: write-all
+        # contents: write
+        # pull-requests: write
     env:
         PR_PATH: pull/${{github.event.number}}
         BASE_URL: https://dipy.github.io/dipy.org
