@@ -10,14 +10,16 @@ on:
   schedule:
     - cron: '0 0 * * 1'
 
+permissions: write-all
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-        contents: 'write'
-        pull-requests: 'write'
-        issues: 'write'
-        id-token: 'write'
+    permissions: write-all
+        # contents: 'write'
+        # pull-requests: 'write'
+        # issues: 'write'
+        # id-token: 'write'
     env:
         PR_PATH: pull/${{github.event.number}}
         BASE_URL: https://dipy.github.io/dipy.org
@@ -26,7 +28,7 @@ jobs:
         uses: hasura/comment-progress@v2.3.0
         if: github.ref != 'refs/heads/master'
         with:
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
           number: ${{ github.event.number }}
           id: deploy-preview
