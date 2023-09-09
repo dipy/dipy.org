@@ -31,22 +31,6 @@ Highlights
 - Large documentation update. Integration of Sphinx-Gallery.
 - Closed 53 issues and merged 34 pull requests.
 
-See :ref:`Older Highlights <old_highlights>`.
-
-*************
-Announcements
-*************
-- :doc:`DIPY 1.7.0 <release_notes/release1.7>` released April 23, 2023.
-- :doc:`DIPY 1.6.0 <release_notes/release1.6>` released January 16, 2023.
-- :doc:`DIPY 1.5.0 <release_notes/release1.5>` released March 11, 2022.
-
-
-
-
-
-
-See some of our :ref:`Past Announcements <old_news>`
-
 
 ***************
 Getting Started
@@ -86,7 +70,7 @@ a slice should look like.
 Next Steps
 **********
 
-You can learn more about how you to use DIPY_ with  your datasets by reading the examples in our :ref:`documentation`.
+You can learn more about how you to use DIPY_ with  your datasets by reading the examples in our documentation.
 
 .. We need the following toctree directive to include the documentation
 .. in the document hierarchy - see http://sphinx.pocoo.org/concepts.html
