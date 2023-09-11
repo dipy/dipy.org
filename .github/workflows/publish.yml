@@ -10,23 +10,20 @@ on:
   schedule:
     - cron: '0 0 * * 1'
 
-permissions: write-all
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions: write-all
-        # contents: 'write'
-        # pull-requests: 'write'
-        # issues: 'write'
-        # id-token: 'write'
+    permissions:
+        contents: read
+        pull-requests: write
+        issues: write
     env:
         PR_PATH: pull/${{github.event.number}}
         BASE_URL: https://dipy.github.io/dipy.org
     steps:
       - name: Comment on PR
         uses: hasura/comment-progress@v2.3.0
-        if: github.ref != 'refs/heads/master'
+        if: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -59,7 +56,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/master'
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             publish_dir: ./_build/html
@@ -70,7 +67,7 @@ jobs:
 
       - name: Deploy to PR preview
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref != 'refs/heads/master'
+        if: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_build/html
@@ -82,7 +79,7 @@ jobs:
 
       - name: Update comment
         uses: hasura/comment-progress@v2.3.0
-        if: github.ref != 'refs/heads/master'
+        if: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
         with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             repository: ${{ github.repository }}
