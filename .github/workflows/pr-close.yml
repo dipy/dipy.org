@@ -1,6 +1,6 @@
 name: delete preview on PR close
 on:
-  pull_request:
+  pull_request_target:
     types: [closed]
 
 jobs:
