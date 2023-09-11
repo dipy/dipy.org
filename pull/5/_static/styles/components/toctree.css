@@ -1,0 +1,48 @@
+.toctree-wrapper li.toctree-l1 {
+  margin-bottom: 2em;
+}
+
+.toctree-wrapper li.toctree-l1 a {
+  font-size: 1.8em;
+  font-weight: 600;
+  color: var(--pst-color-text-base);
+}
+
+.toctree-wrapper li.toctree-l2 {
+  border: 1px solid var(--pst-color-border);
+  border-radius: 4px;
+  padding: 1em;
+}
+
+.toctree-wrapper li.toctree-l2 a {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pst-color-primary);
+  text-decoration: none;
+}
+
+.toctree-wrapper li.toctree-l2:hover {
+  border: 1px solid var(--pst-color-secondary);
+  cursor: pointer;
+}
+
+.toctree-wrapper li.toctree-l2:hover a {
+  color: var(--pst-color-secondary);
+}
+
+.toctree-wrapper li.toctree-l1 ul {
+  display: grid;
+  gap: 1em;
+  padding-inline-start: 0;
+  padding: 1em 0;
+}
+
+.toctree-wrapper li.toctree-l2 ul {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .toctree-wrapper li.toctree-l1 ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

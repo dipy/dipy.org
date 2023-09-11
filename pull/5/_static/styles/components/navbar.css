@@ -1,0 +1,50 @@
+/* Customizing the navbar dropdown */
+.bd-header .navbar-nav .dropdown .dropdown-menu {
+  box-shadow: var(--pst-shadow);
+  border: 0;
+  animation: 0.1s slideDown;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+}
+
+/* Overriding the CSS for section title in drop down */
+ol li>p:first-child, ul li>p:first-child {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Making sure font behavior is same across the pages for navbar */
+.nav-link,
+.bd-header .navbar-nav li a.nav-link,
+.bd-header .navbar-nav .dropdown button,
+.bd-sidebar-primary,
+.bd-sidebar-primary .nav-link {
+  color: var(--pst-color-text-base);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.nav-section-title.nav-link,
+.bd-sidebar-primary .nav-section-title.nav-link {
+  color: var(--pst-color-text-muted);
+  font-weight: bold;
+}
+
+.nav-section-title:not(:first-of-type) {
+  border-top: 1px solid var(--pst-color-border);
+}
+
+.nav-link.nav-external:after {
+  transform: rotate(-45deg);
+  color: var(--pst-color-shadow);
+}
+
+.dropdown-toggle:after {
+  position: absolute;
+  border: 0;
+  content: "\f078";
+  font: var(--fa-font-solid);
+  font-size: .75em;
+  margin-top: 0.4rem;
+  margin-left: 0.5em;
+}
