@@ -1,0 +1,8 @@
+<h2 class="section-title">Sponsors</h2>
+  <div class="grid-5 sponsors">
+    {% for sponsor in sponsors %}
+    <a href="{{ sponsor.url }}" class="sponsors-item" target="_blank">
+      <img src="_static/images/sponsors/{{ sponsor.image }}" alt="{{ sponsor.name }}">
+    </a>
+    {% endfor %}
+  </div>

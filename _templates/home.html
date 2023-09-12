@@ -3,37 +3,34 @@
 
 {# Reimplementing the main content #}
 {% block docs_main %}
-<div class="intro">
-
-  <h1 class="tagline">
-    <span class="dipy-highlight">D</span>iffusion <span class="dipy-highlight">I</span>maging in <span
-      class="dipy-highlight">Py</span>thon
-  </h1>
-  <p class="description">
-    An open-source, user-friendly and growing imaging library for 3D/4D+ imaging.
-  </p>
-  <p class="actions">
-    <a href="{{ pathto('installation') }}" class="mar-h-5 btn-link">
-      <button class="btn btn-primary">
-        Getting Started
-        <i class="fa-solid fa-rocket pad-l-5"></i>
-      </button>
-    </a>
-    <a href="{{ pathto('installation') }}" class="mar-h-5 btn-link">
-      <button class="btn btn-regular">
-        Install
-        <i class="fa-solid fa-download pad-l-5"></i>
-      </button>
-    </a>
-  </p>
+<div class="section">
+  {%- include "components/intro.html" %}
 </div>
-<div>
-  <h2 class="section-title">Explore <span class="dipy-highlight">DIPY</span></h2>
-  <div class="explore">
-    <div class="explore-tile pad-20">
-      <div class="explore-tile-icon pad-5">
-        <img src="_static/images/icons/cli.png" alt="" srcset="">
-      </div>
+<div class="section">
+  {%- include "components/carousel.html" with context %}
+</div>
+<div class="section">
+  {%- include "components/explore.html" with context %}
+</div>
+<div class="section">
+  {%- include "components/sponsors.html" with context %}
+</div>
+<div class="section">
+  <h2 class="section-title">Cite Us!</h2>
+  <div class="cite pad-20">
+    <div class="cite-icon-bg">
+      <i class="fa-solid fa-file-lines"></i>
+    </div>
+    <div class="cite-detail">
+      <p>
+        <a class="cite-link" href="https://www.frontiersin.org/articles/10.3389/fninf.2014.00008/full"
+        target="_blank"> DIPY, a library for the analysis of diffusion MRI data.</a>
+      </p>
+      <p>
+        Garyfallidis E, Brett M, Amirbekian B, Rokem A, van der Walt S, Descoteaux M, Nimmo-Smith I and Dipy Contributors (2014).</p>
+      <p>
+        Frontiers in Neuroinformatics, vol.8, no.8.
+      </p>
     </div>
   </div>
 </div>

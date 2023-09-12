@@ -1,0 +1,279 @@
+/* Margin Utils */
+.mar-5 {
+  margin: 5px;
+}
+.mar-v-5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.mar-h-5 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.mar-t-5 {
+  margin-top: 5px;
+}
+.mar-b-5 {
+  margin-bottom: 5px;
+}
+.mar-l-5 {
+  margin-left: 5px;
+}
+.mar-r-5 {
+  margin-right: 5px;
+}
+.mar-10 {
+  margin: 10px;
+}
+.mar-v-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.mar-h-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.mar-t-10 {
+  margin-top: 10px;
+}
+.mar-b-10 {
+  margin-bottom: 10px;
+}
+.mar-l-10 {
+  margin-left: 10px;
+}
+.mar-r-10 {
+  margin-right: 10px;
+}
+.mar-12 {
+  margin: 12px;
+}
+.mar-v-12 {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.mar-h-12 {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+.mar-t-12 {
+  margin-top: 12px;
+}
+.mar-b-12 {
+  margin-bottom: 12px;
+}
+.mar-l-12 {
+  margin-left: 12px;
+}
+.mar-r-12 {
+  margin-right: 12px;
+}
+
+/* Padding Utils */
+.pad-5 {
+  padding: 5px;
+}
+.pad-v-5 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.pad-h-5 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.pad-t-5 {
+  padding-top: 5px;
+}
+.pad-b-5 {
+  padding-bottom: 5px;
+}
+.pad-l-5 {
+  padding-left: 5px;
+}
+.pad-r-5 {
+  padding-right: 5px;
+}
+.pad-10 {
+  padding: 10px;
+}
+.pad-v-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.pad-h-10 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.pad-t-10 {
+  padding-top: 10px;
+}
+.pad-b-10 {
+  padding-bottom: 10px;
+}
+.pad-l-10 {
+  padding-left: 10px;
+}
+.pad-r-10 {
+  padding-right: 10px;
+}
+.pad-12 {
+  padding: 12px;
+}
+.pad-v-12 {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.pad-h-12 {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.pad-t-12 {
+  padding-top: 12px;
+}
+.pad-b-12 {
+  padding-bottom: 12px;
+}
+.pad-l-12 {
+  padding-left: 12px;
+}
+.pad-r-12 {
+  padding-right: 12px;
+}
+.pad-20 {
+  padding: 20px;
+}
+.pad-v-20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.pad-h-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.pad-t-20 {
+  padding-top: 20px;
+}
+.pad-b-20 {
+  padding-bottom: 20px;
+}
+.pad-l-20 {
+  padding-left: 20px;
+}
+.pad-r-20 {
+  padding-right: 20px;
+}
+.pad-32 {
+  padding: 32px;
+}
+.pad-v-32 {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.pad-h-32 {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.pad-t-32 {
+  padding-top: 32px;
+}
+.pad-b-32 {
+  padding-bottom: 32px;
+}
+.pad-l-32 {
+  padding-left: 32px;
+}
+.pad-r-32 {
+  padding-right: 32px;
+}
+.pad-48 {
+  padding: 48px;
+}
+.pad-v-48 {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+.pad-h-48 {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+.pad-t-48 {
+  padding-top: 48px;
+}
+.pad-b-48 {
+  padding-bottom: 48px;
+}
+.pad-l-48 {
+  padding-left: 48px;
+}
+.pad-r-48 {
+  padding-right: 48px;
+}
+
+/* Grid Utils */
+
+/* Styles for phones */
+@media only screen and (max-width: 768px) {
+  /* Your CSS styles for phones go here */
+  .grid-1,
+  .grid-2,
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .grid-4,
+  .grid-5 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Styles for tablets */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Your CSS styles for tablets go here */
+  .grid-1 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-3,
+  .grid-4,
+  .grid-5 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Styles for laptops and desktops */
+@media only screen and (min-width: 1025px) {
+  /* Your CSS styles for laptops and desktops go here */
+  .grid-1 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

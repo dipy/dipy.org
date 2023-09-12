@@ -1,38 +1,32 @@
 .explore {
   display: grid;
+  gap: 3em;
 }
 
 .explore-tile {
   box-shadow: var(--pst-shadow);
+  border-radius: 12px;
+  /* TODO This should be removed as the util will be available */
+  /* padding: 48px 20px; */
+  background-color: var(--gst-color-bg);
 }
 
 .explore-tile-icon {
   background-color: var(--gst-color-primary);
-  height: 40px;
-  width: 40px;
-  border-radius: 4px;
+  height: 55px;
+  width: 55px;
+  border-radius: 12px;
+  /* TODO This should be removed as the util will be available */
+  padding: 12px;
+  margin-bottom: 24px;
+  box-shadow: var(--pst-shadow);
 }
 
-/* Styles for phones */
-@media only screen and (max-width: 768px) {
-  /* Your CSS styles for phones go here */
-  .explore {
-    grid-template-columns: repeat(1, 1fr);
-  }
+.explore-tile-title {
+  font-weight: 600;
 }
 
-/* Styles for tablets */
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-  /* Your CSS styles for tablets go here */
-  .explore {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Styles for laptops and desktops */
-@media only screen and (min-width: 1025px) {
-  /* Your CSS styles for laptops and desktops go here */
-  .explore {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.explore-tile-know-more,
+.explore-tile-know-more:visited {
+  color: var(--gst-color-primary);
 }

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "NIH NIBIB",
+    "image": "NIH_NIBIB.png",
+    "url": "https://www.nibib.nih.gov/"
+  }, {
+    "name": "Luddy IU",
+    "image": "luddy.png",
+    "url": "https://luddy.indiana.edu/"
+  }, {
+    "name": "Google Summer of Code",
+    "image": "gsoc.png",
+    "url": "https://summerofcode.withgoogle.com/"
+  }, {
+    "name": "Indiana Univesity",
+    "image": "iu.webp",
+    "url": "https://www.iu.edu/"
+  }, {
+    "name": "UW eScience Institute",
+    "image": "uwescience.png",
+    "url": "https://escience.washington.edu/"
+  }
+]

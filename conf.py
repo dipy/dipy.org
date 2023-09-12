@@ -13,6 +13,7 @@
 
 import os
 import sys
+import json
 
 
 from packaging.version import Version
@@ -139,6 +140,10 @@ html_theme_options = {
     "image_dark": "_static/images/logos/dipy-logo.png",
     "alt_text": "DIPY",
   }
+}
+
+html_context = {
+  "sponsors": json.load(open("./context/sponsors.json"))
 }
 
 # Add any paths that contain custom themes here, relative to this directory.

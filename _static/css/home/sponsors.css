@@ -1,0 +1,15 @@
+.sponsors {
+  gap: 5px;
+}
+.sponsors-item {
+  background-color: var(--gst-color-bg-gray);
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+
+html[data-theme=dark] .sponsors-item img:not(.only-dark):not(.dark-light) {
+  filter: grayscale(1) invert(1);
+}

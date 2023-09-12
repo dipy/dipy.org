@@ -1,0 +1,21 @@
+.carousel-item {
+  height: 520px;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  color: var(--gst-color-primary);
+  background: none;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: var(--gst-color-primary);
+}
+
+@media only screen and (max-width: 768px) {
+  .carousel-item {
+    height: 260px;
+  }
+}
