@@ -23,11 +23,12 @@ jobs:
         HEAD: ${{ github.event.pull_request.head.repo.full_name }}
         BASE: ${{ github.repository }}
         NB: ${{github.event.number}}
+        REF: ${{github.ref}}
         STATUS: ${{github.event.pull_request.head.repo.full_name != github.repository}}
     steps:
       - name: Comment on PR
         uses: hasura/comment-progress@v2.3.0
-        if: ${{github.event.number}} && ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+        if: ${{ github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -71,7 +72,7 @@ jobs:
 
       - name: Deploy to PR preview
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{github.event.number}} && ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+        if: ${{ github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_build/html
@@ -83,7 +84,7 @@ jobs:
 
       - name: Update comment
         uses: hasura/comment-progress@v2.3.0
-        if: ${{github.event.number}} && ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+        if: ${{ github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository }}
         with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             repository: ${{ github.repository }}
