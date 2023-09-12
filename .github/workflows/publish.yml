@@ -61,7 +61,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        if: ${{ github.event.pull_request.head.repo.full_name == '' || github.event.pull_request.head.repo.full_name == github.repository }}
         with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             publish_dir: ./_build/html
