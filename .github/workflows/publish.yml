@@ -20,6 +20,10 @@ jobs:
     env:
         PR_PATH: pull/${{github.event.number}}
         BASE_URL: https://dipy.github.io/dipy.org
+        HEAD: ${{ github.event.pull_request.head.repo.full_name }}
+        BASE: ${{ github.repository }}
+        NB: ${{github.event.number}}
+        STATUS: ${{github.event.pull_request.head.repo.full_name != github.repository}}
     steps:
       - name: Comment on PR
         uses: hasura/comment-progress@v2.3.0
