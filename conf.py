@@ -269,7 +269,22 @@ html_theme_options = {
       "name": "GitHub",
       "url": "https://github.com/dipy",
       "icon": "fa-brands fa-github"
-    }
+    },
+    {
+      "name": "Twitter/X",
+      "url": "https://twitter.com/dipymri",
+      "icon": "fa-brands fa-twitter"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/c/diffusionimaginginpython",
+      "icon": "fa-brands fa-youtube"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/company/dipy/",
+      "icon": "fa-brands fa-linkedin"
+    },
   ],
   "logo": {
     "image_dark": "_static/images/logos/dipy-logo.png",
