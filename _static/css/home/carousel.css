@@ -2,6 +2,11 @@
   height: 440px;
 }
 
+.carousel-item img {
+  /* border: 1px solid var(--pst-color-border); */
+
+}
+
 .carousel-indicators [data-bs-target] {
   background-color: var(--gst-color-primary);
 }
@@ -27,6 +32,19 @@
   transform: scaleX(-1);
   right: -40px;
   top: 0;
+}
+
+.carousel-caption::before {
+  position: absolute;
+  left: 0;
+  content: "";
+  width: 20px;
+  height: 100%;
+  background-image: linear-gradient(45deg, transparent 50%, var(--gst-color-primary-border) 50%);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  z-index: -1;
 }
 
 

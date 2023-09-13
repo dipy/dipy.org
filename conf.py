@@ -13,7 +13,7 @@
 
 import os
 import sys
-import json
+import tomllib
 
 
 from packaging.version import Version
@@ -292,8 +292,8 @@ html_theme_options = {
   }
 }
 
-with open('context/context.json', 'r') as f:
-    config = json.load(f)
+with open('context/context.toml', 'rb') as f:
+    config = tomllib.load(f)
 
 
 html_context = {

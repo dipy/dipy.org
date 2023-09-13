@@ -32,6 +32,7 @@
 
 .explore-tile-title {
   font-weight: 600;
+  color: var(--gst-color-section-heading);
 }
 
 .explore-tile-know-more,
