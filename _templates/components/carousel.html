@@ -1,4 +1,4 @@
-<div id="banners" class="carousel slide carousel-fade">
+<div id="banners" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-indicators">
     {% for slide in carousel_slides %}
     <button type="button" data-bs-target="#banners" data-bs-slide-to="{{ loop.index - 1}}"
