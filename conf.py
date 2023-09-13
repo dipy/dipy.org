@@ -292,8 +292,14 @@ html_theme_options = {
   }
 }
 
+with open('context/context.json', 'r') as f:
+    config = json.load(f)
+
+
 html_context = {
-  "sponsors": json.load(open("./context/sponsors.json"))
+  "sponsors": config["sponsors"],
+  "explore_items": config["explore_items"],
+  "carousel_slides": config["carousel_slides"]
 }
 
 # Add any paths that contain custom themes here, relative to this directory.

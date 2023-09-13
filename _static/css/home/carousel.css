@@ -1,17 +1,45 @@
 .carousel-item {
-  height: 520px;
-}
-
-.carousel-control-next-icon,
-.carousel-control-prev-icon {
-  color: var(--gst-color-primary);
-  background: none;
-  font-size: 40px;
-  font-weight: 900;
+  height: 440px;
 }
 
 .carousel-indicators [data-bs-target] {
   background-color: var(--gst-color-primary);
+}
+
+
+.carousel-caption {
+  opacity: 0.9;
+  width: fit-content;
+  bottom: auto;
+  top: 40px;
+  left: 0;
+  background-color: var(--gst-color-primary);
+  box-shadow: var(--pst-shadow);
+}
+
+.carousel-caption::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 35% 50%);
+  background-color: var(--gst-color-primary);
+  width: 60px;
+  transform: scaleX(-1);
+  right: -40px;
+  top: 0;
+}
+
+
+.carousel-caption h5 {
+  color: var(--bs-white);
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.carousel-caption a,
+.carousel-caption a:visited {
+  color: var(--bs-white);
 }
 
 @media only screen and (max-width: 768px) {
