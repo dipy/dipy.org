@@ -13,7 +13,10 @@
 
 import os
 import sys
-import tomllib
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
 
 
 from packaging.version import Version
