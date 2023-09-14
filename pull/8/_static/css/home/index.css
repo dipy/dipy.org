@@ -1,0 +1,31 @@
+@import "./intro.css";
+@import "./explore.css";
+@import "./carousel.css";
+@import "./sponsors.css";
+@import "./cite.css";
+
+/* CSS which is common across the home page */
+.dipy-highlight {
+  color: var(--pst-color-primary);
+}
+
+div.section:nth-child(n+3) {
+  margin: 72px 0;
+  padding: 0 20px;
+}
+
+h2.section-title {
+  padding: 10px 0;
+  margin: 10px 0;
+  text-align: center;
+  font-weight: 900;
+  font-size: 50px;
+  color: var(--gst-color-heading);
+}
+
+@media only screen and (max-width: 768px) {
+  /* Your CSS styles for phones go here */
+  h2.section-title {
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,24 @@
+.sponsors {
+  gap: 5px;
+}
+.sponsors-item {
+  background-color: var(--gst-color-bg-gray);
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+html[data-theme=dark] .sponsors-item:hover {
+  background-color: var(--bs-gray-100);
+}
+
+html[data-theme=dark] .sponsors-item:hover img:not(.only-dark):not(.dark-light) {
+  filter: none;
+}
+
+html[data-theme=dark] .sponsors-item img:not(.only-dark):not(.dark-light) {
+  filter: grayscale(1) invert(1);
+}
