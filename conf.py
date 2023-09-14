@@ -378,7 +378,7 @@ html_theme_options = {
       ]
     }
   ],
-  "footer_copyright": "Copyright 2008-2023, DIPY developers. Created using Django and Bootstrap."
+  "footer_copyright": "Copyright 2008-2023, DIPY developers. Created using Grg Sphinx Theme and PyData Sphinx Theme."
 }
 
 with open('context/context.toml', 'rb') as f:
