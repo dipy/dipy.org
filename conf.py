@@ -13,6 +13,10 @@
 
 import os
 import sys
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
 
 
 from packaging.version import Version
@@ -125,7 +129,8 @@ html_style = 'css/dipy.css'
 # documentation.
 html_theme_options = {
   "secondary_sidebar_items": ["page-toc"],
-  "show_toc_level": 2,
+  "show_toc_level": 1,
+
   "navbar_center": ["components/navbar-links.html"],
   "navbar_links": [
      {
@@ -259,7 +264,45 @@ html_theme_options = {
           },
         ]
      },
-  ]
+  ],
+  # To remove search icon
+  "navbar_persistent": "",
+  "icon_links": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/dipy",
+      "icon": "fa-brands fa-github"
+    },
+    {
+      "name": "Twitter/X",
+      "url": "https://twitter.com/dipymri",
+      "icon": "fa-brands fa-twitter"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/c/diffusionimaginginpython",
+      "icon": "fa-brands fa-youtube"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/company/dipy/",
+      "icon": "fa-brands fa-linkedin"
+    },
+  ],
+  "logo": {
+    "image_dark": "_static/images/logos/dipy-logo.png",
+    "alt_text": "DIPY",
+  }
+}
+
+with open('context/context.toml', 'rb') as f:
+    config = tomllib.load(f)
+
+
+html_context = {
+  "sponsors": config["sponsors"],
+  "explore_items": config["explore_items"],
+  "carousel_slides": config["carousel_slides"]
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -274,12 +317,12 @@ html_theme_options = {
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#html_logo = None
+html_logo = "_static/images/logos/dipy-logo.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-#html_favicon = None
+html_favicon = "_static/images/logos/dipy-favicon.png"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -299,7 +342,9 @@ html_static_path = ['_static']
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
-#html_additional_pages = {}
+html_additional_pages = {
+    "index": "home.html"
+}
 
 # If false, no module index is generated.
 # Setting to false fixes double module listing under header

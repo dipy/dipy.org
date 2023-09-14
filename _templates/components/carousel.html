@@ -1,0 +1,24 @@
+<div id="banners" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    {% for slide in carousel_slides %}
+    <button type="button" data-bs-target="#banners" data-bs-slide-to="{{ loop.index - 1}}"
+      class="{{ 'active' if loop.index==1 }}" aria-current="{{ true if loop.index==1 }}"
+      aria-label="{{ slide.caption }}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    {% for slide in carousel_slides %}
+    <div class="carousel-item {{ 'active' if loop.index==1 }}">
+      <img src="{{ slide.img }}" class="d-block w-100 pad-h-20" alt="...">
+      <div class="carousel-caption d-none d-md-block pad-20">
+        <a href="{{ slide.link }}" target="_blank" rel="noopener noreferrer">
+          <h5>{{ slide.caption }}</h5>
+          <!-- {% if slide.description and slide.descritpion != "" %}
+          <p> {{ slide.description }} </p>
+          {% endif %} -->
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

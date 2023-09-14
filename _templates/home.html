@@ -1,0 +1,37 @@
+{# Extending the incoming html page to handle everything from pydata/grg theme #}
+{% extends "layout.html" %}
+
+{# Reimplementing the main content #}
+{% block docs_main %}
+<div class="section">
+  {%- include "components/intro.html" %}
+</div>
+<div class="section">
+  {%- include "components/carousel.html" with context %}
+</div>
+<div class="section">
+  {%- include "components/explore.html" with context %}
+</div>
+<div class="section">
+  {%- include "components/sponsors.html" with context %}
+</div>
+<div class="section">
+  <h2 class="section-title">Cite Us!</h2>
+  <div class="cite pad-20">
+    <div class="cite-icon-bg">
+      <i class="fa-solid fa-file-lines"></i>
+    </div>
+    <div class="cite-detail">
+      <p>
+        <a class="cite-link" href="https://www.frontiersin.org/articles/10.3389/fninf.2014.00008/full"
+        target="_blank"> DIPY, a library for the analysis of diffusion MRI data.</a>
+      </p>
+      <p>
+        Garyfallidis E, Brett M, Amirbekian B, Rokem A, van der Walt S, Descoteaux M, Nimmo-Smith I and Dipy Contributors (2014).</p>
+      <p>
+        Frontiers in Neuroinformatics, vol.8, no.8.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock docs_main %}

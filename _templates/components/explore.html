@@ -1,0 +1,19 @@
+<h2 class="section-title">Explore <span class="dipy-highlight">DIPY</span></h2>
+<div class="explore pad-t-32 grid-4">
+  {% for explore in explore_items %}
+  <div class="explore-tile pad-h-20 pad-v-48">
+    <div class="explore-tile-icon">
+      <img src="_static/images/icons/{{explore.icon}}" alt="{{explore.title}}">
+    </div>
+    <h4 class="explore-tile-title mar-v-5">{{ explore.title }}</h4>
+    <p class="explore-title-description">
+      {{ explore.description }}
+    </p>
+    
+    <a class="btn-link explore-tile-know-more" href="{{ explore.link }}">
+      Know more <i class="fa-solid fa-chevron-right pad-l-5"></i>
+    </a>
+    
+  </div>
+  {% endfor %}
+</div>
