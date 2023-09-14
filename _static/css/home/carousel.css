@@ -3,8 +3,7 @@
 }
 
 .carousel-item img {
-  /* border: 1px solid var(--pst-color-border); */
-
+  border: 1px solid var(--gst-color-border);
 }
 
 .carousel-indicators [data-bs-target] {
@@ -63,5 +62,31 @@
 @media only screen and (max-width: 768px) {
   .carousel-item {
     height: 260px;
+  }
+
+  .carousel-caption {
+    opacity: 0.9;
+    bottom: 70px;
+    padding: 10px 20px !important;
+    top: auto;
+    width: 80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 12px;
+    background-color: var(--gst-color-primary);
+    box-shadow: none;
+  }
+
+  .carousel-caption::after {
+    content: none;
+  }
+  
+  .carousel-caption::before {
+    content: none;
+  }
+
+  .carousel-caption h5 {
+    font-size: 18px;
   }
 }

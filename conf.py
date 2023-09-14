@@ -292,7 +292,93 @@ html_theme_options = {
   "logo": {
     "image_dark": "_static/images/logos/dipy-logo.png",
     "alt_text": "DIPY",
-  }
+  },
+  "footer_start": ["components/footer-sign-up.html"],
+  "footer_signup_data": {
+    "heading": "Never miss an update from us",
+    "sub_heading": "Don't worry! we are not going to spam you."
+  },
+  "footer_end": ["components/footer-sections.html"],
+  "footer_links": [
+    {
+      "title": "About",
+      "links": [
+        {
+          "name": "Developers",
+          "link": "https://dipy.org/contributors/"
+        },
+        {
+          "name": "Support",
+          "link": "https://dipy.org/contributors/"
+        },
+        {
+          "name": "Download",
+          "link": "https://dipy.org/contributors/"
+        },
+        {
+          "name": "Get Started",
+          "link": "https://dipy.org/contributors/"
+        },
+        {
+          "name": "Tutorials",
+          "link": "https://dipy.org/contributors/"
+        },
+        {
+          "name": "Videos",
+          "link": "https://dipy.org/contributors/"
+        },
+      ]
+    }, {
+      "title": "Friends",
+      "links": [
+        {
+          "name": "Nipy Projects",
+          "link": "",
+          "external": True
+        },
+        {
+          "name": "FURY",
+          "link": "",
+          "external": True
+        },
+        {
+          "name": "Nibabel",
+          "link": "",
+          "external": True
+        },
+        {
+          "name": "Tortoise",
+          "link": "",
+          "external": True
+        },
+      ]
+    }, {
+      "title": "Support",
+      "links": [
+        {
+          "name": "The department of Intelligent Systems Engineering of Indiana University",
+          "link": "",
+          "external": True
+        },
+        {
+          "name": "The National Institute of Biomedical Imaging and Bioengineering, NIH",
+          "link": "",
+          "external": True
+        },
+        {
+          "name": "The Gordon and Betty Moore Foundation and the Alfred P. Sloan Foundation, through the University of Washington eScience Institute Data Science Environment",
+          "link": "",
+          "external": True
+        },
+        {
+          "name": "Google supported DIPY through the Google Summer of Code Program during Summer 2015, 2016, 2018",
+          "link": "",
+          "external": True
+        },
+      ]
+    }
+  ],
+  "footer_copyright": "Copyright 2008-2023, DIPY developers. Created using Django and Bootstrap."
 }
 
 with open('context/context.toml', 'rb') as f:
