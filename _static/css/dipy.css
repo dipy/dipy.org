@@ -1,6 +1,12 @@
 /* Index CSS file */
 /* Do not add any css directly here.... */
 
+/* util css is no longer required as it is fetched from grg-sphinx-theme */
+
+/* Common CSS */
+
 @import url("./common/variables.css");
-@import url("./common/section-list.css");
 @import url("./common/override.css");
+
+/* Home CSS */
+@import "./home/index.css";

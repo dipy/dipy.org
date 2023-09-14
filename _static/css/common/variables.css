@@ -1,7 +1,15 @@
 html[data-theme="light"] {
-  --pst-color-primary: #FD8D25;
-  --pst-color-secondary: #1B8BF4;
+  --gst-color-primary: #FD8D25;
+  --gst-color-secondary: #1B8BF4;
+  --gst-color-bg: var(--bs-white);
+  --gst-color-bg-gray: var(--bs-gray-100);
+  --gst-color-light-border: var(--pst-color-border);
+}
 
-  --pst-color-link-hover: var(--pst-color-secondary);
-  --pst-color-border: rgb(229,229,229);
+html[data-theme="dark"] {
+  --gst-color-primary: #FD8D25;
+  --gst-color-secondary: #1B8BF4;
+  --gst-color-bg: var(--bs-gray-900);
+  --gst-color-bg-gray: var(--bs-gray-900);
+  --gst-color-light-border: transparent;
 }

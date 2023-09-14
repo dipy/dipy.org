@@ -1,0 +1,44 @@
+.explore {
+  display: grid;
+  gap: 3em;
+}
+
+.explore-tile {
+  border-radius: 12px;
+  background-color: var(--gst-color-bg-gray);
+  border: 1px solid var(--pst-color-border);
+  transition: all 0.2s ease-in-out;
+}
+
+.explore-tile:hover,
+.explore-tile:hover .explore-tile-icon {
+  box-shadow: var(--pst-shadow);
+}
+
+.explore-tile-icon {
+  background-color: var(--gst-color-primary);
+  height: 55px;
+  width: 55px;
+  border-radius: 12px;
+  /* TODO This should be removed as the util will be available */
+  padding: 12px;
+  margin-bottom: 24px;
+  transition: all 0.2s ease-in-out;
+}
+
+.explore-tile-icon img {
+  filter: invert(1) !important;
+}
+
+.explore-tile-title {
+  font-weight: 600;
+  color: var(--gst-color-section-heading);
+}
+
+.explore-tile-know-more,
+.explore-tile-know-more:visited {
+  color: var(--gst-color-primary);
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+}
