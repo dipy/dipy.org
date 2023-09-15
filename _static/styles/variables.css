@@ -1,4 +1,34 @@
 html {
   --pst-icon-external-link: "\f178";
   --pst-shadow: 0 12px 32px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .08);
+  --gst-color-primary-hover: #E37F22;
+  --gst-color-primary-border: #CA711E;
+}
+
+html[data-theme="light"] {
+  --pst-color-primary: var(--gst-color-primary);
+  --pst-color-secondary: var(--gst-color-secondary);
+
+  --pst-color-link-hover: var(--gst-color-secondary);
+  --gst-color-border: rgb(229,229,229);
+  --gst-color-heading: var(--bs-gray-700);
+
+  --gst-color-bg: var(--bs-white);
+  --gst-color-bg-gray: var(--bs-gray-100);
+  --gst-color-light-border: var(--gst-color-border);
+  --gst-color-section-heading: var(--pst-color-text-base);
+}
+
+html[data-theme="dark"] {
+  --pst-color-primary: var(--gst-color-primary);
+  --pst-color-secondary: var(--gst-color-secondary);
+
+  --pst-color-link-hover: var(--gst-color-secondary);
+  --gst-color-border: rgb(229,229,229);
+  --gst-color-heading: var(--bs-gray-300);
+
+  --gst-color-bg: var(--bs-gray-900);
+  --gst-color-bg-gray: var(--bs-gray-900);
+  --gst-color-light-border: transparent;
+  --gst-color-section-heading: var(--gst-color-primary)
 }

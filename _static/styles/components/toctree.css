@@ -9,7 +9,7 @@
 }
 
 .toctree-wrapper li.toctree-l2 {
-  border: 1px solid var(--pst-color-border);
+  border: 1px solid var(--gst-color-border);
   border-radius: 4px;
   padding: 1em;
 }
