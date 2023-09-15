@@ -3,7 +3,7 @@ html[data-theme="light"] {
   --gst-color-secondary: #1B8BF4;
   --gst-color-bg: var(--bs-white);
   --gst-color-bg-gray: var(--bs-gray-100);
-  --gst-color-light-border: var(--pst-color-border);
+  --gst-color-light-border: var(--gst-color-border);
 }
 
 html[data-theme="dark"] {
