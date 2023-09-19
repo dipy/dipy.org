@@ -295,7 +295,7 @@ html_theme_options = {
   },
   "footer_start": ["components/footer-sign-up.html"],
   "footer_signup_data": {
-    "heading": "Never miss an update from us",
+    "heading": "Never miss an update from us!",
     "sub_heading": "Don't worry! we are not going to spam you."
   },
   "footer_end": ["components/footer-sections.html"],
@@ -378,7 +378,13 @@ html_theme_options = {
       ]
     }
   ],
-  "footer_copyright": "Copyright 2008-2023, DIPY developers. Created using Grg Sphinx Theme and PyData Sphinx Theme."
+  "footer_copyright": "Copyright 2008-2023, DIPY developers. Created using Grg Sphinx Theme and PyData Sphinx Theme.",
+  "github_project": "dipy",
+  "github_repo": "dipy",
+  "github_teams": [{
+      "value": "core-dev",
+      "label": "Core Developers"
+  }]
 }
 
 with open('context/context.toml', 'rb') as f:
@@ -429,7 +435,8 @@ html_static_path = ['_static']
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
 html_additional_pages = {
-    "index": "home.html"
+    "index": "home.html",
+    "team": "team.html"
 }
 
 # If false, no module index is generated.
