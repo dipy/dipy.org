@@ -1,0 +1,38 @@
+.intro {
+  width: 100%;
+  padding: 96px 32px;
+  text-align: center;
+}
+
+.tagline {
+  color: var(--gst-color-heading);
+  font-size: 76px;
+  line-height: 1.25;
+  font-weight: 900;
+  margin: 0 auto;
+}
+
+.description {
+  line-height: 1.25;
+  font-size: 20px;
+  max-width: 900px;
+  margin: 24px auto 40px;
+  color: var(--pst-color-text-muted);
+}
+
+.actions {
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+  /* Your CSS styles for phones go here */
+  .intro {
+    padding: 90px 20px;
+  }
+  .tagline {
+    font-size: 40px;
+  }
+  .description {
+    font-size: 16px;
+  }
+}
