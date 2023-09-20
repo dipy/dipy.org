@@ -1,10 +1,10 @@
-name: github pages
+name: Github Pages
 
 on:
   push:
     branches:
       - master
-  pull_request_target:
+  pull_request:
     branches:
       - master
   schedule:
@@ -13,12 +13,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-        contents: write
-        pull-requests: write
-        issues: write
     env:
-        PR_PATH: pull/${{github.event.number}}
+        PR_PATH: dipy.org/pull/${{github.event.number}}
         BASE_URL: https://dipy.github.io/dipy.org
         HEAD: ${{ github.event.pull_request.head.repo.full_name }}
         BASE: ${{ github.repository }}
@@ -26,16 +22,6 @@ jobs:
         REF: ${{github.ref}}
         STATUS: ${{github.event.pull_request.head.repo.full_name != github.repository}}
     steps:
-      - name: Comment on PR
-        uses: hasura/comment-progress@v2.3.0
-        if: ${{ github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository }}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          number: ${{ github.event.number }}
-          id: deploy-preview
-          message: "Starting deployment of preview ⏳..."
-
       - name: Checkout website repo
         uses: actions/checkout@v4
 
@@ -74,21 +60,13 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository }}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_TOKEN }}
+          external_repository:  dipy/preview-html
           publish_dir: ./_build/html
+          publish_branch: main
           destination_dir: ${{ env.PR_PATH }}
           keep_files: true
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: ${{ github.event.head_commit.message }}
-
-      - name: Update comment
-        uses: hasura/comment-progress@v2.3.0
-        if: ${{ github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository }}
-        with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            repository: ${{ github.repository }}
-            number: ${{ github.event.number }}
-            id: deploy-preview
-            message: "A preview of ${{ github.event.after }} is uploaded and can be seen here:\n\n ✨ ${{ env.BASE_URL }}/${{ env.PR_PATH }} ✨\n\nChanges may take a few minutes to propagate. The source is here: https://github.com/${{ github.repository }}/tree/gh-pages/${{ env.PR_PATH }}/"
 
