@@ -59,6 +59,7 @@ jobs:
       - name: Deploy to PR preview
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository }}
+        secrets: inherit
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_TOKEN }}
           external_repository:  dipy/preview-html
