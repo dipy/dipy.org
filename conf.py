@@ -309,7 +309,8 @@ html_theme_options = {
         },
         {
           "name": "Support",
-          "link": "https://github.com/dipy/dipy/discussions"
+          "link": "https://github.com/dipy/dipy/discussions",
+          "external": True
         },
         {
           "name": "Download",
@@ -321,11 +322,13 @@ html_theme_options = {
         },
         {
           "name": "Tutorials",
-          "link": "https://docs.dipy.org/tutorials/"
+          "link": "https://docs.dipy.org/tutorials/",
+          "external": True
         },
         {
           "name": "Videos",
-          "link": "https://www.youtube.com/c/diffusionimaginginpython"
+          "link": "https://www.youtube.com/c/diffusionimaginginpython",
+          "external": True
         },
       ]
     }, {
