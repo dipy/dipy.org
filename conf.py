@@ -170,7 +170,7 @@ html_theme_options = {
      },
      {
         "name": "Workshops",
-        "section": [
+        "sections": [
           {
             "name": "Latest",
             "children": [
