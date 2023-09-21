@@ -205,7 +205,7 @@ html_theme_options = {
               "children": [
                   {
                     "name": "Newsletters",
-                    "url": "",
+                    "url": "https://mail.python.org/mailman3/lists/dipy.python.org/",
                     "external": True
                   },
                   {
@@ -214,7 +214,7 @@ html_theme_options = {
                   },
                   {
                     "name": "Youtube",
-                    "url": "blog",
+                    "url": "https://www.youtube.com/c/diffusionimaginginpython",
                     "external": True
                   }
               ]
@@ -224,11 +224,11 @@ html_theme_options = {
               "children": [
                   {
                     "name": "Live Chat (Gitter)",
-                    "url": ""
+                    "url": "https://app.gitter.im/#/room/%23dipy_dipy:gitter.im"
                   },
                   {
                     "name": "Github Discussions",
-                    "url": "",
+                    "url": "https://github.com/dipy/dipy/discussions",
                     "external": True
                   }
               ]
@@ -305,15 +305,16 @@ html_theme_options = {
       "links": [
         {
           "name": "Developers",
-          "link": "https://dipy.org/contributors/"
+          "link": "team"
         },
         {
           "name": "Support",
-          "link": "https://dipy.org/contributors/"
+          "link": "https://github.com/dipy/dipy/discussions",
+          "external": True
         },
         {
           "name": "Download",
-          "link": "https://dipy.org/contributors/"
+          "link": "installation"
         },
         {
           "name": "Get Started",
@@ -321,11 +322,13 @@ html_theme_options = {
         },
         {
           "name": "Tutorials",
-          "link": "https://dipy.org/contributors/"
+          "link": "https://docs.dipy.org/tutorials/",
+          "external": True
         },
         {
           "name": "Videos",
-          "link": "https://dipy.org/contributors/"
+          "link": "https://www.youtube.com/c/diffusionimaginginpython",
+          "external": True
         },
       ]
     }, {
@@ -333,22 +336,22 @@ html_theme_options = {
       "links": [
         {
           "name": "Nipy Projects",
-          "link": "",
+          "link": "http://nipy.org/",
           "external": True
         },
         {
           "name": "FURY",
-          "link": "",
+          "link": "http://fury.gl/",
           "external": True
         },
         {
           "name": "Nibabel",
-          "link": "",
+          "link": "http://nipy.org/nibabel",
           "external": True
         },
         {
           "name": "Tortoise",
-          "link": "",
+          "link": "https://tortoise.nibib.nih.gov/",
           "external": True
         },
       ]
@@ -357,22 +360,22 @@ html_theme_options = {
       "links": [
         {
           "name": "The department of Intelligent Systems Engineering of Indiana University",
-          "link": "",
+          "link": "https://engineering.indiana.edu/",
           "external": True
         },
         {
           "name": "The National Institute of Biomedical Imaging and Bioengineering, NIH",
-          "link": "",
+          "link": "https://www.nibib.nih.gov/",
           "external": True
         },
         {
           "name": "The Gordon and Betty Moore Foundation and the Alfred P. Sloan Foundation, through the University of Washington eScience Institute Data Science Environment",
-          "link": "",
+          "link": "https://escience.washington.edu/tag/alfred-p-sloan-foundation/",
           "external": True
         },
         {
           "name": "Google supported DIPY through the Google Summer of Code Program during Summer 2015, 2016, 2018",
-          "link": "",
+          "link": "https://summerofcode.withgoogle.com/",
           "external": True
         },
       ]
