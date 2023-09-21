@@ -1,4 +1,4 @@
-name: Comment on the pull request.
+name: HTML Preview
 
 on:
   workflow_run:
@@ -61,14 +61,23 @@ jobs:
         if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
         env:
             PR_PATH: dipy.org/pull/${{needs.get-pr-number.outputs.output1}}
-            BASE_URL: https://dipy.github.io/dipy-preview
+            BASE_URL: https://dipy.github.io/preview-html
         steps:
+          - name: Download workflow artifact
+            uses: dawidd6/action-download-artifact@v2.11.0
+            with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+              workflow: publish.yml
+              run_id: ${{ github.event.workflow_run.id }}
+              name: DocumentationHTML
+          - name: Unzip artifact
+            run: unzip DocumentationHTML.zip
           - name: Deploy to PR preview
             uses: peaceiris/actions-gh-pages@v3
             with:
               deploy_key: ${{ secrets.ACTIONS_DEPLOY_TOKEN }}
               external_repository:  dipy/preview-html
-              publish_dir: ./_build/html
+              publish_dir: ./DocumentationHTML
               publish_branch: main
               destination_dir: ${{ env.PR_PATH }}
               keep_files: true
@@ -82,30 +91,34 @@ jobs:
                 repository: ${{ github.repository }}
                 number: ${{ needs.get-pr-number.outputs.output1 }}
                 id: deploy-preview
-                message: "A preview of ${{ github.event.workflow_run.head_commit }} is uploaded and can be seen here:\n\n ✨ ${{ env.BASE_URL }}/${{ env.PR_PATH }} ✨\n\nChanges may take a few minutes to propagate. The source is here: https://github.com/${{ github.repository }}/tree/gh-pages/${{ env.PR_PATH }}/"
+                message: "A preview of ${{ github.event.workflow_run.head_commit.message }} is uploaded and can be seen here:\n\n ✨ ${{ env.BASE_URL }}/${{ env.PR_PATH }} ✨\n\nChanges may take a few minutes to propagate. The source is here: https://github.com/dipy/preview-html/tree/main/${{ env.PR_PATH }}/"
     on-closed:
       runs-on: ubuntu-latest
       if: ${{ github.event.action == 'pull_request_target' }}
       env:
-        PR_PATH: pull/${{github.event.number}}
+        PR_PATH: dipy.org/pull/${{github.event.number}}
       steps:
-        - name: Checkout website repo
-          uses: actions/checkout@v4
+        - name: make empty dir
+          run: mkdir public
+
+        - name: delete folder
+          uses: peaceiris/actions-gh-pages@v3
           with:
-            ref: gh-pages
+            deploy_key: ${{ secrets.ACTIONS_DEPLOY_TOKEN }}
+            publish_dir: ./public
+            publish_branch: main
+            destination_dir: ${{ env.PR_PATH }}
+            keep_files: true
+            user_name: 'github-actions[bot]'
+            user_email: 'github-actions[bot]@users.noreply.github.com'
+            commit_message: ${{ github.event.head_commit.message }}
 
-        - name: Delete preview
-          run: |
-              git rm -r ${{ env.PR_PATH }}
-              git commit -m "Delete preview for PR #${{ github.event.number }}"
-              git push origin gh-pages
-
-        - name: Comment on PR
+        - name: Update PR Comment
           uses: hasura/comment-progress@v2.2.0
           with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             repository: ${{ github.repository }}
             number: ${{ github.event.number }}
             id: deploy-preview
-            message: "🪓 PR closed, deleted preview at https://github.com/${{ github.repository }}/tree/gh-pages/${{ env.PR_PATH }}/"
+            message: "🪓 PR closed, deleted preview at https://github.com/dipy/preview-html/tree/main/${{ env.PR_PATH }}/"
 
