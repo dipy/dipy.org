@@ -1,0 +1,127 @@
+ [
+      {
+          "login": "garyfallidis",
+          "fullname": "Eleftherios Garyfallidis",
+          "affiliation": "Indiana University, IN, USA",
+          "priority": 1
+      },
+      {
+          "login": "skoudoro",
+          "fullname": "Serge Koudoro",
+          "affiliation": "Indiana University, IN, USA",
+          "priority": 3
+      },
+      {
+          "login": "ranveeraggarwal",
+          "fullname": "Ranveer Aggarwal",
+          "affiliation": "Microsoft, Hyderabad, Telangana, India"
+      },
+      {
+          "login": "marccote",
+          "fullname": "Marc Alexandre Cote",
+          "affiliation": "Microsoft Research, Montreal, QC, CA"
+      },
+      {
+          "login": "karandeepsj",
+          "fullname": "Karandeep  Singh Juneja",
+          "affiliation": "International Institute of Information Technology, Hyderabad, India"
+      },
+      {
+          "login": "dmreagan",
+          "fullname": "David Reagan",
+          "affiliation": "Indiana University, IN, USA"
+      },
+  
+      {
+          "login": "arokem",
+          "fullname": "Ariel Rokem",
+          "affiliation": "University of Washington, WA, USA",
+          "priority": 2
+      },
+      {
+          "login": "matthew-brett",
+          "fullname": "Matthew Brett",
+          "affiliation": "Birmingham University, Birmingham, UK"
+      },
+      {
+          "login": "khessijordan",
+          "fullname": "Khessi Jordan",
+          "affiliation": "University of California, San Francisco, CA, USA"
+      },
+      {
+          "login": "omarocegueda",
+          "fullname": "Omar Ocegueda",
+          "affiliation": "Google, San Francisco, CA"
+      },
+      {
+          "login": "mrbago",
+          "fullname": "Bago Amirbekian",
+          "affiliation": "Databricks, San Francisco, CA, USA"
+      },
+      {
+          "login": "grlee77",
+          "fullname": "Gregory R. Lee",
+          "affiliation": "Cincinnati Children’s Hospital Medical Center, Cincinnati, OH, USA"
+      },
+      {
+          "login": "stefanv",
+          "fullname": "Stefan Van der Walt",
+          "affiliation": "University of California, Berkeley, CA, USA"
+      },
+      {
+          "login": "albayenes",
+          "fullname": "Enes Albay",
+          "affiliation": ""
+      },
+      {
+          "login": "jhlegaretta",
+          "fullname": "John Legaretta",
+          "affiliation": "University of Sherbrooke, QC, CA"
+      },
+      {
+          "login": "gauvinalexandre",
+          "fullname": "Alexander Gauvin",
+          "affiliation": "University of Sherbrooke, QC, CA"
+      },
+      {
+          "login": "theaverageguy",
+          "fullname": "Yash Sherry",
+          "affiliation": "MIT Research Affiliate"
+      },
+      {
+          "login": "stongeetienne",
+          "fullname": "Etienne St-Onge",
+          "affiliation": "University of Sherbrooke, QC, CA"
+      },
+      {
+          "login": "cnguyen",
+          "fullname": "Christopher Nguyen",
+          "affiliation": "Massachusetts General Hospital, MA, USA"
+      },
+      {
+          "login": "samuelstjean",
+          "fullname": "Samuel St-Jean",
+          "affiliation": "University Medical Center (UMC) Utrecht, Utrecht, NL"
+      },
+      {
+          "login": "borda",
+          "fullname": "Jiri Borovec",
+          "affiliation": "Czech Technical University, Prague, CZ"
+      },
+      {
+          "login": "yarikoptic",
+          "fullname": "Yaroslav Halchenko",
+          "affiliation": "Center for Open Neuroscience , Darmouth, US"
+      },
+      {
+          "login": "arybinski",
+          "fullname": "Adam Rybinski",
+          "affiliation": ""
+      },
+      {
+          "login": "wasserth",
+          "fullname": "Jakob Wasserthal",
+          "affiliation": "DKFZ MIC - German Cancer Research Center, Germany"
+      }
+
+  ]

@@ -13,6 +13,7 @@
 
 import os
 import sys
+import json
 try:
     import tomllib
 except ImportError:
@@ -124,6 +125,9 @@ html_theme = "grg_sphinx_theme"
 # given in html_static_path.
 html_style = 'css/dipy.css'
 
+with open('contributors.json', 'r') as f:
+    contributors = json.load(f)
+
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
@@ -139,26 +143,32 @@ html_theme_options = {
           {
             "name": "Quick Start",
             "url": "https://docs.dipy.org",
+            "link_type": "inter"
           },
           {
             "name": "Tutorials",
             "url": "https://docs.dipy.org/tutorials",
+            "link_type": "inter"
           },
           {
             "name": "Recipes",
             "url": "https://docs.dipy.org/recipes",
+            "link_type": "inter"
           },
           {
             "name": "CLI / Workflows",
             "url": "https://docs.dipy.org/cli",
+            "link_type": "inter"
           },
           {
             "name": "API",
             "url": "https://docs.dipy.org/reference",
+            "link_type": "inter"
           },
           {
             "name": "CLI API",
             "url": "https://docs.dipy.org/cli/reference",
+            "link_type": "inter"
           }
         ]
      },
@@ -168,32 +178,32 @@ html_theme_options = {
           {
             "name": "DIPY Workshop 2024",
             "url": "https://dipy.org/workshops/dipy-workshop-2024",
-            "external": True
+            "link_type": "external"
           },
           {
             "name": "DIPY Workshop 2023",
             "url": "https://dipy.org/workshops/dipy-workshop-2023",
-            "external": True
+            "link_type": "external"
           },
           {
             "name": "DIPY Workshop 2022",
             "url": "https://dipy.org/workshops/dipy-workshop-2022",
-            "external": True
+            "link_type": "external"
           },
           {
             "name": "DIPY Workshop 2021",
             "url": "https://dipy.org/workshops/dipy-workshop-2021",
-            "external": True
+            "link_type": "external"
           },
           {
             "name": "DIPY Workshop 2020",
             "url": "https://dipy.org/workshops/dipy-workshop-2020",
-            "external": True
+            "link_type": "external"
           },
           {
             "name": "DIPY Workshop 2019",
             "url": "https://dipy.org/workshops/dipy-workshop-2019",
-            "external": True
+            "link_type": "external"
           },
         ]
      },
@@ -206,7 +216,7 @@ html_theme_options = {
                   {
                     "name": "Newsletters",
                     "url": "",
-                    "external": True
+                    "link_type": "external"
                   },
                   {
                     "name": "Blog",
@@ -215,7 +225,7 @@ html_theme_options = {
                   {
                     "name": "Youtube",
                     "url": "blog",
-                    "external": True
+                    "link_type": "external"
                   }
               ]
             },
@@ -229,7 +239,7 @@ html_theme_options = {
                   {
                     "name": "Github Discussions",
                     "url": "",
-                    "external": True
+                    "link_type": "external"
                   }
               ]
             }
@@ -384,7 +394,8 @@ html_theme_options = {
   "github_teams": [{
       "value": "core-dev",
       "label": "Core Developers"
-  }]
+  }],
+  "contributors_details": contributors
 }
 
 with open('context/context.toml', 'rb') as f:

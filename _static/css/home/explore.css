@@ -12,7 +12,7 @@
 
 .explore-tile:hover,
 .explore-tile:hover .explore-tile-icon {
-  box-shadow: var(--pst-shadow);
+  box-shadow: var(--gst-shadow);
 }
 
 .explore-tile-icon {
