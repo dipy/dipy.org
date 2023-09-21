@@ -3,7 +3,7 @@ name: HTML Preview
 on:
   workflow_run:
     workflows: ["Github Pages"]
-    types: [in_progress, completed]
+    types: [completed]
   pull_request_target:
     types: [closed]
 
@@ -29,19 +29,6 @@ jobs:
           id: echo_pr_nb
           run: echo "pr_number=${{ steps.pull_request_number_reader.outputs.content }}" >> $GITHUB_OUTPUT
 
-    in-progress:
-      runs-on: ubuntu-latest
-      needs: get-pr-number
-      if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.status == 'in_progress' }}
-      steps:
-        - name: 'Comment on PR - Waiting for deployment'
-          uses: hasura/comment-progress@v2.3.0
-          with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            repository: ${{ github.repository }}
-            number: ${{ needs.get-pr-number.outputs.output1 }}
-            id: deploy-preview
-            message: "Starting deployment of preview ⏳..."
     on-failure:
         runs-on: ubuntu-latest
         needs: get-pr-number
@@ -55,6 +42,7 @@ jobs:
                 number: ${{ needs.get-pr-number.outputs.output1 }}
                 id: deploy-preview
                 message: "⚠️⚠️⚠️ Build Failed: No preview available."
+
     on-success:
         runs-on: ubuntu-latest
         needs: get-pr-number
@@ -63,6 +51,14 @@ jobs:
             PR_PATH: dipy.org/pull/${{needs.get-pr-number.outputs.output1}}
             BASE_URL: https://dipy.github.io/preview-html
         steps:
+          - name: 'Comment on PR - Waiting for deployment'
+            uses: hasura/comment-progress@v2.3.0
+            with:
+              github-token: ${{ secrets.GITHUB_TOKEN }}
+              repository: ${{ github.repository }}
+              number: ${{ needs.get-pr-number.outputs.output1 }}
+              id: deploy-preview
+              message: "Starting deployment of preview ⏳..."
           - name: Download workflow artifact
             uses: dawidd6/action-download-artifact@v2.11.0
             with:
@@ -92,7 +88,7 @@ jobs:
                 message: "A preview of ${{ github.event.workflow_run.head_commit.message }} is uploaded and can be seen here:\n\n ✨ ${{ env.BASE_URL }}/${{ env.PR_PATH }} ✨\n\nChanges may take a few minutes to propagate. The source is here: https://github.com/dipy/preview-html/tree/main/${{ env.PR_PATH }}/"
     on-closed:
       runs-on: ubuntu-latest
-      if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
+      if: ${{ github.event.action == 'closed' }}
       env:
         PR_PATH: dipy.org/pull/${{github.event.number}}
       steps:
