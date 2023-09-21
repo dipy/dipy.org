@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: ["Github Pages"]
     types: [in_progress, completed]
-  pull_request_target:
+  pull_request:
     types: [closed]
 
 jobs:
@@ -71,8 +71,6 @@ jobs:
               run_id: ${{ github.event.workflow_run.id }}
               name: DocumentationHTML
               path: ./DocumentationHTML
-          # - name: Unzip artifact
-          #   run: unzip DocumentationHTML.zip
           - name: Deploy to PR preview
             uses: peaceiris/actions-gh-pages@v3
             with:
@@ -81,7 +79,6 @@ jobs:
               publish_dir: ./DocumentationHTML
               publish_branch: main
               destination_dir: ${{ env.PR_PATH }}
-              keep_files: true
               user_name: 'github-actions[bot]'
               user_email: 'github-actions[bot]@users.noreply.github.com'
               commit_message: ${{ github.event.head_commit.message }}
@@ -95,7 +92,7 @@ jobs:
                 message: "A preview of ${{ github.event.workflow_run.head_commit.message }} is uploaded and can be seen here:\n\n ✨ ${{ env.BASE_URL }}/${{ env.PR_PATH }} ✨\n\nChanges may take a few minutes to propagate. The source is here: https://github.com/dipy/preview-html/tree/main/${{ env.PR_PATH }}/"
     on-closed:
       runs-on: ubuntu-latest
-      if: ${{ github.event.action == 'pull_request_target' }}
+      if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
       env:
         PR_PATH: dipy.org/pull/${{github.event.number}}
       steps:
@@ -109,7 +106,6 @@ jobs:
             publish_dir: ./public
             publish_branch: main
             destination_dir: ${{ env.PR_PATH }}
-            keep_files: true
             user_name: 'github-actions[bot]'
             user_email: 'github-actions[bot]@users.noreply.github.com'
             commit_message: ${{ github.event.head_commit.message }}
