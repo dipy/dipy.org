@@ -29,14 +29,14 @@ jobs:
         STATUS: ${{github.event.pull_request.head.repo.full_name != github.repository}}
     steps:
       - name: Save the PR number in an artifact
-        if: ${{ github.event == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' }}
         shell: bash
         env:
           PULL_REQUEST_NUMBER: ${{ github.event.number }}
         run: echo $PULL_REQUEST_NUMBER > pull_request_number.txt
 
       - name: Upload the PULL REQUEST number
-        if: ${{ github.event == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' }}
         uses: actions/upload-artifact@v2
         with:
           name: pull_request_number
