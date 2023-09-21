@@ -22,6 +22,18 @@ jobs:
         REF: ${{github.ref}}
         STATUS: ${{github.event.pull_request.head.repo.full_name != github.repository}}
     steps:
+      - name: Save the PR number in an artifact
+        shell: bash
+        env:
+          PULL_REQUEST_NUMBER: ${{ github.event.number }}
+        run: echo $PULL_REQUEST_NUMBER > pull_request_number.txt
+
+      - name: Upload the PULL REQUEST number
+        uses: actions/upload-artifact@v2
+        with:
+          name: pull_request_number
+          path: ./pull_request_number.txt
+
       - name: Checkout website repo
         uses: actions/checkout@v4
 
@@ -40,7 +52,7 @@ jobs:
             make -C . html
 
       - name: Upload HTML
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
             name: DocumentationHTML
             path: _build/html/
@@ -55,19 +67,3 @@ jobs:
             user_email: 'github-actions[bot]@users.noreply.github.com'
             commit_message: ${{ github.event.head_commit.message }}
         #   cname: ${{ env.DOMAIN  # TODO: set this if you're using a custom domain.
-
-      - name: Deploy to PR preview
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository }}
-        secrets: inherit
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_TOKEN }}
-          external_repository:  dipy/preview-html
-          publish_dir: ./_build/html
-          publish_branch: main
-          destination_dir: ${{ env.PR_PATH }}
-          keep_files: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: ${{ github.event.head_commit.message }}
-
