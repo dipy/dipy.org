@@ -4,8 +4,6 @@ on:
   workflow_run:
     workflows: ["Github Pages"]
     types: [completed]
-  pull_request_target:
-    types: [closed]
 
 jobs:
     get-pr-number:
@@ -86,32 +84,3 @@ jobs:
                 number: ${{ needs.get-pr-number.outputs.output1 }}
                 id: deploy-preview
                 message: "A preview of ${{ github.event.workflow_run.head_commit.message }} is uploaded and can be seen here:\n\n ✨ ${{ env.BASE_URL }}/${{ env.PR_PATH }} ✨\n\nChanges may take a few minutes to propagate. The source is here: https://github.com/dipy/preview-html/tree/main/${{ env.PR_PATH }}/"
-    on-closed:
-      runs-on: ubuntu-latest
-      if: ${{ github.event.action == 'closed' }}
-      env:
-        PR_PATH: dipy.org/pull/${{github.event.number}}
-      steps:
-        - name: make empty dir
-          run: mkdir public
-
-        - name: delete folder
-          uses: peaceiris/actions-gh-pages@v3
-          with:
-            deploy_key: ${{ secrets.ACTIONS_DEPLOY_TOKEN }}
-            publish_dir: ./public
-            publish_branch: main
-            destination_dir: ${{ env.PR_PATH }}
-            user_name: 'github-actions[bot]'
-            user_email: 'github-actions[bot]@users.noreply.github.com'
-            commit_message: ${{ github.event.head_commit.message }}
-
-        - name: Update PR Comment
-          uses: hasura/comment-progress@v2.2.0
-          with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            repository: ${{ github.repository }}
-            number: ${{ github.event.number }}
-            id: deploy-preview
-            message: "🪓 PR closed, deleted preview at https://github.com/dipy/preview-html/tree/main/${{ env.PR_PATH }}/"
-

@@ -5,6 +5,11 @@ on:
     branches:
       - master
   pull_request:
+    types: [opened, synchronize, edited, reopened]
+    branches:
+      - master
+  pull_request_target:
+    types: [closed]
     branches:
       - master
   schedule:
@@ -12,6 +17,7 @@ on:
 
 jobs:
   deploy:
+    if: ${{ github.event.action != 'closed' }}
     runs-on: ubuntu-latest
     env:
         PR_PATH: dipy.org/pull/${{github.event.number}}
@@ -23,12 +29,14 @@ jobs:
         STATUS: ${{github.event.pull_request.head.repo.full_name != github.repository}}
     steps:
       - name: Save the PR number in an artifact
+        if: ${{ github.event == 'pull_request' }}
         shell: bash
         env:
           PULL_REQUEST_NUMBER: ${{ github.event.number }}
         run: echo $PULL_REQUEST_NUMBER > pull_request_number.txt
 
       - name: Upload the PULL REQUEST number
+        if: ${{ github.event == 'pull_request' }}
         uses: actions/upload-artifact@v2
         with:
           name: pull_request_number
@@ -67,3 +75,31 @@ jobs:
             user_email: 'github-actions[bot]@users.noreply.github.com'
             commit_message: ${{ github.event.head_commit.message }}
         #   cname: ${{ env.DOMAIN  # TODO: set this if you're using a custom domain.
+  on-closed:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'closed' }}
+    env:
+      PR_PATH: dipy.org/pull/${{github.event.number}}
+    steps:
+      - name: make empty dir
+        run: mkdir public
+
+      - name: delete folder
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_TOKEN }}
+          publish_dir: ./public
+          publish_branch: main
+          destination_dir: ${{ env.PR_PATH }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: ${{ github.event.head_commit.message }}
+
+      - name: Update PR Comment
+        uses: hasura/comment-progress@v2.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          number: ${{ github.event.number }}
+          id: deploy-preview
+          message: "🪓 PR closed, deleted preview at https://github.com/dipy/preview-html/tree/main/${{ env.PR_PATH }}/"
