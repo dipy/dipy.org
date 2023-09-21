@@ -70,8 +70,9 @@ jobs:
               workflow: publish.yml
               run_id: ${{ github.event.workflow_run.id }}
               name: DocumentationHTML
-          - name: Unzip artifact
-            run: unzip DocumentationHTML.zip
+              path: ./DocumentationHTML
+          # - name: Unzip artifact
+          #   run: unzip DocumentationHTML.zip
           - name: Deploy to PR preview
             uses: peaceiris/actions-gh-pages@v3
             with:
