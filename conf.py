@@ -139,63 +139,79 @@ html_theme_options = {
           {
             "name": "Quick Start",
             "url": "https://docs.dipy.org",
+            "external": True
           },
           {
             "name": "Tutorials",
             "url": "https://docs.dipy.org/tutorials",
+            "external": True
           },
           {
             "name": "Recipes",
             "url": "https://docs.dipy.org/recipes",
+            "external": True
           },
           {
             "name": "CLI / Workflows",
             "url": "https://docs.dipy.org/cli",
+            "external": True
           },
           {
             "name": "API",
             "url": "https://docs.dipy.org/reference",
+            "external": True
           },
           {
             "name": "CLI API",
             "url": "https://docs.dipy.org/cli/reference",
+            "external": True
           }
         ]
      },
      {
         "name": "Workshops",
-        "children": [
+        "sections": [
           {
-            "name": "DIPY Workshop 2024",
-            "url": "https://dipy.org/workshops/dipy-workshop-2024",
-            "external": True
+            "name": "Latest",
+            "children": [
+              {
+                "name": "DIPY Workshop 2024",
+                "url": "https://dipy.org/workshops/dipy-workshop-2024",
+                "external": True
+              }
+            ]
           },
           {
-            "name": "DIPY Workshop 2023",
-            "url": "https://dipy.org/workshops/dipy-workshop-2023",
-            "external": True
-          },
-          {
-            "name": "DIPY Workshop 2022",
-            "url": "https://dipy.org/workshops/dipy-workshop-2022",
-            "external": True
-          },
-          {
-            "name": "DIPY Workshop 2021",
-            "url": "https://dipy.org/workshops/dipy-workshop-2021",
-            "external": True
-          },
-          {
-            "name": "DIPY Workshop 2020",
-            "url": "https://dipy.org/workshops/dipy-workshop-2020",
-            "external": True
-          },
-          {
-            "name": "DIPY Workshop 2019",
-            "url": "https://dipy.org/workshops/dipy-workshop-2019",
-            "external": True
-          },
-        ]
+            "name": "Past",
+            "children": [
+              {
+                "name": "DIPY Workshop 2023",
+                "url": "https://dipy.org/workshops/dipy-workshop-2023",
+                "external": True
+              },
+              {
+                "name": "DIPY Workshop 2022",
+                "url": "https://dipy.org/workshops/dipy-workshop-2022",
+                "external": True
+              },
+              {
+                "name": "DIPY Workshop 2021",
+                "url": "https://dipy.org/workshops/dipy-workshop-2021",
+                "external": True
+              },
+              {
+                "name": "DIPY Workshop 2020",
+                "url": "https://dipy.org/workshops/dipy-workshop-2020",
+                "external": True
+              },
+              {
+                "name": "DIPY Workshop 2019",
+                "url": "https://dipy.org/workshops/dipy-workshop-2019",
+                "external": True
+              },
+            ]
+          }
+        ],
      },
      {
         "name": "Community",
@@ -224,7 +240,8 @@ html_theme_options = {
               "children": [
                   {
                     "name": "Live Chat (Gitter)",
-                    "url": "https://app.gitter.im/#/room/%23dipy_dipy:gitter.im"
+                    "url": "https://app.gitter.im/#/room/%23dipy_dipy:gitter.im",
+                    "external": True
                   },
                   {
                     "name": "Github Discussions",
@@ -233,7 +250,7 @@ html_theme_options = {
                   }
               ]
             }
-        ]
+          ]
      },
      {
         "name": "About",
