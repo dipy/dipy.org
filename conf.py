@@ -13,6 +13,7 @@
 
 import os
 import sys
+import json
 try:
     import tomllib
 except ImportError:
@@ -124,6 +125,9 @@ html_theme = "grg_sphinx_theme"
 # given in html_static_path.
 html_style = 'css/dipy.css'
 
+with open('contributors.json', 'r') as f:
+    contributors = json.load(f)
+
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
@@ -139,32 +143,32 @@ html_theme_options = {
           {
             "name": "Quick Start",
             "url": "https://docs.dipy.org",
-            "external": True
+            "link_type": "inter"
           },
           {
             "name": "Tutorials",
             "url": "https://docs.dipy.org/tutorials",
-            "external": True
+            "link_type": "inter"
           },
           {
             "name": "Recipes",
             "url": "https://docs.dipy.org/recipes",
-            "external": True
+            "link_type": "inter"
           },
           {
             "name": "CLI / Workflows",
             "url": "https://docs.dipy.org/cli",
-            "external": True
+            "link_type": "inter"
           },
           {
             "name": "API",
             "url": "https://docs.dipy.org/reference",
-            "external": True
+            "link_type": "inter"
           },
           {
             "name": "CLI API",
             "url": "https://docs.dipy.org/cli/reference",
-            "external": True
+            "link_type": "inter"
           }
         ]
      },
@@ -177,7 +181,7 @@ html_theme_options = {
               {
                 "name": "DIPY Workshop 2024",
                 "url": "https://dipy.org/workshops/dipy-workshop-2024",
-                "external": True
+                "link_type": "external"
               }
             ]
           },
@@ -187,27 +191,27 @@ html_theme_options = {
               {
                 "name": "DIPY Workshop 2023",
                 "url": "https://dipy.org/workshops/dipy-workshop-2023",
-                "external": True
+                "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2022",
                 "url": "https://dipy.org/workshops/dipy-workshop-2022",
-                "external": True
+                "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2021",
                 "url": "https://dipy.org/workshops/dipy-workshop-2021",
-                "external": True
+                "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2020",
                 "url": "https://dipy.org/workshops/dipy-workshop-2020",
-                "external": True
+                "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2019",
                 "url": "https://dipy.org/workshops/dipy-workshop-2019",
-                "external": True
+                "link_type": "external"
               },
             ]
           }
@@ -222,7 +226,7 @@ html_theme_options = {
                   {
                     "name": "Newsletters",
                     "url": "https://mail.python.org/mailman3/lists/dipy.python.org/",
-                    "external": True
+                    "link_type": "external"
                   },
                   {
                     "name": "Blog",
@@ -231,7 +235,7 @@ html_theme_options = {
                   {
                     "name": "Youtube",
                     "url": "https://www.youtube.com/c/diffusionimaginginpython",
-                    "external": True
+                    "link_type": "external"
                   }
               ]
             },
@@ -246,7 +250,7 @@ html_theme_options = {
                   {
                     "name": "Github Discussions",
                     "url": "https://github.com/dipy/dipy/discussions",
-                    "external": True
+                    "link_type": "external"
                   }
               ]
             }
@@ -312,7 +316,7 @@ html_theme_options = {
   },
   "footer_start": ["components/footer-sign-up.html"],
   "footer_signup_data": {
-    "heading": "Never miss an update from us",
+    "heading": "Never miss an update from us!",
     "sub_heading": "Don't worry! we are not going to spam you."
   },
   "footer_end": ["components/footer-sections.html"],
@@ -327,7 +331,7 @@ html_theme_options = {
         {
           "name": "Support",
           "link": "https://github.com/dipy/dipy/discussions",
-          "external": True
+          "link_type": "external"
         },
         {
           "name": "Download",
@@ -340,12 +344,12 @@ html_theme_options = {
         {
           "name": "Tutorials",
           "link": "https://docs.dipy.org/tutorials/",
-          "external": True
+          "link_type": "external"
         },
         {
           "name": "Videos",
           "link": "https://www.youtube.com/c/diffusionimaginginpython",
-          "external": True
+          "link_type": "external"
         },
       ]
     }, {
@@ -354,22 +358,22 @@ html_theme_options = {
         {
           "name": "Nipy Projects",
           "link": "http://nipy.org/",
-          "external": True
+          "link_type": "external"
         },
         {
           "name": "FURY",
           "link": "http://fury.gl/",
-          "external": True
+          "link_type": "external"
         },
         {
           "name": "Nibabel",
           "link": "http://nipy.org/nibabel",
-          "external": True
+          "link_type": "external"
         },
         {
           "name": "Tortoise",
           "link": "https://tortoise.nibib.nih.gov/",
-          "external": True
+          "link_type": "external"
         },
       ]
     }, {
@@ -378,27 +382,34 @@ html_theme_options = {
         {
           "name": "The department of Intelligent Systems Engineering of Indiana University",
           "link": "https://engineering.indiana.edu/",
-          "external": True
+          "link_type": "external"
         },
         {
           "name": "The National Institute of Biomedical Imaging and Bioengineering, NIH",
           "link": "https://www.nibib.nih.gov/",
-          "external": True
+          "link_type": "external"
         },
         {
           "name": "The Gordon and Betty Moore Foundation and the Alfred P. Sloan Foundation, through the University of Washington eScience Institute Data Science Environment",
           "link": "https://escience.washington.edu/tag/alfred-p-sloan-foundation/",
-          "external": True
+          "link_type": "external"
         },
         {
           "name": "Google supported DIPY through the Google Summer of Code Program during Summer 2015, 2016, 2018",
           "link": "https://summerofcode.withgoogle.com/",
-          "external": True
+          "link_type": "external"
         },
       ]
     }
   ],
-  "footer_copyright": "Copyright 2008-2023, DIPY developers. Created using Grg Sphinx Theme and PyData Sphinx Theme."
+  "footer_copyright": "Copyright 2008-2023, DIPY developers. Created using Grg Sphinx Theme and PyData Sphinx Theme.",
+  "github_project": "dipy",
+  "github_repo": "dipy",
+  "github_teams": [{
+      "value": "core-dev",
+      "label": "Core Developers"
+  }],
+  "contributors_details": contributors
 }
 
 with open('context/context.toml', 'rb') as f:
@@ -449,7 +460,8 @@ html_static_path = ['_static']
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
 html_additional_pages = {
-    "index": "home.html"
+    "index": "home.html",
+    "team": "team.html"
 }
 
 # If false, no module index is generated.
