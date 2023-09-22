@@ -1,0 +1,2430 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> &#8212; Python  documentation</title>
+  
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/css/dipy.css?v=0d03362b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+  
+<link rel="stylesheet" href="_static/styles/grg-sphinx-theme.css"/>
+
+    <script src="_static/documentation_options.js?v=8a448e45"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'team';</script>
+    <link rel="icon" href="_static/dipy-favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dipy-logo.png" class="logo__image only-light" alt="DIPY"/>
+    <script>document.write(`<img src="_static/dipy-logo.png" class="logo__image only-dark" alt="DIPY"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  
+  <ul class="bd-navbar-elements navbar-nav">
+    
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Docs
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org">
+            Quick Start
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/tutorials">
+            Tutorials
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/recipes">
+            Recipes
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/cli">
+            CLI / Workflows
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/reference">
+            API
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/cli/reference">
+            CLI API
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Workshops
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Latest
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2024" target="_blank">
+            DIPY Workshop 2024 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Past
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2023" target="_blank">
+            DIPY Workshop 2023 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2022" target="_blank">
+            DIPY Workshop 2022 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2021" target="_blank">
+            DIPY Workshop 2021 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2020" target="_blank">
+            DIPY Workshop 2020 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2019" target="_blank">
+            DIPY Workshop 2019 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Community
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        News
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://mail.python.org/mailman3/lists/dipy.python.org/" target="_blank">
+            Newsletters <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="blog.html">
+          Blog
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/c/diffusionimaginginpython" target="_blank">
+            Youtube <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Help
+      </p>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="https%3A//app.gitter.im/%23/room/%2523dipy_dipy%3Agitter.im.html">
+          Live Chat (Gitter)
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/dipy/dipy/discussions" target="_blank">
+            Github Discussions <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    About
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          Team
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="faq.html">
+          FAQ
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="mission.html">
+          Mission Statement
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="releases.html">
+          Releases
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="cite.html">
+          Cite
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="glossary.html">
+          Glossary
+        </a>
+      </li>
+                </ul>
+            </li>
+          
+  </ul>
+  
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dipy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/dipymri" title="Twitter/X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter/X</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-youtube"></i></span>
+            <label class="sr-only">YouTube</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/dipy/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-linkedin"></i></span>
+            <label class="sr-only">LinkedIn</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+</div>
+
+</nav>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  
+  <ul class="bd-navbar-elements navbar-nav">
+    
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Docs
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org">
+            Quick Start
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/tutorials">
+            Tutorials
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/recipes">
+            Recipes
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/cli">
+            CLI / Workflows
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/reference">
+            API
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/cli/reference">
+            CLI API
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Workshops
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Latest
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2024" target="_blank">
+            DIPY Workshop 2024 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Past
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2023" target="_blank">
+            DIPY Workshop 2023 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2022" target="_blank">
+            DIPY Workshop 2022 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2021" target="_blank">
+            DIPY Workshop 2021 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2020" target="_blank">
+            DIPY Workshop 2020 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://dipy.org/workshops/dipy-workshop-2019" target="_blank">
+            DIPY Workshop 2019 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Community
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        News
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://mail.python.org/mailman3/lists/dipy.python.org/" target="_blank">
+            Newsletters <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="blog.html">
+          Blog
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/c/diffusionimaginginpython" target="_blank">
+            Youtube <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Help
+      </p>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="https%3A//app.gitter.im/%23/room/%2523dipy_dipy%3Agitter.im.html">
+          Live Chat (Gitter)
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/dipy/dipy/discussions" target="_blank">
+            Github Discussions <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    About
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          Team
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="faq.html">
+          FAQ
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="mission.html">
+          Mission Statement
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="releases.html">
+          Releases
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="cite.html">
+          Cite
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="glossary.html">
+          Glossary
+        </a>
+      </li>
+                </ul>
+            </li>
+          
+  </ul>
+  
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dipy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/dipymri" title="Twitter/X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter/X</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-youtube"></i></span>
+            <label class="sr-only">YouTube</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/dipy/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-linkedin"></i></span>
+            <label class="sr-only">LinkedIn</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+<div class="pad-v-48 pad-h-20">
+  <div class="teams">
+    <h1 class="team-heading"> Meet Our Community! </h1>
+    <h2 class="team-heading"> Our Stats </h2>
+    <div class="team-stats grid-4">
+      <div class="team-stat pad-12">
+        <div class="team-stat-icon mar-r-12">
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <span>
+          <span class="team-stat-value">
+            616
+          </span>
+          Stars
+        </span>
+        <i class="fa-solid fa-star team-stat-background"></i>
+      </div>
+      <div class="team-stat pad-12">
+        <div class="team-stat-icon mar-r-12">
+          <i class="fa-solid fa-code-fork"></i>
+        </div>
+        <span>
+          <span class="team-stat-value">
+            400
+          </span>
+          Forks
+        </span>
+        <i class="fa-solid fa-code-fork team-stat-background"></i>
+      </div>
+      <div class="team-stat pad-12">
+        <div class="team-stat-icon mar-r-12">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <span>
+          <span class="team-stat-value">
+            100
+          </span>
+          Contributors
+        </span>
+        <i class="fa-solid fa-users team-stat-background"></i>
+      </div>
+      <div class="team-stat pad-12">
+        <div class="team-stat-icon mar-r-12">
+          <i class="fa-solid fa-code-commit"></i>
+        </div>
+        <span>
+          <span class="team-stat-value">
+            12798
+          </span>
+          Contributions
+        </span>
+        <i class="fa-solid fa-code-commit team-stat-background"></i>
+      </div>
+    </div>
+    
+    <div class="team">
+      
+        <h2 class="team-heading">Contributors</h2>
+<div class="team-members grid-5">
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/134276?v=4" alt="">
+    </div>
+    <a href="https://github.com/Garyfallidis" target="_blank">
+      <p class="team-member-login mar-t-10">Eleftherios Garyfallidis</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 2594
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/118582?v=4" alt="">
+    </div>
+    <a href="https://github.com/arokem" target="_blank">
+      <p class="team-member-login mar-t-10">Ariel Rokem</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 1955
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/23106443?v=4" alt="">
+    </div>
+    <a href="https://github.com/skoudoro" target="_blank">
+      <p class="team-member-login mar-t-10">Serge Koudoro</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 1541
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/67612?v=4" alt="">
+    </div>
+    <a href="https://github.com/matthew-brett" target="_blank">
+      <p class="team-member-login mar-t-10">Matthew Brett</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 564
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/5492638?v=4" alt="">
+    </div>
+    <a href="https://github.com/RafaelNH" target="_blank">
+      <p class="team-member-login mar-t-10">RafaelNH</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 502
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/223219?v=4" alt="">
+    </div>
+    <a href="https://github.com/MrBago" target="_blank">
+      <p class="team-member-login mar-t-10">Bago Amirbekian</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 472
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/702455?v=4" alt="">
+    </div>
+    <a href="https://github.com/gabknight" target="_blank">
+      <p class="team-member-login mar-t-10">gabknight</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 396
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/1608583?v=4" alt="">
+    </div>
+    <a href="https://github.com/omarocegueda" target="_blank">
+      <p class="team-member-login mar-t-10">Omar Ocegueda</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 381
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/26060471?v=4" alt="">
+    </div>
+    <a href="https://github.com/BramshQamar" target="_blank">
+      <p class="team-member-login mar-t-10">BramshQamar</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 266
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/3030760?v=4" alt="">
+    </div>
+    <a href="https://github.com/samuelstjean" target="_blank">
+      <p class="team-member-login mar-t-10">Samuel St-Jean</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 232
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/17598557?v=4" alt="">
+    </div>
+    <a href="https://github.com/ShreyasFadnavis" target="_blank">
+      <p class="team-member-login mar-t-10">ShreyasFadnavis</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 231
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/5576557?v=4" alt="">
+    </div>
+    <a href="https://github.com/jhlegarreta" target="_blank">
+      <p class="team-member-login mar-t-10">jhlegarreta</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 206
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/660004?v=4" alt="">
+    </div>
+    <a href="https://github.com/MarcCote" target="_blank">
+      <p class="team-member-login mar-t-10">Marc Alexandre Cote</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 206
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/47002808?v=4" alt="">
+    </div>
+    <a href="https://github.com/karanphil" target="_blank">
+      <p class="team-member-login mar-t-10">karanphil</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 186
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/9929496?v=4" alt="">
+    </div>
+    <a href="https://github.com/guaje" target="_blank">
+      <p class="team-member-login mar-t-10">guaje</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 161
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/9418732?v=4" alt="">
+    </div>
+    <a href="https://github.com/rutgerfick" target="_blank">
+      <p class="team-member-login mar-t-10">rutgerfick</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 154
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/6968324?v=4" alt="">
+    </div>
+    <a href="https://github.com/quantshah" target="_blank">
+      <p class="team-member-login mar-t-10">quantshah</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 146
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/135324?v=4" alt="">
+    </div>
+    <a href="https://github.com/iannimmosmith" target="_blank">
+      <p class="team-member-login mar-t-10">iannimmosmith</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 145
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/5042250?v=4" alt="">
+    </div>
+    <a href="https://github.com/maurozucchelli" target="_blank">
+      <p class="team-member-login mar-t-10">maurozucchelli</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 141
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/1280738?v=4" alt="">
+    </div>
+    <a href="https://github.com/matthieudumont" target="_blank">
+      <p class="team-member-login mar-t-10">matthieudumont</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 111
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/4043251?v=4" alt="">
+    </div>
+    <a href="https://github.com/kesshijordan" target="_blank">
+      <p class="team-member-login mar-t-10">kesshijordan</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 103
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/45071?v=4" alt="">
+    </div>
+    <a href="https://github.com/stefanv" target="_blank">
+      <p class="team-member-login mar-t-10">Stefan Van der Walt</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 101
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/3941281?v=4" alt="">
+    </div>
+    <a href="https://github.com/ranveeraggarwal" target="_blank">
+      <p class="team-member-login mar-t-10">Ranveer Aggarwal</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 98
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/2170887?v=4" alt="">
+    </div>
+    <a href="https://github.com/mdesco" target="_blank">
+      <p class="team-member-login mar-t-10">mdesco</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 95
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/47823200?v=4" alt="">
+    </div>
+    <a href="https://github.com/kenjimarshall" target="_blank">
+      <p class="team-member-login mar-t-10">kenjimarshall</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 80
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/7941975?v=4" alt="">
+    </div>
+    <a href="https://github.com/riddhishb" target="_blank">
+      <p class="team-member-login mar-t-10">riddhishb</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 78
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/15914400?v=4" alt="">
+    </div>
+    <a href="https://github.com/tomdelahaije" target="_blank">
+      <p class="team-member-login mar-t-10">tomdelahaije</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 72
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/12007458?v=4" alt="">
+    </div>
+    <a href="https://github.com/parichit" target="_blank">
+      <p class="team-member-login mar-t-10">parichit</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 65
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/24621165?v=4" alt="">
+    </div>
+    <a href="https://github.com/karandeepSJ" target="_blank">
+      <p class="team-member-login mar-t-10">Karandeep  Singh Juneja</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 64
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/5156787?v=4" alt="">
+    </div>
+    <a href="https://github.com/ghoshbishakh" target="_blank">
+      <p class="team-member-login mar-t-10">ghoshbishakh</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 55
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/242450?v=4" alt="">
+    </div>
+    <a href="https://github.com/cnguyen" target="_blank">
+      <p class="team-member-login mar-t-10">Christopher Nguyen</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 53
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/25680429?v=4" alt="">
+    </div>
+    <a href="https://github.com/RicciWoo" target="_blank">
+      <p class="team-member-login mar-t-10">RicciWoo</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 51
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/72646134?v=4" alt="">
+    </div>
+    <a href="https://github.com/shilpiprd" target="_blank">
+      <p class="team-member-login mar-t-10">shilpiprd</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 51
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/14291421?v=4" alt="">
+    </div>
+    <a href="https://github.com/stephanmeesters" target="_blank">
+      <p class="team-member-login mar-t-10">stephanmeesters</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 50
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/60397198?v=4" alt="">
+    </div>
+    <a href="https://github.com/pjsjongsung" target="_blank">
+      <p class="team-member-login mar-t-10">pjsjongsung</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 49
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/15076450?v=4" alt="">
+    </div>
+    <a href="https://github.com/kerkelae" target="_blank">
+      <p class="team-member-login mar-t-10">kerkelae</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 48
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/1086934?v=4" alt="">
+    </div>
+    <a href="https://github.com/etpeterson" target="_blank">
+      <p class="team-member-login mar-t-10">etpeterson</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 45
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/50577357?v=4" alt="">
+    </div>
+    <a href="https://github.com/drombas" target="_blank">
+      <p class="team-member-login mar-t-10">drombas</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 44
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/5375393?v=4" alt="">
+    </div>
+    <a href="https://github.com/StongeEtienne" target="_blank">
+      <p class="team-member-login mar-t-10">Etienne St-Onge</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 43
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/6528957?v=4" alt="">
+    </div>
+    <a href="https://github.com/grlee77" target="_blank">
+      <p class="team-member-login mar-t-10">Gregory R. Lee</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 41
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/11508365?v=4" alt="">
+    </div>
+    <a href="https://github.com/villalonreina" target="_blank">
+      <p class="team-member-login mar-t-10">villalonreina</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 38
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/2151032?v=4" alt="">
+    </div>
+    <a href="https://github.com/jchoude" target="_blank">
+      <p class="team-member-login mar-t-10">jchoude</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 37
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/10598660?v=4" alt="">
+    </div>
+    <a href="https://github.com/manu-tej" target="_blank">
+      <p class="team-member-login mar-t-10">manu-tej</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 35
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/4314261?v=4" alt="">
+    </div>
+    <a href="https://github.com/souravsingh" target="_blank">
+      <p class="team-member-login mar-t-10">souravsingh</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 34
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/32108826?v=4" alt="">
+    </div>
+    <a href="https://github.com/nasimanousheh" target="_blank">
+      <p class="team-member-login mar-t-10">nasimanousheh</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 33
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/41654474?v=4" alt="">
+    </div>
+    <a href="https://github.com/CHrlS98" target="_blank">
+      <p class="team-member-login mar-t-10">CHrlS98</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 32
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/49655443?v=4" alt="">
+    </div>
+    <a href="https://github.com/pcamach2" target="_blank">
+      <p class="team-member-login mar-t-10">pcamach2</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 29
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/25536866?v=4" alt="">
+    </div>
+    <a href="https://github.com/thechargedneutron" target="_blank">
+      <p class="team-member-login mar-t-10">thechargedneutron</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 28
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/6951528?v=4" alt="">
+    </div>
+    <a href="https://github.com/dmreagan" target="_blank">
+      <p class="team-member-login mar-t-10">David Reagan</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 27
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/15790535?v=4" alt="">
+    </div>
+    <a href="https://github.com/GuillaumeTh" target="_blank">
+      <p class="team-member-login mar-t-10">GuillaumeTh</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 27
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/17141407?v=4" alt="">
+    </div>
+    <a href="https://github.com/ShubhamShaswat" target="_blank">
+      <p class="team-member-login mar-t-10">ShubhamShaswat</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 27
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/15256161?v=4" alt="">
+    </div>
+    <a href="https://github.com/aarya22" target="_blank">
+      <p class="team-member-login mar-t-10">aarya22</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 26
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/45635305?v=4" alt="">
+    </div>
+    <a href="https://github.com/DenebBoito" target="_blank">
+      <p class="team-member-login mar-t-10">DenebBoito</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 25
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/5428237?v=4" alt="">
+    </div>
+    <a href="https://github.com/dimrozakis" target="_blank">
+      <p class="team-member-login mar-t-10">dimrozakis</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 25
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/3774685?v=4" alt="">
+    </div>
+    <a href="https://github.com/fnery" target="_blank">
+      <p class="team-member-login mar-t-10">fnery</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 25
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/36035718?v=4" alt="">
+    </div>
+    <a href="https://github.com/kunakl07" target="_blank">
+      <p class="team-member-login mar-t-10">kunakl07</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 23
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/24654457?v=4" alt="">
+    </div>
+    <a href="https://github.com/areeshatariq" target="_blank">
+      <p class="team-member-login mar-t-10">areeshatariq</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 21
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/9362627?v=4" alt="">
+    </div>
+    <a href="https://github.com/ssheybani" target="_blank">
+      <p class="team-member-login mar-t-10">ssheybani</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 20
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/7998437?v=4" alt="">
+    </div>
+    <a href="https://github.com/ChantalTax" target="_blank">
+      <p class="team-member-login mar-t-10">ChantalTax</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 19
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/2658640?v=4" alt="">
+    </div>
+    <a href="https://github.com/nilgoyette" target="_blank">
+      <p class="team-member-login mar-t-10">nilgoyette</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 19
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/19683485?v=4" alt="">
+    </div>
+    <a href="https://github.com/samcoveney" target="_blank">
+      <p class="team-member-login mar-t-10">samcoveney</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 19
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/1688456?v=4" alt="">
+    </div>
+    <a href="https://github.com/ajnirp" target="_blank">
+      <p class="team-member-login mar-t-10">ajnirp</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 17
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/2365790?v=4" alt="">
+    </div>
+    <a href="https://github.com/larsoner" target="_blank">
+      <p class="team-member-login mar-t-10">larsoner</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 16
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/39889?v=4" alt="">
+    </div>
+    <a href="https://github.com/yarikoptic" target="_blank">
+      <p class="team-member-login mar-t-10">Yaroslav Halchenko</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 16
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/42465606?v=4" alt="">
+    </div>
+    <a href="https://github.com/lb-97" target="_blank">
+      <p class="team-member-login mar-t-10">lb-97</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 16
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/10425834?v=4" alt="">
+    </div>
+    <a href="https://github.com/aaossa" target="_blank">
+      <p class="team-member-login mar-t-10">aaossa</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 15
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/5142539?v=4" alt="">
+    </div>
+    <a href="https://github.com/j1c" target="_blank">
+      <p class="team-member-login mar-t-10">j1c</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 15
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/272705?v=4" alt="">
+    </div>
+    <a href="https://github.com/demianw" target="_blank">
+      <p class="team-member-login mar-t-10">demianw</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 14
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/2924358?v=4" alt="">
+    </div>
+    <a href="https://github.com/mpaquette" target="_blank">
+      <p class="team-member-login mar-t-10">mpaquette</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 13
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/40817931?v=4" alt="">
+    </div>
+    <a href="https://github.com/ShrishtiHore" target="_blank">
+      <p class="team-member-login mar-t-10">ShrishtiHore</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 13
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/6035284?v=4" alt="">
+    </div>
+    <a href="https://github.com/Borda" target="_blank">
+      <p class="team-member-login mar-t-10">Jiri Borovec</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 13
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/23035831?v=4" alt="">
+    </div>
+    <a href="https://github.com/sidkapoor97" target="_blank">
+      <p class="team-member-login mar-t-10">sidkapoor97</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 12
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/3234522?v=4" alt="">
+    </div>
+    <a href="https://github.com/DimitriPapadopoulos" target="_blank">
+      <p class="team-member-login mar-t-10">DimitriPapadopoulos</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 12
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/9562159?v=4" alt="">
+    </div>
+    <a href="https://github.com/36000" target="_blank">
+      <p class="team-member-login mar-t-10">36000</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 12
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/20140049?v=4" alt="">
+    </div>
+    <a href="https://github.com/maldil" target="_blank">
+      <p class="team-member-login mar-t-10">maldil</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 11
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/13334205?v=4" alt="">
+    </div>
+    <a href="https://github.com/DanNBullock" target="_blank">
+      <p class="team-member-login mar-t-10">DanNBullock</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 10
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/50950962?v=4" alt="">
+    </div>
+    <a href="https://github.com/MNagtegaal" target="_blank">
+      <p class="team-member-login mar-t-10">MNagtegaal</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 10
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/32598699?v=4" alt="">
+    </div>
+    <a href="https://github.com/ArjitJ" target="_blank">
+      <p class="team-member-login mar-t-10">ArjitJ</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 9
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/87531?v=4" alt="">
+    </div>
+    <a href="https://github.com/albayenes" target="_blank">
+      <p class="team-member-login mar-t-10">Enes Albay</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 9
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/4490996?v=4" alt="">
+    </div>
+    <a href="https://github.com/klchan13" target="_blank">
+      <p class="team-member-login mar-t-10">klchan13</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 9
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/6640901?v=4" alt="">
+    </div>
+    <a href="https://github.com/takhs91" target="_blank">
+      <p class="team-member-login mar-t-10">takhs91</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 8
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/7247332?v=4" alt="">
+    </div>
+    <a href="https://github.com/baranaydogan" target="_blank">
+      <p class="team-member-login mar-t-10">baranaydogan</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 8
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/10272382?v=4" alt="">
+    </div>
+    <a href="https://github.com/AntoineTheb" target="_blank">
+      <p class="team-member-login mar-t-10">AntoineTheb</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 7
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/52179159?v=4" alt="">
+    </div>
+    <a href="https://github.com/Lawreros" target="_blank">
+      <p class="team-member-login mar-t-10">Lawreros</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 7
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/29939343?v=4" alt="">
+    </div>
+    <a href="https://github.com/scott-trinkle" target="_blank">
+      <p class="team-member-login mar-t-10">scott-trinkle</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 7
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/5297061?v=4" alt="">
+    </div>
+    <a href="https://github.com/sinkpoint" target="_blank">
+      <p class="team-member-login mar-t-10">sinkpoint</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 6
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/2488038?v=4" alt="">
+    </div>
+    <a href="https://github.com/sitek" target="_blank">
+      <p class="team-member-login mar-t-10">sitek</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 6
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/3196357?v=4" alt="">
+    </div>
+    <a href="https://github.com/raamana" target="_blank">
+      <p class="team-member-login mar-t-10">raamana</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 6
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/39947025?v=4" alt="">
+    </div>
+    <a href="https://github.com/maharshi-gor" target="_blank">
+      <p class="team-member-login mar-t-10">maharshi-gor</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 6
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/6340353?v=4" alt="">
+    </div>
+    <a href="https://github.com/gauvinalexandre" target="_blank">
+      <p class="team-member-login mar-t-10">Alexander Gauvin</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 5
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/1155388?v=4" alt="">
+    </div>
+    <a href="https://github.com/bpinsard" target="_blank">
+      <p class="team-member-login mar-t-10">bpinsard</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 5
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/24297229?v=4" alt="">
+    </div>
+    <a href="https://github.com/davhunt" target="_blank">
+      <p class="team-member-login mar-t-10">davhunt</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 5
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/69366?v=4" alt="">
+    </div>
+    <a href="https://github.com/emanuele" target="_blank">
+      <p class="team-member-login mar-t-10">emanuele</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 5
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/4967417?v=4" alt="">
+    </div>
+    <a href="https://github.com/EmmaRenauld" target="_blank">
+      <p class="team-member-login mar-t-10">EmmaRenauld</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 5
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/17726755?v=4" alt="">
+    </div>
+    <a href="https://github.com/sarathknv" target="_blank">
+      <p class="team-member-login mar-t-10">sarathknv</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 5
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/7388379?v=4" alt="">
+    </div>
+    <a href="https://github.com/clintg6" target="_blank">
+      <p class="team-member-login mar-t-10">clintg6</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 4
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/20837136?v=4" alt="">
+    </div>
+    <a href="https://github.com/giulia-berto" target="_blank">
+      <p class="team-member-login mar-t-10">giulia-berto</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 4
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/45444800?v=4" alt="">
+    </div>
+    <a href="https://github.com/lcscosta" target="_blank">
+      <p class="team-member-login mar-t-10">lcscosta</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 4
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/139282?v=4" alt="">
+    </div>
+    <a href="https://github.com/mekman" target="_blank">
+      <p class="team-member-login mar-t-10">mekman</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 4
+    </p>
+    
+  </div>
+  
+  <div class="team-member pad-20">
+    <div class="team-member-img">
+      <img src="https://avatars.githubusercontent.com/u/9817962?v=4" alt="">
+    </div>
+    <a href="https://github.com/theaverageguy" target="_blank">
+      <p class="team-member-login mar-t-10">Yash Sherry</p>
+    </a>
+    
+    <p class="team-member-contribution mar-t-10">
+      <i class="fa-solid fa-code-commit"></i> 4
+    </p>
+    
+  </div>
+  
+</div>
+      
+    </div>
+  </div>
+</div>
+
+      </main>
+    </div>
+  </div>
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  
+<script type="module" src="_static/scripts/grg-sphinx-theme.js"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><div>
+  <h3 class="footer-heading">
+    Never miss an update from us!
+  </h3>
+  <p class="footer-sub-heading">
+    Don't worry! we are not going to spam you.
+  </p>
+  <div class="input-group mb-3 mar-t-10">
+    <input type="text" class="form-control" placeholder="You email" aria-label="You email">
+    <div class="input-group-append">
+      <span class="input-group-text subscribe">Subscribe</span>
+    </div>
+  </div>  
+  <ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dipy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/dipymri" title="Twitter/X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter/X</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-youtube"></i></span>
+            <label class="sr-only">YouTube</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/dipy/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-linkedin"></i></span>
+            <label class="sr-only">LinkedIn</label></a>
+        </li>
+</ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="grid-3">
+  
+  <div>
+    <h5 class="footer-heading">
+      About
+    </h5>
+    <ul class="footer-section">
+      
+        
+        <li class="pad-v-5">
+          <a href="#">
+            Developers
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https%3A//github.com/dipy/dipy/discussions.html">
+            Support
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="installation.html">
+            Download
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https%3A//dipy.org/contributors/.html">
+            Get Started
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https%3A//docs.dipy.org/tutorials/.html">
+            Tutorials
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https%3A//www.youtube.com/c/diffusionimaginginpython.html">
+            Videos
+          </a>
+        </li>
+        
+      
+    </ul>
+  </div>
+  
+  <div>
+    <h5 class="footer-heading">
+      Friends
+    </h5>
+    <ul class="footer-section">
+      
+        
+        <li class="pad-v-5">
+          <a href="http%3A//nipy.org/.html">
+            Nipy Projects
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="http%3A//fury.gl/.html">
+            FURY
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="http%3A//nipy.org/nibabel.html">
+            Nibabel
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https%3A//tortoise.nibib.nih.gov/.html">
+            Tortoise
+          </a>
+        </li>
+        
+      
+    </ul>
+  </div>
+  
+  <div>
+    <h5 class="footer-heading">
+      Support
+    </h5>
+    <ul class="footer-section">
+      
+        
+        <li class="pad-v-5">
+          <a href="https%3A//engineering.indiana.edu/.html">
+            The department of Intelligent Systems Engineering of Indiana University
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https%3A//www.nibib.nih.gov/.html">
+            The National Institute of Biomedical Imaging and Bioengineering, NIH
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https%3A//escience.washington.edu/tag/alfred-p-sloan-foundation/.html">
+            The Gordon and Betty Moore Foundation and the Alfred P. Sloan Foundation, through the University of Washington eScience Institute Data Science Environment
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https%3A//summerofcode.withgoogle.com/.html">
+            Google supported DIPY through the Google Summer of Code Program during Summer 2015, 2016, 2018
+          </a>
+        </li>
+        
+      
+    </ul>
+  </div>
+  
+</div></div>
+      
+    </div>
+  
+</div>
+
+    <div class="copyright-text">
+      <i class="fa-regular fa-copyright"></i> Copyright 2008-2023, DIPY developers. Created using Grg Sphinx Theme and PyData Sphinx Theme.
+    </div>
+  </footer>
+  </body>
+</html>

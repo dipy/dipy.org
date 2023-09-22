@@ -1,6 +1,6 @@
 /* Customizing the navbar dropdown */
 .bd-header .navbar-nav .dropdown .dropdown-menu {
-  box-shadow: var(--pst-shadow);
+  box-shadow: var(--gst-shadow);
   border: 0;
   animation: 0.1s slideDown;
   min-width: 10rem;
@@ -26,7 +26,7 @@ ol li>p:first-child, ul li>p:first-child {
 
 .nav-section-title.nav-link,
 .bd-sidebar-primary .nav-section-title.nav-link {
-  color: var(--pst-color-text-muted);
+  color: var(--gst-color-section-heading);
   font-weight: bold;
 }
 
@@ -34,9 +34,8 @@ ol li>p:first-child, ul li>p:first-child {
   border-top: 1px solid var(--gst-color-border);
 }
 
-.nav-link.nav-external:after {
-  transform: rotate(-45deg);
-  color: var(--pst-color-shadow);
+.nav-link i.external-icon {
+  transform: rotate(45deg);
 }
 
 .dropdown-toggle:after {

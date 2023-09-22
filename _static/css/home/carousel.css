@@ -18,7 +18,7 @@
   top: 40px;
   left: 0;
   background-color: var(--gst-color-primary);
-  box-shadow: var(--pst-shadow);
+  box-shadow: var(--gst-shadow);
 }
 
 .carousel-caption::after {
