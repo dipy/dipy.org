@@ -174,38 +174,48 @@ html_theme_options = {
      },
      {
         "name": "Workshops",
-        "children": [
+        "sections": [
           {
-            "name": "DIPY Workshop 2024",
-            "url": "https://dipy.org/workshops/dipy-workshop-2024",
-            "link_type": "external"
+            "name": "Latest",
+            "children": [
+              {
+                "name": "DIPY Workshop 2024",
+                "url": "https://dipy.org/workshops/dipy-workshop-2024",
+                "link_type": "external"
+              }
+            ]
           },
           {
-            "name": "DIPY Workshop 2023",
-            "url": "https://dipy.org/workshops/dipy-workshop-2023",
-            "link_type": "external"
-          },
-          {
-            "name": "DIPY Workshop 2022",
-            "url": "https://dipy.org/workshops/dipy-workshop-2022",
-            "link_type": "external"
-          },
-          {
-            "name": "DIPY Workshop 2021",
-            "url": "https://dipy.org/workshops/dipy-workshop-2021",
-            "link_type": "external"
-          },
-          {
-            "name": "DIPY Workshop 2020",
-            "url": "https://dipy.org/workshops/dipy-workshop-2020",
-            "link_type": "external"
-          },
-          {
-            "name": "DIPY Workshop 2019",
-            "url": "https://dipy.org/workshops/dipy-workshop-2019",
-            "link_type": "external"
-          },
-        ]
+            "name": "Past",
+            "children": [
+              {
+                "name": "DIPY Workshop 2023",
+                "url": "https://dipy.org/workshops/dipy-workshop-2023",
+                "link_type": "external"
+              },
+              {
+                "name": "DIPY Workshop 2022",
+                "url": "https://dipy.org/workshops/dipy-workshop-2022",
+                "link_type": "external"
+              },
+              {
+                "name": "DIPY Workshop 2021",
+                "url": "https://dipy.org/workshops/dipy-workshop-2021",
+                "link_type": "external"
+              },
+              {
+                "name": "DIPY Workshop 2020",
+                "url": "https://dipy.org/workshops/dipy-workshop-2020",
+                "link_type": "external"
+              },
+              {
+                "name": "DIPY Workshop 2019",
+                "url": "https://dipy.org/workshops/dipy-workshop-2019",
+                "link_type": "external"
+              },
+            ]
+          }
+        ],
      },
      {
         "name": "Community",
@@ -215,7 +225,7 @@ html_theme_options = {
               "children": [
                   {
                     "name": "Newsletters",
-                    "url": "",
+                    "url": "https://mail.python.org/mailman3/lists/dipy.python.org/",
                     "link_type": "external"
                   },
                   {
@@ -224,7 +234,7 @@ html_theme_options = {
                   },
                   {
                     "name": "Youtube",
-                    "url": "blog",
+                    "url": "https://www.youtube.com/c/diffusionimaginginpython",
                     "link_type": "external"
                   }
               ]
@@ -234,16 +244,17 @@ html_theme_options = {
               "children": [
                   {
                     "name": "Live Chat (Gitter)",
-                    "url": ""
+                    "url": "https://app.gitter.im/#/room/%23dipy_dipy:gitter.im",
+                    "external": True
                   },
                   {
                     "name": "Github Discussions",
-                    "url": "",
+                    "url": "https://github.com/dipy/dipy/discussions",
                     "link_type": "external"
                   }
               ]
             }
-        ]
+          ]
      },
      {
         "name": "About",
@@ -315,15 +326,16 @@ html_theme_options = {
       "links": [
         {
           "name": "Developers",
-          "link": "https://dipy.org/contributors/"
+          "link": "team"
         },
         {
           "name": "Support",
-          "link": "https://dipy.org/contributors/"
+          "link": "https://github.com/dipy/dipy/discussions",
+          "link_type": "external"
         },
         {
           "name": "Download",
-          "link": "https://dipy.org/contributors/"
+          "link": "installation"
         },
         {
           "name": "Get Started",
@@ -331,11 +343,13 @@ html_theme_options = {
         },
         {
           "name": "Tutorials",
-          "link": "https://dipy.org/contributors/"
+          "link": "https://docs.dipy.org/tutorials/",
+          "link_type": "external"
         },
         {
           "name": "Videos",
-          "link": "https://dipy.org/contributors/"
+          "link": "https://www.youtube.com/c/diffusionimaginginpython",
+          "link_type": "external"
         },
       ]
     }, {
@@ -343,23 +357,23 @@ html_theme_options = {
       "links": [
         {
           "name": "Nipy Projects",
-          "link": "",
-          "external": True
+          "link": "http://nipy.org/",
+          "link_type": "external"
         },
         {
           "name": "FURY",
-          "link": "",
-          "external": True
+          "link": "http://fury.gl/",
+          "link_type": "external"
         },
         {
           "name": "Nibabel",
-          "link": "",
-          "external": True
+          "link": "http://nipy.org/nibabel",
+          "link_type": "external"
         },
         {
           "name": "Tortoise",
-          "link": "",
-          "external": True
+          "link": "https://tortoise.nibib.nih.gov/",
+          "link_type": "external"
         },
       ]
     }, {
@@ -367,23 +381,23 @@ html_theme_options = {
       "links": [
         {
           "name": "The department of Intelligent Systems Engineering of Indiana University",
-          "link": "",
-          "external": True
+          "link": "https://engineering.indiana.edu/",
+          "link_type": "external"
         },
         {
           "name": "The National Institute of Biomedical Imaging and Bioengineering, NIH",
-          "link": "",
-          "external": True
+          "link": "https://www.nibib.nih.gov/",
+          "link_type": "external"
         },
         {
           "name": "The Gordon and Betty Moore Foundation and the Alfred P. Sloan Foundation, through the University of Washington eScience Institute Data Science Environment",
-          "link": "",
-          "external": True
+          "link": "https://escience.washington.edu/tag/alfred-p-sloan-foundation/",
+          "link_type": "external"
         },
         {
           "name": "Google supported DIPY through the Google Summer of Code Program during Summer 2015, 2016, 2018",
-          "link": "",
-          "external": True
+          "link": "https://summerofcode.withgoogle.com/",
+          "link_type": "external"
         },
       ]
     }
