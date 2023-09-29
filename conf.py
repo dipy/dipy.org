@@ -120,6 +120,10 @@ pygments_style = 'sphinx'
 # Sphinx are currently 'default' and 'sphinxdoc'.
 html_theme = "grg_sphinx_theme"
 
+html_js_files = [
+    'js/dipy.js'
+]
+
 # The style sheet to use for HTML and HTML Help pages. A file of that name
 # must exist either in Sphinx' static/ path, or in one of the custom paths
 # given in html_static_path.
@@ -245,7 +249,7 @@ html_theme_options = {
                   {
                     "name": "Live Chat (Gitter)",
                     "url": "https://app.gitter.im/#/room/%23dipy_dipy:gitter.im",
-                    "external": True
+                    "link_type": "external"
                   },
                   {
                     "name": "Github Discussions",
@@ -335,16 +339,18 @@ html_theme_options = {
         },
         {
           "name": "Download",
-          "link": "installation"
+          "link": "https://dipy.org/installation",
+          "link_type": "inter"
         },
         {
           "name": "Get Started",
-          "link": "https://dipy.org/contributors/"
+          "link": "https://dipy.org/contributors/",
+          "link_type": "inter"
         },
         {
           "name": "Tutorials",
           "link": "https://docs.dipy.org/tutorials/",
-          "link_type": "external"
+          "link_type": "inter"
         },
         {
           "name": "Videos",
@@ -409,8 +415,11 @@ html_theme_options = {
       "value": "core-dev",
       "label": "Core Developers"
   }],
-  "contributors_details": contributors
+  "contributors_details": contributors,
+  "subscribe_callback": "subscriptionClick"
 }
+
+
 
 with open('context/context.toml', 'rb') as f:
     config = tomllib.load(f)
