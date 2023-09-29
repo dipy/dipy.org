@@ -228,6 +228,10 @@ html_theme_options = {
               "name": "News",
               "children": [
                   {
+                    "name": "Calendar",
+                    "url": "calendar",
+                  },
+                  {
                     "name": "Newsletters",
                     "url": "https://mail.python.org/mailman3/lists/dipy.python.org/",
                     "link_type": "external"
@@ -464,7 +468,14 @@ html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = {'index': 'indexsidebar.html'}
+html_sidebars = {'blog': [
+          'ablog/postcard.html', 'ablog/recentposts.html',
+          'ablog/tagcloud.html', 'ablog/categories.html',
+          'ablog/archives.html', ],
+          'posts/**': [
+          'ablog/postcard.html', 'ablog/recentposts.html',
+          'ablog/tagcloud.html', 'ablog/categories.html',
+          'ablog/archives.html', ]}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
