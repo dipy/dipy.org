@@ -29,7 +29,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/dipy.css?v=0d03362b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/dipy.css?v=2cbe46a9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
@@ -42,6 +42,7 @@
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'blog/tag';</script>
+    <script src="../_static/js/dipy.js?v=4b4dfe59"></script>
     <link rel="icon" href="../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -253,6 +254,12 @@
       </p>
     </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="../calendar.html">
+          Calendar
+        </a>
+      </li>
+
         <li class="nav-item">
           <a class="nav-link" href="https://mail.python.org/mailman3/lists/dipy.python.org/" target="_blank">
             Newsletters <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
@@ -277,11 +284,11 @@
       </p>
     </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="../https%3A//app.gitter.im/%23/room/%2523dipy_dipy%3Agitter.im.html">
-          Live Chat (Gitter)
-        </a>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://app.gitter.im/#/room/%23dipy_dipy:gitter.im" target="_blank">
+            Live Chat (Gitter) <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/dipy/dipy/discussions" target="_blank">
@@ -555,6 +562,12 @@ document.write(`
       </p>
     </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="../calendar.html">
+          Calendar
+        </a>
+      </li>
+
         <li class="nav-item">
           <a class="nav-link" href="https://mail.python.org/mailman3/lists/dipy.python.org/" target="_blank">
             Newsletters <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
@@ -579,11 +592,11 @@ document.write(`
       </p>
     </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="../https%3A//app.gitter.im/%23/room/%2523dipy_dipy%3Agitter.im.html">
-          Live Chat (Gitter)
-        </a>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://app.gitter.im/#/room/%23dipy_dipy:gitter.im" target="_blank">
+            Live Chat (Gitter) <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/dipy/dipy/discussions" target="_blank">
@@ -1103,8 +1116,8 @@ document.write(`
     Don't worry! we are not going to spam you.
   </p>
   <div class="input-group mb-3 mar-t-10">
-    <input type="text" class="form-control" placeholder="You email" aria-label="You email">
-    <div class="input-group-append">
+    <input type="text" class="form-control" placeholder="You email" aria-label="You email" id="grg-subscribe-email">
+    <div class="input-group-append pointer" onclick="subscriptionClick(document.getElementById('grg-subscribe-email').value)">
       <span class="input-group-text subscribe">Subscribe</span>
     </div>
   </div>  
@@ -1184,15 +1197,16 @@ document.write(`
       
         
         <li class="pad-v-5">
-          <a href="../https%3A//github.com/dipy/dipy/discussions.html">
+          <a href="https://github.com/dipy/dipy/discussions" target="_blank" rel="noopener noreferrer">
             Support
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
           </a>
         </li>
         
       
         
         <li class="pad-v-5">
-          <a href="../installation.html">
+          <a href="https://dipy.org/installation">
             Download
           </a>
         </li>
@@ -1200,7 +1214,7 @@ document.write(`
       
         
         <li class="pad-v-5">
-          <a href="../https%3A//dipy.org/contributors/.html">
+          <a href="https://dipy.org/contributors/">
             Get Started
           </a>
         </li>
@@ -1208,7 +1222,7 @@ document.write(`
       
         
         <li class="pad-v-5">
-          <a href="../https%3A//docs.dipy.org/tutorials/.html">
+          <a href="https://docs.dipy.org/tutorials/">
             Tutorials
           </a>
         </li>
@@ -1216,8 +1230,9 @@ document.write(`
       
         
         <li class="pad-v-5">
-          <a href="../https%3A//www.youtube.com/c/diffusionimaginginpython.html">
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" target="_blank" rel="noopener noreferrer">
             Videos
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
           </a>
         </li>
         
@@ -1233,32 +1248,36 @@ document.write(`
       
         
         <li class="pad-v-5">
-          <a href="../http%3A//nipy.org/.html">
+          <a href="http://nipy.org/" target="_blank" rel="noopener noreferrer">
             Nipy Projects
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
           </a>
         </li>
         
       
         
         <li class="pad-v-5">
-          <a href="../http%3A//fury.gl/.html">
+          <a href="http://fury.gl/" target="_blank" rel="noopener noreferrer">
             FURY
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
           </a>
         </li>
         
       
         
         <li class="pad-v-5">
-          <a href="../http%3A//nipy.org/nibabel.html">
+          <a href="http://nipy.org/nibabel" target="_blank" rel="noopener noreferrer">
             Nibabel
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
           </a>
         </li>
         
       
         
         <li class="pad-v-5">
-          <a href="../https%3A//tortoise.nibib.nih.gov/.html">
+          <a href="https://tortoise.nibib.nih.gov/" target="_blank" rel="noopener noreferrer">
             Tortoise
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
           </a>
         </li>
         
@@ -1274,32 +1293,36 @@ document.write(`
       
         
         <li class="pad-v-5">
-          <a href="../https%3A//engineering.indiana.edu/.html">
+          <a href="https://engineering.indiana.edu/" target="_blank" rel="noopener noreferrer">
             The department of Intelligent Systems Engineering of Indiana University
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
           </a>
         </li>
         
       
         
         <li class="pad-v-5">
-          <a href="../https%3A//www.nibib.nih.gov/.html">
+          <a href="https://www.nibib.nih.gov/" target="_blank" rel="noopener noreferrer">
             The National Institute of Biomedical Imaging and Bioengineering, NIH
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
           </a>
         </li>
         
       
         
         <li class="pad-v-5">
-          <a href="../https%3A//escience.washington.edu/tag/alfred-p-sloan-foundation/.html">
+          <a href="https://escience.washington.edu/tag/alfred-p-sloan-foundation/" target="_blank" rel="noopener noreferrer">
             The Gordon and Betty Moore Foundation and the Alfred P. Sloan Foundation, through the University of Washington eScience Institute Data Science Environment
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
           </a>
         </li>
         
       
         
         <li class="pad-v-5">
-          <a href="../https%3A//summerofcode.withgoogle.com/.html">
+          <a href="https://summerofcode.withgoogle.com/" target="_blank" rel="noopener noreferrer">
             Google supported DIPY through the Google Summer of Code Program during Summer 2015, 2016, 2018
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
           </a>
         </li>
         
