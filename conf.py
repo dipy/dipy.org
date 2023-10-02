@@ -146,32 +146,32 @@ html_theme_options = {
         "children": [
           {
             "name": "Quick Start",
-            "url": "https://docs.dipy.org",
+            "url": "https://docs.dipy.org/stable",
             "link_type": "inter"
           },
           {
             "name": "Tutorials",
-            "url": "https://docs.dipy.org/tutorials",
+            "url": "https://docs.dipy.org/stable/examples_built/index",
             "link_type": "inter"
           },
           {
             "name": "Recipes",
-            "url": "https://docs.dipy.org/recipes",
+            "url": "https://docs.dipy.org/stable/recipes",
             "link_type": "inter"
           },
           {
             "name": "CLI / Workflows",
-            "url": "https://docs.dipy.org/cli",
+            "url": "https://docs.dipy.org/stable/interfaces/index",
             "link_type": "inter"
           },
           {
             "name": "API",
-            "url": "https://docs.dipy.org/reference",
+            "url": "https://docs.dipy.org/stable/reference/index",
             "link_type": "inter"
           },
           {
             "name": "CLI API",
-            "url": "https://docs.dipy.org/cli/reference",
+            "url": "https://docs.dipy.org/stable/reference_cmd/index",
             "link_type": "inter"
           }
         ]
@@ -353,7 +353,7 @@ html_theme_options = {
         },
         {
           "name": "Tutorials",
-          "link": "https://docs.dipy.org/tutorials/",
+          "link": "https://docs.dipy.org/stable/tutorials/",
           "link_type": "inter"
         },
         {
