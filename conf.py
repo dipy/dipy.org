@@ -348,7 +348,7 @@ html_theme_options = {
         },
         {
           "name": "Download",
-          "link": "https://docs.dipy.org/user_guide/installation",
+          "link": "https://docs.dipy.org/stable/user_guide/installation",
           "link_type": "inter"
         },
         {

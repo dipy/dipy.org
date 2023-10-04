@@ -5,6 +5,12 @@ img = "https://raw.githubusercontent.com/dipy/dipy_data/master/dipy_main_evac.pn
 link = "https://arxiv.org/abs/2206.02837"
 
 [[carousel_slides]]
+caption = "PNAS 2023"
+description = ""
+img = "https://raw.githubusercontent.com/dipy/dipy_data/master/pnas_2023.jpg"
+link = "https://www.pnas.org/doi/abs/10.1073/pnas.2303491120"
+
+[[carousel_slides]]
 caption = "Patch2Self, NeurIPS 2020"
 description = ""
 img = "https://raw.githubusercontent.com/dipy/dipy_data/master/patch2self_banner.PNG"
@@ -28,49 +34,49 @@ img = "https://github.com/Garyfallidis/garyfallidis.github.com/blob/master_bak/i
 title = "Command-Line Interfaces"
 icon = "cli.svg"
 description = "All the algorithms are available using CLI. You can also create your own algorithms."
-link = "https://dipy.org/documentation/1.7.0/interfaces/"
+link = "https://docs.dipy.org/stable/interfaces/index"
 
 [[explore_items]]
 title = "Statistical Analysis"
 icon = "stat.svg"
 description = "DIPY allows you to use different methods like BUAN, AFQ, K-Fold cross validation."
-link = "https://dipy.org/documentation/1.7.0/interfaces/"
+link = "https://docs.dipy.org/stable/examples_built/index.html#streamlines-analysis-and-connectivity"
 
 [[explore_items]]
 title = "Reconstruction"
 icon = "reconstruction.svg"
 description = "<b>Single shell</b>: DTI, CSA, SFM, SDT, Q-Ball, CSD, and many more. <br/>  <b>Multi shell</b>: GQI, DTI, DKI, SHORE, MAPMRI, MSMT-CSD, and many more."
-link = "https://dipy.org/documentation/1.7.0/interfaces/"
+link = "https://docs.dipy.org/stable/examples_built/index.html#reconstruction"
 
 [[explore_items]]
 title = "Registration"
 icon = "registration.svg"
 description = "Affine Registration, Diffeomorphic 2D/3D Registration, Streamlines based Registration, and much more."
-link = "https://dipy.org/documentation/1.7.0/interfaces/"
+link = "https://docs.dipy.org/stable/examples_built/index.html#registration"
 
 [[explore_items]]
 title = "Tractography"
 icon = "tractography.svg"
 description = "Probabilistic Tracking, Deterministic Tracking, PFT Tracking, and much more."
-link = "https://dipy.org/documentation/1.7.0/interfaces/"
+link = "https://docs.dipy.org/stable/examples_built/index.html#fiber-tracking"
 
 [[explore_items]]
 title = "Denoising"
 icon = "denoise.png"
 description = "Affine Registration, Diffeomorphic 2D/3D Registration, Streamlines based Registration, and much more."
-link = "https://dipy.org/documentation/1.7.0/interfaces/"
+link = "https://docs.dipy.org/stable/examples_built/preprocessing/denoise_patch2self.html#sphx-glr-examples-built-preprocessing-denoise-patch2self-py"
 
 [[explore_items]]
 title = "Visualization"
 icon = "chart.png"
 description = "ODFs visualization, interactive tractogram visualization, Advanced UI and Shaders, and much more."
-link = "https://dipy.org/documentation/1.7.0/interfaces/"
+link = "https://docs.dipy.org/stable/examples_built/index.html#visualization"
 
 [[explore_items]]
 title = "Pre-Processing"
 icon = "preprocessing.png"
 description = "Brain extraction, SNR estimation, Reslice Datasets, and much more."
-link = "https://dipy.org/documentation/1.7.0/interfaces/"
+link = "https://docs.dipy.org/stable/examples_built/index.html#preprocessing"
 
 [[sponsors]]
 name = "NIH NIBIB"
