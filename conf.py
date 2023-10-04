@@ -473,7 +473,7 @@ html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = {'blog': [
+html_sidebars = {'blog/**': [
           'ablog/postcard.html', 'ablog/recentposts.html',
           'ablog/tagcloud.html', 'ablog/categories.html',
           'ablog/archives.html', ],
