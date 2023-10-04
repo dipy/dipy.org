@@ -273,27 +273,27 @@ html_theme_options = {
           },
           {
             "name": "FAQ",
-            "url": "https://doc.dipy.org/stable/faq",
+            "url": "https://docs.dipy.org/stable/faq",
             "link_type": "inter"
           },
           {
             "name": "Mission Statement",
-            "url": "https://doc.dipy.org/stable/user_guide/mission",
+            "url": "https://docs.dipy.org/stable/user_guide/mission",
             "link_type": "inter"
           },
           {
             "name": "Releases",
-            "url": "https://doc.dipy.org/stable/stateoftheart",
+            "url": "https://docs.dipy.org/stable/stateoftheart",
             "link_type": "inter"
           },
           {
             "name": "Cite",
-            "url": "https://doc.dipy.org/stable/cite",
+            "url": "https://docs.dipy.org/stable/cite",
             "link_type": "inter"
           },
           {
             "name": "Glossary",
-            "url": "https://doc.dipy.org/stable/glossary",
+            "url": "https://docs.dipy.org/stable/glossary",
             "link_type": "inter"
           },
         ]
