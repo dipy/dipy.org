@@ -138,14 +138,14 @@ with open('contributors.json', 'r') as f:
 html_theme_options = {
   "secondary_sidebar_items": ["page-toc"],
   "show_toc_level": 1,
-
+  # "announcement": "Here's a <a href='https://pydata.org'>PyData Announcement!</a>",
   "navbar_center": ["components/navbar-links.html"],
   "navbar_links": [
      {
         "name": "Docs",
         "children": [
           {
-            "name": "Quick Start",
+            "name": "Overview",
             "url": "https://docs.dipy.org/stable",
             "link_type": "inter"
           },
@@ -156,7 +156,7 @@ html_theme_options = {
           },
           {
             "name": "Recipes",
-            "url": "https://docs.dipy.org/stable/recipes",
+            "url": "https://docs.dipy.org/stable/recipes/index",
             "link_type": "inter"
           },
           {
@@ -273,23 +273,28 @@ html_theme_options = {
           },
           {
             "name": "FAQ",
-            "url": "faq",
+            "url": "https://doc.dipy.org/stable/faq",
+            "link_type": "inter"
           },
           {
             "name": "Mission Statement",
-            "url": "mission",
+            "url": "https://doc.dipy.org/stable/user_guide/mission",
+            "link_type": "inter"
           },
           {
             "name": "Releases",
-            "url": "releases",
+            "url": "https://doc.dipy.org/stable/stateoftheart",
+            "link_type": "inter"
           },
           {
             "name": "Cite",
-            "url": "cite",
+            "url": "https://doc.dipy.org/stable/cite",
+            "link_type": "inter"
           },
           {
             "name": "Glossary",
-            "url": "glossary",
+            "url": "https://doc.dipy.org/stable/glossary",
+            "link_type": "inter"
           },
         ]
      },
@@ -343,17 +348,17 @@ html_theme_options = {
         },
         {
           "name": "Download",
-          "link": "https://dipy.org/installation",
+          "link": "https://docs.dipy.org/user_guide/installation",
           "link_type": "inter"
         },
         {
           "name": "Get Started",
-          "link": "https://dipy.org/contributors/",
+          "link": "https://docs.dipy.org/stable/",
           "link_type": "inter"
         },
         {
           "name": "Tutorials",
-          "link": "https://docs.dipy.org/stable/tutorials/",
+          "link": "https://docs.dipy.org/stable/examples_built/index",
           "link_type": "inter"
         },
         {
