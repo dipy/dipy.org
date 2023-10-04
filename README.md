@@ -158,3 +158,19 @@ The current range of categories we have "officially" are:
 Please select the more appropriate one, for many `update` or `news` would be enough.
 
 For tags, you can choose what you prefer for your post but please don't use any that are in the categories list.
+
+## Adding an image to the carousel
+
+- **Step 1.** Make sure you have a correct banner aspect ratio. it should respect the "Billboard Banner" aspect ratio (970x250).
+  Look [here for more information](https://www.match2one.com/blog/standard-banner-sizes/#:~:text=Billboard)
+- **Step 2.** Commit and push your banner in https://github.com/dipy/dipy_data
+- **Step 3.** Get the github raw URL of your banner
+- **Step 4.** Create a new `[[carousel_slides]]` section and add this link in the [context.toml file](https://github.com/dipy/dipy.org/blob/15a48e058f76be5e76977e71ee5b108077ba9512/context/context.toml#L1). Note that order have an importance. Your new section should look like this:
+```python
+[[carousel_slides]]
+caption = "EVAC+, ISMRM 2023"
+description = ""
+img = "https://raw.githubusercontent.com/dipy/dipy_data/master/dipy_main_evac.png"
+link = "https://arxiv.org/abs/2206.02837"
+```
+
