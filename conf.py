@@ -156,7 +156,7 @@ html_theme_options = {
           },
           {
             "name": "Recipes",
-            "url": "https://docs.dipy.org/stable/recipes/index",
+            "url": "https://docs.dipy.org/stable/recipes",
             "link_type": "inter"
           },
           {
