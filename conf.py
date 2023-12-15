@@ -38,6 +38,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.intersphinx',
               'sphinx.ext.mathjax',
               'sphinx.ext.ifconfig',
+              'sphinx_reredirects',
               'math_dollar',  # has to go before numpydoc
               'github',
               'ablog',
@@ -550,5 +551,12 @@ latex_preamble = r"""
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'http://docs.python.org/': None}
+intersphinx_mapping = {'python': ('http://docs.python.org/', None)}
+
+# -- Options for sphinx-reredirects -------------------------------------------
+redirects = {
+     "workshop/latest": "https://deprecated.docs.dipy.org/workshops/dipy-workshop-2024",
+     "workshop/": "https://deprecated.docs.dipy.org/workshops/",
+     "workshop/index": "https://deprecated.docs.dipy.org/workshops/"
+}
 
