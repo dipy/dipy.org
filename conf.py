@@ -185,7 +185,7 @@ html_theme_options = {
             "children": [
               {
                 "name": "DIPY Workshop 2024",
-                "url": "https://dipy.org/workshops/dipy-workshop-2024",
+                "url": "https://deprecated.docs.dipy.org/workshops/dipy-workshop-2024",
                 "link_type": "external"
               }
             ]
@@ -195,27 +195,27 @@ html_theme_options = {
             "children": [
               {
                 "name": "DIPY Workshop 2023",
-                "url": "https://dipy.org/workshops/dipy-workshop-2023",
+                "url": "https://deprecated.docs.dipy.org/workshops/dipy-workshop-2023",
                 "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2022",
-                "url": "https://dipy.org/workshops/dipy-workshop-2022",
+                "url": "https://deprecated.docs.dipy.org/workshops/dipy-workshop-2022",
                 "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2021",
-                "url": "https://dipy.org/workshops/dipy-workshop-2021",
+                "url": "https://deprecated.docs.dipy.org/workshops/dipy-workshop-2021",
                 "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2020",
-                "url": "https://dipy.org/workshops/dipy-workshop-2020",
+                "url": "https://deprecated.docs.dipy.org/workshops/dipy-workshop-2020",
                 "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2019",
-                "url": "https://dipy.org/workshops/dipy-workshop-2019",
+                "url": "https://deprecated.docs.dipy.org/workshops/dipy-workshop-2019",
                 "link_type": "external"
               },
             ]
