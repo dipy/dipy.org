@@ -38,6 +38,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.intersphinx',
               'sphinx.ext.mathjax',
               'sphinx.ext.ifconfig',
+              'sphinx.ext.githubpages',
               'sphinx_reredirects',
               'math_dollar',  # has to go before numpydoc
               'github',
@@ -455,6 +456,9 @@ html_context = {
 # of the sidebar.
 html_logo = "_static/images/logos/dipy-logo.png"
 
+# custom domain for github pages
+html_baseurl = "https://dipy.org/"
+
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
@@ -555,8 +559,8 @@ intersphinx_mapping = {'python': ('http://docs.python.org/', None)}
 
 # -- Options for sphinx-reredirects -------------------------------------------
 redirects = {
-     "workshop/latest": "https://deprecated.docs.dipy.org/workshops/dipy-workshop-2024",
-     "workshop/": "https://deprecated.docs.dipy.org/workshops/",
-     "workshop/index": "https://deprecated.docs.dipy.org/workshops/"
+     "workshop/latest": "https://workshop.dipy.org/workshops/dipy-workshop-2024",
+     "workshop/": "https://workshop.dipy.org/workshops/",
+     "workshop/index": "https://workshop.dipy.org/workshops/"
 }
 
