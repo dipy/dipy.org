@@ -2,7 +2,7 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS    =
+SPHINXOPTS    = -W # -n -j auto
 SPHINXBUILD   = sphinx-build
 PAPER         =
 
@@ -36,7 +36,7 @@ gitwash-update:
 
 html:
 	#  Standard html build after examples have been prepared
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) _build/html
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) _build/html 2>&1 | grep -v "Unable to fetch team data for team"
 	@echo
 	@echo "Build finished. The HTML pages are in _build/html."
 
