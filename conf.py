@@ -559,8 +559,14 @@ intersphinx_mapping = {'python': ('http://docs.python.org/', None)}
 
 # -- Options for sphinx-reredirects -------------------------------------------
 redirects = {
-     "workshop/latest": "https://workshop.dipy.org/workshops/dipy-workshop-2024",
-     "workshop/": "https://workshop.dipy.org/workshops/",
-     "workshop/index": "https://workshop.dipy.org/workshops/"
+  "workshop/latest": "https://workshop.dipy.org/workshops/dipy-workshop-2024",
+  "workshop/": "https://workshop.dipy.org/workshops/",
+  "workshop/index": "https://workshop.dipy.org/workshops/",
+  "workshops/dipy-workshop-2024": "https://workshop.dipy.org/workshops/dipy-workshop-2024",
+  "workshops/dipy-workshop-2023": "https://workshop.dipy.org/workshops/dipy-workshop-2023",
+  "workshops/dipy-workshop-2022": "https://workshop.dipy.org/workshops/dipy-workshop-2022",
+  "workshops/dipy-workshop-2021": "https://workshop.dipy.org/workshops/dipy-workshop-2021",
+  "workshops/dipy-workshop-2020": "https://workshop.dipy.org/workshops/dipy-workshop-2020",
+  "workshops/dipy-workshop-2019": "https://workshop.dipy.org/workshops/dipy-workshop-2019",
 }
 
