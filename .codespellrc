@@ -1,0 +1,3 @@
+[codespell]
+skip = .git,*.pdf,*.svg,*.bib
+ignore-words-list = reson,nd,te,ue,lod,hart,ans,lastr,numer,lamda,flagg,pris
