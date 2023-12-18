@@ -16,7 +16,7 @@ description = ""
 img = "https://raw.githubusercontent.com/dipy/dipy_data/master/patch2self_banner.PNG"
 
 [[carousel_slides]]
-caption = "BUAN, Nature 2020"
+caption = "BUAN, Scientific Reports 2020"
 description = ""
 img = "https://raw.githubusercontent.com/dipy/dipy_data/master/buan_profiles.png"
 
