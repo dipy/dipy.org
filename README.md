@@ -10,9 +10,8 @@ We use Github Action to deploy the website and Github Page to host the [website]
 - `_templates`: Contains html layout for custom Sphinx design.
 - `_build`: Contains the generated documentation.
 - `sphinxext`: Sphinx custom plugins.
-- `theory`: Diffusion theory + FAQ files.
-- `tools`: Contains all scripts to generate some parts of the documentation, like the API.
 - `posts`: Contains all blog posts.
+- `context`: Contains the homepage content description
 
 ## Testing Locally: Doc generation steps:
 
@@ -159,13 +158,28 @@ Please select the more appropriate one, for many `update` or `news` would be eno
 
 For tags, you can choose what you prefer for your post but please don't use any that are in the categories list.
 
-## Adding an image to the carousel
+## Adding an image to the Sponsor section
 
-- **Step 1.** Make sure you have a correct banner aspect ratio. it should respect the "Billboard Banner" aspect ratio (970x250).
-  Look [here for more information](https://www.match2one.com/blog/standard-banner-sizes/#:~:text=Billboard)
-- **Step 2.** Commit and push your banner in https://github.com/dipy/dipy_data
-- **Step 3.** Get the github raw URL of your banner
-- **Step 4.** Create a new `[[carousel_slides]]` section and add this link in the [context.toml file](https://github.com/dipy/dipy.org/blob/15a48e058f76be5e76977e71ee5b108077ba9512/context/context.toml#L1). Note that order have an importance. Your new section should look like this:
+- **Step 1.** Make sure you have a correct image size. The sponsor section images should be squared.
+- **Step 2.** Commit and push your images in the subfolder `_static/images/sponsors`
+- **Step 2.bis (optional).** If your not satisfied with the layout (grid system), edit the `_templates/components/sponsors.html` file to improve the rendering.
+- **Step 3.** Create a new `[[sponsors]]` section and add the image name in the [context.toml file](https://github.com/dipy/dipy.org/blob/15a48e058f76be5e76977e71ee5b108077ba9512/context/context.toml#L1). Note that order have an importance. Your new section should look like this:
+
+```python
+[[sponsors]]
+name = "Indiana University"
+image = "iu.webp"
+url = "https://www.iu.edu/"
+```
+
+
+## Adding an image to the Carousel section
+
+- **Step 1.** Make sure you have the correct banner aspect ratio. it should respect the "Billboard Banner" aspect ratio (970x250). Look [here for more information](https://www.match2one.com/blog/standard-banner-sizes/#:~:text=Billboard)
+
+- **Step 2.** Commit and push your banner at https://github.com/dipy/dipy_data
+- **Step 3.** Get the GitHub raw URL of your banner
+- **Step 4.** Create a new `[[carousel_slides]]` section and add this link in the [context.toml file](https://github.com/dipy/dipy.org/blob/15a48e058f76be5e76977e71ee5b108077ba9512/context/context.toml#L1). Note that order has importance. Your new section should look like this:
 ```python
 [[carousel_slides]]
 caption = "EVAC+, ISMRM 2023"

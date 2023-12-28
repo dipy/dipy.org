@@ -102,3 +102,8 @@ url = "https://www.iu.edu/"
 name = "UW eScience Institute"
 image = "uwescience.png"
 url = "https://escience.washington.edu/"
+
+[[sponsors]]
+name = "Chan Zuckerberg Initiative"
+image = "czi_logo.png"
+url = "https://chanzuckerberg.com/eoss/proposals/strengthening-computational-neuroanatomy-using-dipy/"
