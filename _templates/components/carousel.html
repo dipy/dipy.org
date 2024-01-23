@@ -9,7 +9,11 @@
   <div class="carousel-inner">
     {% for slide in carousel_slides %}
     <div class="carousel-item pad-h-20 {{ 'active' if loop.index==1 }}">
+      {% if slide.img.startswith("http") %}
       <img src="{{ slide.img }}" class="d-block w-100" alt="...">
+      {% else %}
+      <img src="_static/images/banner/{{ slide.img }}" class="d-block w-100" alt="...">
+      {% endif %}
       <div class="pad-20 carousel-caption d-md-block">
         <a href="{{ slide.link }}" target="_blank" rel="noopener noreferrer">
           <h5>{{ slide.caption }}</h5>
