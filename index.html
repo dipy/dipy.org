@@ -767,25 +767,29 @@ document.write(`
     
     <button type="button" data-bs-target="#banners" data-bs-slide-to="0"
       class="active" aria-current="True"
-      aria-label="EVAC+, ISMRM 2023"></button>
+      aria-label="Join DIPY <br >Workshop 2024,<br>Online Edition!"></button>
     
     <button type="button" data-bs-target="#banners" data-bs-slide-to="1"
       class="" aria-current=""
-      aria-label="PNAS 2023"></button>
+      aria-label="EVAC+, ISMRM 2023"></button>
     
     <button type="button" data-bs-target="#banners" data-bs-slide-to="2"
       class="" aria-current=""
-      aria-label="Patch2Self, NeurIPS 2020"></button>
+      aria-label="PNAS 2023"></button>
     
     <button type="button" data-bs-target="#banners" data-bs-slide-to="3"
       class="" aria-current=""
-      aria-label="BUAN, Scientific Reports 2020"></button>
+      aria-label="Patch2Self, NeurIPS 2020"></button>
     
     <button type="button" data-bs-target="#banners" data-bs-slide-to="4"
       class="" aria-current=""
-      aria-label="SLR, NeuroImage 2015"></button>
+      aria-label="BUAN, Scientific Reports 2020"></button>
     
     <button type="button" data-bs-target="#banners" data-bs-slide-to="5"
+      class="" aria-current=""
+      aria-label="SLR, NeuroImage 2015"></button>
+    
+    <button type="button" data-bs-target="#banners" data-bs-slide-to="6"
       class="" aria-current=""
       aria-label="QuickBundles, Frontiers 2012"></button>
     
@@ -793,7 +797,23 @@ document.write(`
   <div class="carousel-inner">
     
     <div class="carousel-item pad-h-20 active">
+      
+      <img src="_static/images/banner/dipy_workshop_2024.png" class="d-block w-100" alt="...">
+      
+      <div class="pad-20 carousel-caption d-md-block">
+        <a href="https://dipy.org/workshop/latest" target="_blank" rel="noopener noreferrer">
+          <h5>Join DIPY <br >Workshop 2024,<br>Online Edition!</h5>
+          <!-- 
+          <p> Join us for an exciting online workshop hosted by DIPY. Our comprehensive program is design to equip you with the skills and the knowledge needed to master the latest techniques and tools in structural and diffusion Imaging. </p>
+           -->
+        </a>
+      </div>
+    </div>
+    
+    <div class="carousel-item pad-h-20 ">
+      
       <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/dipy_main_evac.png" class="d-block w-100" alt="...">
+      
       <div class="pad-20 carousel-caption d-md-block">
         <a href="https://arxiv.org/abs/2206.02837" target="_blank" rel="noopener noreferrer">
           <h5>EVAC+, ISMRM 2023</h5>
@@ -803,7 +823,9 @@ document.write(`
     </div>
     
     <div class="carousel-item pad-h-20 ">
+      
       <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/pnas_2023.jpg" class="d-block w-100" alt="...">
+      
       <div class="pad-20 carousel-caption d-md-block">
         <a href="https://www.pnas.org/doi/abs/10.1073/pnas.2303491120" target="_blank" rel="noopener noreferrer">
           <h5>PNAS 2023</h5>
@@ -813,7 +835,9 @@ document.write(`
     </div>
     
     <div class="carousel-item pad-h-20 ">
+      
       <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/patch2self_banner.PNG" class="d-block w-100" alt="...">
+      
       <div class="pad-20 carousel-caption d-md-block">
         <a href="" target="_blank" rel="noopener noreferrer">
           <h5>Patch2Self, NeurIPS 2020</h5>
@@ -823,7 +847,9 @@ document.write(`
     </div>
     
     <div class="carousel-item pad-h-20 ">
+      
       <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/buan_profiles.png" class="d-block w-100" alt="...">
+      
       <div class="pad-20 carousel-caption d-md-block">
         <a href="" target="_blank" rel="noopener noreferrer">
           <h5>BUAN, Scientific Reports 2020</h5>
@@ -833,7 +859,9 @@ document.write(`
     </div>
     
     <div class="carousel-item pad-h-20 ">
+      
       <img src="https://github.com/Garyfallidis/garyfallidis.github.com/blob/master_bak/images/slr_banner.jpg?raw=true" class="d-block w-100" alt="...">
+      
       <div class="pad-20 carousel-caption d-md-block">
         <a href="" target="_blank" rel="noopener noreferrer">
           <h5>SLR, NeuroImage 2015</h5>
@@ -843,7 +871,9 @@ document.write(`
     </div>
     
     <div class="carousel-item pad-h-20 ">
+      
       <img src="https://github.com/Garyfallidis/garyfallidis.github.com/blob/master_bak/images/quickbundles_banner.jpg?raw=true" class="d-block w-100" alt="...">
+      
       <div class="pad-20 carousel-caption d-md-block">
         <a href="" target="_blank" rel="noopener noreferrer">
           <h5>QuickBundles, Frontiers 2012</h5>
@@ -866,11 +896,11 @@ document.write(`
     <p class="explore-title-description">
       All the algorithms are available using CLI. You can also create your own algorithms.
     </p>
-    
+
     <a class="btn-link explore-tile-know-more" href="https://docs.dipy.org/stable/interfaces/index">
       Know more <i class="fa-solid fa-chevron-right pad-l-5"></i>
     </a>
-    
+
   </div>
   
   <div class="explore-tile pad-h-20 pad-v-48">
@@ -881,11 +911,11 @@ document.write(`
     <p class="explore-title-description">
       DIPY allows you to use different methods like BUAN, AFQ, K-Fold cross validation.
     </p>
-    
+
     <a class="btn-link explore-tile-know-more" href="https://docs.dipy.org/stable/examples_built/index.html#streamlines-analysis-and-connectivity">
       Know more <i class="fa-solid fa-chevron-right pad-l-5"></i>
     </a>
-    
+
   </div>
   
   <div class="explore-tile pad-h-20 pad-v-48">
@@ -896,11 +926,11 @@ document.write(`
     <p class="explore-title-description">
       <b>Single shell</b>: DTI, CSA, SFM, SDT, Q-Ball, CSD, and many more. <br/>  <b>Multi shell</b>: GQI, DTI, DKI, SHORE, MAPMRI, MSMT-CSD, and many more.
     </p>
-    
+
     <a class="btn-link explore-tile-know-more" href="https://docs.dipy.org/stable/examples_built/index.html#reconstruction">
       Know more <i class="fa-solid fa-chevron-right pad-l-5"></i>
     </a>
-    
+
   </div>
   
   <div class="explore-tile pad-h-20 pad-v-48">
@@ -911,11 +941,11 @@ document.write(`
     <p class="explore-title-description">
       Affine Registration, Diffeomorphic 2D/3D Registration, Streamlines based Registration, and much more.
     </p>
-    
+
     <a class="btn-link explore-tile-know-more" href="https://docs.dipy.org/stable/examples_built/index.html#registration">
       Know more <i class="fa-solid fa-chevron-right pad-l-5"></i>
     </a>
-    
+
   </div>
   
   <div class="explore-tile pad-h-20 pad-v-48">
@@ -926,11 +956,11 @@ document.write(`
     <p class="explore-title-description">
       Probabilistic Tracking, Deterministic Tracking, PFT Tracking, and much more.
     </p>
-    
+
     <a class="btn-link explore-tile-know-more" href="https://docs.dipy.org/stable/examples_built/index.html#fiber-tracking">
       Know more <i class="fa-solid fa-chevron-right pad-l-5"></i>
     </a>
-    
+
   </div>
   
   <div class="explore-tile pad-h-20 pad-v-48">
@@ -941,11 +971,11 @@ document.write(`
     <p class="explore-title-description">
       Affine Registration, Diffeomorphic 2D/3D Registration, Streamlines based Registration, and much more.
     </p>
-    
+
     <a class="btn-link explore-tile-know-more" href="https://docs.dipy.org/stable/examples_built/preprocessing/denoise_patch2self.html#sphx-glr-examples-built-preprocessing-denoise-patch2self-py">
       Know more <i class="fa-solid fa-chevron-right pad-l-5"></i>
     </a>
-    
+
   </div>
   
   <div class="explore-tile pad-h-20 pad-v-48">
@@ -956,11 +986,11 @@ document.write(`
     <p class="explore-title-description">
       ODFs visualization, interactive tractogram visualization, Advanced UI and Shaders, and much more.
     </p>
-    
+
     <a class="btn-link explore-tile-know-more" href="https://docs.dipy.org/stable/examples_built/index.html#visualization">
       Know more <i class="fa-solid fa-chevron-right pad-l-5"></i>
     </a>
-    
+
   </div>
   
   <div class="explore-tile pad-h-20 pad-v-48">
@@ -971,11 +1001,11 @@ document.write(`
     <p class="explore-title-description">
       Brain extraction, SNR estimation, Reslice Datasets, and much more.
     </p>
-    
+
     <a class="btn-link explore-tile-know-more" href="https://docs.dipy.org/stable/examples_built/index.html#preprocessing">
       Know more <i class="fa-solid fa-chevron-right pad-l-5"></i>
     </a>
-    
+
   </div>
   
 </div>
