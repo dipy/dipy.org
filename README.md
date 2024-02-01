@@ -4,6 +4,7 @@
 
 This site makes use of [Sphinx](https://www.sphinx-doc.org/en/stable/) and was built upon [Bootstrap](https://getbootstrap.com) via the [GRG Sphinx theme](https://github.com/GRG-Projects/grg-sphinx-theme) and [PYData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/en/latest/).
 We use Github Action to deploy the website and Github Page to host the [website](https://dipy.github.io/dipy.org/).
+
 ## Index
 
 - `_static`: Contains all assets (images, CSS, JS) for Sphinx to look at.
@@ -172,14 +173,13 @@ image = "iu.webp"
 url = "https://www.iu.edu/"
 ```
 
-
 ## Adding an image to the Carousel section
 
 - **Step 1.** Make sure you have the correct banner aspect ratio. it should respect the "Billboard Banner" aspect ratio (970x250). Look [here for more information](https://www.match2one.com/blog/standard-banner-sizes/#:~:text=Billboard)
-
-- **Step 2.** Commit and push your banner at https://github.com/dipy/dipy_data
+- **Step 2.** Commit and push your banner at https://github.com/dipy/dipy_data or update the image in the [banner folder](https://github.com/dipy/dipy.org/tree/master/_static/images/banner).
 - **Step 3.** Get the GitHub raw URL of your banner
 - **Step 4.** Create a new `[[carousel_slides]]` section and add this link in the [context.toml file](https://github.com/dipy/dipy.org/blob/15a48e058f76be5e76977e71ee5b108077ba9512/context/context.toml#L1). Note that order has importance. Your new section should look like this:
+
 ```python
 [[carousel_slides]]
 caption = "EVAC+, ISMRM 2023"
@@ -187,4 +187,3 @@ description = ""
 img = "https://raw.githubusercontent.com/dipy/dipy_data/master/dipy_main_evac.png"
 link = "https://arxiv.org/abs/2206.02837"
 ```
-
