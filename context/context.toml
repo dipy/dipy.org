@@ -70,7 +70,7 @@ link = "https://docs.dipy.org/stable/examples_built/index.html#fiber-tracking"
 [[explore_items]]
 title = "Denoising"
 icon = "denoise.png"
-description = "Affine Registration, Diffeomorphic 2D/3D Registration, Streamlines based Registration, and much more."
+description = "Patch2Self, Non Local Means, Gibbs Unringing, MP-PCA, L-PCA and much more."
 link = "https://docs.dipy.org/stable/examples_built/preprocessing/denoise_patch2self.html#sphx-glr-examples-built-preprocessing-denoise-patch2self-py"
 
 [[explore_items]]
