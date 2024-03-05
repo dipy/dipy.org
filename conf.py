@@ -430,6 +430,9 @@ html_theme_options = {
   "subscribe_callback": "subscriptionClick"
 }
 
+html_theme_options["analytics"] = {
+    "google_analytics_id": "G-D610GKJZRC",
+}
 
 
 with open('context/context.toml', 'rb') as f:
