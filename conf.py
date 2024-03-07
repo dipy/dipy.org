@@ -562,6 +562,10 @@ intersphinx_mapping = {'python': ('https://docs.python.org/', None)}
 
 # -- Options for sphinx-reredirects -------------------------------------------
 redirects = {
+  "tutorials": "https://docs.dipy.org/stable/examples_built/index",
+  "cli-tutorials": "https://docs.dipy.org/stable/interfaces/index.html",
+  "installations": "https://docs.dipy.org/stable/user_guide/installation.html#installation",
+  "installations-dev": "https://docs.dipy.org/stable/devel/installation_from_source.html#installation-from-source",
   "workshop/latest": "https://workshop.dipy.org/workshops/dipy-workshop-2024",
   "workshop/": "https://workshop.dipy.org/workshops/",
   "workshop/index": "https://workshop.dipy.org/workshops/",
