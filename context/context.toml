@@ -1,9 +1,9 @@
 
-[[carousel_slides]]
-caption = "Register Now!"
-description = "Join us for an exciting online workshop hosted by DIPY. Our comprehensive program is design to equip you with the skills and the knowledge needed to master the latest techniques and tools in structural and diffusion Imaging."
-img = "dipy_workshop_2024.png"
-link = "https://dipy.org/workshop/latest"
+# [[carousel_slides]]
+# caption = "Register Now!"
+# description = "Join us for an exciting online workshop hosted by DIPY. Our comprehensive program is design to equip you with the skills and the knowledge needed to master the latest techniques and tools in structural and diffusion Imaging."
+# img = "dipy_workshop_2024.png"
+# link = "https://dipy.org/workshop/latest"
 
 [[carousel_slides]]
 caption = "EVAC+, ISMRM 2023"
