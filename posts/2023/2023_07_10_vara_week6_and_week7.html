@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../_static/styles/grg-sphinx-theme.css"/>
 
     <script src="../../_static/documentation_options.js?v=8a448e45"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-D610GKJZRC"></script>
     <script>
@@ -959,15 +959,21 @@ document.write(`
 <section id="what-i-did-this-week">
 <h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
 <p>My current code for VQVAE &amp; DM is well tested on MNIST dataset as shown in the previous blog posts. I extended the current codebase for MRI dataset by using 3D convolutions instead of 2D ones, which resulted in 600k parameters for VQVAE for a downsampling factor f=3. I used a preprocess function to transform MRI volumes to the desired shape (128,128,128,1) through DIPY’s reslice and scipy’s affine_transform functions, followed by MinMax normalization. I trained the VQVAE architecture for batch_size=10, Adam optimizer’s lr=2e-4, 100 epochs. I followed suit for downsampling factor f=2 as well and got the following training curves-</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-training-curves.png"><img alt="../../_images/vqvae3d-training-curves.png" src="../../_images/vqvae3d-training-curves.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-training-curves.png"><img alt="../../_images/vqvae3d-training-curves.png" src="../../_images/vqvae3d-training-curves.png" style="width: 800px;" />
+</a>
 <p>The reconstructed brain volumes on the test dataset on the best performing model are as shown below. As seen in the first image, there are black artifacts in the captured blurry brain structure. Whereas the second image(f=2) does a better job in producing less blurrier brain structure. Nonetheless we only see the outline of the brain being captured with no micro-structural information inside them.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-reconst-f3.png"><img alt="../../_images/vqvae3d-reconst-f3.png" src="../../_images/vqvae3d-reconst-f3.png" style="width: 800px;" /></a>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-reconst-f2.png"><img alt="../../_images/vqvae3d-reconst-f2.png" src="../../_images/vqvae3d-reconst-f2.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-reconst-f3.png"><img alt="../../_images/vqvae3d-reconst-f3.png" src="../../_images/vqvae3d-reconst-f3.png" style="width: 800px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-reconst-f2.png"><img alt="../../_images/vqvae3d-reconst-f2.png" src="../../_images/vqvae3d-reconst-f2.png" style="width: 800px;" />
+</a>
 <p>Later, the 3D Diffusion Model was trained for approximately 200 epochs for 200 &amp; 300 diffusion time steps in two different experiments respectively. The training curves and obtained generations are shown respectively. Both the generations are noisy and don’t really have a convincing outlook.</p>
-<a class="reference internal image-reference" href="../../_images/dm3d-training-curves.png"><img alt="../../_images/dm3d-training-curves.png" src="../../_images/dm3d-training-curves.png" style="width: 800px;" /></a>
-<a class="reference internal image-reference" href="../../_images/dm3d-reconst-D200-D300.png"><img alt="../../_images/dm3d-reconst-D200-D300.png" src="../../_images/dm3d-reconst-D200-D300.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/dm3d-training-curves.png"><img alt="../../_images/dm3d-training-curves.png" src="../../_images/dm3d-training-curves.png" style="width: 800px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/dm3d-reconst-D200-D300.png"><img alt="../../_images/dm3d-reconst-D200-D300.png" src="../../_images/dm3d-reconst-D200-D300.png" style="width: 800px;" />
+</a>
 <p>Given the achieved noisy generations, I decided to train VQVAE for a higher number of epochs. This may also indicate that the performance of DM is hitched on good latent representations i.e., a trained encoder capable of perfect reconstructions. So I trained f=3 VQVAE for a higher number of epochs as shown below.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae-f3-higher-epochs.png"><img alt="../../_images/vqvae-f3-higher-epochs.png" src="../../_images/vqvae-f3-higher-epochs.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae-f3-higher-epochs.png"><img alt="../../_images/vqvae-f3-higher-epochs.png" src="../../_images/vqvae-f3-higher-epochs.png" style="width: 800px;" />
+</a>
 <p>The reconstructions obtained on best VQVAE seemed to have produced a better volumetric brain structure. Although, a common theme between all reconstructions is that we see a pixelated output for the last few slices with a checkerboard sort of artifacts. Anyhow, I ran a couple more experiments with a more complex VQVAE model that has residual blocks to carry forward information. None of the reconstructions nor the DM generations have made any progress qualitatively.</p>
 </section>
 <section id="what-is-coming-up-next-week">

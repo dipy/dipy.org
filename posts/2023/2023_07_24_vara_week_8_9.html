@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../_static/styles/grg-sphinx-theme.css"/>
 
     <script src="../../_static/documentation_options.js?v=8a448e45"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-D610GKJZRC"></script>
     <script>
@@ -967,14 +967,18 @@ document.write(`
 <p>Whereas NN Resize performs interpolation on the kernel to upsample its size by <span class="math notranslate nohighlight">\(r\)</span> before carrying out convolution that outputs 3 channels. The former method relies on shuffling &amp; the later method relies on nearest neighbor interpolation to obtain an upsampled output respectively.</p>
 <p>Both methods have shown to perform better qualitatively in dealing with the checkerboards, on random initialization. The authors also go ahead and prove mathematically that with an efficient initialization, both methods prove to be equivalent. They call it the ICNR initialization - Initialization of Convolution with NN Resize.</p>
 <p>I ran multiple experiments with batch_size=5,10,10(with ICNR). The training loss curves obtained are as follows, all of them trained on 1 GPU for 24hrs. We see that all of them converge except the last one(B=10 with ICNR).</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-training.png"><img alt="../../_images/vqvae3d-monai-training.png" src="../../_images/vqvae3d-monai-training.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-training.png"><img alt="../../_images/vqvae3d-monai-training.png" src="../../_images/vqvae3d-monai-training.png" style="width: 800px;" />
+</a>
 <p>The best training checkpoint has been used to reconstruct test images. Following images depict 2 such reconstructions in 2 rows, where 5 slices from each of these reconstructions have been displayed in columns.</p>
 <p>The first one is for B=10, the best training checkpoint had training loss=0.0037. Compared to our previous VQVAE model, we see a better performance in capturing the brain outer structure. Moreover, we don’t see white blobs or artifacts as inner matter, rather some curvatures contributing to the inner microstructure of a human brain.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B10.png"><img alt="../../_images/vqvae3d-monai-B10.png" src="../../_images/vqvae3d-monai-B10.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B10.png"><img alt="../../_images/vqvae3d-monai-B10.png" src="../../_images/vqvae3d-monai-B10.png" style="width: 800px;" />
+</a>
 <p>The second one is for B=10 with ICNR kernel initialization, the best training checkpoint had training loss=0.0067. Although, the test results do not look complete. I implemented ICNR through DIPY’s resize function to achieve NN resize equivalent output on the kernel filters. This initialization didn’t work as it was intended to, further proving that the training is yet to be converged.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B10-ICNR.png"><img alt="../../_images/vqvae3d-monai-B10-ICNR.png" src="../../_images/vqvae3d-monai-B10-ICNR.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B10-ICNR.png"><img alt="../../_images/vqvae3d-monai-B10-ICNR.png" src="../../_images/vqvae3d-monai-B10-ICNR.png" style="width: 800px;" />
+</a>
 <p>The next &amp; last image is for B=5, the best training checkpoint had training loss = 0.0031. By far the best one quantitatively as well as visually. The test loss for the below reconstructions is 0.0013. The superior performance of this batch size can be owed to the Batch Normalization(BN) layers in the architecture that calculate mean &amp; average of the batch to perform normalization over all batch elements using these statistics. Having lesser batch size may contribute to least variation in the output of the layer &amp; helps in achieving converging outputs faster. This explanation stems from the concept of Contrastive Learning, where BN layers are used as the source of implicit negative loss learners. Higher the batch size, more implicit negative samples to move away from. Whereas our objective is to minimize the reconstruction loss, having lesser batch size consequently may help in lesser variation.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B5.png"><img alt="../../_images/vqvae3d-monai-B5.png" src="../../_images/vqvae3d-monai-B5.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B5.png"><img alt="../../_images/vqvae3d-monai-B5.png" src="../../_images/vqvae3d-monai-B5.png" style="width: 800px;" />
+</a>
 </section>
 <section id="what-is-coming-up-next-week">
 <h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>

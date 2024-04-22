@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../_static/styles/grg-sphinx-theme.css"/>
 
     <script src="../../_static/documentation_options.js?v=8a448e45"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-D610GKJZRC"></script>
     <script>
@@ -962,7 +962,8 @@ document.write(`
 <p>If PixelCNN is a bunch of convolutions, then what makes it a generative model? This is an important question to ask and the answer to it is the sampling layer used on pixelCNN outputs during inference.</p>
 <p>The official code in Keras uses a <code class="docutils literal notranslate"><span class="pre">tfp.layers.DistributionLambda(tfp.distributions.Categorical)</span></code> layer as its sampling layer. Without this sampling layer PixelCNN outputs are deterministic and collapse to single output. Also similarly, sampling layer alone, i.e., without any PixelCNN trained Prior, on the predetermined outputs of the encoder is deterministic. This is due to the fact that latent distances are correctly estimated by the pre-trained encoder and during inference categorical sampling layer would always sample the least distance latent, i.e., the one closest to the input.</p>
 <p>Therefore, the autoregressive nature of PixelCNN combined with a sampling layer for every pixel delivers an effective generative model. The outputs for all my experiments are shown in the image below -</p>
-<a class="reference internal image-reference" href="../../_images/vq-vae-results.png"><img alt="../../_images/vq-vae-results.png" src="../../_images/vq-vae-results.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vq-vae-results.png"><img alt="../../_images/vq-vae-results.png" src="../../_images/vq-vae-results.png" style="width: 800px;" />
+</a>
 <p>Based on qualitative analysis, PixelCNN outputs may require some extra work. This leads me to the next step in my research - to explore Diffusion models. The first breakthrough paper on Diffusion models is by DDPM - Denoising Diffusion Probabilistic models. Inspired by previous work on nonequilibrium thermodynamics, they show that training diffusion models while maximizing the posterior likelihood in an image generation task is mathematically equivalent to denoising score matching.</p>
 <p>In simple terms, there are two processes in diffusion modelling - forward &amp; reverse. Forward process iteratively produces noisy images using noise schedulers. This can be reduced to one step noisy image through reparametrization technique. In the reverse process, a U-Net is trained to estimate the noise in the final noisy image.</p>
 <p>During inference/sampling, noise is iteratively estimated and removed from a random noisy image to generate a new unseen image. The L2 loss used to estimate the noise during training is mathematically equivalent to maximizing the posterior likelihood i.e., maximizing the distribution of final denoised image. You can find more details in <a class="reference external" href="https://arxiv.org/pdf/2006.11239.pdf">this</a> paper.</p>

@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../_static/styles/grg-sphinx-theme.css"/>
 
     <script src="../../_static/documentation_options.js?v=8a448e45"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-D610GKJZRC"></script>
     <script>
@@ -967,17 +967,23 @@ document.write(`
 </ol>
 </div></blockquote>
 <p>Using existing training parameters, carried out two experiments, one on CC359 alone &amp; another on both datasets combined. Additionally, I made a slight modification in the loss definition by attributing different weights of 0.5 &amp; 1 to background &amp; foreground pixels compared to equal weights from previous experiments. This resulted in faster convergence as shown in the red, blue &amp; purple lines in the combined plot shown below. (Naming convention for each training curve is <code class="docutils literal notranslate"><span class="pre">B&lt;batch_size&gt;-&lt;dataset_used&gt;</span></code>, where CC=CC359, NFBS=NFBS, both=[NFBS,CC359])</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-training-plots.png"><img alt="Combined trainings plots for all experiments" src="../../_images/vqvae3d-monai-training-plots.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-training-plots.png"><img alt="Combined trainings plots for all experiments" src="../../_images/vqvae3d-monai-training-plots.png" style="width: 800px;" />
+</a>
 <p>Inference results on the best performing model, B12-both, is shown below, where every two rows correspond to reconstructions &amp; original volumes respectively, with equally spaced slices in each row. These slices visualised are anterior-posterior topdown &amp; ventral-dorsal LR.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae-monai-B12-both.png"><img alt="VQVAE-Monai-B12-both reconstructions &amp; originals showing equally spaced 5 slices for 2 different test samples" src="../../_images/vqvae-monai-B12-both.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae-monai-B12-both.png"><img alt="VQVAE-Monai-B12-both reconstructions &amp; originals showing equally spaced 5 slices for 2 different test samples" src="../../_images/vqvae-monai-B12-both.png" style="width: 800px;" />
+</a>
 <p>Here’s a similar visualization of the inference on the next best performing model, B12-CC.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae-monai-B12-CC.png"><img alt="VQVAE-Monai-B12-CC reconstructions &amp; originals showing equally spaced 5 slices for 2 different test samples" src="../../_images/vqvae-monai-B12-CC.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae-monai-B12-CC.png"><img alt="VQVAE-Monai-B12-CC reconstructions &amp; originals showing equally spaced 5 slices for 2 different test samples" src="../../_images/vqvae-monai-B12-CC.png" style="width: 800px;" />
+</a>
 <p>This shows that our training not only converged quickly but also improved visually. Here’s a comparison of our current best performing model i.e., VQVAE-Monai-B12-both &amp; the previous one on NFBS i.e., VQVAE-Monai-B5-NFBS. The test reconstruction loss is 0.0013 &amp; 0.0015 respectively.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae-reconstructions-comparison.png"><img alt="VQVAE reconstruction comparison for B12-both &amp; B5-NFBS" src="../../_images/vqvae-reconstructions-comparison.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/vqvae-reconstructions-comparison.png"><img alt="VQVAE reconstruction comparison for B12-both &amp; B5-NFBS" src="../../_images/vqvae-reconstructions-comparison.png" style="width: 800px;" />
+</a>
 <p>I also carried out Diffusion Model training on the best performing VQVAE-Monai-B12-both model for 300 &amp; 500 diffusion steps and the training curves obtained are as follows-</p>
-<a class="reference internal image-reference" href="../../_images/dm3d-monai-training-curves.png"><img alt="Diffusion Model training plots for 300 &amp; 500 diffusion steps" src="../../_images/dm3d-monai-training-curves.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/dm3d-monai-training-curves.png"><img alt="Diffusion Model training plots for 300 &amp; 500 diffusion steps" src="../../_images/dm3d-monai-training-curves.png" style="width: 800px;" />
+</a>
 <p>These curves seemed to converge pretty quickly but the sampling outputs in the generation pipeline are still pure noise as shown below-</p>
-<a class="reference internal image-reference" href="../../_images/dm3d-monai-B8-DM500.png"><img alt="Diffusion Model training plots for 300 &amp; 500 diffusion steps" src="../../_images/dm3d-monai-B8-DM500.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/dm3d-monai-B8-DM500.png"><img alt="Diffusion Model training plots for 300 &amp; 500 diffusion steps" src="../../_images/dm3d-monai-B8-DM500.png" style="width: 800px;" />
+</a>
 <p>The best performance of KL encoders/VAEs/VQVAEs have been shown to deliver blurry reconstructions on Medical datasets. Despite using a pretty less complex VQVAE model, with only <code class="docutils literal notranslate"><span class="pre">num_res_channels=(32,</span> <span class="pre">64)</span></code>, we consistently achieved improved reconstruction results with every experiment. From capturing only the brain outer structure through VQAVE-B5-NFBS model to able to capture the volumetric details of the inner microstructure of the brain through VQVAE-Monai-B10-both model, we’ve stretched the capabilities of the VQVAE model.</p>
 <p>For future work we should look into two things - debugging Diffusion Model, scaling VQVAE model.</p>
 <p>As a first priority, we could analyze the reason for pure noise output in DM3D generations, this would help us rule out any implementation errors(although I already did that, a second pair of eyes would be helpful). Because MONAI’s work shows that even without a stable convergence on their diffusion model they achieved visualizations resembling a brain. Whereas our model despite achieving a stable looking training curve, our generations are not close to being convincing.</p>
