@@ -1,0 +1,25 @@
+Community Bonding Period Summary
+===================================================
+
+.. post:: May 27 2024
+    :author: Iñigo Tellaetxe
+    :tags: google
+    :category: gsoc
+
+
+
+What I did this week
+~~~~~~~~~~~~~~~~~~~~
+I talked with my mentors and we agreed on the first tasks to carry out. Jon Haitz provided me with the data he used to train his AutoEncoder (AE) network. These are 2 datasets: Tractoinferno and FiberCup.
+I forked the Tractolearn repo and translated his AE architecture from PyTorch to TensorFlow. I updated the Dockerfile in my fork and created a working Docker image of the repo to run experiments in the DIPC cluster when the experiments phase starts.
+I also started writing the training loop for the AE, this is WIP.
+
+What is coming up next week
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I will work on finishing the training loop for the AE and make an experiment in which I overfit the model with a small dataset. This is useful to check whether the loss and the training objective are correctly defined.
+After this, I could continue to launch bigger training sessions with the full dataset.
+
+
+Did I get stuck anywhere
+~~~~~~~~~~~~~~~~~~~~~~~~
+I got a bit stuck with reproducing the Tractolearn environment locally and making the Dockerfile work, but I solved it by updating the Dockerfile. The local environment problem was solved installing a missing system dependency, `liblapack-dev`.
