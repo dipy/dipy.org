@@ -825,6 +825,12 @@ document.write(`
   
   
   <li>
+    <a href="../2024/2024_05_27_kaustav_week0.html">
+      27 May - My Journey Begins: Community Bonding Period with DIPY
+    </a>
+  </li>
+  
+  <li>
     <a href="2023_08_28_Shilpi_Week14.html">
       28 August - Doing Final Touch-Ups: Week 14
     </a>
@@ -845,12 +851,6 @@ document.write(`
   <li>
     <a href="2023_08_08_Shilpi_week11.html">
       08 August - Making the Tests Work : Week 11
-    </a>
-  </li>
-  
-  <li>
-    <a href="2023_08_07_vara_week_10_11.html">
-      07 August - Carbonate issues, GPU availability, Tensorflow errors: Week 10 & Week 11
     </a>
   </li>
   
@@ -880,7 +880,7 @@ document.write(`
   
   
   <li>
-    <a href="../../blog/category/gsoc.html">gsoc (23)</a>
+    <a href="../../blog/category/gsoc.html">gsoc (24)</a>
   </li>
   
   
@@ -893,6 +893,12 @@ document.write(`
   <a href="../../blog/archive.html">Archives</a>
 </h3>
 <ul>
+  
+  
+  <li>
+    <a href="../../blog/2024.html">2024 (1)</a>
+  </li>
+  
   
   
   <li>
@@ -969,7 +975,7 @@ document.write(`
 <p>Using existing training parameters, carried out two experiments, one on CC359 alone &amp; another on both datasets combined. Additionally, I made a slight modification in the loss definition by attributing different weights of 0.5 &amp; 1 to background &amp; foreground pixels compared to equal weights from previous experiments. This resulted in faster convergence as shown in the red, blue &amp; purple lines in the combined plot shown below. (Naming convention for each training curve is <code class="docutils literal notranslate"><span class="pre">B&lt;batch_size&gt;-&lt;dataset_used&gt;</span></code>, where CC=CC359, NFBS=NFBS, both=[NFBS,CC359])</p>
 <a class="reference internal image-reference" href="../../_images/vqvae3d-monai-training-plots.png"><img alt="Combined trainings plots for all experiments" src="../../_images/vqvae3d-monai-training-plots.png" style="width: 800px;" />
 </a>
-<p>Inference results on the best performing model, B12-both, is shown below, where every two rows correspond to reconstructions &amp; original volumes respectively, with equally spaced slices in each row. These slices visualised are anterior-posterior topdown &amp; ventral-dorsal LR.</p>
+<p>Inference results on the best performing model, B12-both, is shown below, where every two rows correspond to reconstructions &amp; original volumes respectively, with equally spaced slices in each row. These slices visualized are anterior-posterior topdown &amp; ventral-dorsal LR.</p>
 <a class="reference internal image-reference" href="../../_images/vqvae-monai-B12-both.png"><img alt="VQVAE-Monai-B12-both reconstructions &amp; originals showing equally spaced 5 slices for 2 different test samples" src="../../_images/vqvae-monai-B12-both.png" style="width: 800px;" />
 </a>
 <p>Here’s a similar visualization of the inference on the next best performing model, B12-CC.</p>

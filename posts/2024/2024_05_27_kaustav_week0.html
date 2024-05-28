@@ -55,10 +55,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_07_24_vara_week_8_9';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_05_27_kaustav_week0';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2023/2023_07_24_vara_week_8_9.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_05_27_kaustav_week0.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -758,7 +757,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  24 July 2023
+  27 May 2024
   
 </h2>
 <ul>
@@ -773,7 +772,7 @@ document.write(`
     </span>
   
   
-  <a href="../../blog/author/vara-lakshmi-bayanagari.html">Vara Lakshmi Bayanagari</a>
+  <a href="../../blog/author/kaustav.html">Kaustav</a>
   
   
   
@@ -826,32 +825,32 @@ document.write(`
   
   
   <li>
-    <a href="../2024/2024_05_27_kaustav_week0.html">
-      27 May - My Journey Begins: Community Bonding Period with DIPY
-    </a>
-  </li>
-  
-  <li>
-    <a href="2023_08_28_Shilpi_Week14.html">
+    <a href="../2023/2023_08_28_Shilpi_Week14.html">
       28 August - Doing Final Touch-Ups: Week 14
     </a>
   </li>
   
   <li>
-    <a href="2023_08_22_Shilpi_Week13.html">
+    <a href="../2023/2023_08_22_Shilpi_Week13.html">
       22 August - Writing Tests & Making Documentation: Week 13
     </a>
   </li>
   
   <li>
-    <a href="2023_08_21_vara_week_12_13.html">
+    <a href="../2023/2023_08_21_vara_week_12_13.html">
       21 August - Finalized experiments using both datasets: Week 12 & Week13
     </a>
   </li>
   
   <li>
-    <a href="2023_08_15_Shilpi_week12.html">
+    <a href="../2023/2023_08_15_Shilpi_week12.html">
       15 August - Week12: Making Test Functions Work
+    </a>
+  </li>
+  
+  <li>
+    <a href="../2023/2023_08_08_Shilpi_week11.html">
+      08 August - Making the Tests Work : Week 11
     </a>
   </li>
   
@@ -961,38 +960,55 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-<section id="vqvae-monai-models-checkerboard-artifacts-week-8-week-9">
-<h1>VQVAE MONAI models &amp; checkerboard artifacts: Week 8 &amp; Week 9<a class="headerlink" href="#vqvae-monai-models-checkerboard-artifacts-week-8-week-9" title="Link to this heading">#</a></h1>
-<section id="what-i-did-this-week">
-<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
-<p>We observed in our previous results that the Diffusion Model’s performance may depend on better and effective latents from VQVAE. After playing around with convolutional &amp; residual components in the existing architecture that yielded unsatisfactory results, we decided to move to a more proven model on 3D MRIs. It is not necessary that a model that worked well on MNIST dataset would also deliver similarly on 3D MRI datasets, owing to the differences in complexity of the data distributions. Changing the convolutions to 3D filters alone clearly did not do the job.</p>
-<p>MONAI is an open source organization for Machine Learning in Medical Imaging, it has repositories and tutorials for various high performing networks tested on multiple Medical Image datasets. We adopted the deep learning architecture for VQVAE from MONAI’s PyTorch implementation that was trained &amp; tested on BRATS(400 data elements). The predominant difference is that the encoder &amp; the decoder of VQVAE use Residual units differently than our existing setup. These Residual units are alternated between downsampling/upsampling convolutions in the encoder/decoder. Additionally, MONAI’s VectorQuantizer uses non-trainable embeddings with statistical updates(Laplace Smoothing) on them at every iteration.</p>
-<p>I implemented MONAI’s VQVAE architecture in Tensorflow from scratch, excluding the VectorQuantizer. This architecture has 46.5M trainable parameters. The training objective is to minimize the sum of reconstruction &amp; quantization loss - same training paradigm as our previous experiments. In addition, to address the checkerboard artifacts, I referred to the <a class="reference external" href="https://arxiv.org/abs/1707.02937">Sub-Pixel Convolution paper</a>.</p>
-<p>This paper proposes two methods to overcome the deconvolution overlap, a phenomenon that causes checkerboarded outputs in deconvolution/upsampling layers. These two methods are - Sub Pixel Convolution &amp; NN Resize Convolution.</p>
-<p>For an upsampling rate <span class="math notranslate nohighlight">\(r\)</span>, Sub Pixel Convolution outputs <span class="math notranslate nohighlight">\(3r^2\)</span> output channels &amp; later reshuffles channel dimension along spatial dimensions (upsamples them by <span class="math notranslate nohighlight">\(r\)</span> across each) resulting in 3(desired) output channels.</p>
-<p>Whereas NN Resize performs interpolation on the kernel to upsample its size by <span class="math notranslate nohighlight">\(r\)</span> before carrying out convolution that outputs 3 channels. The former method relies on shuffling &amp; the later method relies on nearest neighbor interpolation to obtain an upsampled output respectively.</p>
-<p>Both methods have shown to perform better qualitatively in dealing with the checkerboards, on random initialization. The authors also go ahead and prove mathematically that with an efficient initialization, both methods prove to be equivalent. They call it the ICNR initialization - Initialization of Convolution with NN Resize.</p>
-<p>I ran multiple experiments with batch_size=5,10,10(with ICNR). The training loss curves obtained are as follows, all of them trained on 1 GPU for 24hrs. We see that all of them converge except the last one(B=10 with ICNR).</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-training.png"><img alt="../../_images/vqvae3d-monai-training.png" src="../../_images/vqvae3d-monai-training.png" style="width: 800px;" />
-</a>
-<p>The best training checkpoint has been used to reconstruct test images. Following images depict 2 such reconstructions in 2 rows, where 5 slices from each of these reconstructions have been displayed in columns.</p>
-<p>The first one is for B=10, the best training checkpoint had training loss=0.0037. Compared to our previous VQVAE model, we see a better performance in capturing the brain outer structure. Moreover, we don’t see white blobs or artifacts as inner matter, rather some curvatures contributing to the inner microstructure of a human brain.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B10.png"><img alt="../../_images/vqvae3d-monai-B10.png" src="../../_images/vqvae3d-monai-B10.png" style="width: 800px;" />
-</a>
-<p>The second one is for B=10 with ICNR kernel initialization, the best training checkpoint had training loss=0.0067. Although, the test results do not look complete. I implemented ICNR through DIPY’s resize function to achieve NN resize equivalent output on the kernel filters. This initialization didn’t work as it was intended to, further proving that the training is yet to be converged.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B10-ICNR.png"><img alt="../../_images/vqvae3d-monai-B10-ICNR.png" src="../../_images/vqvae3d-monai-B10-ICNR.png" style="width: 800px;" />
-</a>
-<p>The next &amp; last image is for B=5, the best training checkpoint had training loss = 0.0031. By far the best one quantitatively as well as visually. The test loss for the below reconstructions is 0.0013. The superior performance of this batch size can be owed to the Batch Normalization(BN) layers in the architecture that calculate mean &amp; average of the batch to perform normalization over all batch elements using these statistics. Having lesser batch size may contribute to least variation in the output of the layer &amp; helps in achieving converging outputs faster. This explanation stems from the concept of Contrastive Learning, where BN layers are used as the source of implicit negative loss learners. Higher the batch size, more implicit negative samples to move away from. Whereas our objective is to minimize the reconstruction loss, having lesser batch size consequently may help in lesser variation.</p>
-<a class="reference internal image-reference" href="../../_images/vqvae3d-monai-B5.png"><img alt="../../_images/vqvae3d-monai-B5.png" src="../../_images/vqvae3d-monai-B5.png" style="width: 800px;" />
-</a>
+<section id="my-journey-begins-community-bonding-period-with-dipy">
+<h1>My Journey Begins: Community Bonding Period with DIPY<a class="headerlink" href="#my-journey-begins-community-bonding-period-with-dipy" title="Link to this heading">#</a></h1>
+<p>Hello everyone,
+I am thrilled to share that I have been selected as a Google Summer of Code (GSoC) student for 2024.
+Over the summer, I will be working with DIPY, and I am incredibly excited about the journey ahead.</p>
+<section id="community-bonding-period-building-the-foundation">
+<h2>Community Bonding Period: Building the Foundation<a class="headerlink" href="#community-bonding-period-building-the-foundation" title="Link to this heading">#</a></h2>
+<p>The GSoC program is structured in a way that allows us to gradually ease into our projects. The first phase, known as the Community Bonding period, is crucial for laying a strong foundation for the work that lies ahead. During this time, I had the opportunity to:</p>
+<ol class="arabic simple">
+<li><p><strong>Get Acquainted with the Community</strong>: I joined various communication channels like mailing lists, chat rooms, and forums. Interacting with the mentors and other community members helped me understand the culture and workflow of the organization.</p></li>
+<li><p><strong>Understand the Project Scope</strong>: I spent time understanding the broader goals of my project, the expected outcomes, and the milestones I need to achieve. This involved several discussions with my mentor, Serge, who provided invaluable guidance and insights.</p></li>
+<li><p><strong>Set Up the Development Environment</strong>: Getting the right tools and environment set up is critical for any development work. I followed the documentation to set up my development environment, ensuring I had all the necessary dependencies and tools installed.</p></li>
+</ol>
 </section>
-<section id="what-is-coming-up-next-week">
-<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
-<p>As the next step, I can focus on training the LDM(Latent Diffusion Model) from the best performing model from the above experiments.</p>
+<section id="project-task-1-enhancing-keyword-only-arguments-with-decorators">
+<h2>Project-Task 1: Enhancing Keyword-Only Arguments with Decorators<a class="headerlink" href="#project-task-1-enhancing-keyword-only-arguments-with-decorators" title="Link to this heading">#</a></h2>
+<p>The focus of my 1st task is to implement the keyword-only arguments in DIPY. Specifically, I am working on enhancing this feature with the help of decorators.</p>
+<section id="what-are-keyword-only-arguments">
+<h3>What are Keyword-Only Arguments?<a class="headerlink" href="#what-are-keyword-only-arguments" title="Link to this heading">#</a></h3>
+<p>In many programming languages, keyword-only arguments are parameters that can only be supplied using their name, not as positional arguments. This helps in making the code more readable and reduces the chances of errors.</p>
 </section>
-<section id="did-i-get-stuck-anywhere">
-<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
-<p>In both weeks, I had issues accessing resources &amp; specifically multiple GPUs.</p>
+<section id="the-role-of-decorators">
+<h3>The Role of Decorators<a class="headerlink" href="#the-role-of-decorators" title="Link to this heading">#</a></h3>
+<p>Decorators are a powerful feature in Python that allows us to modify the behavior of functions or classes. By leveraging decorators, we can enforce the use of keyword-only arguments in a clean and efficient manner.</p>
+</section>
+</section>
+<section id="progress-so-far">
+<h2>Progress So Far<a class="headerlink" href="#progress-so-far" title="Link to this heading">#</a></h2>
+<p>During the Community Bonding period, I have made significant strides in understanding the current implementation and identifying areas for improvement. Here’s a brief overview of what I have accomplished:</p>
+<ol class="arabic simple">
+<li><p><strong>Research and Analysis</strong>: I reviewed the existing codebase to understand how keyword-only arguments are currently handled. This involved reading through the documentation and studying the source code.</p></li>
+<li><p><strong>Week 0</strong>: With the guidance of my mentor, I implemented a decorator that enforces keyword-only arguments. I have submitted a PR for review on this. The PR includes the decorator feature and relevant tests, it is also implemented for functions in stats module.</p></li>
+<li><p><strong>Pull Request</strong>: [<a class="github reference external" href="https://github.com/dipy/dipy/pull/3239">dipy/dipy#3239</a>]</p></li>
+</ol>
+</section>
+<section id="whats-next">
+<h2>What’s Next?<a class="headerlink" href="#whats-next" title="Link to this heading">#</a></h2>
+<p>As we transition from the Community Bonding period to the Coding phase, I am eager to dive deeper into the project. My next steps for this task include:</p>
+<ul class="simple">
+<li><p><strong>Writing Tests</strong>: To ensure the reliability of the new feature, I will write more tests and integrate them into the existing test suite.</p></li>
+<li><p><strong>Documentation</strong>: Good documentation is key to the success of any project. I will update the documentation to reflect the new changes and provide examples of how to use the new feature.</p></li>
+<li><p><strong>Fixing style</strong>: I will fix the code styling format with accordance to PEP8.</p></li>
+</ul>
+</section>
+<section id="final-thoughts">
+<h2>Final Thoughts<a class="headerlink" href="#final-thoughts" title="Link to this heading">#</a></h2>
+<p>The Community Bonding period has been an enriching experience, allowing me to connect with my mentors and the community. I am grateful for the support and guidance I have received so far and am looking forward to contributing to DIPY over the summer.</p>
+<p>Stay tuned for more updates as I continue this exciting journey!</p>
+<p>Thank you for reading!</p>
 </section>
 </section>
 
@@ -1005,24 +1021,16 @@ document.write(`
   <span class="ablog__prev">
     
     
-    <a href="2023_07_12_Shilpi_week7.html">
+    <a href="../2023/2023_08_28_Shilpi_Week14.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>Modifying Test Signal Generation</span>
+      <span>Doing Final Touch-Ups: Week 14</span>
     </a>
     
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-    
-    
-    <a href="2023_07_27_Shilpi_week_8_9.html">
-      <span>Generating Fit Functions : Week 8 & 9</span>
-      
-      <i class="fa fa-arrow-circle-right" ></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1059,9 +1067,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#community-bonding-period-building-the-foundation">Community Bonding Period: Building the Foundation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-task-1-enhancing-keyword-only-arguments-with-decorators">Project-Task 1: Enhancing Keyword-Only Arguments with Decorators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-keyword-only-arguments">What are Keyword-Only Arguments?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-role-of-decorators">The Role of Decorators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#progress-so-far">Progress So Far</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s Next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts">Final Thoughts</a></li>
 </ul>
   </nav></div>
 
