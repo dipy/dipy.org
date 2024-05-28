@@ -13,7 +13,7 @@ About Myself
 Hey there! I'm Shilpi, a Computer Science and Engineering undergrad at Dayananda Sagar College of Engineering, Bangalore. I'm on track to grab my degree in 2024.
 My relationship with Python started just before I started college - got my hands dirty with this awesome Python Specialization course on Coursera.
 When it comes to what makes me tick, it's all things tech. I mean, new technology always excites me. Ubuntu, with its fancy terminal and all, used to intimidate me at first, but now, I get a thrill out of using it to do even the simplest things.
-Up until 2nd year I used to do competitive programming and a bit of ML. But from 3rd year I've been into ML very seriously, doing several courses on ML as well solving ML problems on kaggle. ML is very fun and I've done a few project on ML as well.
+Up until 2nd year I used to do competitive programming and a bit of ML. But from 3rd year I've been into ML very seriously, doing several courses on ML as well solving ML problems on Kaggle. ML is very fun and I've done a few project on ML as well.
 Coding? Absolutely love it. It's like, this is what I was meant to do, y'know? I got introduced to git and GitHub in my first year - was super curious about how the whole version control thing worked. And then, I stumbled upon the world of open source in my second year and made my first contribution to Tardis: (`<https://github.com/tardis-sn/tardis/pull/1825>`_)
 Initially, I intended on doing GSoC during my second year but ended up stepping back for reasons. This time, though, I was fired up to send in a proposal to at least one organization in GSoC. And, well, here we are!
 

@@ -21,7 +21,7 @@ Using existing training parameters, carried out two experiments, one on CC359 al
    :alt: Combined trainings plots for all experiments
    :width: 800
 
-Inference results on the best performing model, B12-both, is shown below, where every two rows correspond to reconstructions & original volumes respectively, with equally spaced slices in each row. These slices visualised are anterior-posterior topdown & ventral-dorsal LR.
+Inference results on the best performing model, B12-both, is shown below, where every two rows correspond to reconstructions & original volumes respectively, with equally spaced slices in each row. These slices visualized are anterior-posterior topdown & ventral-dorsal LR.
 
 .. image:: /_static/images/vqvae-monai-B12-both.png
    :alt: VQVAE-Monai-B12-both reconstructions & originals showing equally spaced 5 slices for 2 different test samples
