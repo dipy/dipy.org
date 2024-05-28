@@ -18,7 +18,7 @@ Learning models helped me quickly learn Tensorflow. As the next step, I read VQ-
 understood the tensorflow open source implementation. VQ-VAE addresses 'posterior collapse' 
 seen in traditional VAEs and overcomes it by discretizing latent space. This in turn also 
 improved the generative capability by producing less blurrier images than before. 
-Familiarizing about VQ-VAE early on helps in understading the latents used in Diffusion models
+Familiarizing about VQ-VAE early on helps in understanding the latents used in Diffusion models
 in later steps. I also explored a potential dataset - `IXI (T1 images) <https://brain-development.org/ixi-dataset/>`_ 
 - and performed some exploratory data analysis, such as age & sex distribution. The images contain 
 entire skull information, it may require brain extraction & registration. It maybe more useful 
