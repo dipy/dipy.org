@@ -1,0 +1,40 @@
+Community Bonding Period Summary and first impressions
+======================================================
+
+.. post:: May 27 2024
+    :author: Iñigo Tellaetxe
+    :tags: google
+    :category: gsoc
+
+
+About Iñigo
+~~~~~~~~~~~
+Hi everyone! I am Iñigo Tellaetxe Elorriaga, BSc in Biomedical Engineering and MSc in Biomedical Technologies in Mondragon Unibertsitatea, Basque Country. I am a first year PhD student in the Computational Neuroimaging Laboratory in the Biobizkaia Health Research Institute, also in the Basque Country. In the lab, our main paradigm is brain connectivity, so I am familiar with diffusion MRI and tractography. My main lines of research are brain aging, age modelling, and neurorehabilitation, all in the presence of neurodegenerative diseases and acute brain injuries.
+As of my programming skills, I am mainly a Python developer and I am one of the main contributors to the `ageml <https://github.com/compneurobilbao/ageml>`__ library, which we are developing at our lab as part of my PhD thesis.
+I also worked in the industry as a research engineer in the field of medical computer vision for Cyber Surgery, developing new methods to generate synthetic CT images from MRI for reducing ionizing radiation in spinal surgery patients, using generative diffusion models.
+I have been using DIPY for a while now for my research and other projects, so I am obviously really excited to contribute to the project this summer.
+
+How did I get involved with DIPY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+My `thesis supervisor <https://github.com/erramuzpe>`__, who was a professor at my master's and also a participant and mentor in other editions, told me about GSoC. As a person that has been naturally attracted to research and open science I got really interested in open source software. I was also lucky enough to meet `@drombas <https://github.com/drombas>`__, who took part in GSoC in 2021 with DIPY. He told me about his work and encouraged me to participate in DIPY, as he positively valued his experience.
+After starting my PhD, I saw the perfect opportunity to contribute to the organization and potentially also to my research field. That is why I wanted to fuse tractography with age modelling in the context of Alzheimer's Disease.
+
+What I did this week and in the Community Bonding Period
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+During this period, I had the opportunity to meet the other GSoC participants in the organization and my mentors. It was perfect to learn about how we should contribute to DIPY aside from our project and to get up and running with the environment, the coding style guidelines, and the community guidelines.
+
+Briefly, the objective of my project is to implement a new feature to generate synthetic tractograms in DIPY, being able to specify the "age" and the clinical status (healthy or Alzheimer's Disease affected) of the requested tractogram.
+
+I talked with my mentors and we agreed on the first tasks to carry out. Jon Haitz provided me with the data he used to train his AutoEncoder (AE) network. These are 2 datasets: Tractoinferno and FiberCup.
+I forked the Tractolearn repo and translated his AE architecture from PyTorch to TensorFlow. I updated the Dockerfile in my fork and created a working Docker image of the repo to run experiments in the DIPC cluster when the experiments phase starts.
+I also started writing the training loop for the AE, this is WIP.
+
+What is coming up next week
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I will work on finishing the training loop for the AE and make an experiment in which I overfit the model with a small dataset. This is useful to check whether the loss and the training objective are correctly defined.
+After this, I could continue to launch bigger training sessions with the full dataset.
+
+
+Did I get stuck anywhere
+~~~~~~~~~~~~~~~~~~~~~~~~
+I got a bit stuck with reproducing the Tractolearn environment locally and making the Dockerfile work, but I solved it by updating the Dockerfile. The local environment problem was solved installing a missing system dependency, `liblapack-dev`.
