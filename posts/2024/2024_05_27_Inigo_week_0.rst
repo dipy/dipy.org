@@ -1,5 +1,5 @@
 Community Bonding Period Summary and first impressions
-===================================================
+======================================================
 
 .. post:: May 27 2024
     :author: Iñigo Tellaetxe
