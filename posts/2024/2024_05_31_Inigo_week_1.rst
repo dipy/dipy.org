@@ -1,0 +1,24 @@
+First Week into GSoC 2024: Building the AutoEncoder, writing the training loop
+==============================================================================
+
+.. post:: May 31 2024
+    :author: Iñigo Tellaetxe
+    :tags: google
+    :category: gsoc
+
+
+What I did this week
+~~~~~~~~~~~~~~~~~~~~
+I finished becoming familiar with the TensorFlow + Keras basics and I wrote the training loop and a couple of scripts for instantiating and training the AutoEncoder.
+Data loading was also addressed and I am able to load the data from the FiberCup dataset in .trk format using `NiBabel <https://nipy.org/nibabel/>`__, transform it into NumPy arrays, and feed it into the network.
+
+What is coming up next week
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Because the training loop is taking too long, I will refactor the code to make it more modular and more in the TensorFlow style. Also, other DIPY models are implemented in this fashion, what will contribute to consistency across the library.
+I think I have yet to get the hang of the TensorFlow way of doing things.
+I plan to use a class for the ``Encoder`` and another one for the ``Decoder``. Then I will bring them together under an ``AutoEncoder`` class that inherits from the Keras ``Model`` class.
+This will allow me to use the ``fit`` method from the Keras ``Model`` class and make the training loop more efficient, together with easing its usage. I will just have all the relevant training parameters to the ``compile`` method, to later call the ``fit`` method to train the model, taking care of the weight updates more efficiently than my handmade training loop.
+
+Did I get stuck anywhere
+~~~~~~~~~~~~~~~~~~~~~~~~
+Getting the handmade training loop up and running gave me a couple of headaches because the weight update was taking ages. I am still stuck here and that is why I will refactor the code next week.
