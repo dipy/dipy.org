@@ -10,7 +10,7 @@ First Week into GSoC 2024: Building the AutoEncoder, writing the training loop
 What I did this week
 ~~~~~~~~~~~~~~~~~~~~
 I finished becoming familiar with the TensorFlow + Keras basics and I wrote the training loop and a couple of scripts for instantiating and training the AutoEncoder.
-Data loading was also addressed and I am able to load the data from the FiberCup dataset in .trk format using `NiBabel <https://nipy.org/nibabel/>`__, transform it into NumPy arrays, and feed it into the network.
+Data loading was also addressed and I am able to load the data from the FiberCup dataset in .trk format using `NiBabel <https://nipy.org/nibabel/>`_, transform it into NumPy arrays, and feed it into the network.
 
 What is coming up next week
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
