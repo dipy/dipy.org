@@ -1,0 +1,29 @@
+Second Week into GSoC 2024: Refactoring the AutoEncoder, preliminary results
+============================================================================
+
+.. post:: June 7 2024
+    :author: Iñigo Tellaetxe
+    :tags: google
+    :category: gsoc
+
+
+What I did this week
+~~~~~~~~~~~~~~~~~~~~
+This week I refactored the AutoEncoder code to match the design patterns and the organization of other Deep Learning models in the DIPY repo; and to make the training loop more efficient and easy to use. I transferred my code to a `separate repo <https://github.com/itellaetxe/tractoencoder_gsoc>`_ to keep the DIPY repo clean and to experiment freely. Once the final product is working, I will merge it into DIPY. I also packaged the whole repo so I can use it as a library.
+Training experiments were run for a maximum of a 150 epochs, with variable results. They are not amazing, but at least we get some reconstruction of the input tracts from FiberCup, which seems to be on the right track. I also implemented training logs that report the parameters I used for training, so I can reproduce the results at any time. This still needs work though, because not all parameters are stored. Need to polish!
+The left image shows the input tracts, and the middle and right images show two reconstructions from two different training experiments.
+
+.. image:: /_static/images/fibercup_preliminary_results.png
+    :alt: Preliminary results of the AutoEncoder training for a subset of plausible fibers of the FiberCup dataset.
+    :width: 600
+
+What is coming up next week
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+With the help of my mentors, we identified possible improvements to the AutoEncoder training process. Yesterday I investigated how PyTorch weights are initialized in convolutional kernels and in Keras Dense layers using the `He Initialization <https://paperswithcode.com/paper/delving-deep-into-rectifiers-surpassing-human>`_. Using custom initializers, one can mimic the same behavior in TensorFlow, which I started to implement also yesterday.
+This week should focus on trying to reproduce the small implementation differences that might be causing the model to not converge as the PyTorch one. I will also try to finish implementing the He Initialization in TensorFlow.
+
+
+Did I get stuck anywhere
+~~~~~~~~~~~~~~~~~~~~~~~~
+I got a bit stuck refactoring the code to match the DIPY design patterns and also with the TensorFlow implementation itself, because the output shape of the ``Encoder`` and the input shape of the ``Decoder`` were not matching.
+After investigating what caused this issue, I discovered that ``tf.shape`` was not giving me the usual (and expected) shape of the tensor, conveniently stored in a ``tuple``. I found this behavior strange, but I solved the problem just calling a ``.shape`` method on the Tensor, which does give me the shape tuple I needed.
