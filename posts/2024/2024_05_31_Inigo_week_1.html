@@ -55,9 +55,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_07_06_shilpi_week6';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_05_31_Inigo_week_1';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2023/2023_07_06_shilpi_week6.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_05_31_Inigo_week_1.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -757,7 +757,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  06 July 2023
+  31 May 2024
   
 </h2>
 <ul>
@@ -772,7 +772,7 @@ document.write(`
     </span>
   
   
-  <a href="../../blog/author/shilpi-prasad.html">Shilpi Prasad</a>
+  <a href="../../blog/author/inigo-tellaetxe.html">Iñigo Tellaetxe</a>
   
   
   
@@ -825,32 +825,32 @@ document.write(`
   
   
   <li>
-    <a href="../2024/2024_06_07_Inigo_week_2.html">
+    <a href="2024_06_07_Inigo_week_2.html">
       07 June - Second Week into GSoC 2024: Refactoring the AutoEncoder, preliminary results
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_06_03_kaustav_week_1.html">
+    <a href="2024_06_03_kaustav_week_1.html">
       03 June - My Journey Continues: Week 1 Progress with DIPY
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_05_31_Inigo_week_1.html">
-      31 May - First Week into GSoC 2024: Building the AutoEncoder, writing the training loop
-    </a>
-  </li>
-  
-  <li>
-    <a href="../2024/2024_05_27_kaustav_week0.html">
+    <a href="2024_05_27_kaustav_week0.html">
       27 May - My Journey Begins: Community Bonding Period with DIPY
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_05_27_Inigo_week_0.html">
+    <a href="2024_05_27_Inigo_week_0.html">
       27 May - Community Bonding Period Summary and first impressions
+    </a>
+  </li>
+  
+  <li>
+    <a href="../2023/2023_08_28_Shilpi_Week14.html">
+      28 August - Doing Final Touch-Ups: Week 14
     </a>
   </li>
   
@@ -960,22 +960,23 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-<section id="creating-signal-predict-method-testing-signal-generation">
-<h1>Creating signal_predict Method: Testing Signal Generation<a class="headerlink" href="#creating-signal-predict-method-testing-signal-generation" title="Link to this heading">#</a></h1>
+<section id="first-week-into-gsoc-2024-building-the-autoencoder-writing-the-training-loop">
+<h1>First Week into GSoC 2024: Building the AutoEncoder, writing the training loop<a class="headerlink" href="#first-week-into-gsoc-2024-building-the-autoencoder-writing-the-training-loop" title="Link to this heading">#</a></h1>
 <section id="what-i-did-this-week">
 <h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
-<p>This week, I worked together with my mentor to come up with a new way of arranging the elements of the design matrix. So, first I rearranged all the parameters of the covariance parameters so that they’d match with the ones in QTI. So now, the order is: the diffusion tensor, the covariance tensor, and then the kurtosis tensors. But then we decided that it would be better to put the kurtosis tensors first because then we wouldn’t have to re-implement all the kurtosis methods again. So, I changed the order of kurtosis and the covariance tensors.</p>
-<p>Also, in order to maintain the coding standards of the previously implemented models, we decided that the diffusion tensor should be divided into evals and evecs.</p>
-<p>Therefore, because of all these changes I had to re-implement a lot of already implemented functions in CTI which also required changing the description of those functions and not only the code.</p>
-<p>But my major time went towards writing tests for these modified codes. While writing codes, I realized that a lot of the functions needed to be modified a bit. Also, I had to import several new libraries in order for the functions to work.</p>
+<p>I finished becoming familiar with the TensorFlow + Keras basics and I wrote the training loop and a couple of scripts for instantiating and training the AutoEncoder.
+Data loading was also addressed and I am able to load the data from the FiberCup dataset in .trk format using <a class="reference external" href="https://nipy.org/nibabel/">NiBabel</a>, transform it into NumPy arrays, and feed it into the network.</p>
 </section>
 <section id="what-is-coming-up-next-week">
-<h2>What Is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
-<p>The testing part for the implemented method is not yet done correctly, as the signals don’t yet match the expected output. So, I intend on re-implementing them by taking into consideration the suggestions provided by my mentor. This would require modifying code of some already implemented functions as well as re-writing the tests, particularly the generation of the eigenvalues and the eigen vectors.</p>
+<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
+<p>Because the training loop is taking too long, I will refactor the code to make it more modular and more in the TensorFlow style. Also, other DIPY models are implemented in this fashion, what will contribute to consistency across the library.
+I think I have yet to get the hang of the TensorFlow way of doing things.
+I plan to use a class for the <code class="docutils literal notranslate"><span class="pre">Encoder</span></code> and another one for the <code class="docutils literal notranslate"><span class="pre">Decoder</span></code>. Then I will bring them together under an <code class="docutils literal notranslate"><span class="pre">AutoEncoder</span></code> class that inherits from the Keras <code class="docutils literal notranslate"><span class="pre">Model</span></code> class.
+This will allow me to use the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method from the Keras <code class="docutils literal notranslate"><span class="pre">Model</span></code> class and make the training loop more efficient, together with easing its usage. I will just have all the relevant training parameters to the <code class="docutils literal notranslate"><span class="pre">compile</span></code> method, to later call the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method to train the model, taking care of the weight updates more efficiently than my handmade training loop.</p>
 </section>
 <section id="did-i-get-stuck-anywhere">
 <h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
-<p>I didn’t exactly get stuck, but implementing the tests requires you to make sure that the shape of the tensors you’re passing into a function is correct and is as expected. This took me a while to figure out.</p>
+<p>Getting the handmade training loop up and running gave me a couple of headaches because the weight update was taking ages. I am still stuck here and that is why I will refactor the code next week.</p>
 </section>
 </section>
 
@@ -988,11 +989,11 @@ document.write(`
   <span class="ablog__prev">
     
     
-    <a href="2023_06_26_vara_week5.html">
+    <a href="2024_05_27_kaustav_week0.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>Carbonate Account Setup, Experiment, Debug and Repeat: Week 5</span>
+      <span>My Journey Begins: Community Bonding Period with DIPY</span>
     </a>
     
   </span>
@@ -1000,8 +1001,8 @@ document.write(`
   <span class="ablog__next">
     
     
-    <a href="2023_07_06_shilpi_week5.html">
-      <span>Design Matrix Implementation and Coding with PEP8: Week 5</span>
+    <a href="2024_06_03_kaustav_week_1.html">
+      <span>My Journey Continues: Week 1 Progress with DIPY</span>
       
       <i class="fa fa-arrow-circle-right" ></i>
       
@@ -1043,7 +1044,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What Is coming up next week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
 </ul>
   </nav></div>

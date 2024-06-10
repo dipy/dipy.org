@@ -759,8 +759,20 @@ document.write(`
   
   
   <li>
+    <a href="../../posts/2024/2024_06_07_Inigo_week_2.html">
+      07 June - Second Week into GSoC 2024: Refactoring the AutoEncoder, preliminary results
+    </a>
+  </li>
+  
+  <li>
     <a href="../../posts/2024/2024_06_03_kaustav_week_1.html">
       03 June - My Journey Continues: Week 1 Progress with DIPY
+    </a>
+  </li>
+  
+  <li>
+    <a href="../../posts/2024/2024_05_31_Inigo_week_1.html">
+      31 May - First Week into GSoC 2024: Building the AutoEncoder, writing the training loop
     </a>
   </li>
   
@@ -773,18 +785,6 @@ document.write(`
   <li>
     <a href="../../posts/2024/2024_05_27_Inigo_week_0.html">
       27 May - Community Bonding Period Summary and first impressions
-    </a>
-  </li>
-  
-  <li>
-    <a href="../../posts/2023/2023_08_28_Shilpi_Week14.html">
-      28 August - Doing Final Touch-Ups: Week 14
-    </a>
-  </li>
-  
-  <li>
-    <a href="../../posts/2023/2023_08_22_Shilpi_Week13.html">
-      22 August - Writing Tests & Making Documentation: Week 13
     </a>
   </li>
   
@@ -814,7 +814,7 @@ document.write(`
   
   
   <li>
-    <a href="../category/gsoc.html">gsoc (26)</a>
+    <a href="../category/gsoc.html">gsoc (28)</a>
   </li>
   
   
@@ -830,7 +830,7 @@ document.write(`
   
   
   <li>
-    <a href="../2024.html">2024 (3)</a>
+    <a href="../2024.html">2024 (5)</a>
   </li>
   
   
@@ -907,6 +907,81 @@ document.write(`
   
   <div class="section ablog-post">
     <h2 class="ablog-post-title">
+      <a href="../../posts/2024/2024_06_07_Inigo_week_2.html">Second Week into GSoC 2024: Refactoring the AutoEncoder, preliminary results</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        07 June 2024
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="../author/inigo-tellaetxe.html">Iñigo Tellaetxe</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="#">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>This week I refactored the AutoEncoder code to match the design patterns and the organization of other Deep Learning models in the DIPY repo; and to make the training loop more efficient and easy to use. I transferred my code to a <a class="reference external" href="https://github.com/itellaetxe/tractoencoder_gsoc">separate repo</a> to keep the DIPY repo clean and to experiment freely. Once the final product is working, I will merge it into DIPY. I also packaged the whole repo so I can use it as a library.
+Training experiments were run for a maximum of a 150 epochs, with variable results. They are not amazing, but at least we get some reconstruction of the input tracts from FiberCup, which seems to be on the right track. I also implemented training logs that report the parameters I used for training, so I can reproduce the results at any time. This still needs work though, because not all parameters are stored. Need to polish!
+The left image shows the input tracts, and the middle and right images show two reconstructions from two different training experiments.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2024/2024_06_07_Inigo_week_2.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../posts/2024/2024_06_03_kaustav_week_1.html">My Journey Continues: Week 1 Progress with DIPY</a>
     </h2>
     <ul class="ablog-archive">
@@ -976,6 +1051,80 @@ I am back with another update on my Google Summer of Code (GSoC) journey with DI
 </p>
 
     <p class="ablog-post-expand"><a href="../../posts/2024/2024_06_03_kaustav_week_1.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2024/2024_05_31_Inigo_week_1.html">First Week into GSoC 2024: Building the AutoEncoder, writing the training loop</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        31 May 2024
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="../author/inigo-tellaetxe.html">Iñigo Tellaetxe</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="#">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>I finished becoming familiar with the TensorFlow + Keras basics and I wrote the training loop and a couple of scripts for instantiating and training the AutoEncoder.
+Data loading was also addressed and I am able to load the data from the FiberCup dataset in .trk format using <a class="reference external" href="https://nipy.org/nibabel/">NiBabel</a>, transform it into NumPy arrays, and feed it into the network.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2024/2024_05_31_Inigo_week_1.html"><em>Read more ...</em></a></p>
     <hr/>
   </div>
   

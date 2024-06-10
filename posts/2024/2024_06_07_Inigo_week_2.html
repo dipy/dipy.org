@@ -55,9 +55,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_07_06_shilpi_week6';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_06_07_Inigo_week_2';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2023/2023_07_06_shilpi_week6.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_06_07_Inigo_week_2.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -757,7 +757,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  06 July 2023
+  07 June 2024
   
 </h2>
 <ul>
@@ -772,7 +772,7 @@ document.write(`
     </span>
   
   
-  <a href="../../blog/author/shilpi-prasad.html">Shilpi Prasad</a>
+  <a href="../../blog/author/inigo-tellaetxe.html">Iñigo Tellaetxe</a>
   
   
   
@@ -825,32 +825,32 @@ document.write(`
   
   
   <li>
-    <a href="../2024/2024_06_07_Inigo_week_2.html">
-      07 June - Second Week into GSoC 2024: Refactoring the AutoEncoder, preliminary results
-    </a>
-  </li>
-  
-  <li>
-    <a href="../2024/2024_06_03_kaustav_week_1.html">
+    <a href="2024_06_03_kaustav_week_1.html">
       03 June - My Journey Continues: Week 1 Progress with DIPY
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_05_31_Inigo_week_1.html">
+    <a href="2024_05_31_Inigo_week_1.html">
       31 May - First Week into GSoC 2024: Building the AutoEncoder, writing the training loop
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_05_27_kaustav_week0.html">
+    <a href="2024_05_27_kaustav_week0.html">
       27 May - My Journey Begins: Community Bonding Period with DIPY
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_05_27_Inigo_week_0.html">
+    <a href="2024_05_27_Inigo_week_0.html">
       27 May - Community Bonding Period Summary and first impressions
+    </a>
+  </li>
+  
+  <li>
+    <a href="../2023/2023_08_28_Shilpi_Week14.html">
+      28 August - Doing Final Touch-Ups: Week 14
     </a>
   </li>
   
@@ -960,22 +960,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-<section id="creating-signal-predict-method-testing-signal-generation">
-<h1>Creating signal_predict Method: Testing Signal Generation<a class="headerlink" href="#creating-signal-predict-method-testing-signal-generation" title="Link to this heading">#</a></h1>
+<section id="second-week-into-gsoc-2024-refactoring-the-autoencoder-preliminary-results">
+<h1>Second Week into GSoC 2024: Refactoring the AutoEncoder, preliminary results<a class="headerlink" href="#second-week-into-gsoc-2024-refactoring-the-autoencoder-preliminary-results" title="Link to this heading">#</a></h1>
 <section id="what-i-did-this-week">
 <h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
-<p>This week, I worked together with my mentor to come up with a new way of arranging the elements of the design matrix. So, first I rearranged all the parameters of the covariance parameters so that they’d match with the ones in QTI. So now, the order is: the diffusion tensor, the covariance tensor, and then the kurtosis tensors. But then we decided that it would be better to put the kurtosis tensors first because then we wouldn’t have to re-implement all the kurtosis methods again. So, I changed the order of kurtosis and the covariance tensors.</p>
-<p>Also, in order to maintain the coding standards of the previously implemented models, we decided that the diffusion tensor should be divided into evals and evecs.</p>
-<p>Therefore, because of all these changes I had to re-implement a lot of already implemented functions in CTI which also required changing the description of those functions and not only the code.</p>
-<p>But my major time went towards writing tests for these modified codes. While writing codes, I realized that a lot of the functions needed to be modified a bit. Also, I had to import several new libraries in order for the functions to work.</p>
+<p>This week I refactored the AutoEncoder code to match the design patterns and the organization of other Deep Learning models in the DIPY repo; and to make the training loop more efficient and easy to use. I transferred my code to a <a class="reference external" href="https://github.com/itellaetxe/tractoencoder_gsoc">separate repo</a> to keep the DIPY repo clean and to experiment freely. Once the final product is working, I will merge it into DIPY. I also packaged the whole repo so I can use it as a library.
+Training experiments were run for a maximum of a 150 epochs, with variable results. They are not amazing, but at least we get some reconstruction of the input tracts from FiberCup, which seems to be on the right track. I also implemented training logs that report the parameters I used for training, so I can reproduce the results at any time. This still needs work though, because not all parameters are stored. Need to polish!
+The left image shows the input tracts, and the middle and right images show two reconstructions from two different training experiments.</p>
+<a class="reference internal image-reference" href="../../_images/fibercup_preliminary_results.png"><img alt="Preliminary results of the AutoEncoder training for a subset of plausible fibers of the FiberCup dataset." src="../../_images/fibercup_preliminary_results.png" style="width: 600px;" />
+</a>
 </section>
 <section id="what-is-coming-up-next-week">
-<h2>What Is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
-<p>The testing part for the implemented method is not yet done correctly, as the signals don’t yet match the expected output. So, I intend on re-implementing them by taking into consideration the suggestions provided by my mentor. This would require modifying code of some already implemented functions as well as re-writing the tests, particularly the generation of the eigenvalues and the eigen vectors.</p>
+<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
+<p>With the help of my mentors, we identified possible improvements to the AutoEncoder training process. Yesterday I investigated how PyTorch weights are initialized in convolutional kernels and in Keras Dense layers using the <a class="reference external" href="https://paperswithcode.com/paper/delving-deep-into-rectifiers-surpassing-human">He Initialization</a>. Using custom initializers, one can mimic the same behavior in TensorFlow, which I started to implement also yesterday.
+This week should focus on trying to reproduce the small implementation differences that might be causing the model to not converge as the PyTorch one. I will also try to finish implementing the He Initialization in TensorFlow.</p>
 </section>
 <section id="did-i-get-stuck-anywhere">
 <h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
-<p>I didn’t exactly get stuck, but implementing the tests requires you to make sure that the shape of the tensors you’re passing into a function is correct and is as expected. This took me a while to figure out.</p>
+<p>I got a bit stuck refactoring the code to match the DIPY design patterns and also with the TensorFlow implementation itself, because the output shape of the <code class="docutils literal notranslate"><span class="pre">Encoder</span></code> and the input shape of the <code class="docutils literal notranslate"><span class="pre">Decoder</span></code> were not matching.
+After investigating what caused this issue, I discovered that <code class="docutils literal notranslate"><span class="pre">tf.shape</span></code> was not giving me the usual (and expected) shape of the tensor, conveniently stored in a <code class="docutils literal notranslate"><span class="pre">tuple</span></code>. I found this behavior strange, but I solved the problem just calling a <code class="docutils literal notranslate"><span class="pre">.shape</span></code> method on the Tensor, which does give me the shape tuple I needed.</p>
 </section>
 </section>
 
@@ -988,24 +991,16 @@ document.write(`
   <span class="ablog__prev">
     
     
-    <a href="2023_06_26_vara_week5.html">
+    <a href="2024_06_03_kaustav_week_1.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>Carbonate Account Setup, Experiment, Debug and Repeat: Week 5</span>
+      <span>My Journey Continues: Week 1 Progress with DIPY</span>
     </a>
     
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-    
-    
-    <a href="2023_07_06_shilpi_week5.html">
-      <span>Design Matrix Implementation and Coding with PEP8: Week 5</span>
-      
-      <i class="fa fa-arrow-circle-right" ></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1043,7 +1038,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What Is coming up next week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
 </ul>
   </nav></div>
