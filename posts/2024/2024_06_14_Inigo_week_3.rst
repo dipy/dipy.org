@@ -22,7 +22,7 @@ I also worked on trying to monitor the training experiments using TensorBoard, b
 What is coming up next week
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 My mentors and I agreed on trying to transfer the weights of the pre-trained PyTorch model to my Keras implementation, because it may take less time than actually training the model. Thus, the strategy we devised for this to work is the following:
-1. Implement dataset loading using HDF5 files, as the original model uses them, and the TractoInferno dataset is contained in such files (it is approximately 75 GB)/
+1. Implement dataset loading using HDF5 files, as the original model uses them, and the TractoInferno dataset is contained in such files (it is approximately 75 GB).
 2. Launch the training in Keras in the Donostia International Physics Center (DIPC) cluster, which has GPU accelerated nodes that I can use for speeding up training. Unlike PyTorch, I don't need to adjust the code for GPU usage, as TF takes care of that for speeding up training.
 3. While the previous step is running, I will work on transferring the weights from the PyTorch format to the Keras model. This will be a bit tricky but my mentor Jong Sung gave me a code snippet that was used in the past for this purpose, so I will try to adapt it to my needs.
 4. In parallel, I will try to read about the streamline sampling and filtering strategy Jon Haitz used for `GESTA <https://doi.org/10.1016/j.media.2023.102761>`_ and FINTA, respectively, to implement them in DIPY. I think the code is hosted in the TractoLearn repository, but I need to look it up.
