@@ -7,8 +7,10 @@ Week 4 into GSoC 2024: Weight transfer experiments, hardships, and results!
     :category: gsoc
 
 
+
 What I did this week
 ~~~~~~~~~~~~~~~~~~~~
+
 Well, this week was really intense. I spent most of the time trying to transfer the weights from the pre-trained PyTorch model of the TractoInferno dataset to the Keras model.
 I must say that thanks to the reduced size of the AutoEncoder, it was feasible to do it layer by layer without going crazy. PyTorch uses a *channels first* convention, whereas TensorFlow uses *channels last*, what means that all the weights in the convolutional layers had to be transposed.
 This was the easiest part, as it was just a matter of using ``np.transpose``.
@@ -36,11 +38,14 @@ Well, this resulted in amazing results, as you can check visually in the figure 
 
 What is coming up next week
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Next week we will start working on a conditional version of the AutoEncoder, which should give us the ability to generate tractograms conditioned on a specific scalar input. This will be a very interesting feature to have because we can get tractograms with properties of interest. Well, this is the main goal of this project.
 The sampling strategy for the tracts does not concern me for now because the code is already available in the `tractolearn <https://github.com/scil-vital/tractolearn>`_ repository, so we can postpone it for now.
 
+
 Did I get stuck anywhere
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
 Of course I got stuck, but as the project has an explore and research nature, I would not  really call this being 'stuck'.
 Things got hard at some points, but we found ways to solve them.
 I am very happy with the progress we are making and I am also very excited to see where we can get with the conditional AutoEncoder.
