@@ -759,6 +759,18 @@ document.write(`
   
   
   <li>
+    <a href="../../posts/2024/2024_06_21_Inigo_week_4.html">
+      21 June - Week 4 into GSoC 2024: Weight transfer experiments, hardships, and results!
+    </a>
+  </li>
+  
+  <li>
+    <a href="../../posts/2024/2024_06_14_Inigo_week_3.html">
+      14 June - Third Week into GSoC 2024: Replicating training parameters, approaching replication
+    </a>
+  </li>
+  
+  <li>
     <a href="../../posts/2024/2024_06_07_Inigo_week_2.html">
       07 June - Second Week into GSoC 2024: Refactoring the AutoEncoder, preliminary results
     </a>
@@ -773,18 +785,6 @@ document.write(`
   <li>
     <a href="../../posts/2024/2024_05_31_Inigo_week_1.html">
       31 May - First Week into GSoC 2024: Building the AutoEncoder, writing the training loop
-    </a>
-  </li>
-  
-  <li>
-    <a href="../../posts/2024/2024_05_27_kaustav_week0.html">
-      27 May - My Journey Begins: Community Bonding Period with DIPY
-    </a>
-  </li>
-  
-  <li>
-    <a href="../../posts/2024/2024_05_27_Inigo_week_0.html">
-      27 May - Community Bonding Period Summary and first impressions
     </a>
   </li>
   
@@ -814,7 +814,7 @@ document.write(`
   
   
   <li>
-    <a href="../category/gsoc.html">gsoc (28)</a>
+    <a href="../category/gsoc.html">gsoc (30)</a>
   </li>
   
   
@@ -830,7 +830,7 @@ document.write(`
   
   
   <li>
-    <a href="../2024.html">2024 (5)</a>
+    <a href="../2024.html">2024 (7)</a>
   </li>
   
   
@@ -904,6 +904,157 @@ document.write(`
     
   </h1>
   
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2024/2024_06_21_Inigo_week_4.html">Week 4 into GSoC 2024: Weight transfer experiments, hardships, and results!</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        21 June 2024
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Iñigo Tellaetxe</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>Well, this week was really intense. I spent most of the time trying to transfer the weights from the pre-trained PyTorch model of the TractoInferno dataset to the Keras model.
+I must say that thanks to the reduced size of the AutoEncoder, it was feasible to do it layer by layer without going crazy.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2024/2024_06_21_Inigo_week_4.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2024/2024_06_14_Inigo_week_3.html">Third Week into GSoC 2024: Replicating training parameters, approaching replication</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        14 June 2024
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Iñigo Tellaetxe</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>This week was slightly less productive because I was really busy with my PhD tasks, but I managed to progress nevertheless.
+After implementing custom weight initializers (with He Initialization) for the <code class="docutils literal notranslate"><span class="pre">Dense</span></code> and <code class="docutils literal notranslate"><span class="pre">Conv1D</span></code> layers in the AutoEncoder (AE), I launched some experiments to try to replicate the training process of the original model.
+This yielded better results than last week, this time setting the weight decay, the learning rate, and the latent space dimensionality as shown in the <a class="reference external" href="https://doi.org/10.1016/j.media.2021.102126">FINTA paper</a>.
+Now the AE has no problem learning that the bundles have depth, and the number of broken streamlines decreased a lot compared to the previous results.
+I also worked on trying to monitor the training experiments using TensorBoard, but I did not succeed because it was a last minute idea and I did not have time to implement it properly.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2024/2024_06_14_Inigo_week_3.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
   
   <div class="section ablog-post">
     <h2 class="ablog-post-title">

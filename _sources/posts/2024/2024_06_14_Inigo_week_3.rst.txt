@@ -1,0 +1,35 @@
+Third Week into GSoC 2024: Replicating training parameters, approaching replication
+===================================================================================
+
+.. post:: June 14 2024
+    :author: Iñigo Tellaetxe
+    :tags: google
+    :category: gsoc
+
+
+What I did this week
+~~~~~~~~~~~~~~~~~~~~
+This week was slightly less productive because I was really busy with my PhD tasks, but I managed to progress nevertheless.
+After implementing custom weight initializers (with He Initialization) for the ``Dense`` and ``Conv1D`` layers in the AutoEncoder (AE), I launched some experiments to try to replicate the training process of the original model.
+This yielded better results than last week, this time setting the weight decay, the learning rate, and the latent space dimensionality as shown in the `FINTA paper <https://doi.org/10.1016/j.media.2021.102126>`_.
+Now the AE has no problem learning that the bundles have depth, and the number of broken streamlines decreased a lot compared to the previous results.
+I also worked on trying to monitor the training experiments using TensorBoard, but I did not succeed because it was a last minute idea and I did not have time to implement it properly.
+
+.. image:: /_static/images/fibercup_better_results.png
+    :alt: Preliminary results of the AutoEncoder training for a subset of plausible fibers of the FiberCup dataset, approaching better replication compared to the PyTorch model.
+    :width: 600
+
+What is coming up next week
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+My mentors and I agreed on trying to transfer the weights of the pre-trained PyTorch model to my Keras implementation, because it may take less time than actually training the model. Thus, the strategy we devised for this to work is the following:
+1. Implement dataset loading using HDF5 files, as the original model uses them, and the TractoInferno dataset is contained in such files (it is approximately 75 GB).
+2. Launch the training in Keras in the Donostia International Physics Center (DIPC) cluster, which has GPU accelerated nodes that I can use for speeding up training. Unlike PyTorch, I don't need to adjust the code for GPU usage, as TF takes care of that for speeding up training.
+3. While the previous step is running, I will work on transferring the weights from the PyTorch format to the Keras model. This will be a bit tricky but my mentor Jong Sung gave me a code snippet that was used in the past for this purpose, so I will try to adapt it to my needs.
+4. In parallel, I will try to read about the streamline sampling and filtering strategy Jon Haitz used for `GESTA <https://doi.org/10.1016/j.media.2023.102761>`_ and FINTA, respectively, to implement them in DIPY. I think the code is hosted in the TractoLearn repository, but I need to look it up.
+
+Did I get stuck anywhere
+~~~~~~~~~~~~~~~~~~~~~~~~
+It was not easy to implement the custom weight initializers for the Keras layers because the He initialization is not described in the Keras documentation as in the PyTorch one, so I had to make a mix of both.
+Otherwise, I did not get stuck this week, but I am a bit worried about the weight transfer process, as it may be a bit tricky to implement.
+
+Until next week!

@@ -55,9 +55,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_05_19_vara_week0';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_06_14_Inigo_week_3';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2023/2023_05_19_vara_week0.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_06_14_Inigo_week_3.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -438,6 +438,10 @@ document.write(`
   
 
   
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
 
 </nav>
@@ -753,7 +757,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  19 May 2023
+  14 June 2024
   
 </h2>
 <ul>
@@ -768,7 +772,7 @@ document.write(`
     </span>
   
   
-  <a href="../../blog/author/vara-lakshmi-bayanagari.html">Vara Lakshmi Bayanagari</a>
+  <a href="../../blog/author/inigo-tellaetxe.html">Iñigo Tellaetxe</a>
   
   
   
@@ -821,32 +825,32 @@ document.write(`
   
   
   <li>
-    <a href="../2024/2024_06_21_Inigo_week_4.html">
+    <a href="2024_06_21_Inigo_week_4.html">
       21 June - Week 4 into GSoC 2024: Weight transfer experiments, hardships, and results!
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_06_14_Inigo_week_3.html">
-      14 June - Third Week into GSoC 2024: Replicating training parameters, approaching replication
-    </a>
-  </li>
-  
-  <li>
-    <a href="../2024/2024_06_07_Inigo_week_2.html">
+    <a href="2024_06_07_Inigo_week_2.html">
       07 June - Second Week into GSoC 2024: Refactoring the AutoEncoder, preliminary results
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_06_03_kaustav_week_1.html">
+    <a href="2024_06_03_kaustav_week_1.html">
       03 June - My Journey Continues: Week 1 Progress with DIPY
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_05_31_Inigo_week_1.html">
+    <a href="2024_05_31_Inigo_week_1.html">
       31 May - First Week into GSoC 2024: Building the AutoEncoder, writing the training loop
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_05_27_kaustav_week0.html">
+      27 May - My Journey Begins: Community Bonding Period with DIPY
     </a>
   </li>
   
@@ -956,32 +960,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-<section id="journey-of-gsoc-application-acceptance-week-0">
-<h1>Journey of GSOC application &amp; acceptance : Week 0<a class="headerlink" href="#journey-of-gsoc-application-acceptance-week-0" title="Link to this heading">#</a></h1>
-<p>While applying for the GSOC 2023 DIPY sub-project titled “Creating Synthetic MRI”, I knew
-this would be the right one for me for two reasons. Keep reading to know more!</p>
-<p>As nervous and not-so-optimistic as I am about applying for academic competitions, I pushed
-myself to apply for GSOC out of a necessity for summer job more than anything. This got me out
-of my comfort zone and I ventured into open source development. During the time of application
-I was a Master’s student from NYU(current status - graduated) with focus on Deep Learning
-Applications in Healthcare. I was so involved in research in Computer Vision during school, I
-decided to pursue career in the same field going forward. Fortunately, I came across a college
-senior’s post on LinkedIn regarding getting accepted as a mentor for GSOC 2023 during that time.
-This prompted me to look further into GSOC and its list of projects for this year. I have only
-heard of GSOC during my undergrad, during which I never could muster courage to pursue something
-outside college. But this time around, I decided to put a confident front and take the leap.</p>
-<p>As I searched through the list of available projects, I got iteratively definitive about what I
-wanted to work on - looked for python projects first, filtered out machine learning projects next,
-narrowed down to a couple of relevant projects. In the process, I came across the list of DIPY
-projects. Firstly, I was looking to further my research knowledge in ML by exploring Generative AI.
-Secondly, I have worked with MRI datasets in the context of Deep Learning previously, so
-‘Creating Synthetic MRI’ project seemed the right fit. These reasons got me hooked to DIPY
-sub-organization. I thoroughly enjoyed exploring DIPY applications and began the process for
-the application preparation soon. With the wonderful help from the mentors, I successfully submitted
-an application, later got an interview call and voila, I got in!</p>
-<p>I am very happy about participating in GSOC this year. What started out as a necessity has now become
-a passion project. I hope to enjoy the journey ahead, looking forward to learning and implementing few
-things along the way!</p>
+<section id="third-week-into-gsoc-2024-replicating-training-parameters-approaching-replication">
+<h1>Third Week into GSoC 2024: Replicating training parameters, approaching replication<a class="headerlink" href="#third-week-into-gsoc-2024-replicating-training-parameters-approaching-replication" title="Link to this heading">#</a></h1>
+<section id="what-i-did-this-week">
+<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
+<p>This week was slightly less productive because I was really busy with my PhD tasks, but I managed to progress nevertheless.
+After implementing custom weight initializers (with He Initialization) for the <code class="docutils literal notranslate"><span class="pre">Dense</span></code> and <code class="docutils literal notranslate"><span class="pre">Conv1D</span></code> layers in the AutoEncoder (AE), I launched some experiments to try to replicate the training process of the original model.
+This yielded better results than last week, this time setting the weight decay, the learning rate, and the latent space dimensionality as shown in the <a class="reference external" href="https://doi.org/10.1016/j.media.2021.102126">FINTA paper</a>.
+Now the AE has no problem learning that the bundles have depth, and the number of broken streamlines decreased a lot compared to the previous results.
+I also worked on trying to monitor the training experiments using TensorBoard, but I did not succeed because it was a last minute idea and I did not have time to implement it properly.</p>
+<a class="reference internal image-reference" href="../../_images/fibercup_better_results.png"><img alt="Preliminary results of the AutoEncoder training for a subset of plausible fibers of the FiberCup dataset, approaching better replication compared to the PyTorch model." src="../../_images/fibercup_better_results.png" style="width: 600px;" />
+</a>
+</section>
+<section id="what-is-coming-up-next-week">
+<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
+<p>My mentors and I agreed on trying to transfer the weights of the pre-trained PyTorch model to my Keras implementation, because it may take less time than actually training the model. Thus, the strategy we devised for this to work is the following:
+1. Implement dataset loading using HDF5 files, as the original model uses them, and the TractoInferno dataset is contained in such files (it is approximately 75 GB).
+2. Launch the training in Keras in the Donostia International Physics Center (DIPC) cluster, which has GPU accelerated nodes that I can use for speeding up training. Unlike PyTorch, I don’t need to adjust the code for GPU usage, as TF takes care of that for speeding up training.
+3. While the previous step is running, I will work on transferring the weights from the PyTorch format to the Keras model. This will be a bit tricky but my mentor Jong Sung gave me a code snippet that was used in the past for this purpose, so I will try to adapt it to my needs.
+4. In parallel, I will try to read about the streamline sampling and filtering strategy Jon Haitz used for <a class="reference external" href="https://doi.org/10.1016/j.media.2023.102761">GESTA</a> and FINTA, respectively, to implement them in DIPY. I think the code is hosted in the TractoLearn repository, but I need to look it up.</p>
+</section>
+<section id="did-i-get-stuck-anywhere">
+<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
+<p>It was not easy to implement the custom weight initializers for the Keras layers because the He initialization is not described in the Keras documentation as in the PyTorch one, so I had to make a mix of both.
+Otherwise, I did not get stuck this week, but I am a bit worried about the weight transfer process, as it may be a bit tricky to implement.</p>
+<p>Until next week!</p>
+</section>
 </section>
 
 <div class="section ablog__blog_comments">
@@ -992,13 +996,21 @@ things along the way!</p>
 <div class="section ablog__prev-next">
   <span class="ablog__prev">
     
+    
+    <a href="2024_06_07_Inigo_week_2.html">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Second Week into GSoC 2024: Refactoring the AutoEncoder, preliminary results</span>
+    </a>
+    
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
     
     
-    <a href="2023_05_29_Shilpi_Week_0_1.html">
-      <span>Community Bonding and Week 1 Insights</span>
+    <a href="2024_06_21_Inigo_week_4.html">
+      <span>Week 4 into GSoC 2024: Weight transfer experiments, hardships, and results!</span>
       
       <i class="fa fa-arrow-circle-right" ></i>
       
@@ -1030,6 +1042,22 @@ things along the way!</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

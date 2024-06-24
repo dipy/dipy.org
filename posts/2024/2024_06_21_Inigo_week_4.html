@@ -55,9 +55,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_05_19_vara_week0';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_06_21_Inigo_week_4';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2023/2023_05_19_vara_week0.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_06_21_Inigo_week_4.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -438,6 +438,10 @@ document.write(`
   
 
   
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
 
 </nav>
@@ -753,7 +757,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  19 May 2023
+  21 June 2024
   
 </h2>
 <ul>
@@ -768,7 +772,7 @@ document.write(`
     </span>
   
   
-  <a href="../../blog/author/vara-lakshmi-bayanagari.html">Vara Lakshmi Bayanagari</a>
+  <a href="../../blog/author/inigo-tellaetxe.html">Iñigo Tellaetxe</a>
   
   
   
@@ -821,32 +825,32 @@ document.write(`
   
   
   <li>
-    <a href="../2024/2024_06_21_Inigo_week_4.html">
-      21 June - Week 4 into GSoC 2024: Weight transfer experiments, hardships, and results!
-    </a>
-  </li>
-  
-  <li>
-    <a href="../2024/2024_06_14_Inigo_week_3.html">
+    <a href="2024_06_14_Inigo_week_3.html">
       14 June - Third Week into GSoC 2024: Replicating training parameters, approaching replication
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_06_07_Inigo_week_2.html">
+    <a href="2024_06_07_Inigo_week_2.html">
       07 June - Second Week into GSoC 2024: Refactoring the AutoEncoder, preliminary results
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_06_03_kaustav_week_1.html">
+    <a href="2024_06_03_kaustav_week_1.html">
       03 June - My Journey Continues: Week 1 Progress with DIPY
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_05_31_Inigo_week_1.html">
+    <a href="2024_05_31_Inigo_week_1.html">
       31 May - First Week into GSoC 2024: Building the AutoEncoder, writing the training loop
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_05_27_kaustav_week0.html">
+      27 May - My Journey Begins: Community Bonding Period with DIPY
     </a>
   </li>
   
@@ -956,32 +960,42 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-<section id="journey-of-gsoc-application-acceptance-week-0">
-<h1>Journey of GSOC application &amp; acceptance : Week 0<a class="headerlink" href="#journey-of-gsoc-application-acceptance-week-0" title="Link to this heading">#</a></h1>
-<p>While applying for the GSOC 2023 DIPY sub-project titled “Creating Synthetic MRI”, I knew
-this would be the right one for me for two reasons. Keep reading to know more!</p>
-<p>As nervous and not-so-optimistic as I am about applying for academic competitions, I pushed
-myself to apply for GSOC out of a necessity for summer job more than anything. This got me out
-of my comfort zone and I ventured into open source development. During the time of application
-I was a Master’s student from NYU(current status - graduated) with focus on Deep Learning
-Applications in Healthcare. I was so involved in research in Computer Vision during school, I
-decided to pursue career in the same field going forward. Fortunately, I came across a college
-senior’s post on LinkedIn regarding getting accepted as a mentor for GSOC 2023 during that time.
-This prompted me to look further into GSOC and its list of projects for this year. I have only
-heard of GSOC during my undergrad, during which I never could muster courage to pursue something
-outside college. But this time around, I decided to put a confident front and take the leap.</p>
-<p>As I searched through the list of available projects, I got iteratively definitive about what I
-wanted to work on - looked for python projects first, filtered out machine learning projects next,
-narrowed down to a couple of relevant projects. In the process, I came across the list of DIPY
-projects. Firstly, I was looking to further my research knowledge in ML by exploring Generative AI.
-Secondly, I have worked with MRI datasets in the context of Deep Learning previously, so
-‘Creating Synthetic MRI’ project seemed the right fit. These reasons got me hooked to DIPY
-sub-organization. I thoroughly enjoyed exploring DIPY applications and began the process for
-the application preparation soon. With the wonderful help from the mentors, I successfully submitted
-an application, later got an interview call and voila, I got in!</p>
-<p>I am very happy about participating in GSOC this year. What started out as a necessity has now become
-a passion project. I hope to enjoy the journey ahead, looking forward to learning and implementing few
-things along the way!</p>
+<section id="week-4-into-gsoc-2024-weight-transfer-experiments-hardships-and-results">
+<h1>Week 4 into GSoC 2024: Weight transfer experiments, hardships, and results!<a class="headerlink" href="#week-4-into-gsoc-2024-weight-transfer-experiments-hardships-and-results" title="Link to this heading">#</a></h1>
+<section id="what-i-did-this-week">
+<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
+<p>Well, this week was really intense. I spent most of the time trying to transfer the weights from the pre-trained PyTorch model of the TractoInferno dataset to the Keras model.
+I must say that thanks to the reduced size of the AutoEncoder, it was feasible to do it layer by layer without going crazy.</p>
+<p>PyTorch uses a <em>channels first</em> convention, whereas TensorFlow uses <em>channels last</em>, what means that all the weights in the convolutional layers had to be transposed.
+This was the easiest part, as it was just a matter of using <code class="docutils literal notranslate"><span class="pre">np.transpose</span></code>.</p>
+<p>After addressing the convolutional layers, I set a common input for both networks, and I compared their outputs. As expected, they were not the same, and they were not even close enough.
+Thus, matching the behavior of the PyTorch model with the Keras implementation became my objective. To achieve so, I run a common input through all the layers of both models sequentially, and systematically compared the outputs of each layer.
+In the Encoder block, I found all the outputs to be within a reasonable range of each other (MAE = 1e-6), except for the last two operations, which flatten the output of the 1D convolutional layers and then feed it to a fully connected layer.
+This was partially good news, because most of the Encoder was behaving as desired, but, the most challenging part was adapting the flattening and reshaping operations happening in the Encoder and the Decoder, respectively.
+As the Keras 1D convolutional output dimensions do not follow the same ordering as in PyTorch, (<em>[n, m, channels]</em> vs <em>[n, channels, m]</em>), the flattening behavior of the models was different (the elements followed a different sorting when being concatenated into a 1D array), and thus, the fully connected layer of the Encoder (named <code class="docutils literal notranslate"><span class="pre">fc1</span></code>) was receiving different inputs.
+To solve this, I first reshaped the output of the Keras 1D convolutional layer to match the PyTorch <em>channels first</em> convention, and then applied the flattening.
+This effectively resulted in a within-reasonable-error (MAE = 1e-6) output of the Encoder block. Problem solved! The Decoder block was a bit more challenging, because the PyTorch implementation was using linear interpolation in its <code class="docutils literal notranslate"><span class="pre">torch.nn.Upsample</span></code> layers.
+For this, I had to implement a custom layer in Keras that would perform the same operation, as linear interpolation is unavailable in the <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.UpSampling1D</span></code> layers. I made this workaround using the <code class="docutils literal notranslate"><span class="pre">tf.image.resize</span></code> function, tricking the function into taking a modified 1D tensor to be a pseudo 2D tensor.
+The errors in the Decoder block are higher than in the Encoder but we assumed that a MAE of around 1e-3 is acceptable.</p>
+<p>On the other hand, I started implementing the dataset loading using HDF5 files, but I set that aside because it is not priority.</p>
+<p>Finally, my mentor <a class="reference external" href="https://github.com/jhlegarreta">Jon Haitz</a> kindly provided me with the weights of the PyTorch AE he trained on the FiberCup dataset, and he suggested an experiment consisting of encoding the FiberCup tractogram with my Keras model, and Decoding it with the PyTorch model to see if the Encoder works properly. This was indeed the case, as the PyTorch model effectively reconstructed the tractogram, but unfortunately the Keras encoder was not capable of giving the same result. Naturally, this suggests that the Keras Decoder implementation is still not similar enough to the PyTorch one, so there is still room
+for improvement. Despite not being successful, this experiment was very enlightening, and it gave me a lot of insight into the differences between the two implementations.</p>
+<p>In a last effort to get to replicate the PyTorch model results, I went on to train the my Keras architecture on the FiberCup dataset with the same parameters as my mentor used in his <a class="reference external" href="https://doi.org/10.1016/j.media.2023.102761">GESTA</a> paper to see if the results I get are similar to the ones he got.
+Well, this resulted in amazing results, as you can check visually in the figure below. Note that none of the models were able to capture the depth dimension of the streamlines, but this is not concerning. It can be solved reducing the latent dimension size to 16 (it is 32 now).</p>
+<a class="reference internal image-reference" href="../../_images/fibercup_replicated.png"><img alt="Left: Source data to encode/decode. Middle: Keras model reconstruction. Right: PyTorch model reconstruction." src="../../_images/fibercup_replicated.png" style="width: 600px;" />
+</a>
+</section>
+<section id="what-is-coming-up-next-week">
+<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
+<p>Next week we will start working on a conditional version of the AutoEncoder, which should give us the ability to generate tractograms conditioned on a specific scalar input. This will be a very interesting feature to have because we can get tractograms with properties of interest. Well, this is the main goal of this project.
+We decided to focus on developing a conditional version of the AE over adding the latent space sampling because the code for the latter is already available in the <a class="reference external" href="https://github.com/scil-vital/tractolearn">tractolearn</a> repository, so we can postpone it for now.</p>
+</section>
+<section id="did-i-get-stuck-anywhere">
+<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
+<p>Of course I got stuck, but as the project has an explore and research nature, I would not  really call this being ‘stuck’. Things got hard at some points, but we found ways to solve them.
+I am very happy with the progress we are making and I am also very excited to see where we can get with the conditional AutoEncoder.</p>
+<p>Until next week!</p>
+</section>
 </section>
 
 <div class="section ablog__blog_comments">
@@ -992,17 +1006,17 @@ things along the way!</p>
 <div class="section ablog__prev-next">
   <span class="ablog__prev">
     
+    
+    <a href="2024_06_14_Inigo_week_3.html">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Third Week into GSoC 2024: Replicating training parameters, approaching replication</span>
+    </a>
+    
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-    
-    
-    <a href="2023_05_29_Shilpi_Week_0_1.html">
-      <span>Community Bonding and Week 1 Insights</span>
-      
-      <i class="fa fa-arrow-circle-right" ></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1030,6 +1044,22 @@ things along the way!</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
