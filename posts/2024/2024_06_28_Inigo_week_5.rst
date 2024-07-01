@@ -1,0 +1,31 @@
+Week 5 into GSoC 2024: Vacation, starting with the conditional AutoEncoder
+==========================================================================
+
+
+.. post:: June 28 2024
+    :author: Iñigo Tellaetxe
+    :tags: google
+    :category: gsoc
+
+
+
+What I did this week
+~~~~~~~~~~~~~~~~~~~~
+
+Hi everyone! This week I have been on vacation, so I have not been able to work on the project as much as the previous weeks. However, I have been thinking about the next steps to take and I have decided to start with the conditional AutoEncoder. I have been reading some papers and I have found some interesting ideas that would be nice to implement.
+
+While stuck in the Munich airport, I started to write some code for this (the weather was not very good and my flight was delayed, so I lost my connecting flight and I had to sleep in the airport). I found an implementation of a regression variational AutoEncoder `in this paper <https://doi.org/10.1007/978-3-030-32245-8_91>`_, where the authors implement a way to manipulate the latent space so that the samples (streamlines) that get projected into it are organized along a desired scalar parameter.
+I thought this could be a good starting point for my conditional AutoEncoder because it basically provides a way to sample from the latent space in a controlled manner, where you can select the age of the streamlines you want to generate. Also, having the variational part makes the latent space more regularized, so our model is more resilient against overfitting, which is the main flaw of ordinary AutoEncoders.
+Also, they provided their code in TensorFlow, so I started adapting it to our use case, which uses 1D convolutions instead of 3D ones.
+
+What is coming up next week
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I will continue working on the conditional AutoEncoder next week, but you can see the progress `here <https://github.com/itellaetxe/tractoencoder_gsoc/blob/main/src/tractoencoder_gsoc/models/cvae_model.py>`_.
+
+Did I get stuck anywhere
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The only place I got stuck in was the airport, but thankfully I managed to arrive to my destination, even if my baggage was lost (they delivered it 2 days later, thankfully nothing was missing!)
+
+Until next week!
