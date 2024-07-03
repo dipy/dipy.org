@@ -16,7 +16,7 @@ Hi everyone! This week I have been on vacation, so I have not been able to work 
 
 While stuck at the Munich airport, I started to write some code for this (the weather was not very good and my flight was delayed, so I lost my connecting flight and I had to sleep at the airport). I found an implementation of a regression variational AutoEncoder `in this paper <https://doi.org/10.1007/978-3-030-32245-8_91>`_, where the authors implement a way to manipulate the latent space so that the input data that get projected (streamlines for our case, 3D image patches in the paper) into it are organized along a desired scalar parameter.
 
-I thought this could be a good starting point for my conditional AutoEncoder because it basically provides a way to sample from the latent space in a controlled manner, where you can select the age of the streamlines you want to generate. Also, having the variational part makes the latent space more regularized, so our model is more resilient against overfitting, which is the main flaw of ordinary AutoEncoders.
+I thought this could be a good starting point for my conditional AutoEncoder because it basically provides a way to sample from the latent space in a controlled manner, where you can select the age of the streamlines you want to generate. Also, having the variational regularizes the latent space, so our model is more resilient against overfitting against the identity function, which might happen in "vanilla" AutoEncoders without any regularization.
 
 Also, they provided their code in TensorFlow, so I started adapting it to our use case, which uses 1D convolutions instead of 3D ones.
 
