@@ -14,8 +14,10 @@ What I did this week
 
 Hi everyone! This week I have been on vacation, so I have not been able to work on the project as much as the previous weeks. However, I have been thinking about the next steps to take and I have decided to start with the conditional AutoEncoder. I have been reading some papers and I have found some interesting ideas that would be nice to implement.
 
-While stuck in the Munich airport, I started to write some code for this (the weather was not very good and my flight was delayed, so I lost my connecting flight and I had to sleep in the airport). I found an implementation of a regression variational AutoEncoder `in this paper <https://doi.org/10.1007/978-3-030-32245-8_91>`_, where the authors implement a way to manipulate the latent space so that the samples (streamlines) that get projected into it are organized along a desired scalar parameter.
+While stuck at the Munich airport, I started to write some code for this (the weather was not very good and my flight was delayed, so I lost my connecting flight and I had to sleep at the airport). I found an implementation of a regression variational AutoEncoder `in this paper <https://doi.org/10.1007/978-3-030-32245-8_91>`_, where the authors implement a way to manipulate the latent space so that the input data that get projected (streamlines for our case, 3D image patches in the paper) into it are organized along a desired scalar parameter.
+
 I thought this could be a good starting point for my conditional AutoEncoder because it basically provides a way to sample from the latent space in a controlled manner, where you can select the age of the streamlines you want to generate. Also, having the variational part makes the latent space more regularized, so our model is more resilient against overfitting, which is the main flaw of ordinary AutoEncoders.
+
 Also, they provided their code in TensorFlow, so I started adapting it to our use case, which uses 1D convolutions instead of 3D ones.
 
 What is coming up next week
