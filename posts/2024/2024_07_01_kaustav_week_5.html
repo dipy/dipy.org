@@ -55,9 +55,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_07_27_Shilpi_week_8_9';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_07_01_kaustav_week_5';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2023/2023_07_27_Shilpi_week_8_9.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_07_01_kaustav_week_5.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -757,7 +757,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  27 July 2023
+  01 July 2024
   
 </h2>
 <ul>
@@ -772,7 +772,7 @@ document.write(`
     </span>
   
   
-  <a href="../../blog/author/shilpi-prasad.html">Shilpi Prasad</a>
+  <a href="../../blog/author/kaustav.html">Kaustav</a>
   
   
   
@@ -825,32 +825,32 @@ document.write(`
   
   
   <li>
-    <a href="../2024/2024_07_07_kaustav_week_6.html">
+    <a href="2024_07_07_kaustav_week_6.html">
       07 July - My Journey Continues: Week 6 Progress with DIPY
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_07_01_kaustav_week_5.html">
-      01 July - My Journey Continues: Week 5 Progress with DIPY
-    </a>
-  </li>
-  
-  <li>
-    <a href="../2024/2024_06_28_Inigo_week_5.html">
+    <a href="2024_06_28_Inigo_week_5.html">
       28 June - Week 5 into GSoC 2024: Vacation, starting with the conditional AutoEncoder
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_06_30_kaustav_week_4.html">
+    <a href="2024_06_30_kaustav_week_4.html">
       23 June - My Journey Continues: Week 4 Progress with DIPY
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_06_21_Inigo_week_4.html">
+    <a href="2024_06_21_Inigo_week_4.html">
       21 June - Week 4 into GSoC 2024: Weight transfer experiments, hardships, and results!
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_06_19_kaustav_week_3.html">
+      17 June - My Journey Continues: Week 3 Progress with DIPY
     </a>
   </li>
   
@@ -960,26 +960,36 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-<section id="generating-fit-functions-week-8-9">
-<h1>Generating Fit Functions : Week 8 &amp; 9<a class="headerlink" href="#generating-fit-functions-week-8-9" title="Link to this heading">#</a></h1>
-<section id="what-i-did-this-week">
-<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
-<p>This week, I started by figuring out how to run Spyder on Ubuntu. After resolving technical problems, I needed to ensure I could edit code to meet pep8 standards but the automatic formatting of code wasn’t working. I made changes in the <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> file to increase the design matrix readability and fixed a typo in the <code class="docutils literal notranslate"><span class="pre">B[:,3]</span></code> and <code class="docutils literal notranslate"><span class="pre">B[:,</span> <span class="pre">4]</span></code> diffusion tensor elements. This is because we realized that the sign needed to be negative to show that it’s representing a signal decay.
-I implemented mapping all of the covariance parameters from paper to its actual code, creating a need to talk to the original paper’s authors as the conversion shown in the paper didn’t quite match its implementation.
-I also worked on matching the ground truth signal values in case of anisotropic and combined DTDs. This is because the isotropic DTD signals that were being generated matched exactly the QTI signals, as in case of isotropic we’ve 6 non zero elements, and the rest are 0s. However in anisotropic case we had more non-zero covariance parameters (9 non-zero), similarly as in the case of combined DTD. So we figured out that the non-zero elements are being multiplied to some value which isn’t correct and that this needs modifying the <code class="docutils literal notranslate"><span class="pre">ccti</span></code> conversion.
-So, I worked on reading more about voigt notation, as the QTI parameters were implemented using that notation.
-Then we looked again into the QTI paper, and felt the need to contact their author and code implementer and realized that the coding was done while keeping in mind the voigt notation conversion as well as some other factors. At the end of this we figured out the correct conversion of the <code class="docutils literal notranslate"><span class="pre">ccti</span></code> parameters. We noticed that some factors needed the (root2) division, while some others needed (2). Therefore, we were able to successfully figure out the correct factors that needed to be multiplied/ divided to each of the covariance parameters.
-And hence, now the signal values of all the DTDs match as expected.
-Then the other major ongoing task this week has been the implementation of the Fit class in CTI. This required me to implement some functions which might’ve been implemented in DKI/ QTI. This is an ongoing task and would require more work.</p>
+<section id="my-journey-continues-week-5-progress-with-dipy">
+<h1>My Journey Continues: Week 5 Progress with DIPY<a class="headerlink" href="#my-journey-continues-week-5-progress-with-dipy" title="Link to this heading">#</a></h1>
+<p>Hello everyone,
+I hope this update finds you well. The fifth week of my Google Summer of Code (GSoC) journey with DIPY has been a bit different from the previous ones,
+and I wanted to share an honest update about my progress and plans.</p>
+<section id="a-week-of-unexpected-challenges">
+<h2>A Week of Unexpected Challenges<a class="headerlink" href="#a-week-of-unexpected-challenges" title="Link to this heading">#</a></h2>
+<p>This past week, I faced an unexpected setback as I fell ill. As a result, I wasn’t able to make as much progress on the project as I had initially planned.
+I’m grateful for the understanding and support from my mentor, <a class="reference external" href="https://github.com/skoudoro">Serge Koudoro</a>, and my fellow GSOC team on the project.</p>
 </section>
-<section id="things-coming-up-next-week">
-<h2>Things coming up next week<a class="headerlink" href="#things-coming-up-next-week" title="Link to this heading">#</a></h2>
-<p>After the matching of the correct signals which matched the ground truth values, we realized that a DTD with more non-zero covariance parameters might make the <code class="docutils literal notranslate"><span class="pre">ccti</span></code> conversion more robust while taking all cases into consideration. So, we created a DTD with mevals, its angles and the fractions. However the signals didn’t match exactly. But rather than being stuck on this case, we decided to move forward for the time being. So, I’ll work on making sure that all the ground truth signals match.
-But the more important work I will be doing this coming week would be to implement all the required functions in the <code class="docutils literal notranslate"><span class="pre">ccti</span></code> module such as the different sources of kurtosis which hasn’t been implemented before as this is one of the differentiating factors of CTI. And then hopefully move on to generating the tests for these functions.</p>
+<section id="preparing-for-lazy-loading-implementation">
+<h2>Preparing for Lazy Loading Implementation<a class="headerlink" href="#preparing-for-lazy-loading-implementation" title="Link to this heading">#</a></h2>
+<p>Whatever time I could get, I used it to prepare for the upcoming task of implementing lazy loading in DIPY.
+I’ve been reviewing the research I conducted earlier and planning my approach for integrating lazy loading into various modules.</p>
 </section>
-<section id="did-i-get-stuck-this-week">
-<h2>Did i get stuck this week<a class="headerlink" href="#did-i-get-stuck-this-week" title="Link to this heading">#</a></h2>
-<p>Not at all. Some things were kind of vexing, but I didn’t get stuck as there was always something else that could be done.</p>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<p>As I recover and regain my full productivity, I’m excited to dive into the lazy loading implementation. My goals include:</p>
+<ul class="simple">
+<li><p>Identifying key modules and functions that would benefit most from lazy loading.</p></li>
+<li><p>Developing a strategy for implementing lazy loading without disrupting existing functionality.</p></li>
+<li><p>Beginning the actual implementation process, by implementing for Sub-Modules of DIPY and sharing a build with my mentor for POC.</p></li>
+<li><p>Preparing comprehensive tests to ensure the lazy loading implementation works as expected and doesn’t introduce any bugs.</p></li>
+</ul>
+</section>
+<section id="final-thoughts">
+<h2>Final Thoughts<a class="headerlink" href="#final-thoughts" title="Link to this heading">#</a></h2>
+<p>While this week didn’t see as much tangible progress as I would have liked, it has been an opportunity for reflection and preparation.
+I’m grateful for the support of my mentor and excited to return to full speed at the earliest.
+Thank you for your understanding and continued support. Stay tuned for what I hope will be a more code-filled update next week!</p>
 </section>
 </section>
 
@@ -992,11 +1002,11 @@ But the more important work I will be doing this coming week would be to impleme
   <span class="ablog__prev">
     
     
-    <a href="2023_07_24_vara_week_8_9.html">
+    <a href="2024_06_28_Inigo_week_5.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>VQVAE MONAI models & checkerboard artifacts: Week 8 & Week 9</span>
+      <span>Week 5 into GSoC 2024: Vacation, starting with the conditional AutoEncoder</span>
     </a>
     
   </span>
@@ -1004,8 +1014,8 @@ But the more important work I will be doing this coming week would be to impleme
   <span class="ablog__next">
     
     
-    <a href="2023_07_31_Shilpi_week10.html">
-      <span>Adding Tests : Week 10</span>
+    <a href="2024_07_07_kaustav_week_6.html">
+      <span>My Journey Continues: Week 6 Progress with DIPY</span>
       
       <i class="fa fa-arrow-circle-right" ></i>
       
@@ -1046,9 +1056,10 @@ But the more important work I will be doing this coming week would be to impleme
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-coming-up-next-week">Things coming up next week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-this-week">Did i get stuck this week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-week-of-unexpected-challenges">A Week of Unexpected Challenges</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-for-lazy-loading-implementation">Preparing for Lazy Loading Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts">Final Thoughts</a></li>
 </ul>
   </nav></div>
 

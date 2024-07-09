@@ -55,9 +55,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_07_27_Shilpi_week_8_9';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_07_07_kaustav_week_6';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2023/2023_07_27_Shilpi_week_8_9.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_07_07_kaustav_week_6.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -757,7 +757,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  27 July 2023
+  07 July 2024
   
 </h2>
 <ul>
@@ -772,7 +772,7 @@ document.write(`
     </span>
   
   
-  <a href="../../blog/author/shilpi-prasad.html">Shilpi Prasad</a>
+  <a href="../../blog/author/kaustav.html">Kaustav</a>
   
   
   
@@ -825,32 +825,32 @@ document.write(`
   
   
   <li>
-    <a href="../2024/2024_07_07_kaustav_week_6.html">
-      07 July - My Journey Continues: Week 6 Progress with DIPY
-    </a>
-  </li>
-  
-  <li>
-    <a href="../2024/2024_07_01_kaustav_week_5.html">
+    <a href="2024_07_01_kaustav_week_5.html">
       01 July - My Journey Continues: Week 5 Progress with DIPY
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_06_28_Inigo_week_5.html">
+    <a href="2024_06_28_Inigo_week_5.html">
       28 June - Week 5 into GSoC 2024: Vacation, starting with the conditional AutoEncoder
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_06_30_kaustav_week_4.html">
+    <a href="2024_06_30_kaustav_week_4.html">
       23 June - My Journey Continues: Week 4 Progress with DIPY
     </a>
   </li>
   
   <li>
-    <a href="../2024/2024_06_21_Inigo_week_4.html">
+    <a href="2024_06_21_Inigo_week_4.html">
       21 June - Week 4 into GSoC 2024: Weight transfer experiments, hardships, and results!
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_06_19_kaustav_week_3.html">
+      17 June - My Journey Continues: Week 3 Progress with DIPY
     </a>
   </li>
   
@@ -960,26 +960,39 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-<section id="generating-fit-functions-week-8-9">
-<h1>Generating Fit Functions : Week 8 &amp; 9<a class="headerlink" href="#generating-fit-functions-week-8-9" title="Link to this heading">#</a></h1>
-<section id="what-i-did-this-week">
-<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
-<p>This week, I started by figuring out how to run Spyder on Ubuntu. After resolving technical problems, I needed to ensure I could edit code to meet pep8 standards but the automatic formatting of code wasn’t working. I made changes in the <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> file to increase the design matrix readability and fixed a typo in the <code class="docutils literal notranslate"><span class="pre">B[:,3]</span></code> and <code class="docutils literal notranslate"><span class="pre">B[:,</span> <span class="pre">4]</span></code> diffusion tensor elements. This is because we realized that the sign needed to be negative to show that it’s representing a signal decay.
-I implemented mapping all of the covariance parameters from paper to its actual code, creating a need to talk to the original paper’s authors as the conversion shown in the paper didn’t quite match its implementation.
-I also worked on matching the ground truth signal values in case of anisotropic and combined DTDs. This is because the isotropic DTD signals that were being generated matched exactly the QTI signals, as in case of isotropic we’ve 6 non zero elements, and the rest are 0s. However in anisotropic case we had more non-zero covariance parameters (9 non-zero), similarly as in the case of combined DTD. So we figured out that the non-zero elements are being multiplied to some value which isn’t correct and that this needs modifying the <code class="docutils literal notranslate"><span class="pre">ccti</span></code> conversion.
-So, I worked on reading more about voigt notation, as the QTI parameters were implemented using that notation.
-Then we looked again into the QTI paper, and felt the need to contact their author and code implementer and realized that the coding was done while keeping in mind the voigt notation conversion as well as some other factors. At the end of this we figured out the correct conversion of the <code class="docutils literal notranslate"><span class="pre">ccti</span></code> parameters. We noticed that some factors needed the (root2) division, while some others needed (2). Therefore, we were able to successfully figure out the correct factors that needed to be multiplied/ divided to each of the covariance parameters.
-And hence, now the signal values of all the DTDs match as expected.
-Then the other major ongoing task this week has been the implementation of the Fit class in CTI. This required me to implement some functions which might’ve been implemented in DKI/ QTI. This is an ongoing task and would require more work.</p>
+<section id="my-journey-continues-week-6-progress-with-dipy">
+<h1>My Journey Continues: Week 6 Progress with DIPY<a class="headerlink" href="#my-journey-continues-week-6-progress-with-dipy" title="Link to this heading">#</a></h1>
+<p>Greetings, everyone!
+The sixth week of GSOC has been a hectic one. A ton of time in correcting errors and fixing PRs.</p>
+<section id="decorator-pr-fixes">
+<h2>Decorator PR Fixes<a class="headerlink" href="#decorator-pr-fixes" title="Link to this heading">#</a></h2>
+<p>With decorator implementation PRs in place, and the integration of my original PR for keyword-only arguments (<a class="github reference external" href="https://github.com/dipy/dipy/pull/3239">dipy/dipy#3239</a>), it was now time for the PRs which had the decorator implementation for specific modules to be integrated.</p>
 </section>
-<section id="things-coming-up-next-week">
-<h2>Things coming up next week<a class="headerlink" href="#things-coming-up-next-week" title="Link to this heading">#</a></h2>
-<p>After the matching of the correct signals which matched the ground truth values, we realized that a DTD with more non-zero covariance parameters might make the <code class="docutils literal notranslate"><span class="pre">ccti</span></code> conversion more robust while taking all cases into consideration. So, we created a DTD with mevals, its angles and the fractions. However the signals didn’t match exactly. But rather than being stuck on this case, we decided to move forward for the time being. So, I’ll work on making sure that all the ground truth signals match.
-But the more important work I will be doing this coming week would be to implement all the required functions in the <code class="docutils literal notranslate"><span class="pre">ccti</span></code> module such as the different sources of kurtosis which hasn’t been implemented before as this is one of the differentiating factors of CTI. And then hopefully move on to generating the tests for these functions.</p>
+<section id="lazy-loading-pr">
+<h2>Lazy Loading PR<a class="headerlink" href="#lazy-loading-pr" title="Link to this heading">#</a></h2>
+<p>I have submitted a PR for the lazy loading feature using the <a class="reference external" href="https://pypi.org/project/lazy-loader/">lazy_loader</a> package. (<a class="github reference external" href="https://github.com/dipy/dipy/pull/3288">dipy/dipy#3288</a>)</p>
 </section>
-<section id="did-i-get-stuck-this-week">
-<h2>Did i get stuck this week<a class="headerlink" href="#did-i-get-stuck-this-week" title="Link to this heading">#</a></h2>
-<p>Not at all. Some things were kind of vexing, but I didn’t get stuck as there was always something else that could be done.</p>
+<section id="difficulties-challenges">
+<h2>Difficulties &amp; Challenges<a class="headerlink" href="#difficulties-challenges" title="Link to this heading">#</a></h2>
+<p>I had and have a ton of challenges ahead as I am having trouble with some PR, I am specifically having a challenge in completing:</p>
+<p>1. <a class="github reference external" href="https://github.com/dipy/dipy/pull/3257">dipy/dipy#3257</a>
+- This PR has issues related to the <strong>wls_fit_tensor</strong> function, after the application of the decorator I am receiving an error where it is telling me that 3 positional arguments are allowed but 4 are being passed, but when I check the main function parameters there are only 3 positional params. I am not able to figure out why 1 extra <strong>argument</strong> is being passed.</p>
+<p>2. <a class="github reference external" href="https://github.com/dipy/dipy/pull/3254">dipy/dipy#3254</a>
+- This PR have a issue about the application of arguments separator, I am just awaiting response on applying the separator.</p>
+<p>3. <a class="github reference external" href="https://github.com/dipy/dipy/pull/3288">dipy/dipy#3288</a>
+- This PR is my lazy loading PR. I am having trouble with the application of <strong>type_stub</strong> as the package is not able to recognize it and thus I am receiving error when trying to import the modules. I was trying to make it as close as possible to <a class="reference external" href="https://github.com/scikit-image/scikit-image/tree/main">scikit-image</a> implementation, it hasn’t happened yet. But I’m hopeful.</p>
+</section>
+<section id="next-week">
+<h2>Next Week<a class="headerlink" href="#next-week" title="Link to this heading">#</a></h2>
+<p>Next week I am planning to push through the remaining PRs of decorator implementation. Also for <strong>lazy_loader</strong>, I am planning to fix the error.
+I will have to go through the <a class="reference external" href="https://peps.python.org/pep-0561/">PEP-561</a> documentation which talks about the <strong>type_stub</strong> implementation.</p>
+</section>
+<section id="final-thoughts">
+<h2>Final Thoughts<a class="headerlink" href="#final-thoughts" title="Link to this heading">#</a></h2>
+<p>The sixth week of the Coding phase has been a challenging week, with the decorator implementation and lazy loading. Hopefully I can fix these soon and move on to next problems.
+I am grateful for the guidance and support provided by my mentor <a class="reference external" href="https://github.com/skoudoro">Serge Koudoro</a>, and the DIPY community, which have been instrumental in driving this project forward.</p>
+<p>Stay tuned for more updates as I continue to work on enhancing DIPY!</p>
+<p>Thank you for reading!</p>
 </section>
 </section>
 
@@ -992,24 +1005,16 @@ But the more important work I will be doing this coming week would be to impleme
   <span class="ablog__prev">
     
     
-    <a href="2023_07_24_vara_week_8_9.html">
+    <a href="2024_07_01_kaustav_week_5.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>VQVAE MONAI models & checkerboard artifacts: Week 8 & Week 9</span>
+      <span>My Journey Continues: Week 5 Progress with DIPY</span>
     </a>
     
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-    
-    
-    <a href="2023_07_31_Shilpi_week10.html">
-      <span>Adding Tests : Week 10</span>
-      
-      <i class="fa fa-arrow-circle-right" ></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1046,9 +1051,11 @@ But the more important work I will be doing this coming week would be to impleme
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-coming-up-next-week">Things coming up next week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-this-week">Did i get stuck this week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decorator-pr-fixes">Decorator PR Fixes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lazy-loading-pr">Lazy Loading PR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#difficulties-challenges">Difficulties &amp; Challenges</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-week">Next Week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts">Final Thoughts</a></li>
 </ul>
   </nav></div>
 
