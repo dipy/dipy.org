@@ -23,7 +23,7 @@ Also, they provided their code in TensorFlow, so I started adapting it to our us
 What is coming up next week
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-I will continue working on the conditional AutoEncoder next week, but you can see the progress `here <https://github.com/itellaetxe/tractoencoder_gsoc/blob/main/src/tractoencoder_gsoc/models/vae_model.py>`_.
+I will continue working on the conditional AutoEncoder next week, but you can see the progress `here <https://github.com/itellaetxe/tractoencoder_gsoc/blob/56ddacd8f9a2c6ac30a38c1c141bf60cc1b2d862/src/tractoencoder_gsoc/models/vae_model.py>`_.
 
 Did I get stuck anywhere
 ~~~~~~~~~~~~~~~~~~~~~~~~
