@@ -36,7 +36,7 @@ for improvement. Despite not being successful, this experiment was very enlighte
 In a last effort to get to replicate the PyTorch model results, I went on to train the my Keras architecture on the FiberCup dataset with the same parameters as my mentor used in his `GESTA <https://doi.org/10.1016/j.media.2023.102761>`_ paper to see if the results I get are similar to the ones he got.
 Well, this resulted in amazing results, as you can check visually in the figure below. Note that none of the models were able to capture the depth dimension of the streamlines, but this is not concerning. It can be solved reducing the latent dimension size to 16 (it is 32 now).
 
-.. image:: /_static/images/fibercup_replicated.png
+.. image:: /_static/images/gsoc/2024/inigo/fibercup_replicated.png
     :alt: Left: Source data to encode/decode. Middle: Keras model reconstruction. Right: PyTorch model reconstruction.
     :width: 600
 

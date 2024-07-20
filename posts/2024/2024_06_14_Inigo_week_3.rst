@@ -15,7 +15,7 @@ This yielded better results than last week, this time setting the weight decay, 
 Now the AE has no problem learning that the bundles have depth, and the number of broken streamlines decreased a lot compared to the previous results.
 I also worked on trying to monitor the training experiments using TensorBoard, but I did not succeed because it was a last minute idea and I did not have time to implement it properly.
 
-.. image:: /_static/images/fibercup_better_results.png
+.. image:: /_static/images/gsoc/2024/inigo/fibercup_better_results.png
     :alt: Preliminary results of the AutoEncoder training for a subset of plausible fibers of the FiberCup dataset, approaching better replication compared to the PyTorch model.
     :width: 600
 
