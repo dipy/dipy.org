@@ -1,0 +1,29 @@
+Google Summer of Code with Dipy
+===============================
+
+.. post:: May 16 2016
+   :author: Bishakh Ghosh
+   :tags: google
+   :category: gsoc
+
+I know I am a bit late with this blogpost, but as you probably guessed from the title I made it into Google Summer of Code 2016!!
+Throughout this summer I will be working with DIPY under the Python Software Foundation.
+
+So how did I make it?
+---------------------
+
+To be frank, although I dreamt of getting into GSOC from 10th standard I never tried it wholeheartedly before. And it was partly because I did not know how and where to start. But this time I was determined and more familiar with different open source projects and I started early getting involved with the community. After trying many organizations I finally found one where I could contribute something, be it tiny code cleanups or small enhancements. And trust me it feels just amazing when your first patch (`pull request <https://github.com/dipy/dipy/pull/1015>`__) gets merged into the master branch! Then I selected a project in this organization, prepared an application and in the whole process my mentors helped me a lot with their valuable suggestions. And after that here I am! :)
+
+Project Overview
+----------------
+
+The aim of my project is to develop a new website for Dipy from scratch with a custom content management system and admin functionality for maintenance. Another key feature of the website will be continuous generation of documentation from the dipy repository and linking with the website. This means that whenever a new version of dipy will be released the website will be automatically updated with the new documentation. Some other features include a visualization of web analytics and github data to showcase the fact that the dipy project is spreading worldwide and a tool to generate documentation of command line utilities. 
+
+The backend of the website will be built using django, and some other python libraries like `markdown <https://pypi.org/project/Markdown/>`_ and `python-social-auth <https://github.com/omab/python-social-auth>`_. For visualization I plan to use `D3js <https://d3js.org/>`_ library. For me the most challenging and interesting part of the project will be continuous generation of documentation. There can be many ways this can be achieved. For now we have thought of a process in which for every commit or release a build server will be triggered which will build the documentation using sphinx and this documentation will then be uploaded to the website. In this process the documentation of the command line utilities will also have to be generated and that is a challenge of its own.
+
+Community Bonding Period
+------------------------
+
+This part of the Google Summer of Code (April 23, 2016 - May 22, 2016) is called Community Bonding Period and I am discussing and refining the ideas with my mentors. We have weekly meetings and frequent communication through email and gitter. I have also set up my development environment and getting ready to start work. Although I have developed several small projects using `django <https://www.djangoproject.com/>`_ for my college and clubs I have never tried anything of this scale. So I am learning about the different challenges of deployment, security and scalability. I am trying to get familiar with the best practices and design patterns of django and learning how to test my code.
+
+Hope to have an amazing summer! :)

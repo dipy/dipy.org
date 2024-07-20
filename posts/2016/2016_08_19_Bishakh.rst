@@ -1,0 +1,42 @@
+Google Summer of Code Progress August 19
+========================================
+
+.. post:: August 19 2016
+   :author: Bishakh Ghosh
+   :tags: google
+   :category: gsoc
+
+So we are at the end of this awesome summer and this post is about the progress in my final weeks of GSOC 2016! And the major addition in this period is the development stats visualization page.
+
+GitHub stats visualization
+--------------------------
+
+As we had planned, the new Dipy website needed a page to highlight the growing number of developers and their contributions to the Dipy project. And finally we have achieved that with a `separate django app <https://github.com/dipy/dipy_web/tree/master/github_visualization>`_ that creates visualizations with data pulled from GitHub API, and for drawing some neat graphs I have used the `Chart.js <https://www.chartjs.org/>`_ library.
+
+.. figure:: /_static/images/gsoc/2016/bishakh/dipy14.jpg
+   :alt: dipy github visualization page
+   :align: center
+
+   Dipy GitHub visualization page
+
+And hey it's a separate django app!
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+So it can be integrated easily into any other django project! Simply copy the ``github_visualization`` folder into your project and add ``github_visualization`` to the ``INSTALLED_APPS`` list in ``settings.py``.
+
+Now you just need to add a couple of lines to the template in which you want to show the visualizations.
+
+.. code-block:: html
+
+   <!-- load the template tags for github_visualization -->
+   {% load github_stats_tags %}
+
+   <!-- load css and js -->
+   {% include "github_visualization/github_stats_includes.html" %}
+
+   <!-- render the visualizations -->
+   {% github_stats_block "username" "repository_name" %}
+
+Just change the 'username' and 'repository_name' to point to the GitHub repository you want to see visualizations for.
+
+The work was submitted through the pull request `#15 <https://github.com/nipy/dipy_web/pull/15>`_.

@@ -1,0 +1,56 @@
+First post after acceptance! =)
+===============================
+
+.. post:: May 17 2015
+    :author: Rafael Henriques
+    :tags: google
+    :category: gsoc
+
+Personal Note
+-------------
+
+Hi all,
+
+I am please to inform that my project proposal was accepted to the Google Summer of Code! 
+
+Congrats to everyone that was also accepted!!! This definitely will be an exciting summer!
+
+As I mentioned on my last post, I will be implementing some exiting MRI techniques which allows us to see brain connectivity in vivo - how awesome is that?
+
+The following weeks I will give you more details about this. Keep tuned and you could explore the brain with me!
+
+Greetings from Cambridge (UK),
+
+`Rafael N.H. <https://github.com/RafaelNH>`__
+PhD Student at the University of Cambridge
+
+
+Before the Student Coding Period
+--------------------------------
+
+I am currently working on some simulations that will be useful for testing the imaging techniques that I will be implementing.
+
+I start this work before applying to the GSoC (https://github.com/nipy/dipy/pull/582), and in the last weeks I have been improving it. At the moment, simulations are almost complete - codes are running without errors and they are written in PEP8 standards. Now I only have to add some automatic debugging scripts using Nose python testing.
+
+During the following week, I will discuss the work done so far with my mentors (in particular I want to discuss some minor changes on the current scripts) and fix problems that I am facing in creating the automatic debugging scripts.
+
+Minor details to discuss with mentors:
+
+1) Suggestion on changes on the default values of the simulations modules
+
+2) Discuss if is better to remove some unnecessary inputs or have redundant computing steps.
+
+3) Discuss the definition of some important variables that will be used in future steps.
+
+Problems to fix during this week:
+
+1) Resolve problems in recognizing paths where the new version of modules are locally located.
+
+2) Fix error when trying to run Nose:
+
+.. code-block:: zsh
+   :linenos:
+
+    Cannot run $ nosetests test_voxel.py
+
+    ERROR: Failure: ImportError (No module named runspeed) 

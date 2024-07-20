@@ -1,0 +1,149 @@
+GSoD: High-level restructuring and end-user focus
+=================================================
+
+.. post:: December 05 2020
+   :author: Areesha Tariq
+   :tags: google
+   :category: gsod
+
+Organization: DIPY
+------------------
+
+DIPY is the paragon 3D/4D+ imaging library in Python. Contains generic methods for spatial normalization, signal processing, machine learning, statistical analysis, and visualization of medical images. Additionally, it contains specialized methods for computational anatomy including diffusion, perfusion, and structural imaging.
+
+Mentors:
+--------
+
+- `Serge Koudoro <https://github.com/skoudoro>`__
+- `Jon Haitz Legarreta Gorroño <https://github.com/jhlegarreta>`__
+- `Eleftherios Garyfallidis <https://github.com/Garyfallidis>`__
+- `Ariel Rokem <https://github.com/arokem>`__
+
+Technical Writer:
+-----------------
+
+- `Areesha Tariq <https://github.com/areeshatariq>`__
+
+Short Description of the Work Done:
+-----------------------------------
+
+During Google Season of Docs, I worked with my mentors to create documentation for the new command-line interface (CLI) workflows available in DIPY. I created documentation to show how these CLI workflows can be used to process diffusion-weighted Magnetic Resonance Imaging (MRI) data with the following purposes:
+
+- Fetching datasets
+- Denoising
+- Registration
+- Gibbs unringing
+- Local fiber orientation reconstruction
+- Tracking
+
+I worked on improving the consistency across the documentation to make it easier to understand and maintain. I made some small improvements and minor fixes as well. I worked on the homepage of DIPY by updating a section with non-textual images.
+
+Documentation that was developed:
+---------------------------------
+
+Command-Line Interfaces:
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+DIPY's command-line interfaces provide a terminal-friendly interface to a set of complete, end-to-end DIPY Python-based workflows. The philosophy behind CLI-exposed workflows is to provide users with a means to exploit the capabilities of DIPY using the terminal, without requiring any additional coding, and completing all necessary steps from the input volumes to the result with a single command.
+
+I documented command-line interfaces (CLI) for multiple workflows and their methods:
+
+1. Fetching datasets
+   https://github.com/dipy/dipy/pull/2248
+   Tutorial to view and fetch the datasets available in DIPY.
+
+2. Denoising
+   https://github.com/dipy/dipy/pull/2244
+   Tutorial to denoise diffusion-weighted MR images using DIPY for the following methods:
+   - Denoising using Local PCA
+   - Denoising using Marcenko-Pastur PCA
+   - Denoising using NLMEANS
+
+3. Registration
+   https://github.com/dipy/dipy/pull/2277
+   Tutorial to perform image-based and streamline-based registration using DIPY for the following registration methods:
+   - Affine Registration
+   - Symmetric Diffeomorphic Registration
+   - Streamline-based Registration
+
+4. Gibbs unringing
+   https://github.com/dipy/dipy/pull/2273
+   Tutorial to remove Gibbs ringing artefacts from MR images using DIPY.
+
+5. Local fiber orientation reconstruction
+   https://github.com/dipy/dipy/pull/2275
+   Tutorial to perform local fiber orientation reconstruction using DIPY for the following reconstruction methods:
+   - Constrained Spherical Deconvolution (CSD)
+   - Mean Apparent Propagator (MAP)-MRI
+   - Diffusion Tensor Imaging (DTI)
+   - Diffusion Kurtosis Imaging (DKI)
+   - Constant Solid Angle (CSA)
+   - Intravoxel Incoherent Motion (IVIM)
+
+6. Tracking
+   https://github.com/dipy/dipy/pull/2292
+   Tutorial to perform fiber tracking using DIPY for the following tracking methods:
+   - Local Fiber Tracking
+   - EuDX Tracking
+   - Deterministic Tracking
+   - Probabilistic Tracking
+   - Closest Peaks Tracking
+   - Particle Filtering Tracking (PFT)
+
+Outputs of CLI workflows:
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+https://github.com/dipy/dipy_data/pulls/areeshatariq
+The results that I got from CLI-exposed workflows are added in the dipy_data repository.
+
+Improve Consistency:
+^^^^^^^^^^^^^^^^^^^^
+
+- https://github.com/dipy/dipy/pull/2211
+- https://github.com/dipy/dipy/pull/2218
+- https://github.com/dipy/dipy/pull/2286
+- https://github.com/dipy/dipy/pull/2287
+- https://github.com/dipy/dipy/pull/2294
+- https://github.com/dipy/dipy/pull/2295
+
+Small Improvements/ Minor Fixes:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- https://github.com/dipy/dipy/pull/2212
+- https://github.com/dipy/dipy/pull/2220
+- https://github.com/dipy/dipy/pull/2246
+- https://github.com/dipy/dipy/pull/2261
+- https://github.com/dipy/dipy/pull/2282
+- https://github.com/dipy/dipy/pull/2283
+- https://github.com/dipy/dipy/pull/2284
+- https://github.com/dipy/dipy/pull/2296
+
+DIPY Homepage:
+^^^^^^^^^^^^^^
+
+- https://github.com/dipy/dipy_web/pull/88
+- https://github.com/dipy/dipy_web/pull/90
+
+I updated a homepage section by working on the icons and re-designing the section containing an overview of the CLI workflows documentation.
+
+Medium Blogposts:
+^^^^^^^^^^^^^^^^^
+
+https://medium.com/@areeshatariq02
+I wrote blog posts for some of the CLI-based workflows to engage users and let them know about the developed tutorials. At the time of writing this report, they are being edited together with the mentors, and are aimed to be published as posts on the medium.com website.
+
+Current State of the Project:
+-----------------------------
+
+Most of the documentation and the PRs that were made during the project have been merged and were included in the 1.3 release of DIPY (https://github.com/dipy/dipy/releases/tag/1.3.0). The last few PRs are also merged and will be included in the 1.4 release of DIPY (due by December, 28th 2020; https://github.com/dipy/dipy/milestone/8).
+
+Thanks to the documentation generated in the framework of the GSoD 2020, the DIPY CLI workflows have gained visibility, and have now their own section on DIPY's website (https://dipy.org/documentation/1.3.0./interfaces/). The workflows have started to attract the attention of the community, reflected by the increase in related questions posted in DIPY's gitter room (https://gitter.im/dipy/dipy).
+
+Learnings and Challenges:
+-------------------------
+
+- Magnetic Resonance Imaging was a completely new concept to me. I had not worked with MRI data before. To know the basic concepts, my mentors provided me with some very helpful reading material.
+- While developing the tutorials for CLIs, I myself learned a lot about how useful DIPY is for the analysis of data from diffusion-weighted Magnetic Resonance Imaging (dMRI).
+- I learned about DIPY's command-line interfaces that provide an interface to DIPY Python-based workflows and are very easy-to-use commands.
+- DIPY uses Sphinx to build the project documentation which is a Python-based documentation generator. I got experience of using reStructuredText which is the default plaintext markup language used by Sphinx.
+- I got to know more about the open-source world. Making contributions through GitHub made me comfortable with using git to continue contributing to open-source projects, or to work with git-based versioning systems.

@@ -1,0 +1,98 @@
+First report (1st week of coding, challenges and ISMRM conference)
+==================================================================
+
+.. post:: June 05 2015
+    :author: Rafael Henriques
+    :tags: google
+    :category: gsoc
+
+The coding period started in a challenging way. 
+
+As I mentioned on my previous post, I started the coding period by merging the work done during the community bonding period to the main Dipy master repositories. This was not as trivial as expected since some latest updates on the Dipy master repositories was causing conflicts with my codes.
+
+Rebasing
+--------
+
+To solve this conflicts, I used git rebase (I want to thank my mentor Dr Ariel Rokem for his useful tips on how to do this). For more details on rebasing you can find a nice tutorial here. To summarize, below you can find the essential steps to rebase a branch:
+
+1) make sure that the master branch of your computer have the latest changes, for this:
+
+.. code-block:: zsh
+   :linenos:
+
+    git checkout master
+    git pull upstream master
+
+2) start rebasing by moving the work done on your branch to the updated version of the master:
+
+.. code-block:: zsh
+   :linenos:
+
+    git checkout your_branch
+    git rebase master
+
+3) If there is a conflict, automatic rebasing stops so you can manually update the files. The parts of the script with conflict will be pointed as the lines between markers >>>> and ====.
+
+4) After manually resolving a conflict, you can add the corrected files and continue rebasing using:
+
+.. code-block:: zsh
+   :linenos:
+
+    git add file
+    git rebase --continue
+
+5) When rebasing is accomplished, you can update the changes to your fork by typing:
+
+.. code-block:: zsh
+   :linenos:
+
+    git push -f origin your_branch 
+
+
+After rebasing Problem #1
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After rebasing, I noticed some problem on Dipy's master compilation. Fortunately, with the help of all the amazing Dipy team, this problem was quickly addressed (for more information see here).
+
+After rebasing Problem #2 - the right order to reconstruct the diffusion tensor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is a good example why testing modules are so important. 
+
+After solving problem #1, one of my testing modules was failing since the simulated diffusion tensors were given unexpected results (to know what is a diffusion tensor read my previous post). 
+
+Basically on my simulations, the diffusion tensors are reconstructed from eigenvalues and eigenvectors decomposition. After some hours of debugging, I realized the cause of the logic error. The eigenvalues given by an updated master's function was transpose relatively to its previous version. So, for the ones also working with second order tensors, make sure that when reconstructing the tensor from its eigenvalues and eigenvectors decomposition you use the matrix multiplication in the following order:
+
+.. code-block:: zsh
+   :linenos:
+
+    import numpy as np
+    from numpy import dot
+
+::
+
+    Tensor = dot(dot(R.T, np.diag(mevals)), R)
+
+where
+::
+
+    R = [eigenvector1, eigenvector2, eigenvector3]
+
+and
+::
+
+    mevals = [eigenvalue1, eigenvalue2, eigenvalue3]
+
+ISMRM Conference
+----------------
+
+As I mentioned on my proposal, this week I also attended the 23rd annual meeting of the International Society of Magnetic Resonance in Medicine (ISMRM). The conference was very productive. In particular, I had some nice discussions with the top experts on diffusion kurtosis imaging (DKI) and their feedback will be taken into account so that my work during the summer of code is done according to the most recent state of art of the field.
+
+It was also great to personally meet the Dipy developers and promoting the open source software. I had very nice feedback from different research groups and there were many new researchers interested in using Dipy and/or willing to collaborated with its development. Soon I will post some photos of the conference =).
+
+Next steps
+----------
+
+My mentor suggested a small change on the example codes for the DKI simulation usage. I am currently finalizing this, so soon I will be posting the final version of the DKI simulations.  
+
+In the following days, I will also create a pull request with the work started on DKI reconstructions modules. As mentioned on my proposal, the implementation of these modules are the objective for my midterm evaluation.
