@@ -481,14 +481,23 @@ html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = {'blog/**': [
-          'ablog/postcard.html', 'ablog/recentposts.html',
-          'ablog/tagcloud.html', 'ablog/categories.html',
-          'ablog/archives.html', ],
-          'posts/**': [
-          'ablog/postcard.html', 'ablog/recentposts.html',
-          'ablog/tagcloud.html', 'ablog/categories.html',
-          'ablog/archives.html', ]}
+html_sidebars = {
+    'blog/**': [
+        'ablog/postcard.html', 'ablog/recentposts.html',
+        'ablog/tagcloud.html', 'ablog/categories.html',
+        'ablog/archives.html',
+    ],
+    'posts/**': [
+        'ablog/postcard.html', 'ablog/recentposts.html',
+        'ablog/tagcloud.html', 'ablog/categories.html',
+        'ablog/archives.html',
+    ],
+    'blog': [
+        'ablog/postcard.html', 'ablog/recentposts.html',
+        'ablog/tagcloud.html', 'ablog/categories.html',
+        'ablog/archives.html',
+    ],
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
