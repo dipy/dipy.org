@@ -62,7 +62,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-# project = u'dipy'
+project = 'Diffusion Imaging in Python'
 # copyright = u'2008-2023, %(AUTHOR)s <%(AUTHOR_EMAIL)s>' % rel
 
 # The version info for the project you're documenting, acts as replacement for
