@@ -55,9 +55,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_05_31_Inigo_week_1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_07_15_kaustav_week_7';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2024/2024_05_31_Inigo_week_1.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_07_15_kaustav_week_7.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -757,7 +757,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  31 May 2024
+  15 July 2024
   
 </h2>
 <ul>
@@ -772,7 +772,7 @@ document.write(`
     </span>
   
   
-  <a href="../../blog/author/inigo-tellaetxe.html">Iñigo Tellaetxe</a>
+  <a href="../../blog/author/kaustav.html">Kaustav</a>
   
   
   
@@ -825,12 +825,6 @@ document.write(`
   
   
   <li>
-    <a href="2024_07_15_kaustav_week_7.html">
-      15 July - My Journey Continues: Week 7 Progress with DIPY
-    </a>
-  </li>
-  
-  <li>
     <a href="2024_07_07_kaustav_week_6.html">
       07 July - My Journey Continues: Week 6 Progress with DIPY
     </a>
@@ -851,6 +845,12 @@ document.write(`
   <li>
     <a href="2024_06_30_kaustav_week_4.html">
       23 June - My Journey Continues: Week 4 Progress with DIPY
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_06_21_Inigo_week_4.html">
+      21 June - Week 4 into GSoC 2024: Weight transfer experiments, hardships, and results!
     </a>
   </li>
   
@@ -984,23 +984,95 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-<section id="first-week-into-gsoc-2024-building-the-autoencoder-writing-the-training-loop">
-<h1>First Week into GSoC 2024: Building the AutoEncoder, writing the training loop<a class="headerlink" href="#first-week-into-gsoc-2024-building-the-autoencoder-writing-the-training-loop" title="Link to this heading">#</a></h1>
-<section id="what-i-did-this-week">
-<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
-<p>I finished becoming familiar with the TensorFlow + Keras basics and I wrote the training loop and a couple of scripts for instantiating and training the AutoEncoder.
-Data loading was also addressed and I am able to load the data from the FiberCup dataset in .trk format using <a class="reference external" href="https://nipy.org/nibabel/">NiBabel</a>, transform it into NumPy arrays, and feed it into the network.</p>
+<section id="my-journey-continues-week-7-progress-with-dipy">
+<h1>My Journey Continues: Week 7 Progress with DIPY<a class="headerlink" href="#my-journey-continues-week-7-progress-with-dipy" title="Link to this heading">#</a></h1>
+<p>Greetings, everyone!
+The seventh week of GSOC has been a fruitful and learning one.</p>
+<section id="decorator-pr-fixes">
+<h2>Decorator PR Fixes<a class="headerlink" href="#decorator-pr-fixes" title="Link to this heading">#</a></h2>
+<p>This week I tried to fix one of the decorator PR(<a class="reference internal" href="#id1"><span class="std std-ref">PR #3257</span></a>). I had implemented a lot of solutions to make the tests pass, but realized I had added unnecessary code, all I had to do was fix the tests.
+Basically I had to add the necessary calls for keyword arguments.</p>
 </section>
-<section id="what-is-coming-up-next-week">
-<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
-<p>Because the training loop is taking too long, I will refactor the code to make it more modular and more in the TensorFlow style. Also, other DIPY models are implemented in this fashion, what will contribute to consistency across the library.
-I think I have yet to get the hang of the TensorFlow way of doing things.
-I plan to use a class for the <code class="docutils literal notranslate"><span class="pre">Encoder</span></code> and another one for the <code class="docutils literal notranslate"><span class="pre">Decoder</span></code>. Then I will bring them together under an <code class="docutils literal notranslate"><span class="pre">AutoEncoder</span></code> class that inherits from the Keras <code class="docutils literal notranslate"><span class="pre">Model</span></code> class.
-This will allow me to use the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method from the Keras <code class="docutils literal notranslate"><span class="pre">Model</span></code> class and make the training loop more efficient, together with easing its usage. I will just have all the relevant training parameters to the <code class="docutils literal notranslate"><span class="pre">compile</span></code> method, to later call the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method to train the model, taking care of the weight updates more efficiently than my handmade training loop.</p>
+<section id="lazy-loading-pr">
+<h2>Lazy Loading PR<a class="headerlink" href="#lazy-loading-pr" title="Link to this heading">#</a></h2>
+<p>I had submitted a PR for the lazy loading feature last week(<a class="reference internal" href="#id3"><span class="std std-ref">PR #3288</span></a>). I was able to fix most of the problems that I was facing last week, I added a ton of <strong>.pyi</strong> files for various modules.
+I had initiated the review of the PR this week. I hope to get it merged ASAP, maybe in a day or two. Alas this was my biggest learning until now and also quite fun, and I am really thankful for the opportunity to do this work.</p>
 </section>
-<section id="did-i-get-stuck-anywhere">
-<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
-<p>Getting the handmade training loop up and running gave me a couple of headaches because the weight update was taking ages. I am still stuck here and that is why I will refactor the code next week.</p>
+<section id="difficulties-challenges">
+<h2>Difficulties &amp; Challenges<a class="headerlink" href="#difficulties-challenges" title="Link to this heading">#</a></h2>
+<p>While fixing the PRs, these were some of my thoughts</p>
+<p id="id1">1. <a class="reference external" href="https://github.com/dipy/dipy/pull/3257">PR #3257</a>
+- Most of the issues were fixed thanks to the review by my mentor. One clarification still remains about the <strong>fit_method</strong>. I was receiving an error as mentioned below, to fix it I applied an <cite>else</cite> clause for the <cite>fit_method</cite> in <cite>FreeWaterTensorModel</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_fwdti_singlevoxel</span><span class="p">():</span>
+    <span class="c1"># Simulation when water contamination is added</span>
+    <span class="n">gtf</span> <span class="o">=</span> <span class="mf">0.44444</span>  <span class="c1"># ground truth volume fraction</span>
+    <span class="n">mevals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0017</span><span class="p">,</span> <span class="mf">0.0003</span><span class="p">,</span> <span class="mf">0.0003</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.003</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">]])</span>
+    <span class="n">S_conta</span><span class="p">,</span> <span class="n">peaks</span> <span class="o">=</span> <span class="n">multi_tensor</span><span class="p">(</span>
+        <span class="n">gtab_2s</span><span class="p">,</span>
+        <span class="n">mevals</span><span class="p">,</span>
+        <span class="n">S0</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">angles</span><span class="o">=</span><span class="p">[(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span>
+        <span class="n">fractions</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">gtf</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">gtf</span> <span class="o">*</span> <span class="mi">100</span><span class="p">],</span>
+        <span class="n">snr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">fwdm</span> <span class="o">=</span> <span class="n">fwdti</span><span class="o">.</span><span class="n">FreeWaterTensorModel</span><span class="p">(</span><span class="n">gtab_2s</span><span class="p">,</span> <span class="s2">&quot;WLS&quot;</span><span class="p">)</span>
+    <span class="n">fwefit</span> <span class="o">=</span> <span class="n">fwdm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">S_conta</span><span class="p">)</span>
+
+<span class="n">dipy</span><span class="o">/</span><span class="n">reconst</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_fwdti</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span>
+<span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span>
+
+<span class="n">dipy</span><span class="o">/</span><span class="n">reconst</span><span class="o">/</span><span class="n">multi_voxel</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span> <span class="ow">in</span> <span class="n">new_fit</span>
+    <span class="k">return</span> <span class="n">single_voxel_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">dipy</span><span class="o">/</span><span class="n">testing</span><span class="o">/</span><span class="n">decorators</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">210</span><span class="p">:</span> <span class="ow">in</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">convert_positional_to_keyword</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="n">dipy</span><span class="o">/</span><span class="n">testing</span><span class="o">/</span><span class="n">decorators</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">191</span><span class="p">:</span> <span class="ow">in</span> <span class="n">convert_positional_to_keyword</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span> <span class="n">_</span>
+
+<span class="bp">self</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">dipy</span><span class="o">.</span><span class="n">reconst</span><span class="o">.</span><span class="n">fwdti</span><span class="o">.</span><span class="n">FreeWaterTensorModel</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x13e1ce110</span><span class="o">&gt;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span> <span class="mf">100.</span>        <span class="p">,</span>   <span class="mf">43.50442139</span><span class="p">,</span>   <span class="mf">13.18018944</span><span class="p">,</span>   <span class="mf">33.49286891</span><span class="p">,</span>
+         <span class="mf">18.75861633</span><span class="p">,</span>   <span class="mf">22.62819702</span><span class="p">,</span>   <span class="mf">37.1749802</span> <span class="p">,</span><span class="o">...</span>   <span class="mf">5.72778443</span><span class="p">,</span>
+         <span class="mf">29.20758655</span><span class="p">,</span>    <span class="mf">5.17472072</span><span class="p">,</span>   <span class="mf">35.21098605</span><span class="p">,</span>   <span class="mf">27.02812095</span><span class="p">,</span>
+         <span class="mf">20.99614616</span><span class="p">,</span>    <span class="mf">5.7284468</span> <span class="p">]),</span> <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">S0</span> <span class="o">=</span> <span class="mf">100.0</span>
+
+    <span class="nd">@multi_voxel_fit</span>
+    <span class="nd">@warning_for_keywords</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit method of the free water elimination DTI model class</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : array</span>
+<span class="sd">            The measured signal from one voxel.</span>
+<span class="sd">        mask : array</span>
+<span class="sd">            A boolean array used to mark the coordinates in the data that</span>
+<span class="sd">            should be analyzed that has the shape data.shape[:-1]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">S0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">gtab</span><span class="o">.</span><span class="n">b0s_mask</span><span class="p">])</span>
+        <span class="n">fwdti_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit_method</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">design_matrix</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">S0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+<span class="n">E</span>       <span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;str&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">callable</span>
+
+<span class="n">dipy</span><span class="o">/</span><span class="n">reconst</span><span class="o">/</span><span class="n">fwdti</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">161</span><span class="p">:</span> <span class="ne">TypeError</span>
+</pre></div>
+</div>
+<p id="id2">1. <a class="reference external" href="https://github.com/dipy/dipy/pull/3254">PR #3254</a>
+- I am still having issues with this PR, where applying the decorator to two specific functions gives me errors. I am assuming the problem is occurring because my decorator is not receiving the signature correctly from the cython function. I was able to resolve it locally through the <cite>cython.binding</cite> method but it didn’t work out for the CI.</p>
+<p id="id3">3. <a class="reference external" href="https://github.com/dipy/dipy/pull/3288">PR #3288</a>
+- Very good progress, I have a few little doubts to complete this PR. I will try to ask them in the next meeting session with my mentor. Also for some reason the external libraries are not getting loaded even with the correct implementation of the <a class="reference external" href="https://pypi.org/project/lazy-loader/">lazy_loader</a> package. Hopefully I can resolve this soon.</p>
+</section>
+<section id="next-week">
+<h2>Next Week<a class="headerlink" href="#next-week" title="Link to this heading">#</a></h2>
+<p>Next week I am planning to take care of some documentation issues that are raised in the repository like <a class="reference external" href="https://github.com/dipy/dipy/issues/2665">Issue #2665</a>. Also I have some tasks assigned by my mentor towards improvements of DIPY.
+I have started working on them already, planning to put down the PRs soon.</p>
+</section>
+<section id="final-thoughts">
+<h2>Final Thoughts<a class="headerlink" href="#final-thoughts" title="Link to this heading">#</a></h2>
+<p>The seventh week of the Coding phase has been a progressive one. I learned tons of new stuff and implemented it. Hopefully I can finish the PRs soon and move onto next tasks.
+I am grateful for the guidance and support provided by my mentor <a class="reference external" href="https://github.com/skoudoro">Serge Koudoro</a>, and the DIPY community, which have been instrumental in driving this project forward.</p>
+<p>Stay tuned for more updates as I continue to work on enhancing DIPY!</p>
+<p>Thank you for reading!</p>
 </section>
 </section>
 
@@ -1013,24 +1085,16 @@ This will allow me to use the <code class="docutils literal notranslate"><span c
   <span class="ablog__prev">
     
     
-    <a href="2024_05_27_kaustav_week0.html">
+    <a href="2024_07_07_kaustav_week_6.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>My Journey Begins: Community Bonding Period with DIPY</span>
+      <span>My Journey Continues: Week 6 Progress with DIPY</span>
     </a>
     
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-    
-    
-    <a href="2024_06_03_kaustav_week_1.html">
-      <span>My Journey Continues: Week 1 Progress with DIPY</span>
-      
-      <i class="fa fa-arrow-circle-right" ></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1067,9 +1131,11 @@ This will allow me to use the <code class="docutils literal notranslate"><span c
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decorator-pr-fixes">Decorator PR Fixes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lazy-loading-pr">Lazy Loading PR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#difficulties-challenges">Difficulties &amp; Challenges</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-week">Next Week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts">Final Thoughts</a></li>
 </ul>
   </nav></div>
 
