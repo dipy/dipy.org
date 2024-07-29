@@ -70,7 +70,7 @@ I got stuck while creating `this <https://github.com/dipy/dipy/pull/2813>`__ PR.
 
 I also got stuck a lot while trying to find out the perpendicular directions to the vectors used in ``gtab1``. I was supposed to implement the following formula:
 
-.. image:: https://github.com/dipy/dipy/blob/09a8c4f8436f995e55231fb3d11fbfe6749610a9/_static/images/formula_.png?raw=true
+.. image:: /_static/images/gsoc/2023/shilpi/formula_.png
   :width: 400
   :alt: formula cti gtab
 

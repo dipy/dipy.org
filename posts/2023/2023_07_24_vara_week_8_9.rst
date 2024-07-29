@@ -30,7 +30,7 @@ Both methods have shown to perform better qualitatively in dealing with the chec
 I ran multiple experiments with batch_size=5,10,10(with ICNR). The training loss curves obtained are as follows, all of them trained on 1 GPU for 24hrs. We see that all of them converge except the last one(B=10 with ICNR).
 
 
-.. image:: /_static/images/vqvae3d-monai-training.png
+.. image:: /_static/images/gsoc/2023/vara/vqvae3d-monai-training.png
  :width: 800
 
 
@@ -40,20 +40,20 @@ The best training checkpoint has been used to reconstruct test images. Following
 The first one is for B=10, the best training checkpoint had training loss=0.0037. Compared to our previous VQVAE model, we see a better performance in capturing the brain outer structure. Moreover, we don't see white blobs or artifacts as inner matter, rather some curvatures contributing to the inner microstructure of a human brain.
 
 
-.. image:: /_static/images/vqvae3d-monai-B10.png
+.. image:: /_static/images/gsoc/2023/vara/vqvae3d-monai-B10.png
  :width: 800
 
 
 The second one is for B=10 with ICNR kernel initialization, the best training checkpoint had training loss=0.0067. Although, the test results do not look complete. I implemented ICNR through DIPY's resize function to achieve NN resize equivalent output on the kernel filters. This initialization didn't work as it was intended to, further proving that the training is yet to be converged.
 
 
-.. image:: /_static/images/vqvae3d-monai-B10-ICNR.png
+.. image:: /_static/images/gsoc/2023/vara/vqvae3d-monai-B10-ICNR.png
  :width: 800
 
 
 The next & last image is for B=5, the best training checkpoint had training loss = 0.0031. By far the best one quantitatively as well as visually. The test loss for the below reconstructions is 0.0013. The superior performance of this batch size can be owed to the Batch Normalization(BN) layers in the architecture that calculate mean & average of the batch to perform normalization over all batch elements using these statistics. Having lesser batch size may contribute to least variation in the output of the layer & helps in achieving converging outputs faster. This explanation stems from the concept of Contrastive Learning, where BN layers are used as the source of implicit negative loss learners. Higher the batch size, more implicit negative samples to move away from. Whereas our objective is to minimize the reconstruction loss, having lesser batch size consequently may help in lesser variation.
 
-.. image:: /_static/images/vqvae3d-monai-B5.png
+.. image:: /_static/images/gsoc/2023/vara/vqvae3d-monai-B5.png
  :width: 800
 
 
