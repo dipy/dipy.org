@@ -13,7 +13,7 @@ This week I refactored the AutoEncoder code to match the design patterns and the
 Training experiments were run for a maximum of a 150 epochs, with variable results. They are not amazing, but at least we get some reconstruction of the input tracts from FiberCup, which seems to be on the right track. I also implemented training logs that report the parameters I used for training, so I can reproduce the results at any time. This still needs work though, because not all parameters are stored. Need to polish!
 The left image shows the input tracts, and the middle and right images show two reconstructions from two different training experiments.
 
-.. image:: /_static/images/fibercup_preliminary_results.png
+.. image:: /_static/images/gsoc/2024/inigo/fibercup_preliminary_results.png
     :alt: Preliminary results of the AutoEncoder training for a subset of plausible fibers of the FiberCup dataset.
     :width: 600
 

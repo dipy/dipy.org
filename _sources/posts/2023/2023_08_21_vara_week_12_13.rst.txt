@@ -17,37 +17,37 @@ Monai's VQVAE results on T1-weighted NFBS dataset, 125 samples, for batch size o
 
 Using existing training parameters, carried out two experiments, one on CC359 alone & another on both datasets combined. Additionally, I made a slight modification in the loss definition by attributing different weights of 0.5 & 1 to background & foreground pixels compared to equal weights from previous experiments. This resulted in faster convergence as shown in the red, blue & purple lines in the combined plot shown below. (Naming convention for each training curve is ``B<batch_size>-<dataset_used>``, where CC=CC359, NFBS=NFBS, both=[NFBS,CC359])
 
-.. image:: /_static/images/vqvae3d-monai-training-plots.png
+.. image:: /_static/images/gsoc/2023/vara/vqvae3d-monai-training-plots.png
    :alt: Combined trainings plots for all experiments
    :width: 800
 
 Inference results on the best performing model, B12-both, is shown below, where every two rows correspond to reconstructions & original volumes respectively, with equally spaced slices in each row. These slices visualized are anterior-posterior topdown & ventral-dorsal LR.
 
-.. image:: /_static/images/vqvae-monai-B12-both.png
+.. image:: /_static/images/gsoc/2023/vara/vqvae-monai-B12-both.png
    :alt: VQVAE-Monai-B12-both reconstructions & originals showing equally spaced 5 slices for 2 different test samples
    :width: 800
 
 Here's a similar visualization of the inference on the next best performing model, B12-CC.
 
-.. image:: /_static/images/vqvae-monai-B12-CC.png
+.. image:: /_static/images/gsoc/2023/vara/vqvae-monai-B12-CC.png
    :alt: VQVAE-Monai-B12-CC reconstructions & originals showing equally spaced 5 slices for 2 different test samples
    :width: 800
 
 This shows that our training not only converged quickly but also improved visually. Here's a comparison of our current best performing model i.e., VQVAE-Monai-B12-both & the previous one on NFBS i.e., VQVAE-Monai-B5-NFBS. The test reconstruction loss is 0.0013 & 0.0015 respectively.
 
-.. image:: /_static/images/vqvae-reconstructions-comparison.png
+.. image:: /_static/images/gsoc/2023/vara/vqvae-reconstructions-comparison.png
    :alt: VQVAE reconstruction comparison for B12-both & B5-NFBS
    :width: 800
 
 I also carried out Diffusion Model training on the best performing VQVAE-Monai-B12-both model for 300 & 500 diffusion steps and the training curves obtained are as follows-
 
-.. image:: /_static/images/dm3d-monai-training-curves.png
+.. image:: /_static/images/gsoc/2023/vara/dm3d-monai-training-curves.png
    :alt: Diffusion Model training plots for 300 & 500 diffusion steps
    :width: 800
 
 These curves seemed to converge pretty quickly but the sampling outputs in the generation pipeline are still pure noise as shown below-
 
-.. image:: /_static/images/dm3d-monai-B8-DM500.png
+.. image:: /_static/images/gsoc/2023/vara/dm3d-monai-B8-DM500.png
    :alt: Diffusion Model training plots for 300 & 500 diffusion steps
    :width: 800
 
