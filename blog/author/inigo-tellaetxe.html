@@ -765,26 +765,26 @@ document.write(`
   </li>
   
   <li>
+    <a href="../../posts/2024/2024_07_12_Inigo_week_7.html">
+      12 July - Week 7 into GSoC 2024: Starting to see the light at the end of the VAE
+    </a>
+  </li>
+  
+  <li>
     <a href="../../posts/2024/2024_07_07_kaustav_week_6.html">
       07 July - My Journey Continues: Week 6 Progress with DIPY
     </a>
   </li>
   
   <li>
+    <a href="../../posts/2024/2024_07_06_Inigo_week_6.html">
+      06 July - Week 6 into GSoC 2024: Stuck with the Variational AutoEncoder, problems with Keras
+    </a>
+  </li>
+  
+  <li>
     <a href="../../posts/2024/2024_07_01_kaustav_week_5.html">
       01 July - My Journey Continues: Week 5 Progress with DIPY
-    </a>
-  </li>
-  
-  <li>
-    <a href="../../posts/2024/2024_06_28_Inigo_week_5.html">
-      28 June - Week 5 into GSoC 2024: Vacation, starting with the conditional AutoEncoder
-    </a>
-  </li>
-  
-  <li>
-    <a href="../../posts/2024/2024_06_30_kaustav_week_4.html">
-      23 June - My Journey Continues: Week 4 Progress with DIPY
     </a>
   </li>
   
@@ -814,7 +814,7 @@ document.write(`
   
   
   <li>
-    <a href="../category/gsoc.html">gsoc (56)</a>
+    <a href="../category/gsoc.html">gsoc (58)</a>
   </li>
   
   
@@ -836,7 +836,7 @@ document.write(`
   
   
   <li>
-    <a href="../2024.html">2024 (14)</a>
+    <a href="../2024.html">2024 (16)</a>
   </li>
   
   
@@ -928,6 +928,152 @@ document.write(`
     
   </h1>
   
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2024/2024_07_12_Inigo_week_7.html">Week 7 into GSoC 2024: Starting to see the light at the end of the VAE</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        12 July 2024
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Iñigo Tellaetxe</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>Finally, I figured out how to solve the <code class="docutils literal notranslate"><span class="pre">nan</span></code> value problem in the VAE training. As I suspected, the values that the <code class="docutils literal notranslate"><span class="pre">ReparametrizationTrickSampling</span></code> layer was getting were too big for the exponential operations. I use the exponential operation because I am treating the Encoder output as the log variance of the latent space distribution, and for sampling we need the standard deviation. We use the log variance instead of the standard deviation for avoiding computing logarithms.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2024/2024_07_12_Inigo_week_7.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../posts/2024/2024_07_06_Inigo_week_6.html">Week 6 into GSoC 2024: Stuck with the Variational AutoEncoder, problems with Keras</a>
+    </h2>
+    <ul class="ablog-archive">
+      <li>
+        
+        
+        <i class="fa fa-calendar"></i>
+        
+        06 July 2024
+        
+      </li>
+      <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="#">Iñigo Tellaetxe</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>This week was all about the Variational AutoEncoder. My mentors advised me to drop the TensorFlow implementation of the regression VAE I found last week, to instead directly integrate the variational and conditional characteristics in my AE implementation, following a more modular approach. This was a good decision, as adapting third party code to one’s needs is often a bit of a mess (it already started being a mess, so yeah). Also, once the variational part is done, implementing the conditional should not be that hard.</p>
+</p>
+
+    <p class="ablog-post-expand"><a href="../../posts/2024/2024_07_06_Inigo_week_6.html"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
   
   <div class="section ablog-post">
     <h2 class="ablog-post-title">
