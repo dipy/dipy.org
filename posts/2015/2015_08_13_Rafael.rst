@@ -1,0 +1,27 @@
+Further improvements on the diffusion standard statistics
+=========================================================
+
+.. post:: August 13 2015
+   :author: Rafael Henriques
+   :tags: google
+   :category: gsoc
+
+As I mentioned in my last post, I used the implemented modules to process data acquired with similar parameters to one of the largest worldwide projects, the Human Connectome project. Considering that I was fitting the diffusion kurtosis model with practically no pre-processing steps, which are normally required on diffusion kurtosis imaging, kurtosis reconstructions were looking very good (see Figure 2 of my last post).
+
+Despite this, some image artifacts were present, likely being a consequence of `gibbs artifacts <https://pubmed.ncbi.nlm.nih.gov/26142273/>`_ and `MRI noise <http://repositorio.ul.pt/bitstream/10451/8511/1/ulfc104137_tm_Rafael_Henriques.pdf>`_. In particular, some low intensity voxels were present in regions where we expect that MK and RK is high. To correct these artifacts, I decided to add a pre-processing step that denoises diffusion-weighted data (to see the coding details of this, see directly on my `pull request <https://github.com/dipy/dipy/pull/677>`_). 
+
+Before fitting DKI on the denoised data, these are the amazing kurtosis maps that I obtained:
+
+.. figure:: /_static/images/gsoc/2015/rafael/Kurtosis_tensor_standard_measures_B.png
+   :alt: Improved Kurtosis Maps
+   :align: center
+
+   Figure 1 - Real brain parameter maps of the mean kurtosis (MK), axial kurtosis (AK), and radial kurtosis (RK) obtained from a HCP-like dataset using the DKI module. These are the maps specific to DKI. The dataset for these reconstructions was kindly supplied by `Valabregue Romain, CENIR, ICM, Paris <https://digital.lib.washington.edu/researchworks/handle/1773/33311>`__.
+
+You can also see the standard diffusion measures obtained from my implemented DKI module and compared to the DTI module previously implemented:
+
+.. figure:: /_static/images/gsoc/2015/rafael/Diffusion_tensor_measures_from_DTI_and_DKI_B.png
+   :alt: Improved DKI and DTI Comparison
+   :align: center
+
+   Figure 2. Real brain parameter maps of the diffusion fractional anisotropy (FA), mean diffusivity (MD), axial diffusivity (AD), and radial diffusivity (RD) obtained from a HCP-like dataset using the DKI modules (upper panels) and the DTI module (lower panels). Despite DKI involves the estimation of a larger number of parameters, the quality of the diffusion standard measures of the HCP-like dataset from DKI seem to be comparable with the standard diffusion measures from DTI. This dataset was kindly supplied by `Valabregue Romain, CENIR, ICM, Paris <https://digital.lib.washington.edu/researchworks/handle/1773/33311>`__.
