@@ -1,0 +1,36 @@
+Week 7 into GSoC 2024: Starting to see the light at the end of the VAE
+======================================================================
+
+.. post:: July 12 2024
+    :author: Iñigo Tellaetxe
+    :tags: google
+    :category: gsoc
+
+What I did this week
+~~~~~~~~~~~~~~~~~~~~
+
+Finally, I figured out how to solve the ``nan`` value problem in the VAE training. As I suspected, the values that the ``ReparametrizationTrickSampling`` layer was getting were too big for the exponential operations. I use the exponential operation because I am treating the Encoder output as the log variance of the latent space distribution, and for sampling we need the standard deviation. We use the log variance instead of the standard deviation for avoiding computing logarithms.
+
+The solution consisted of two measures: first, clipping the values of the exponential operations to the ``[-1e10, 1e10]`` range; second, adding batch normalization layers after each convolution in the Encoder enforces a 0 mean and unit variance, preventing large values at the output. I did not use batch normalization in the fully connected layers that output the mean and the log variance of the latent distribution because I did not want to constrain the latent space too much with distributions with the mentioned characteristics. These layers should capture other characteristics of the data distribution.
+
+You can see a preliminary result of training the Variational AutoEncoder below, with the exact same training parameters as the AutoEncoder, but only for 50 epochs for proving the concept.
+
+.. image:: /_static/images/inigo_preliminary_vae_result_fibercup.png
+    :alt: Preliminary reconstruction result after training the VAE for 50 epochs with the FiberCup dataset.
+    :width: 600
+
+I should mention that the variance of the 0-mean distribution from which ``epsilon`` is sampled in the ``ReparametrizationTrickSampling`` layer can be adjusted as a hyperparameter. I set it to 1 for now, but I could explore this hyperparameter in the future, but first I need to learn about the theoretical implications of modifying it. 
+
+On the other hand, I started a discussion in a `PR <https://github.com/itellaetxe/tractoencoder_gsoc/pull/1>`_ that includes all these changes to make it easier for my mentors and my GSoC colleagues to review my code. This change was suggested by my mentors to make my advances more public and accessible to feedback.
+
+What is coming up next week
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Next week I will train the VAE for longer (~120 epochs) and I will also explore annealing the KL loss, which is a technique that consists of increasing the KL loss weight during the first epochs of training and then decreasing it. This is done to avoid the model getting stuck in a local minimum of the loss function.
+
+Did I get stuck anywhere
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+I got a bit stuck thinking how to solve the exploding loss problem, and despite the described advances may seem small, they required a lot of thought and debugging. Thankfully my lab colleague `Jorge <https://github.com/JGarciaCondado>`_ helped me with his machine learning expertise and gave me the idea of batch normalization.
+
+Until next week!
