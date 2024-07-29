@@ -1,0 +1,19 @@
+Artifacts in Dipy's sample data Sherbrooke's 3 shells
+=====================================================
+
+.. post:: July 08 2015
+    :author: Rafael Henriques
+    :tags: google
+    :category: gsoc
+
+Hi all,
+
+Just to report an issue that I am currently trying to figure out!
+
+As I showed on my `previous post <https://dipy.org/posts/2015/2015_07_02_Rafael.html>`__ my first diffusion kurtosis reconstructions are looking very good. However when I try to process the Dipy's multi-shell dataset sample Sherbrooke 3 shells, kurtosis measures seem to be widely corrupted by implausible high negative values see figure below:
+
+.. figure:: /_static/images/gsoc/2015/rafael/Kurtosis_tensor_standard_measures.png
+   :alt: Real brain standard diffusion tensor measures
+   :align: center
+
+   Fig.1 - Diffusion kurtosis standard measures obtain from the Sherbrooke 3 shells Dipy's sample dataset.
