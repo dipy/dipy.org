@@ -1,0 +1,1457 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DIPY &#8212; Diffusion Imaging in Python  documentation</title>
+  
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=2cbe46a9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+  
+<link rel="stylesheet" href="../../_static/styles/grg-sphinx-theme.css"/>
+
+    <script src="../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-D610GKJZRC"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-D610GKJZRC');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-D610GKJZRC');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2020/2020_05_04_serge_gsod_announcement';</script>
+    <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
+    <link rel="canonical" href="https://dipy.org/posts/2020/2020_05_04_serge_gsod_announcement.html" />
+    <link rel="icon" href="../../_static/dipy-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+  <meta name="keywords" content="DIPY, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/dipy-logo.png" class="logo__image only-light" alt="DIPY"/>
+    <script>document.write(`<img src="../../_static/dipy-logo.png" class="logo__image only-dark" alt="DIPY"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  
+  <ul class="bd-navbar-elements navbar-nav">
+    
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Docs
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable">
+            Overview
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/examples_built/index">
+            Tutorials
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/recipes">
+            Recipes
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/interfaces/index">
+            CLI / Workflows
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/reference/index">
+            API
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/reference_cmd/index">
+            CLI API
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Workshops
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Latest
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2024" target="_blank">
+            DIPY Workshop 2024 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Past
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2023" target="_blank">
+            DIPY Workshop 2023 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2022" target="_blank">
+            DIPY Workshop 2022 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2021" target="_blank">
+            DIPY Workshop 2021 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2020" target="_blank">
+            DIPY Workshop 2020 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2019" target="_blank">
+            DIPY Workshop 2019 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Community
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        News
+      </p>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../../calendar.html">
+          Calendar
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://mail.python.org/mailman3/lists/dipy.python.org/" target="_blank">
+            Newsletters <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../../blog.html">
+          Blog
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/c/diffusionimaginginpython" target="_blank">
+            Youtube <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Help
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://app.gitter.im/#/room/%23dipy_dipy:gitter.im" target="_blank">
+            Live Chat (Gitter) <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/dipy/dipy/discussions" target="_blank">
+            Github Discussions <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    About
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link" href="../../team.html">
+          Team
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/faq">
+            FAQ
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/user_guide/mission">
+            Mission Statement
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/stateoftheart">
+            Releases
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/cite">
+            Cite
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/glossary">
+            Glossary
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+  </ul>
+  
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dipy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/dipymri" title="Twitter/X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter/X</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-youtube"></i></span>
+            <label class="sr-only">YouTube</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/dipy/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-linkedin"></i></span>
+            <label class="sr-only">LinkedIn</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+</nav>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  
+  <ul class="bd-navbar-elements navbar-nav">
+    
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Docs
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable">
+            Overview
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/examples_built/index">
+            Tutorials
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/recipes">
+            Recipes
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/interfaces/index">
+            CLI / Workflows
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/reference/index">
+            API
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/reference_cmd/index">
+            CLI API
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Workshops
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Latest
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2024" target="_blank">
+            DIPY Workshop 2024 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Past
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2023" target="_blank">
+            DIPY Workshop 2023 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2022" target="_blank">
+            DIPY Workshop 2022 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2021" target="_blank">
+            DIPY Workshop 2021 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2020" target="_blank">
+            DIPY Workshop 2020 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2019" target="_blank">
+            DIPY Workshop 2019 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Community
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        News
+      </p>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../../calendar.html">
+          Calendar
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://mail.python.org/mailman3/lists/dipy.python.org/" target="_blank">
+            Newsletters <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../../blog.html">
+          Blog
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/c/diffusionimaginginpython" target="_blank">
+            Youtube <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Help
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://app.gitter.im/#/room/%23dipy_dipy:gitter.im" target="_blank">
+            Live Chat (Gitter) <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/dipy/dipy/discussions" target="_blank">
+            Github Discussions <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    About
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link" href="../../team.html">
+          Team
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/faq">
+            FAQ
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/user_guide/mission">
+            Mission Statement
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/stateoftheart">
+            Releases
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/cite">
+            Cite
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/glossary">
+            Glossary
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+  </ul>
+  
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dipy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/dipymri" title="Twitter/X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter/X</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-youtube"></i></span>
+            <label class="sr-only">YouTube</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/dipy/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-linkedin"></i></span>
+            <label class="sr-only">LinkedIn</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__postcard">
+
+
+<h2>
+  
+  
+  <i class="fa fa-calendar"></i>
+  
+  04 May 2020
+  
+</h2>
+<ul>
+  <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="../../blog/author/serge-koudoro.html">Serge Koudoro</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../../blog/category/gsod-announcement.html">gsod announcement</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../../blog/tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+</ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__recentposts">
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="../2024/2024_07_22_kaustav_week_8.html">
+      22 July - My Journey Continues: Week 8 Progress with DIPY
+    </a>
+  </li>
+  
+  <li>
+    <a href="../2024/2024_07_15_kaustav_week_7.html">
+      15 July - My Journey Continues: Week 7 Progress with DIPY
+    </a>
+  </li>
+  
+  <li>
+    <a href="../2024/2024_07_12_Inigo_week_7.html">
+      12 July - Week 7 into GSoC 2024: Starting to see the light at the end of the VAE
+    </a>
+  </li>
+  
+  <li>
+    <a href="../2024/2024_07_07_kaustav_week_6.html">
+      07 July - My Journey Continues: Week 6 Progress with DIPY
+    </a>
+  </li>
+  
+  <li>
+    <a href="../2024/2024_07_06_Inigo_week_6.html">
+      06 July - Week 6 into GSoC 2024: Stuck with the Variational AutoEncoder, problems with Keras
+    </a>
+  </li>
+  
+</ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__tags">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<ul class="ablog-cloud">
+  
+  
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/google.html">google</a>
+  </li>
+  
+  
+</ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__category">
+<h3>
+  <a href="../../blog/category.html">Categories</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="../../blog/category/gsoc.html">gsoc (59)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/category/gsoc-announcement.html">gsoc announcement (8)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/category/gsod.html">gsod (1)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/category/gsod-announcement.html">gsod announcement (1)</a>
+  </li>
+  
+  
+</ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__archive">
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="../../blog/2024.html">2024 (18)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2023.html">2023 (24)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2022.html">2022 (1)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2021.html">2021 (1)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2020.html">2020 (3)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2018.html">2018 (1)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2016.html">2016 (7)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2015.html">2015 (14)</a>
+  </li>
+  
+  
+</ul>
+</div>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">DIPY</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+<section id="google-season-of-docs-2020">
+<h1>Google Season of Docs 2020<a class="headerlink" href="#google-season-of-docs-2020" title="Link to this heading">#</a></h1>
+</section>
+<section id="dipy-fury-project-ideas-for-gsod-20">
+<h1>DIPY + FURY project ideas for GSoD’20<a class="headerlink" href="#dipy-fury-project-ideas-for-gsod-20" title="Link to this heading">#</a></h1>
+<p>Welcome, and thank you for showing your interest in <a class="reference external" href="https://dipy.org">DIPY(Diffusion Imaging in Python)</a> and <a class="reference external" href="https://fury.gl">FURY(Free Unified Rendering in Python)</a> projects! On this page, we will first provide more information about DIPY and FURY, then the current state of both projects’ documentation, and we will finish by describing two project ideas in detail. We want to point out that you are more than welcome to bring your ideas; we’d love to discuss with you any ideas that improve our online presence or documentation.</p>
+<p><strong>Please note that</strong> <a class="reference external" href="https://developers.google.com/season-of-docs">the Google Season of Docs</a> <strong>is a program for writers with previous experience to show for the application. If you are a student, please consider</strong> <a class="reference external" href="https://summerofcode.withgoogle.com">Google Summer of Code</a> <strong>instead.</strong></p>
+<section id="technical-writers">
+<h2>Technical Writers<a class="headerlink" href="#technical-writers" title="Link to this heading">#</a></h2>
+<p>Welcome technical writers! Do not hesitate to contact us as early as possible! You can use any project chat channels for your first contact (see links on the documentation section). Also, you can find more information on the following links:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developers.google.com/season-of-docs/docs/tech-writer-guide">Guidelines</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/season-of-docs/docs/timeline">Application Timeline</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/season-of-docs/docs/tech-writer-application-hints">How to write a good proposal</a></p></li>
+</ul>
+</section>
+<section id="what-are-dipy-and-fury">
+<h2>What are DIPY and FURY?<a class="headerlink" href="#what-are-dipy-and-fury" title="Link to this heading">#</a></h2>
+<p><strong>About DIPY</strong>: DIPY is a free and open-source software library for the analysis of 3D/4D+ imaging in Python. It contains generic methods for spatial normalization, signal processing, machine learning, statistical analysis, and visualization of medical images. Additionally, it contains specialized methods for computational anatomy including diffusion, perfusion, and structural imaging. DIPY has many users from the computational neuroanatomy and medical data science fields. DIPY is an international project which brings together scientists across labs and countries to share their state-of-the-art code and expertise in the same codebase, accelerating scientific research in medical imaging</p>
+<p><strong>About FURY</strong>: FURY is a free and open-source software library for scientific visualization and 3D animations. FURY contains many tools for visualizing a series of scientific data including graph and imaging data. FURY is a DIPY spin-off.</p>
+</section>
+<section id="about-our-documentation">
+<h2>About our Documentation<a class="headerlink" href="#about-our-documentation" title="Link to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>DIPY</p></th>
+<th class="head"><p>FURY</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Latest version</p></td>
+<td><p><a class="reference external" href="https://dipy.org">https://dipy.org</a></p></td>
+<td><p><a class="reference external" href="https://fury.gl">https://fury.gl</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>tutorials</p></td>
+<td><p><a class="reference external" href="https://dipy.org/tutorials/">https://dipy.org/tutorials/</a></p></td>
+<td><p><a class="reference external" href="http://fury.gl/latest/auto_tutorials/index.html">http://fury.gl/latest/auto_tutorials/index.html</a></p></td>
+</tr>
+<tr class="row-even"><td><p>reference guide</p></td>
+<td><p><a class="reference external" href="https://dipy.org/documentation/latest/reference">https://dipy.org/documentation/latest/reference</a></p></td>
+<td><p><a class="reference external" href="http://fury.gl/latest/reference/index.html">http://fury.gl/latest/reference/index.html</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>developer docs</p></td>
+<td><p><a class="reference external" href="https://dipy.org/documentation/latest/devel/">https://dipy.org/documentation/latest/devel/</a></p></td>
+<td><p><a class="reference external" href="http://fury.gl/latest/symlink/contributing.html">http://fury.gl/latest/symlink/contributing.html</a></p></td>
+</tr>
+<tr class="row-even"><td><p>GitHub repository</p></td>
+<td><p><a class="github reference external" href="https://github.com/dipy/dipy">dipy/dipy</a></p></td>
+<td><p><a class="github reference external" href="https://github.com/fury-gl/fury">fury-gl/fury</a></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The state of DIPY documentation</strong>: We have complete reference documentation for most of the functions and classes exposed to users, although most of the functions are missing a usage example. Our User and Developer Guide needs to be updated and be made more consistent. Also, we need to create the documentation of our new CLI feature. Overall, offering a better experience will be valuable for our users!</p>
+<p><strong>The state of FURY documentation</strong>: FURY is a recent project that offers flexibility. We have complete reference documentation for most functions, and an increasing number of tutorials have been created but FURY suffers from a lack of a Developer and User Guides.</p>
+<p><strong>DIPY + FURY documentation generation</strong>: All our documentation and websites are built with <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a>. Sphinx generates static websites (making them easy to deploy) and provides extensive functionality to transform plain-text <em>reStructuredText</em> documents to HTML, as well as extract and cross-link documentation automatically from docstrings in Python source code. Reference documentation follows the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">NumPy docstring standard</a>. A detailed guide on how to document functions, classes, and other objects can be found <a class="reference external" href="https://www.numpy.org/devdocs/docs/howto_document.html">here</a>.</p>
+<p>Note for DIPY: A Django instance manages dynamic content and loads the static page generated by Sphinx.</p>
+<p><strong>DIPY + FURY approach to documentation work</strong>: Documentation tasks and issues are maintained on our GitHub issue tracker for <a class="reference external" href="https://github.com/dipy/dipy/issues">DIPY</a> and <a class="reference external" href="https://github.com/fury-gl/fury/issues">FURY</a>. Changes to the documentation are made via pull requests on GitHub, and reviewed with our standard review process which is the same for documentation and code (see <a class="reference external" href="https://github.com/dipy/dipy/blob/master/CONTRIBUTING.md">DIPY contributing guide</a> or <a class="reference external" href="http://fury.gl/latest/symlink/contributing.html">FURY contributing guide</a>). Any new feature should be documented and followed by a tutorial. There is no dedicated “documentation manager” so every developer can review, improve, or comment on the improvement.</p>
+</section>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Link to this heading">#</a></h2>
+<p>As a community-driven project we try to have all conversations about DIPY and FURY in public:</p>
+<ul class="simple">
+<li><p>All discussions related to the <em>development</em> of DIPY (which includes GSoD) can occur on the <a class="reference external" href="https://mail.python.org/mailman3/lists/dipy.python.org/">DIPY mailing list</a>. Please register and post to that list for discussing a GSoD proposal or idea. Also, you can use <a class="reference external" href="https://gitter.im/nipy/dipy">our chat on gitter</a>.</p></li>
+<li><p>All discussions related to the <em>development</em> of FURY (which includes GSoD) can occur on the <a class="reference external" href="https://mail.python.org/mailman3/lists/fury.python.org/">FURY mailing list</a>. Please register and post to that list for discussing a GSoD proposal or idea. Also, you can use <a class="reference external" href="https://discord.gg/6btFPPj">our chat on Discord</a>.</p></li>
+</ul>
+</section>
+<section id="projects">
+<h2>Projects<a class="headerlink" href="#projects" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Project Idea 1</strong>: <em>[DIPY] High-level restructuring and end-user focus.</em></p></li>
+<li><p><strong>Project Idea 2</strong>: <em>[FURY] Create User and Developer Guides. Update missing docstrings/doctests</em></p></li>
+</ul>
+</section>
+</section>
+<section id="projects-in-details">
+<h1>Projects in Details:<a class="headerlink" href="#projects-in-details" title="Link to this heading">#</a></h1>
+<section id="project-idea-1-high-level-restructuring-and-end-user-focus">
+<h2>Project idea 1: High-level restructuring and end-user focus<a class="headerlink" href="#project-idea-1-high-level-restructuring-and-end-user-focus" title="Link to this heading">#</a></h2>
+<p><strong>Potential Mentors</strong>: Ariel Rokem, Eleftherios Garyfallidis, Jon Haitz Legarreta Gorroño</p>
+<p><strong>Description</strong>: DIPY serves many kinds of users: students that have a first time contact with the neuroimaging field, educators, researchers, medical doctors, software developers. In summary, DIPY’s 10 year documentation needs to be reshaped and improved. We want to provide ways to guide those users to the parts of the documentation most relevant to them. We would love to work with a technical writer that can help us address this challenge.</p>
+<p><strong>Possible topics</strong> include:</p>
+<ul class="simple">
+<li><p>Improving the structure and content of <a class="reference external" href="https://dipy.org/">https://dipy.org/</a></p></li>
+<li><p>Reviewing and improving the structure of the documentation</p></li>
+<li><p>Producing a roadmap or list of work items for engaging the community in further documentation work</p></li>
+<li><p>Rewriting the User and Developer Guides.</p></li>
+<li><p>Adding non-textual images (illustrations, animations, graphics) to enhance the textual explanations</p></li>
+<li><p>Improving consistency across the documentation.</p></li>
+<li><p>Create documentation for the new command-line interface.</p></li>
+</ul>
+</section>
+<section id="project-idea-2-fury-create-user-and-developer-guides-update-missing-docstrings-doctests">
+<h2>Project idea 2: [FURY] Create User and Developer Guides. Update missing docstrings/doctests<a class="headerlink" href="#project-idea-2-fury-create-user-and-developer-guides-update-missing-docstrings-doctests" title="Link to this heading">#</a></h2>
+<p><strong>Potential Mentors</strong>: Serge Koudoro, Eleftherios Garyfallidis</p>
+<p>This project will be split into 2 parts:</p>
+<p><strong>Create User and Developer Guides</strong>: Despite a lot of tutorials and demos, FURY is missing a User and Developer Guides to explain some basic concepts of our library. What is a vertex? What is a primitive? The technical writer will have to work closely with the core team to provide a boost to our current documentation and facilitate user learning and early adoption.</p>
+<p><strong>Missing docstrings/doctests</strong>: Every public function in FURY should have a docstring with examples (doctests). At present few of them have an example on the docstring. The part of this project would consist of identifying which functions are missing documentation and adding them.</p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+  
+  
+
+
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+    
+    
+    <a href="2020_02_05_serge_gsoc_announcement.html">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Google Summer of Code 2020</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+    
+    
+    <a href="2020_12_05_Areesha.html">
+      <span>GSoD: High-level restructuring and end-user focus</span>
+      
+      <i class="fa fa-arrow-circle-right" ></i>
+      
+    </a>
+    
+  </span>
+</div>
+
+  
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Google Season of Docs 2020</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dipy-fury-project-ideas-for-gsod-20">DIPY + FURY project ideas for GSoD’20</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-writers">Technical Writers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-dipy-and-fury">What are DIPY and FURY?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-our-documentation">About our Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact">Contact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projects">Projects</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#projects-in-details">Projects in Details:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-idea-1-high-level-restructuring-and-end-user-focus">Project idea 1: High-level restructuring and end-user focus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-idea-2-fury-create-user-and-developer-guides-update-missing-docstrings-doctests">Project idea 2: [FURY] Create User and Developer Guides. Update missing docstrings/doctests</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  
+<script type="module" src="../../_static/scripts/grg-sphinx-theme.js"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><div>
+  <h3 class="footer-heading">
+    Never miss an update from us!
+  </h3>
+  <p class="footer-sub-heading">
+    Don't worry! we are not going to spam you.
+  </p>
+  <div class="input-group mb-3 mar-t-10">
+    <input type="text" class="form-control" placeholder="You email" aria-label="You email" id="grg-subscribe-email">
+    <div class="input-group-append pointer" onclick="subscriptionClick(document.getElementById('grg-subscribe-email').value)">
+      <span class="input-group-text subscribe">Subscribe</span>
+    </div>
+  </div>  
+  <ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dipy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/dipymri" title="Twitter/X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter/X</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-youtube"></i></span>
+            <label class="sr-only">YouTube</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/dipy/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-linkedin"></i></span>
+            <label class="sr-only">LinkedIn</label></a>
+        </li>
+</ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="grid-3">
+  
+  <div>
+    <h5 class="footer-heading">
+      About
+    </h5>
+    <ul class="footer-section">
+      
+        
+        <li class="pad-v-5">
+          <a href="../../team.html">
+            Developers
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://github.com/dipy/dipy/discussions" target="_blank" rel="noopener noreferrer">
+            Support
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://docs.dipy.org/stable/user_guide/installation">
+            Download
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://docs.dipy.org/stable/">
+            Get Started
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://docs.dipy.org/stable/examples_built/index">
+            Tutorials
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" target="_blank" rel="noopener noreferrer">
+            Videos
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+    </ul>
+  </div>
+  
+  <div>
+    <h5 class="footer-heading">
+      Friends
+    </h5>
+    <ul class="footer-section">
+      
+        
+        <li class="pad-v-5">
+          <a href="https://nipy.org/" target="_blank" rel="noopener noreferrer">
+            Nipy Projects
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://fury.gl/" target="_blank" rel="noopener noreferrer">
+            FURY
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://nipy.org/nibabel" target="_blank" rel="noopener noreferrer">
+            Nibabel
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://tortoise.nibib.nih.gov/" target="_blank" rel="noopener noreferrer">
+            Tortoise
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+    </ul>
+  </div>
+  
+  <div>
+    <h5 class="footer-heading">
+      Support
+    </h5>
+    <ul class="footer-section">
+      
+        
+        <li class="pad-v-5">
+          <a href="https://engineering.indiana.edu/" target="_blank" rel="noopener noreferrer">
+            The department of Intelligent Systems Engineering of Indiana University
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://www.nibib.nih.gov/" target="_blank" rel="noopener noreferrer">
+            The National Institute of Biomedical Imaging and Bioengineering, NIH
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://escience.washington.edu/tag/alfred-p-sloan-foundation/" target="_blank" rel="noopener noreferrer">
+            The Gordon and Betty Moore Foundation and the Alfred P. Sloan Foundation, through the University of Washington eScience Institute Data Science Environment
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://summerofcode.withgoogle.com/" target="_blank" rel="noopener noreferrer">
+            Google supported DIPY through the Google Summer of Code Program during multiple Summer (2015-2024)
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+    </ul>
+  </div>
+  
+</div></div>
+      
+    </div>
+  
+</div>
+
+    <div class="copyright-text">
+      <i class="fa-regular fa-copyright"></i> Copyright 2008-2023, DIPY developers. Created using Grg Sphinx Theme and PyData Sphinx Theme.
+    </div>
+  </footer>
+  </body>
+</html>
