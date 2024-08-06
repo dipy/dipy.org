@@ -1,5 +1,5 @@
 numpydoc
-sphinx!=4.4
+sphinx==7.4.6
 tomli>=2.0.1
 grg-sphinx-theme>=0.3.2
 Jinja2
