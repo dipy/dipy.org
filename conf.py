@@ -22,8 +22,8 @@ except ImportError:
 
 from packaging.version import Version
 import sphinx
-if Version(sphinx.__version__) < Version('2'):
-    raise RuntimeError('Need sphinx >= 2 for numpydoc to work correctly')
+if Version(sphinx.__version__) < Version('6') or Version(sphinx.__version__) >= Version('8'):
+    raise RuntimeError('Needs 8 > Sphinx Version >= 6  for numpydoc to work correctly')
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
