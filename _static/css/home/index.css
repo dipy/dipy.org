@@ -23,6 +23,16 @@ h2.section-title {
   color: var(--gst-color-heading);
 }
 
+a:link, a:visited, a:active {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #1b8bf4;
+}
+
 @media only screen and (max-width: 768px) {
   /* Your CSS styles for phones go here */
   h2.section-title {
