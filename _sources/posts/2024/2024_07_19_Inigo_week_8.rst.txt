@@ -1,0 +1,37 @@
+Week 8 into GSoC 2024: Further advances with the VAE model
+==========================================================
+
+.. post:: July 19 2024
+    :author: Iñigo Tellaetxe
+    :tags: google
+    :category: gsoc
+
+What I did this week
+~~~~~~~~~~~~~~~~~~~~
+
+This week I continued training the VAE model with the FiberCup dataset, this time for 120 epochs, and the results are promising. The model is able to reconstruct the input data with a decent level of detail.
+
+.. image:: /_static/images/gsoc/2024/inigo/vanilla_vae_120_epoch_results.png
+    :alt: Vanilla Variational AutoEncoder reconstruction results after 120 epochs of training.
+    :width: 600
+
+I also looked at the theoretical and technical implications of implementing the `beta-VAE architecture <https://openreview.net/forum?id=Sy2fzU9gl>`_ for my experiments, which could help in disentangling the latent space representation of the streamlines according to features learnt in an unsupervised manner.
+
+Shortly, applying a weight (bigger than 1) to the KL loss component of the VAE loss function encourages the model to learn a version of the latent space where features that can be perceived in the data space are aligned with the latent space dimensions. This way, one can modulate the generative process according to the learnt 'perceivable' features, once they are identified and located in the latent space.
+
+However, increasing the beta weight compromises the reconstruction quality, which is what basically makes streamlines look reasonable. Finding a good beta weight is as 'simple' as running a hyperparameter search while constraining the parameter to be higher than one, and to try to prioritize the MSE (Mean Squared Error, reconstruction loss) in the search algorithm.
+
+From the technical side implementing a beta-VAE is very straightforward, by just adding the beta weight in the loss equation and storing the parameter for traceability, so this did not take a lot of time.
+
+What is coming up next week
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Next week I wanted to tinker around a bit with this parameter to see how it affects the quality of the reconstructions and the organization of the latent space, but I don't think this is an effective strategy, nor the priority. Thus, I will start implementing the conditional VAE, which will allow me to generate new streamlines by conditioning the latent space with a specific continuous variable.
+This is a bit more complex than the vanilla VAE, but I think I will be able to implement it on time because the main components are already there and I just need to add the conditioning part, based on this `paper <https://doi.org/10.1007/978-3-030-32245-8_91>`_.
+
+Did I get stuck anywhere
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+This week I haven't got stuck in any particular issue, because I was mainly focused on training the model and understanding the beta-VAE architecture.
+
+Until next week!

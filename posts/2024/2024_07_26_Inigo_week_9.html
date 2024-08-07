@@ -1,0 +1,1380 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DIPY &#8212; Diffusion Imaging in Python  documentation</title>
+  
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=2cbe46a9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+  
+<link rel="stylesheet" href="../../_static/styles/grg-sphinx-theme.css"/>
+
+    <script src="../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-D610GKJZRC"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-D610GKJZRC');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-D610GKJZRC');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_07_26_Inigo_week_9';</script>
+    <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_07_26_Inigo_week_9.html" />
+    <link rel="icon" href="../../_static/dipy-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+  <meta name="keywords" content="DIPY, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/dipy-logo.png" class="logo__image only-light" alt="DIPY"/>
+    <script>document.write(`<img src="../../_static/dipy-logo.png" class="logo__image only-dark" alt="DIPY"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  
+  <ul class="bd-navbar-elements navbar-nav">
+    
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Docs
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable">
+            Overview
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/examples_built/index">
+            Tutorials
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/recipes">
+            Recipes
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/interfaces/index">
+            CLI / Workflows
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/reference/index">
+            API
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/reference_cmd/index">
+            CLI API
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Workshops
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Latest
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2024" target="_blank">
+            DIPY Workshop 2024 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Past
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2023" target="_blank">
+            DIPY Workshop 2023 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2022" target="_blank">
+            DIPY Workshop 2022 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2021" target="_blank">
+            DIPY Workshop 2021 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2020" target="_blank">
+            DIPY Workshop 2020 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2019" target="_blank">
+            DIPY Workshop 2019 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Community
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        News
+      </p>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../../calendar.html">
+          Calendar
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://mail.python.org/mailman3/lists/dipy.python.org/" target="_blank">
+            Newsletters <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../../blog.html">
+          Blog
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/c/diffusionimaginginpython" target="_blank">
+            Youtube <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Help
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://app.gitter.im/#/room/%23dipy_dipy:gitter.im" target="_blank">
+            Live Chat (Gitter) <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/dipy/dipy/discussions" target="_blank">
+            Github Discussions <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    About
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link" href="../../team.html">
+          Team
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/faq">
+            FAQ
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/user_guide/mission">
+            Mission Statement
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/stateoftheart">
+            Releases
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/cite">
+            Cite
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/glossary">
+            Glossary
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+  </ul>
+  
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dipy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/dipymri" title="Twitter/X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter/X</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-youtube"></i></span>
+            <label class="sr-only">YouTube</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/dipy/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-linkedin"></i></span>
+            <label class="sr-only">LinkedIn</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+</nav>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  
+  <ul class="bd-navbar-elements navbar-nav">
+    
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Docs
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable">
+            Overview
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/examples_built/index">
+            Tutorials
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/recipes">
+            Recipes
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/interfaces/index">
+            CLI / Workflows
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/reference/index">
+            API
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/reference_cmd/index">
+            CLI API
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Workshops
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Latest
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2024" target="_blank">
+            DIPY Workshop 2024 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Past
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2023" target="_blank">
+            DIPY Workshop 2023 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2022" target="_blank">
+            DIPY Workshop 2022 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2021" target="_blank">
+            DIPY Workshop 2021 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2020" target="_blank">
+            DIPY Workshop 2020 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://workshop.dipy.org/workshops/dipy-workshop-2019" target="_blank">
+            DIPY Workshop 2019 <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    Community
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        News
+      </p>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../../calendar.html">
+          Calendar
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://mail.python.org/mailman3/lists/dipy.python.org/" target="_blank">
+            Newsletters <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../../blog.html">
+          Blog
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/c/diffusionimaginginpython" target="_blank">
+            Youtube <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+    <li class="nav-item">
+      <p class="nav-section-title nav-link">
+        Help
+      </p>
+    </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://app.gitter.im/#/room/%23dipy_dipy:gitter.im" target="_blank">
+            Live Chat (Gitter) <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/dipy/dipy/discussions" target="_blank">
+            Github Discussions <i class="fa-solid fa-arrow-up-long external-icon mar-l-5"></i>
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+
+          <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-header-nav-more-links">
+                    About
+                </button>
+                <ul id="pst-header-nav-more-links" class="dropdown-menu">
+                    
+      <li class="nav-item">
+        <a class="nav-link" href="../../team.html">
+          Team
+        </a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/faq">
+            FAQ
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/user_guide/mission">
+            Mission Statement
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/stateoftheart">
+            Releases
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/cite">
+            Cite
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.dipy.org/stable/glossary">
+            Glossary
+          </a>
+        </li>
+                </ul>
+            </li>
+          
+  </ul>
+  
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dipy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/dipymri" title="Twitter/X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter/X</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-youtube"></i></span>
+            <label class="sr-only">YouTube</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/dipy/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-linkedin"></i></span>
+            <label class="sr-only">LinkedIn</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__postcard">
+
+
+<h2>
+  
+  
+  <i class="fa fa-calendar"></i>
+  
+  26 July 2024
+  
+</h2>
+<ul>
+  <div class="ablog-sidebar-item ablog__postcard2">
+
+
+<li id="ablog-sidebar-item author ablog__author">
+  <span>
+    
+    <i class="fa-fw fa fa-user"></i>
+    
+    </span>
+  
+  
+  <a href="../../blog/author/inigo-tellaetxe.html">Iñigo Tellaetxe</a>
+  
+  
+  
+</li>
+
+
+
+
+<li id="ablog-sidebar-item category ablog__category">
+  <span>
+    
+    <i class="fa-fw fa fa-folder-open"></i>
+    
+    </span>
+  
+  
+  <a href="../../blog/category/gsoc.html">gsoc</a>
+  
+  
+  
+</li>
+
+
+<li id="ablog-sidebar-item tags ablog__tags">
+  <span>
+    
+    
+    <i class="fa-fw fa fa-tag"></i>
+    
+    </span>
+  
+  
+  <a href="../../blog/tag/google.html">google</a>
+  
+  
+  
+</li>
+
+
+</div>
+</ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__recentposts">
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="2024_07_22_kaustav_week_8.html">
+      22 July - My Journey Continues: Week 8 Progress with DIPY
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_07_19_Inigo_week_8.html">
+      19 July - Week 8 into GSoC 2024: Further advances with the VAE model
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_07_15_kaustav_week_7.html">
+      15 July - My Journey Continues: Week 7 Progress with DIPY
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_07_12_Inigo_week_7.html">
+      12 July - Week 7 into GSoC 2024: Starting to see the light at the end of the VAE
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_07_07_kaustav_week_6.html">
+      07 July - My Journey Continues: Week 6 Progress with DIPY
+    </a>
+  </li>
+  
+</ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__tags">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<ul class="ablog-cloud">
+  
+  
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/google.html">google</a>
+  </li>
+  
+  
+</ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__category">
+<h3>
+  <a href="../../blog/category.html">Categories</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="../../blog/category/gsoc.html">gsoc (61)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/category/gsoc-announcement.html">gsoc announcement (8)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/category/gsod.html">gsod (1)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/category/gsod-announcement.html">gsod announcement (1)</a>
+  </li>
+  
+  
+</ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__archive">
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="../../blog/2024.html">2024 (20)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2023.html">2023 (24)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2022.html">2022 (1)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2021.html">2021 (1)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2020.html">2020 (3)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2018.html">2018 (1)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2016.html">2016 (7)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../../blog/2015.html">2015 (14)</a>
+  </li>
+  
+  
+</ul>
+</div>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">DIPY</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+<section id="week-9-into-gsoc-2024-the-conditional-vae-implementation">
+<h1>Week 9 into GSoC 2024: The Conditional VAE implementation<a class="headerlink" href="#week-9-into-gsoc-2024-the-conditional-vae-implementation" title="Link to this heading">#</a></h1>
+<section id="what-i-did-this-week">
+<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
+<p>This week was a bit shorter than usual because Thursday was a holiday in the Basque Country, and today we had an outdoor activity with my lab mates (we went kayaking to the Urdaibai Biosphere Reserve). Nevertheless, it was full of advances and interesting scientific matters.</p>
+<p>As I mentioned in my last blog post, this week I worked on the implementation of the conditional VAE based on <a class="reference external" href="https://github.com/QingyuZhao/VAE-for-Regression/tree/master">this implementation</a> .</p>
+<p>As a refresher, the main idea behind conditional generative models is being able to generate new data with some desired properties or parameters. To achieve this, it is common to organize the latent representation in a way that allows locating the regions in which the desired properties are found.</p>
+<p>For example, imagine our VAE learned a latent representation of images of cats with different fur lengths. If we do not condition our latent space on the fur length, our model might not learn about this distinctive feature found in the data space, and cats with drastically different fur lengths may be closely clustered together in the latent space. But with conditioning, we can tell the model to cluster the images along a “fur-length” dimension, so if we sample 2 images from a line that varies along that dimension but in opposite sides, we get a cat with very short fur, and another one, with very long fur. This results in a generative process that can be tuned on demand!</p>
+<p>However, there are many methods to condition a Variational AutoEncoder, and they usually depend on the type of variable we want to condition on, so the methods for categoric variables (cat vs. dog, bundle_1_fiber vs. bundle_2_fiber, etc.) and continuous ones (age of the person, length of a streamline) are normally not applicable to both types.</p>
+<p>In the case of the FiberCup dataset, I chose to condition the latent space on the length of the streamlines, which is a continuous variable and it is a fairly easy thing to learn from the morphology of the streamlines.</p>
+<p>After implementing the conditional VAE as in the provided reference and training it for 64 epochs (early stopped due to lack of improvement in the MSE) I did not get a decent reconstruction, but the latent space seems to be organized differently compared to the vanilla VAE, which suggests that the conditioning is doing something (good or not, we will see…).</p>
+<a class="reference internal image-reference" href="../../_images/cvae_first_reconstruction_result.png"><img alt="First reconstruction of the training data of the conditional VAE (cVAE)." src="../../_images/cvae_first_reconstruction_result.png" style="width: 600px;" />
+</a>
+<p>On the other hand, note that the FiberCup has 7 distinct bundles, and both latent spaces show (when 2D-projected with the t-SNE algorithm) 7 clusters, suggesting that the network does know about the different bundles. Samples/streamlines are colored according to their length, and even if the bundle to which they belong is not plotted, we know that each cluster is formed by streamlines of different bundles because each bundle has a distinctive length.</p>
+<p>Note that the t-SNE representation may have aligned other dimensions more meaningful to the algorithm that do not necessarily include the conditioning variable (streamline length). Maybe the authors of the code I based mine were lucky to get the alignment, or smart enough to manipulate the conditioning variable (normalization, Z-scoring, etc.) to make t-SNE grab this information and put it along an axis in their plots.</p>
+<a class="reference internal image-reference" href="../../_images/latent_space_comparison_VAE_cVAE_colored_by_streamline_length.png"><img alt="t-SNE projections of the latent space (only plausible fibers) of the conditional VAE and the vanilla VAE." src="../../_images/latent_space_comparison_VAE_cVAE_colored_by_streamline_length.png" style="width: 600px;" />
+</a>
+</section>
+<section id="what-is-coming-up-next-week">
+<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
+<p>After discussing with my mentors, we decided to take two steps:</p>
+<ol class="arabic">
+<li><dl>
+<dt>Validate reliably whether the conditioning is working or not. For this, there are two strategies:</dt><dd><ul class="simple">
+<li><p>Checking that the predicted conditioning variable matches the input. In other words, measuring the MSE between the “true age” VS the “predicted age”, their correlation, and plotting one against the other. This way you know how good the encoder is capturing the conditioning variable variation in the training data. The authors of the paper I based my implementation on do it like this:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/conditioning_validation_using_mse.png"><img alt="Scatter plot of true vs predicted conditioning variable for validation." src="../../_images/conditioning_validation_using_mse.png" style="width: 600px;" />
+</a>
+<ul class="simple">
+<li><p>Visual checking fiber generation for specific bundles. Knowing that different bundles have different fiber lengths, we try to generate fibers of specific length, and see whether the generated fibers belong to the desired bundle (no matter if they are plausible or implausible). Having length as the conditioning variable allows us to perform this trick, what would not be so intuitive to check if we had used Fractional Anisotropy or other DTI-derived metrics, as these are not visually as intuitive as length.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>To try out an adversarial framework, which is 1) easier to implement 2) easier to understand, and 3) likely to also work (we’ll see if better or not). The idea is to have a discriminator that tries to predict the conditioning variable from the latent space, and the encoder tries to fool the discriminator. This way, the encoder learns to encode the conditioning variable in the latent space, and the discriminator learns to predict it. This is a very common approach in GANs, and it is called “Conditional GAN” (cGAN). As a result, we would have what I would call a conditional adversarial VAE (CA-VAE). You can read more about adversarial VAEs <a class="reference external" href="https://arxiv.org/pdf/2012.11551">in this work</a> or <a class="reference external" href="https://arxiv.org/pdf/1702.08423">in this one</a>.</p></li>
+</ol>
+</section>
+<section id="did-i-get-stuck-anywhere">
+<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
+<p>Luckily this week I also did not get stuck in any problem, but I am a bit worried about the quality of the reconstructions of the cVAE. I hope that the adversarial framework will help with this.</p>
+<p>Until next week!</p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+  
+  
+
+
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+    
+    
+    <a href="2024_07_22_kaustav_week_8.html">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>My Journey Continues: Week 8 Progress with DIPY</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+    
+  </span>
+</div>
+
+  
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  
+<script type="module" src="../../_static/scripts/grg-sphinx-theme.js"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><div>
+  <h3 class="footer-heading">
+    Never miss an update from us!
+  </h3>
+  <p class="footer-sub-heading">
+    Don't worry! we are not going to spam you.
+  </p>
+  <div class="input-group mb-3 mar-t-10">
+    <input type="text" class="form-control" placeholder="You email" aria-label="You email" id="grg-subscribe-email">
+    <div class="input-group-append pointer" onclick="subscriptionClick(document.getElementById('grg-subscribe-email').value)">
+      <span class="input-group-text subscribe">Subscribe</span>
+    </div>
+  </div>  
+  <ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dipy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/dipymri" title="Twitter/X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter/X</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-youtube"></i></span>
+            <label class="sr-only">YouTube</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/dipy/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-linkedin"></i></span>
+            <label class="sr-only">LinkedIn</label></a>
+        </li>
+</ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="grid-3">
+  
+  <div>
+    <h5 class="footer-heading">
+      About
+    </h5>
+    <ul class="footer-section">
+      
+        
+        <li class="pad-v-5">
+          <a href="../../team.html">
+            Developers
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://github.com/dipy/dipy/discussions" target="_blank" rel="noopener noreferrer">
+            Support
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://docs.dipy.org/stable/user_guide/installation">
+            Download
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://docs.dipy.org/stable/">
+            Get Started
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://docs.dipy.org/stable/examples_built/index">
+            Tutorials
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://www.youtube.com/c/diffusionimaginginpython" target="_blank" rel="noopener noreferrer">
+            Videos
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+    </ul>
+  </div>
+  
+  <div>
+    <h5 class="footer-heading">
+      Friends
+    </h5>
+    <ul class="footer-section">
+      
+        
+        <li class="pad-v-5">
+          <a href="https://nipy.org/" target="_blank" rel="noopener noreferrer">
+            Nipy Projects
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://fury.gl/" target="_blank" rel="noopener noreferrer">
+            FURY
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://nipy.org/nibabel" target="_blank" rel="noopener noreferrer">
+            Nibabel
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://tortoise.nibib.nih.gov/" target="_blank" rel="noopener noreferrer">
+            Tortoise
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+    </ul>
+  </div>
+  
+  <div>
+    <h5 class="footer-heading">
+      Support
+    </h5>
+    <ul class="footer-section">
+      
+        
+        <li class="pad-v-5">
+          <a href="https://engineering.indiana.edu/" target="_blank" rel="noopener noreferrer">
+            The department of Intelligent Systems Engineering of Indiana University
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://www.nibib.nih.gov/" target="_blank" rel="noopener noreferrer">
+            The National Institute of Biomedical Imaging and Bioengineering, NIH
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://escience.washington.edu/tag/alfred-p-sloan-foundation/" target="_blank" rel="noopener noreferrer">
+            The Gordon and Betty Moore Foundation and the Alfred P. Sloan Foundation, through the University of Washington eScience Institute Data Science Environment
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+        
+        <li class="pad-v-5">
+          <a href="https://summerofcode.withgoogle.com/" target="_blank" rel="noopener noreferrer">
+            Google supported DIPY through the Google Summer of Code Program during multiple Summer (2015-2024)
+            <i class="fa-solid fa-arrow-up-long mar-l-5"></i>
+          </a>
+        </li>
+        
+      
+    </ul>
+  </div>
+  
+</div></div>
+      
+    </div>
+  
+</div>
+
+    <div class="copyright-text">
+      <i class="fa-regular fa-copyright"></i> Copyright 2008-2023, DIPY developers. Created using Grg Sphinx Theme and PyData Sphinx Theme.
+    </div>
+  </footer>
+  </body>
+</html>
