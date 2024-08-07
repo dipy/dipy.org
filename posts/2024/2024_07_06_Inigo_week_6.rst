@@ -15,7 +15,7 @@ To provide a bit of intuition behind the VAE, let me illustrate first the "vanil
 
 The objective of the AE is to minimize the difference between the input data and the generated data, also called the "reconstruction loss".
 
-.. image:: /_static/images/inigo_vanilla_autoencoder.png
+.. image:: /_static/images/gsoc/2024/inigo/inigo_vanilla_autoencoder.png
     :alt: Vanilla AutoEncoder diagram.
     :width: 600
 
@@ -24,7 +24,7 @@ Usually the problem with AEs is that the latent space is full of "holes", i.e. i
 
 The VAE does this by adding a "regularization loss" to the AE, which is the Kullback-Leibler divergence between the latent space distribution and a prior distribution (usually a normal distribution). If you are curious, you can find a nice explanation about the differences between AEs and VAEs `here <https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73>`_.
 
-.. image:: /_static/images/inigo_variational_autoencoder.png
+.. image:: /_static/images/gsoc/2024/inigo/inigo_variational_autoencoder.png
     :alt: Variational AutoEncoder diagram.
     :width: 600
 

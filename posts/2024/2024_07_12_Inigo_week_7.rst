@@ -15,7 +15,7 @@ The solution consisted of two measures: first, clipping the values of the expone
 
 You can see a preliminary result of training the Variational AutoEncoder below, with the exact same training parameters as the AutoEncoder, but only for 50 epochs for proving the concept.
 
-.. image:: /_static/images/inigo_preliminary_vae_result_fibercup.png
+.. image:: /_static/images/gsoc/2024/inigo/inigo_preliminary_vae_result_fibercup.png
     :alt: Preliminary reconstruction result after training the VAE for 50 epochs with the FiberCup dataset.
     :width: 600
 
