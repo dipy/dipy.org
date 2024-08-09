@@ -182,6 +182,16 @@ html_theme_options = {
         "name": "Workshops",
         "sections": [
           {
+            "name": "Upcoming",
+            "children": [
+              {
+                "name": "DIPY Workshop 2025",
+                "url": "https://workshop.dipy.org/workshops/dipy-workshop-2025",
+                "link_type": "external"
+              }
+            ]
+          },
+          {
             "name": "Latest",
             "children": [
               {
