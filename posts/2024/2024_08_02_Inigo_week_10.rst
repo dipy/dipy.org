@@ -15,7 +15,7 @@ I further trained the model and got a result with lower label loss, indicating t
 
 As I mentioned last week, plotting the predicted length against the true length is a good way to validate that the model is indeed doing this correctly. In addition, I plotted the 2-dimensional t-SNE projection of latent space of the model. Knowing that each bundle of the FiberCup dataset has a characteristic and rather constant streamline length, the bundles should be clustered together. See the figure below:
 
-.. image:: /_static/images/gsoc/2024/inigo/vae_conditioning_validation..png
+.. image:: /_static/images/gsoc/2024/inigo/vae_conditioning_validation.png
     :alt: (Left) Predicted length vs True length of streamlines in the training data of the cVAE; (Right) Latent space t-SNE projection of the plausible fibers in the training dataset of the cVAE.
     :width: 600
 
