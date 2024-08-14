@@ -35,13 +35,15 @@ ul.footer-section li a:visited {
   text-decoration: none;
 }
 
-ul.footer-section li i {
+ul.footer-section li a i,
+ul.footer-section li a svg {
   color: var(--bs-gray-300);
   transform: rotate(45deg);
 }
 
 ul.footer-section li:hover a,
-ul.footer-section li:hover i {
+ul.footer-section li:hover i,
+ul.footer-section li:hover svg {
   color: var(--gst-color-primary);
 }
 

@@ -1,5 +1,5 @@
 /* Customizing the navbar dropdown */
-.bd-header .navbar-nav .dropdown .dropdown-menu {
+.bd-header ul.navbar-nav .dropdown .dropdown-menu {
   box-shadow: var(--gst-shadow);
   border: 0;
   animation: 0.1s slideDown;
@@ -34,8 +34,10 @@ ol li>p:first-child, ul li>p:first-child {
   border-top: 1px solid var(--gst-color-border);
 }
 
-.nav-link i.external-icon {
+.nav-link i.external-icon,
+.nav-link svg.external-icon {
   transform: rotate(45deg);
+  font-size: 0.7rem;
 }
 
 .dropdown-toggle:after {
@@ -46,4 +48,25 @@ ol li>p:first-child, ul li>p:first-child {
   font-size: .75em;
   margin-top: 0.4rem;
   margin-left: 0.5em;
+}
+
+.sidebar-header-items__title {
+  display: none;
+}
+
+.bd-header ul.navbar-nav>li.nav-item.dropdown>.dropdown-toggle:hover {
+  box-shadow: none;
+  color: var(--gst-color-primary);
+}
+
+.bd-header .navbar-nav li a.nav-link:hover {
+  text-decoration: none;
+  color: var(--gst-color-primary);
+}
+
+@media (min-width: 960px) {
+  .bd-header .navbar-header-items__start {
+    width: auto;
+    flex: 0 0 auto;
+  }
 }
