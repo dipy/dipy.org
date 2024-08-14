@@ -507,6 +507,7 @@ html_sidebars = {
         'ablog/tagcloud.html', 'ablog/categories.html',
         'ablog/archives.html',
     ],
+    'calendar': []
 }
 
 # Additional templates that should be rendered to pages, maps page names to
