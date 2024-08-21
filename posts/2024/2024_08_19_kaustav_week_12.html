@@ -56,9 +56,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_07_12_Inigo_week_7';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_08_19_kaustav_week_12';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2024/2024_07_12_Inigo_week_7.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_08_19_kaustav_week_12.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -805,7 +805,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  12 July 2024
+  19 August 2024
   
 </h2>
 <ul>
@@ -820,7 +820,7 @@ document.write(`
     </span>
   
   
-  <a href="../../blog/author/inigo-tellaetxe.html">Iñigo Tellaetxe</a>
+  <a href="../../blog/author/kaustav.html">Kaustav</a>
   
   
   
@@ -873,12 +873,6 @@ document.write(`
   
   
   <li>
-    <a href="2024_08_19_kaustav_week_12.html">
-      19 August - My Journey Continues: Week 12 Progress with DIPY
-    </a>
-  </li>
-  
-  <li>
     <a href="2024_08_12_kaustav_week_11.html">
       12 August - My Journey Continues: Week 11 Progress with DIPY
     </a>
@@ -899,6 +893,12 @@ document.write(`
   <li>
     <a href="2024_08_02_Inigo_week_10.html">
       02 August - Week 10 into GSoC 2024: Validating the conditional VAE results
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_07_29_kaustav_week_9.html">
+      29 July - My Journey Continues: Week 9 Progress with DIPY
     </a>
   </li>
   
@@ -1062,26 +1062,63 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-<section id="week-7-into-gsoc-2024-starting-to-see-the-light-at-the-end-of-the-vae">
-<h1>Week 7 into GSoC 2024: Starting to see the light at the end of the VAE<a class="headerlink" href="#week-7-into-gsoc-2024-starting-to-see-the-light-at-the-end-of-the-vae" title="Link to this heading">#</a></h1>
-<section id="what-i-did-this-week">
-<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
-<p>Finally, I figured out how to solve the <code class="docutils literal notranslate"><span class="pre">nan</span></code> value problem in the VAE training. As I suspected, the values that the <code class="docutils literal notranslate"><span class="pre">ReparametrizationTrickSampling</span></code> layer was getting were too big for the exponential operations. I use the exponential operation because I am treating the Encoder output as the log variance of the latent space distribution, and for sampling we need the standard deviation. We use the log variance instead of the standard deviation for avoiding computing logarithms.</p>
-<p>The solution consisted of two measures: first, clipping the values of the exponential operations to the <code class="docutils literal notranslate"><span class="pre">[-1e10,</span> <span class="pre">1e10]</span></code> range; second, adding batch normalization layers after each convolution in the Encoder enforces a 0 mean and unit variance, preventing large values at the output. I did not use batch normalization in the fully connected layers that output the mean and the log variance of the latent distribution because I did not want to constrain the latent space too much with distributions with the mentioned characteristics. These layers should capture other characteristics of the data distribution.</p>
-<p>You can see a preliminary result of training the Variational AutoEncoder below, with the exact same training parameters as the AutoEncoder, but only for 50 epochs for proving the concept.</p>
-<a class="reference internal image-reference" href="../../_images/inigo_preliminary_vae_result_fibercup.png"><img alt="Preliminary reconstruction result after training the VAE for 50 epochs with the FiberCup dataset." src="../../_images/inigo_preliminary_vae_result_fibercup.png" style="width: 600px;" />
-</a>
-<p>I should mention that the variance of the 0-mean distribution from which <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> is sampled in the <code class="docutils literal notranslate"><span class="pre">ReparametrizationTrickSampling</span></code> layer can be adjusted as a hyperparameter. I set it to 1 for now, but I could explore this hyperparameter in the future, but first I need to learn about the theoretical implications of modifying it.</p>
-<p>On the other hand, I started a discussion in a <a class="reference external" href="https://github.com/itellaetxe/tractoencoder_gsoc/pull/1">PR</a> that includes all these changes to make it easier for my mentors and my GSoC colleagues to review my code. This change was suggested by my mentors to make my advances more public and accessible to feedback.</p>
+<section id="my-journey-continues-week-12-progress-with-dipy">
+<h1>My Journey Continues: Week 12 Progress with DIPY<a class="headerlink" href="#my-journey-continues-week-12-progress-with-dipy" title="Link to this heading">#</a></h1>
+<p>Hello everyone! We’ve reached Week 12, the final week of my GSoC journey with DIPY. It’s been an incredible experience, and I’m excited to share my progress and reflections from this week.</p>
+<section id="dockerfile-creation-and-deployment">
+<h2>Dockerfile Creation and Deployment<a class="headerlink" href="#dockerfile-creation-and-deployment" title="Link to this heading">#</a></h2>
+<p>This week, I focused on creating a Dockerfile for DIPY, along with build and push shell scripts. This task was crucial for improving our continuous integration processes and making DIPY more accessible to users who prefer containerized environments.</p>
+<p>The Dockerfile creation process involved carefully selecting the right base image and ensuring all necessary dependencies were included. The build script automates the Docker image creation process, while the push script facilitates easy deployment to our container registry.</p>
+<p>While working on this, I encountered some challenges related to package versions and compatibility. However, through careful testing and configuration adjustments, I was able to resolve these issues and create a functional Dockerfile.</p>
+<p>You can view the progress of this work here: <a class="github reference external" href="https://github.com/dipy/dipy/pull/3322">dipy/dipy#3322</a></p>
 </section>
-<section id="what-is-coming-up-next-week">
-<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
-<p>Next week I will train the VAE for longer (~120 epochs) and I will also explore annealing the KL loss, which is a technique that consists of increasing the KL loss weight during the first epochs of training and then decreasing it. This is done to avoid the model getting stuck in a local minimum of the loss function.</p>
+<section id="tutorial-fixes-progress">
+<h2>Tutorial Fixes Progress<a class="headerlink" href="#tutorial-fixes-progress" title="Link to this heading">#</a></h2>
+<p>I’ve made significant progress on fixing up the tutorials. This ongoing task involves updating and improving various DIPY tutorials to ensure they’re up-to-date, clear, and fully functional. I’ve been working through the tutorials systematically, making necessary adjustments and improvements.</p>
+<p>Check out the tutorial fixes PR here: <a class="github reference external" href="https://github.com/dipy/dipy/pull/3306">dipy/dipy#3306</a></p>
 </section>
-<section id="did-i-get-stuck-anywhere">
-<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
-<p>I got a bit stuck thinking how to solve the exploding loss problem, and despite the described advances may seem small, they required a lot of thought and debugging. Thankfully my lab colleague <a class="reference external" href="https://github.com/JGarciaCondado">Jorge</a> helped me with his machine learning expertise and gave me the idea of batch normalization.</p>
-<p>Until next week!</p>
+<section id="addressing-missed-keyword-arguments">
+<h2>Addressing Missed Keyword Arguments<a class="headerlink" href="#addressing-missed-keyword-arguments" title="Link to this heading">#</a></h2>
+<p>In a separate PR, I addressed an important issue related to missed keyword arguments in several function calls. These weren’t updated during the initial implementation of keyword arguments. The affected functions include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_fname</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_sphere</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gradient_table</span></code></p></li>
+</ul>
+<p>This PR was crucial as these missed keyword arguments were not detected during the initial testing phase, potentially leading to issues in related functionalities. By adding the necessary keyword arguments to these function calls, we’ve ensured proper execution and improved the overall robustness of our codebase.</p>
+<p>You can review this PR here: <a class="github reference external" href="https://github.com/dipy/dipy/pull/3324">dipy/dipy#3324</a></p>
+</section>
+<section id="preparing-for-project-conclusion">
+<h2>Preparing for Project Conclusion<a class="headerlink" href="#preparing-for-project-conclusion" title="Link to this heading">#</a></h2>
+<p>As this is the final week of GSoC, I’ve been focusing on wrapping up my project:</p>
+<ol class="arabic simple">
+<li><p><strong>Final Project Report</strong>: I’ve started preparing the final project report, which will summarize all the work done during my GSoC period, the challenges faced, and the solutions implemented.</p></li>
+<li><p><strong>Final Presentation</strong>: I’m also working on a presentation that will showcase the key achievements and learnings from my GSoC experience with DIPY.</p></li>
+</ol>
+</section>
+<section id="reflections-and-gratitude">
+<h2>Reflections and Gratitude<a class="headerlink" href="#reflections-and-gratitude" title="Link to this heading">#</a></h2>
+<p>As I near the end of this incredible journey, I’m filled with gratitude for the DIPY community, my amazing mentor <a class="reference external" href="https://github.com/skoudoro">Serge Koudoro</a>, and everyone who has supported me throughout this process. The guidance and support I’ve received have been invaluable, helping me grow as a developer and contributor to open-source software.</p>
+<p>I am really grateful to my fellow GSoC teammates:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/itellaetxe">Iñigo Tellaetxe Elorriaga</a></p></li>
+<li><p><a class="reference external" href="https://github.com/robinroy03">Robin Roy</a></p></li>
+<li><p><a class="reference external" href="https://github.com/WassCodeur">Wachiou BOURAIMA</a></p></li>
+</ul>
+<p>Their amazing support has been crucial throughout this journey.</p>
+<p>This experience has not only improved my technical skills but also taught me the importance of community collaboration in open-source projects. I’m truly thankful for the opportunity to have been part of this amazing team.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<p>In the coming days, my priorities will be:</p>
+<ol class="arabic simple">
+<li><p>Finalizing and submitting the project report</p></li>
+</ol>
+</section>
+<section id="final-thoughts">
+<h2>Final Thoughts<a class="headerlink" href="#final-thoughts" title="Link to this heading">#</a></h2>
+<p>As I reflect on my GSoC journey with DIPY, I’m amazed at how much I’ve learned and grown. This experience has reinforced my passion for neuroimaging and open-source development. I’m excited to see how my contributions will help future DIPY users and developers.</p>
+<p>Thank you all for your support throughout this journey. I look forward to sharing my final presentation and continuing to be part of the DIPY community!</p>
 </section>
 </section>
 
@@ -1094,24 +1131,16 @@ document.write(`
   <span class="ablog__prev">
     
     
-    <a href="2024_07_07_kaustav_week_6.html">
+    <a href="2024_08_12_kaustav_week_11.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>My Journey Continues: Week 6 Progress with DIPY</span>
+      <span>My Journey Continues: Week 11 Progress with DIPY</span>
     </a>
     
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-    
-    
-    <a href="2024_07_15_kaustav_week_7.html">
-      <span>My Journey Continues: Week 7 Progress with DIPY</span>
-      
-      <i class="fa fa-arrow-circle-right" ></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1147,9 +1176,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dockerfile-creation-and-deployment">Dockerfile Creation and Deployment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-fixes-progress">Tutorial Fixes Progress</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addressing-missed-keyword-arguments">Addressing Missed Keyword Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-for-project-conclusion">Preparing for Project Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflections-and-gratitude">Reflections and Gratitude</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts">Final Thoughts</a></li>
 </ul>
   </nav></div>
 
