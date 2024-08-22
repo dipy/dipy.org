@@ -34,7 +34,7 @@ Next week I will:
 
 - Open the draft PR for the vanilla AutoEncoder class and tests.
 - Finish the final post, linking it to the draft PR. I will probably do this on the weekend so I can have a first version on Monday and thus have a couple of days to polish it.
-- Polish the final post with my mentors.
+- Polish the final post with my mentors `Jon Haitz Legarreta <https://github.com/jhlegarreta>`_, `Jong Sung Park <https://github.com/pjsjongsung>`_, and `Serge Koudoro <https://github.com/skoudoro>`_.
 
 Did I get stuck anywhere
 ~~~~~~~~~~~~~~~~~~~~~~~~
