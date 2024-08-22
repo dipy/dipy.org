@@ -1,0 +1,44 @@
+Week 12 into GSoC 2024: Last weeks of the coding phase and admin stuff
+======================================================================
+
+.. post:: August 16 2024
+    :author: Iñigo Tellaetxe
+    :tags: google
+    :category: gsoc
+
+What I did this week
+~~~~~~~~~~~~~~~~~~~~
+
+This week I spent more time fixing and enhancing the adversarial AutoEncoder (AAE) implementation, as well as writing the final GSoC 2024 post. I also opened a draft PR to include in the final post and have a tangible place to publish my work as a PR.
+
+I managed to train the AAE after fixing the instantiation and training loop work. I also generated a dataset based on a Python dictionary object with three keys: streamlines (contained in ``np.array`` s), bundle ( ``int`` encoding which bundle the streamline belongs to), and attribute (``float``, continuous variable related to the streamline). As each key contains a ``list``, unpacking each component of the dataset separately maintains the order and relation of the components between them, thus this simple approach can be used to store our data, which was saved in the pickle format, native to Python.
+
+On the other hand, in case of shuffling the data for training, special care must be taken to apply the same shuffling pattern to every component (streamlines, bundle class, continuous attribute) , unless we want to destroy the correspondence between the data and its class and attribute.
+
+Regarding the training, to be honest, the results are not very good, but it is a start because at least the loss is decreasing in all its components. The main problem with the results is that after training, the network reconstructs the training data as the same streamline every time, meaning that the model did not learn anything, and that it fell into `mode collapse <https://developers.google.com/machine-learning/gan/problems#mode-collapse>`_. After discussing it with my mentors, we arrived to 3 main points to help with the results:
+
+- As obvious as it sounds, reproducing the results of the repo I based the AAE implementation on would have been a great idea. I did not do it because I was already in the last weeks of the program, but I should have done it. If the original repo does not work, I would either fix it (and obviously submit a PR to it) or find another source of code inspiration. Lesson learned, a reproducibility check is key to ensure that the tool we are using is going to (potentially) work as expected.
+
+- Adjusting the learning rates of the optimizers. I used the default values I had been using in the previous weeks (6.8e-4), but it could be that they are not the best for this model. What seems correct is setting the learning rate of the discriminator optimizer to a fraction of the generator optimizer learning rate (in this case, a fifth), because even with such a small rate, the discriminator loss was decreasing. Nevertheless, this is likely to be happening due to mode collapse, where the generator was generating the same sample over and over again, leading to a super "good" discriminator. This problem is very well known in adversarial networks, and I will have to investigate ways to avoid it, like using a `Wasserstein Loss <http://arxiv.org/abs/1701.07875>`_ instead of a min-max scheme. 
+
+- Increasing model capacity by either adding more layers to the model or by increasing the latent space dimensionality. This is a common practice in deep learning, and it is likely that the model is not powerful enough to learn the data distribution.
+
+Apart from that, my mentor `Serge Koudoro <https://github.com/skoudoro>`_ mentioned that it would be nice to think of any already useful bits of code that could be merged in DIPY, so I am thinking about what could fit these requirements. Besides that, we also concluded that for now, the draft PR should include the vanilla AutoEncoder class and tests for instantiation, inference, and weight save/loading; as the translation to TensorFlow was successful and the results were good.
+
+Lastly, I also progressed a bit with the last post, writing a bit more about the work I already completed.
+
+What is coming up next week
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Next week I will:
+
+- Open the draft PR for the vanilla AutoEncoder class and tests.
+- Finish the final post, linking it to the draft PR. I will probably do this on the weekend so I can have a first version on Monday and thus have a couple of days to polish it.
+- Polish the final post with my mentors `Jon Haitz Legarreta <https://github.com/jhlegarreta>`_, `Jong Sung Park <https://github.com/pjsjongsung>`_, and `Serge Koudoro <https://github.com/skoudoro>`_.
+
+Did I get stuck anywhere
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+I did not get stuck this week, but I had to spend a lot of time fixing the AAE implementation, and I am not super happy with the results. Again, this is research, and it is normal to have setbacks, but I would not call this getting "stuck". Even if I am not going to achieve the objectives I had originally set for the end of the program, I am happy with the progress I made and the things I learned. I believe that I will contribute to DIPY in a substantial way in the future because my project has the potential to do so.
+
+Until the last post!
