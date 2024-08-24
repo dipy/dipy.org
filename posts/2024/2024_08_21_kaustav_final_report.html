@@ -56,9 +56,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_05_27_kaustav_week0';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_08_21_kaustav_final_report';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2024/2024_05_27_kaustav_week0.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_08_21_kaustav_final_report.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -805,7 +805,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  27 May 2024
+  21 August 2024
   
 </h2>
 <ul>
@@ -873,12 +873,6 @@ document.write(`
   
   
   <li>
-    <a href="2024_08_21_kaustav_final_report.html">
-      21 August - <span class="gsoc-title">Google Summer of Code Final Work Product</span>
-    </a>
-  </li>
-  
-  <li>
     <a href="2024_08_19_kaustav_week_12.html">
       19 August - My Journey Continues: Week 12 Progress with DIPY
     </a>
@@ -899,6 +893,12 @@ document.write(`
   <li>
     <a href="2024_08_09_Inigo_week_11.html">
       09 August - Week 11 into GSoC 2024: The Adversarial AutoEncoder
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_08_05_kaustav_week_10.html">
+      05 August - My Journey Continues: Week 10 Progress with DIPY
     </a>
   </li>
   
@@ -1062,55 +1062,394 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-<section id="my-journey-begins-community-bonding-period-with-dipy">
-<h1>My Journey Begins: Community Bonding Period with DIPY<a class="headerlink" href="#my-journey-begins-community-bonding-period-with-dipy" title="Link to this heading">#</a></h1>
-<p>Hello everyone,
-I am thrilled to share that I have been selected as a Google Summer of Code (GSoC) student for 2024.
-Over the summer, I will be working with DIPY, and I am incredibly excited about the journey ahead.</p>
-<section id="community-bonding-period-building-the-foundation">
-<h2>Community Bonding Period: Building the Foundation<a class="headerlink" href="#community-bonding-period-building-the-foundation" title="Link to this heading">#</a></h2>
-<p>The GSoC program is structured in a way that allows us to gradually ease into our projects. The first phase, known as the Community Bonding period, is crucial for laying a strong foundation for the work that lies ahead. During this time, I had the opportunity to:</p>
-<ol class="arabic simple">
-<li><p><strong>Get Acquainted with the Community</strong>: I joined various communication channels like mailing lists, chat rooms, and forums. Interacting with the mentors and other community members helped me understand the culture and workflow of the organization.</p></li>
-<li><p><strong>Understand the Project Scope</strong>: I spent time understanding the broader goals of my project, the expected outcomes, and the milestones I need to achieve. This involved several discussions with my mentor, Serge, who provided invaluable guidance and insights.</p></li>
-<li><p><strong>Set Up the Development Environment</strong>: Getting the right tools and environment set up is critical for any development work. I followed the documentation to set up my development environment, ensuring I had all the necessary dependencies and tools installed.</p></li>
-</ol>
-</section>
-<section id="project-task-1-enhancing-keyword-only-arguments-with-decorators">
-<h2>Project-Task 1: Enhancing Keyword-Only Arguments with Decorators<a class="headerlink" href="#project-task-1-enhancing-keyword-only-arguments-with-decorators" title="Link to this heading">#</a></h2>
-<p>The focus of my 1st task is to implement the keyword-only arguments in DIPY. Specifically, I am working on enhancing this feature with the help of decorators.</p>
-<section id="what-are-keyword-only-arguments">
-<h3>What are Keyword-Only Arguments?<a class="headerlink" href="#what-are-keyword-only-arguments" title="Link to this heading">#</a></h3>
-<p>In many programming languages, keyword-only arguments are parameters that can only be supplied using their name, not as positional arguments. This helps in making the code more readable and reduces the chances of errors.</p>
-</section>
-<section id="the-role-of-decorators">
-<h3>The Role of Decorators<a class="headerlink" href="#the-role-of-decorators" title="Link to this heading">#</a></h3>
-<p>Decorators are a powerful feature in Python that allows us to modify the behavior of functions or classes. By leveraging decorators, we can enforce the use of keyword-only arguments in a clean and efficient manner.</p>
-</section>
-</section>
-<section id="progress-so-far">
-<h2>Progress So Far<a class="headerlink" href="#progress-so-far" title="Link to this heading">#</a></h2>
-<p>During the Community Bonding period, I have made significant strides in understanding the current implementation and identifying areas for improvement. Here’s a brief overview of what I have accomplished:</p>
-<ol class="arabic simple">
-<li><p><strong>Research and Analysis</strong>: I reviewed the existing codebase to understand how keyword-only arguments are currently handled. This involved reading through the documentation and studying the source code.</p></li>
-<li><p><strong>Week 0</strong>: With the guidance of my mentor, I implemented a decorator that enforces keyword-only arguments. I have submitted a PR for review on this. The PR includes the decorator feature and relevant tests, it is also implemented for functions in stats module.</p></li>
-<li><p><strong>Pull Request</strong>: [<a class="github reference external" href="https://github.com/dipy/dipy/pull/3239">dipy/dipy#3239</a>]</p></li>
-</ol>
-</section>
-<section id="whats-next">
-<h2>What’s Next?<a class="headerlink" href="#whats-next" title="Link to this heading">#</a></h2>
-<p>As we transition from the Community Bonding period to the Coding phase, I am eager to dive deeper into the project. My next steps for this task include:</p>
+<a class="reference external image-reference" href="https://summerofcode.withgoogle.com/programs/2024/projects/dHajBmW3"><img alt="../../_images/gsoc-logo.png" class="no-background" src="../../_images/gsoc-logo.png" style="height: 40px;" />
+</a>
+<a class="reference external image-reference" href="https://summerofcode.withgoogle.com/programs/2024/organizations/python-software-foundation"><img alt="../../_images/python-logo.png" class="no-background" src="../../_images/python-logo.png" style="height: 40px;" />
+</a>
+<a class="reference external image-reference" href="http://dipy.org"><img alt="../../_images/dipy-logo-2.png" class="no-background" src="../../_images/dipy-logo-2.png" style="height: 30px;" />
+</a>
+<div style="margin-top: 20px;"></div><section id="main-title">
+<h1><span class="gsoc-title">Google Summer of Code Final Work Product</span><a class="headerlink" href="#main-title" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p><strong>Writing Tests</strong>: To ensure the reliability of the new feature, I will write more tests and integrate them into the existing test suite.</p></li>
-<li><p><strong>Documentation</strong>: Good documentation is key to the success of any project. I will update the documentation to reflect the new changes and provide examples of how to use the new feature.</p></li>
-<li><p><strong>Fixing style</strong>: I will fix the code styling format with accordance to PEP8.</p></li>
+<li><p><strong>Name:</strong> <a class="reference external" href="https://github.com/deka27">Kaustav Deka</a></p></li>
+<li><p><strong>Organization:</strong> <a class="reference external" href="https://www.python.org/psf-landing/">Python Software Foundation</a></p></li>
+<li><p><strong>Sub-Organization:</strong> <a class="reference external" href="https://github.com/dipy">DIPY</a></p></li>
+<li><p><strong>Project:</strong> <a class="reference external" href="https://github.com/dipy/dipy/wiki/Google-Summer-of-Code-2024#project-6-modernize-dipy-codebase">Modernize DIPY Codebase</a></p></li>
+</ul>
+<section id="project-abstract-title">
+<h2><span class="gsoc-title">Project Abstract</span><a class="headerlink" href="#project-abstract-title" title="Link to this heading">#</a></h2>
+<p>This project is dedicated to implementing crucial improvements to DIPY, with the primary goal of enhancing its functionality, efficiency, and user experience through a series of targeted updates and additions.</p>
+<p>This initiative comprehensively covers several critical development areas, including transitioning to keyword-only arguments to boost code robustness and readability, and implementing lazy loading to optimize resource management and overall performance.</p>
+<p>The project also aims to improve and simplify the current website management system, enhancing user interaction and information accessibility. Furthermore, it focuses on streamlining the Issues and Pull Requests triage process, incorporating automation to increase efficiency. The integration of multiple GitHub Actions is planned to further streamline workflows. Additionally, the project involves refactoring select DIPY packages and improving docstring documentation, ensuring clearer and more maintainable code. Lastly, new tutorials will be added to support user education and engagement, making DIPY more accessible to both new and experienced users.</p>
+</section>
+<section id="proposed-objectives-title">
+<h2><span class="gsoc-title">Proposed Objectives</span><a class="headerlink" href="#proposed-objectives-title" title="Link to this heading">#</a></h2>
+<p>The objectives include:</p>
+<ol class="arabic simple">
+<li><p><strong>Transitioning to Keyword-Only Arguments</strong>: Restructuring function calls to utilize keyword-only arguments for improved code clarity and robustness.</p></li>
+</ol>
+<div style="margin-top: 10px;"></div><ol class="arabic simple" start="2">
+<li><p><strong>Lazy Loading Integration</strong>: Implementing lazy loading techniques to load resources dynamically, thereby optimizing performance and reducing memory footprint.</p></li>
+</ol>
+<div style="margin-top: 10px;"></div><ol class="arabic simple" start="3">
+<li><p><strong>Improvement and Simplification of Website Management</strong>: Enhancing the management of the DIPY website to streamline content updates and provide a more user-friendly experience for visitors.</p></li>
+</ol>
+<div style="margin-top: 10px;"></div><ol class="arabic simple" start="4">
+<li><p><strong>Integration of Multiple GitHub Actions</strong>: Implementing a suite of GitHub Actions to simplify development workflows, automate repetitive tasks, and enhance collaboration among contributors.</p></li>
+</ol>
+<div style="margin-top: 10px;"></div><ol class="arabic simple" start="5">
+<li><p><strong>Improvement of Issues and Pull Requests Triage + Triage Automation</strong>: Enhancing the process of managing issues and pull requests by implementing efficient triage practices and automation tools to streamline the review and resolution process.</p></li>
+</ol>
+<div style="margin-top: 10px;"></div><ol class="arabic simple" start="6">
+<li><p><strong>Refactoring of DIPY Packages + Improvement of Docstrings</strong>: Conducting targeted refactoring of DIPY packages to improve code structure, readability, and maintainability. Additionally, enhancing docstrings to provide comprehensive documentation for developers and users.</p></li>
+</ol>
+<div style="margin-top: 10px;"></div><ol class="arabic simple" start="7">
+<li><p><strong>Addition of Tutorials</strong>: Creating new tutorials to guide users through various aspects of DIPY functionality, ensuring accessibility for users of all experience levels and facilitating learning and adoption.</p></li>
+</ol>
+<div style="margin-top: 10px;"></div></section>
+<section id="objectives-completed-title">
+<h2><span class="gsoc-title">Objectives Completed</span><a class="headerlink" href="#objectives-completed-title" title="Link to this heading">#</a></h2>
+</section>
+<section id="keyword-only-arguments">
+<h2>1. Keyword-Only Arguments<a class="headerlink" href="#keyword-only-arguments" title="Link to this heading">#</a></h2>
+<p>This task focused on transitioning DIPY’s codebase to use keyword-only arguments in function calls. Keyword arguments are a powerful feature in Python that allow for more explicit and self-documenting function calls. They offer several advantages:</p>
+<ol class="lowerroman simple">
+<li><p><strong>Improved readability:</strong> By using keyword arguments, it’s immediately clear what each argument represents, making the code easier to understand.</p></li>
+<li><p><strong>Reduced errors:</strong> Keyword arguments reduce the risk of passing arguments in the wrong order.</p></li>
+<li><p><strong>Better API design:</strong> They allow for more flexible function signatures and make it easier to add optional parameters without breaking existing code.</p></li>
+</ol>
+<p>In the future, we want all function calls in DIPY to use keyword arguments instead of positional arguments. To facilitate this transition, I created a decorator that provides warnings when functions are called with positional arguments instead of keyword arguments.</p>
+<p>Here’s how the decorator works:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@warning_for_keyword</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">variable</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>  <span class="c1"># This will trigger a warning</span>
+</pre></div>
+</div>
+<p>In this example, the decorator will issue a warning saying that <code class="docutils literal notranslate"><span class="pre">c</span></code> is being called as a positional argument when it should be a keyword argument.</p>
+<p>For the transition phase, we’re providing warnings instead of completely blocking the function execution. This approach allows for a smoother migration, giving developers time to update their code while still maintaining functionality.</p>
+<p>The implementation of this decorator was a significant part of the project. You can find the full pull request for the decorator here: <a class="reference external" href="https://github.com/dipy/dipy/pull/3239">PR #3239</a></p>
+<p>After creating the decorator, I applied it systematically across various DIPY modules. This extensive work touched many parts of the codebase:</p>
+<ul class="simple">
+<li><p><strong>align</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3249">PR #3249</a>: Applied to alignment algorithms.</p></li>
+<li><p><strong>core</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3251">PR #3251</a>: Updated core functionality of DIPY.</p></li>
+<li><p><strong>data</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3253">PR #3253</a>: Modified data handling functions.</p></li>
+<li><p><strong>denoise</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3252">PR #3252</a>: Updated denoising algorithms.</p></li>
+<li><p><strong>io</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3255">PR #3255</a>: Applied to input/output operations.</p></li>
+<li><p><strong>nn</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3256">PR #3256</a>: Modified neural network related functions.</p></li>
+<li><p><strong>segment</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3258">PR #3258</a>: Updated segmentation algorithms.</p></li>
+<li><p><strong>sims</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3259">PR #3259</a>: Applied to simulation functions.</p></li>
+<li><p><strong>tracking</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3260">PR #3260</a>: Modified tracking algorithms.</p></li>
+<li><p><strong>utils</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3261">PR #3261</a>: Updated utility functions.</p></li>
+<li><p><strong>viz</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3262">PR #3262</a>: Applied to visualization functions.</p></li>
+<li><p><strong>workflows</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3263">PR #3263</a>: Modified workflow-related functions.</p></li>
+</ul>
+<p>This comprehensive application of the decorator across DIPY’s modules represents a significant step towards modernizing the codebase. It not only improves the immediate readability and robustness of the code but also sets the stage for future enhancements and maintains consistency across the project.</p>
+<p>The warnings generated by this decorator will help both DIPY developers and users transition to using keyword arguments, ultimately leading to more maintainable and error-resistant code. As the community adapts to this change, we expect to see a gradual reduction in the use of positional arguments, paving the way for potentially making keyword arguments mandatory in future releases.</p>
+</section>
+<section id="website-improvements">
+<h2>2. Website Improvements<a class="headerlink" href="#website-improvements" title="Link to this heading">#</a></h2>
+<p>Several tasks were undertaken to improve the DIPY website, enhancing its functionality, organization, and user experience. These improvements are crucial for maintaining an effective online presence and ensuring that our community has easy access to all relevant information.</p>
+<section id="a-blog-post-migration">
+<h3>a. Blog Post Migration<a class="headerlink" href="#a-blog-post-migration" title="Link to this heading">#</a></h3>
+<p>One of the major tasks was the migration of blog posts from various old sources to our current website. This consolidation effort ensures that all valuable information is accessible on our main platform. The migration involved working with three different sources:</p>
+<ul class="simple">
+<li><p>A Blogspot site dedicated to GSoC 2015</p></li>
+<li><p>A personal blog</p></li>
+<li><p>A Google Docs document</p></li>
+</ul>
+<p>This task was crucial for several reasons:</p>
+<ul class="simple">
+<li><p>It centralizes our content, making it easier for users to locate information.</p></li>
+<li><p>It ensures that valuable historical content is not lost.</p></li>
+<li><p>It provides a unified platform for all DIPY-related blog posts.</p></li>
+</ul>
+<p>For more details, see the related issue: <a class="reference external" href="https://github.com/dipy/dipy.org/issues/11">Issue #11</a></p>
+</section>
+<section id="b-image-organization-improvement">
+<h3>b. Image Organization Improvement<a class="headerlink" href="#b-image-organization-improvement" title="Link to this heading">#</a></h3>
+<p>Upon reviewing our image organization, it became apparent that the existing system was chaotic and in need of improvement. To address this, a new organizational structure for our images was proposed and implemented. The new system organizes images by year and contributor, which offers several benefits:</p>
+<ul class="simple">
+<li><p>Easier navigation and retrieval of images</p></li>
+<li><p>Better tracking of image contributions over time</p></li>
+<li><p>Improved ability to manage and update image assets</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>_static/images/gsoc/[year]/[name_of_contributor]
+</pre></div>
+</div>
+<p>This reorganization sets the stage for more efficient image management in the future.</p>
+<p>For more information, refer to: <a class="reference external" href="https://github.com/dipy/dipy.org/issues/50">Issue #50</a></p>
+</section>
+<section id="c-dipy-wiki-migration">
+<h3>c. DIPY Wiki Migration<a class="headerlink" href="#c-dipy-wiki-migration" title="Link to this heading">#</a></h3>
+<p>Another significant task was migrating our GSoC (Google Summer of Code) and GSOD (Google Season of Docs) announcements from the DIPY wiki to our main blog. This migration is part of our ongoing efforts to centralize content and make important announcements more accessible to our community. Benefits of this migration include:</p>
+<ul class="simple">
+<li><p>Increased visibility of GSoC and GSOD announcements</p></li>
+<li><p>Improved searchability of this content</p></li>
+<li><p>Consistency in how we present important project information</p></li>
+</ul>
+<p>You can find more details in: <a class="reference external" href="https://github.com/dipy/dipy.org/issues/21">Issue #21</a></p>
+</section>
+<section id="d-adding-sidebars-to-blog-page">
+<h3>d. Adding Sidebars to Blog Page<a class="headerlink" href="#d-adding-sidebars-to-blog-page" title="Link to this heading">#</a></h3>
+<p>An enhancement suggested by my mentor was implemented: adding a sidebar to our <code class="docutils literal notranslate"><span class="pre">blog.html</span></code> page. Previously, the blog page lacked a sidebar, which made navigation less intuitive and user-friendly. The new sidebar significantly improves the blog’s usability by providing:</p>
+<ul class="simple">
+<li><p>Quick access to important navigational elements</p></li>
+<li><p>Categories for easy content classification</p></li>
+<li><p>Archives for exploring historical posts</p></li>
+<li><p>Tags for topic-based navigation</p></li>
+</ul>
+<p>These additions allow users to easily browse through our blog content, find related posts, or explore posts from specific time periods. The sidebar enhances the overall user experience and makes our blog more engaging and accessible.</p>
+<p>The pull request for this feature can be found here: <a class="reference external" href="https://github.com/dipy/dipy.org/pull/53">PR #53</a></p>
+</section>
+<section id="conclusion">
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>These website improvements represent a significant step forward in enhancing DIPY’s online presence. By consolidating content, improving organization, and enhancing navigation, we’ve made it easier for our community to engage with DIPY’s resources and stay informed about project developments. These changes lay a solid foundation for future improvements and will contribute to the growth and accessibility of the DIPY project.</p>
+</section>
+</section>
+<section id="objectives-progress-title">
+<h2><span class="gsoc-title">Objectives in Progress</span><a class="headerlink" href="#objectives-progress-title" title="Link to this heading">#</a></h2>
+</section>
+<section id="id1">
+<h2>1. Keyword-Only Arguments<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Implementation of keyword-only arguments is still in progress for two modules:</p>
+<ol class="loweralpha simple">
+<li><p>Direction module (<a class="reference external" href="https://github.com/dipy/dipy/pull/3254">PR #3254</a>)</p></li>
+<li><p>Reconst module (<a class="reference external" href="https://github.com/dipy/dipy/pull/3257">PR #3257</a>)</p></li>
+</ol>
+<section id="next-steps">
+<h3>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Conduct testing and address feedback</p></li>
+<li><p>Merge changes once approved</p></li>
 </ul>
 </section>
-<section id="final-thoughts">
-<h2>Final Thoughts<a class="headerlink" href="#final-thoughts" title="Link to this heading">#</a></h2>
-<p>The Community Bonding period has been an enriching experience, allowing me to connect with my mentors and the community. I am grateful for the support and guidance I have received so far and am looking forward to contributing to DIPY over the summer.</p>
-<p>Stay tuned for more updates as I continue this exciting journey!</p>
-<p>Thank you for reading!</p>
+</section>
+<section id="lazy-loading">
+<h2>2. Lazy Loading<a class="headerlink" href="#lazy-loading" title="Link to this heading">#</a></h2>
+<p>Lazy loading is a crucial optimization technique that has been implemented in DIPY to enhance resource management and improve performance, particularly for large-scale neuroimaging applications. By delaying the loading of modules until they are actually needed, we achieve a more efficient and responsive system.</p>
+<section id="implementation-details">
+<h3>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Package Used:</strong> The <code class="docutils literal notranslate"><span class="pre">lazy_loader</span></code> package has been employed to implement lazy loading functionality in DIPY, allowing for on-demand module loading.</p></li>
+<li><p><strong>Inspiration:</strong> This approach draws inspiration from the scikit-image library, which has effectively utilized lazy loading to optimize its performance and reduce memory usage.</p></li>
+</ul>
+<p>The core concept involves creating a stub file, such as <cite>__init__.pyi</cite>, where all functions from the module are imported. This stub file is then imported into the main initialization file, <cite>__init__.py</cite>, enabling lazy loading for the specified submodules.</p>
+<p>Here’s an outline of how it works:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">__init__.pyi</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">submodules</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;align&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;denoise&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;direction&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;io&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nn&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;reconst&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;segment&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sims&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;stats&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tracking&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;utils&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;viz&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;workflows&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tests&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;testing&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="n">submodules</span>
+</pre></div>
+</div>
+</div>
+<p>In the main initialization file, lazy loading is attached to the module using the following setup:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">__init__.py</span><a class="headerlink" href="#id6" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__getattr__</span><span class="p">,</span> <span class="n">__lazy_dir__</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">lazy</span><span class="o">.</span><span class="n">attach_stub</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>This structure ensures that each submodule is only loaded when it is explicitly accessed, thereby optimizing both memory usage and load times.</p>
+</section>
+<section id="benefits-of-lazy-loading">
+<h3>Benefits of Lazy Loading<a class="headerlink" href="#benefits-of-lazy-loading" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Reduced Initial Load Time:</strong> By loading modules and objects only when they are needed, the initial load time of DIPY is significantly decreased, leading to a faster startup.</p></li>
+<li><p><strong>Memory Optimization:</strong> On-demand loading minimizes unnecessary memory usage, which is particularly advantageous when working with large datasets in neuroimaging.</p></li>
+<li><p><strong>Improved Performance:</strong> Lazy loading can lead to better overall performance, especially in scenarios where only specific subsets of DIPY’s functionality are used.</p></li>
+<li><p><strong>Enhanced Modularity:</strong> This approach encourages a more modular code structure, improving maintainability and simplifying the addition of new features in the future.</p></li>
+</ul>
+</section>
+<section id="current-status">
+<h3>Current Status<a class="headerlink" href="#current-status" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The implementation of lazy loading across all planned modules has been completed.</p></li>
+<li><p>The changes are currently under review by the DIPY team, with final input and feedback pending.</p></li>
+<li><p>The updated modules are expected to be merged into the main codebase shortly after the review process is complete.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Next Steps<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Incorporate Feedback:</strong> Address any feedback or suggestions provided by the DIPY team during the review.</p></li>
+<li><p><strong>Final Testing:</strong> Conduct thorough testing to ensure that all lazy-loaded components function as expected under various conditions.</p></li>
+<li><p><strong>Documentation Update:</strong> Update the project documentation to reflect the new lazy loading behavior, providing clear guidance on how it impacts module usage.</p></li>
+<li><p><strong>Merge and Monitor:</strong> Once approved, merge the changes into the main DIPY codebase and monitor initial user feedback and performance metrics post-deployment.</p></li>
+</ul>
+<p>This implementation of lazy loading represents a significant step forward in optimizing DIPY’s performance and usability, particularly in resource-intensive environments.</p>
+</section>
+</section>
+<section id="docker-integration">
+<h2>3. Docker Integration<a class="headerlink" href="#docker-integration" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>Current Status<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>The Docker integration for DIPY is currently under development. A pull request has been submitted to introduce Docker support, aimed at enhancing the consistency and ease of development, testing, and deployment across different environments:</p>
+<ul class="simple">
+<li><p><strong>Pull Request:</strong> <a class="reference external" href="https://github.com/dipy/dipy/pull/3322">PR #3322</a></p></li>
+</ul>
+<p>To achieve a minimal yet functional configuration, I created the following Dockerfile:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Dockerfile</span><a class="headerlink" href="#id7" title="Link to this code">#</a></div>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.10</span>
+
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>libhdf5-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gcc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>clean
+
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.26.4<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>dipy<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>nibabel<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>scipy<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>matplotlib
+</pre></div>
+</div>
+</div>
+<p>This Dockerfile sets up a Python 3.10 environment with the essential dependencies for DIPY, including <cite>numpy</cite>, <cite>dipy</cite>, <cite>nibabel</cite>, <cite>scipy</cite>, and <cite>matplotlib</cite>. The use of <cite>–no-install-recommends</cite> and <cite>–no-cache-dir</cite> ensures a lean and efficient image by minimizing unnecessary packages and caching.</p>
+<p>Additionally, I developed build and push scripts to automate the Docker image creation and deployment process. These scripts streamline the workflow, making it easier for developers to build and push images to a Docker registry with minimal effort.</p>
+</section>
+<section id="id4">
+<h3>Next Steps<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Incorporate Feedback</strong>: Address any suggestions or concerns raised during the code review process.</p></li>
+<li><p><strong>Cross-Environment Testing</strong>: Test the Docker setup across various environments to ensure compatibility and stability.</p></li>
+<li><p><strong>Documentation Update</strong>: Revise the project documentation to include comprehensive guidelines on using Docker with DIPY, including setup, usage, and troubleshooting tips.</p></li>
+<li><p><strong>CI/CD Integration</strong>: Integrate Docker into the Continuous Integration/Continuous Deployment (CI/CD) pipeline to automate builds, tests, and deployments, ensuring a robust and consistent development workflow.</p></li>
+</ol>
+<p>The implementation of Docker is a critical step in modernizing DIPY’s development process, providing a standardized environment that reduces setup time and ensures consistency across different platforms. We expect to finalize and merge this feature soon, following thorough testing and review.</p>
+</section>
+</section>
+<section id="future-work-title">
+<h2><span class="gsoc-title">Future Works</span><a class="headerlink" href="#future-work-title" title="Link to this heading">#</a></h2>
+</section>
+<section id="addition-of-tutorials">
+<h2>1. Addition of Tutorials<a class="headerlink" href="#addition-of-tutorials" title="Link to this heading">#</a></h2>
+<p>As part of my ongoing efforts to improve DIPY’s accessibility and user experience, I am planning to develop new tutorials. These tutorials will focus on two key areas:</p>
+<section id="a-2d-registration">
+<h3>a. 2D Registration<a class="headerlink" href="#a-2d-registration" title="Link to this heading">#</a></h3>
+<p>The 2D registration tutorial will cover:</p>
+<ul class="simple">
+<li><p><strong>Overview of 2D Registration Algorithms</strong>: An explanation of the different 2D registration algorithms in DIPY, with a focus on when and how to use them.</p></li>
+<li><p><strong>Step-by-Step Guide</strong>: A detailed, step-by-step process for performing 2D registration using DIPY, making it easy to follow along.</p></li>
+<li><p><strong>Optimization Tips</strong>: Tips for getting the best results from 2D registration, including parameter adjustments and troubleshooting.</p></li>
+</ul>
+</section>
+<section id="b-docker-usage">
+<h3>b. Docker Usage<a class="headerlink" href="#b-docker-usage" title="Link to this heading">#</a></h3>
+<p>The Docker tutorial will include:</p>
+<ul class="simple">
+<li><p><strong>Introduction to Docker</strong>: An overview of Docker and why it is useful for DIPY users.</p></li>
+<li><p><strong>Setting Up Docker for DIPY</strong>: Instructions for setting up Docker specifically for DIPY, including installation and configuration.</p></li>
+<li><p><strong>Running DIPY in a Docker Container</strong>: How to run DIPY within a Docker container, with common commands and workflows.</p></li>
+<li><p><strong>Best Practices</strong>: Advice on how to use Docker with DIPY effectively, focusing on performance and resource management.</p></li>
+<li><p><strong>Troubleshooting</strong>: Common issues you might encounter with Docker and how to solve them.</p></li>
+</ul>
+</section>
+<section id="objectives">
+<h3>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h3>
+<p>By adding these tutorials, I aim to:</p>
+<ol class="arabic simple">
+<li><p><strong>Lower the Entry Barrier</strong>: Make it easier for new DIPY users to get started.</p></li>
+<li><p><strong>Provide Clear Guidance</strong>: Offer practical, easy-to-follow instructions on using DIPY.</p></li>
+<li><p><strong>Encourage Best Practices</strong>: Help users adopt best practices in neuroimaging analysis.</p></li>
+<li><p><strong>Support Reproducible Research</strong>: Teach users how to create consistent environments using Docker, which will help ensure reliable and reproducible results.</p></li>
+</ol>
+</section>
+</section>
+<section id="timeline-title">
+<h2><span class="gsoc-title">Timeline</span><a class="headerlink" href="#timeline-title" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id8">
+<caption><span class="caption-text">Weekly Journey</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 21.1%" />
+<col style="width: 63.2%" />
+<col style="width: 15.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Date</p></th>
+<th class="head"><p>Title</p></th>
+<th class="head"><p>Blog Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>27-05-2024</p></td>
+<td><p>My Journey Begins: Community Bonding Period with DIPY</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_05_27_kaustav_week0.html">Week 0</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>03-06-2024</p></td>
+<td><p>Starting with keyword-only-decorator function</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_06_03_kaustav_week_1.html">Week 1</a></p></td>
+</tr>
+<tr class="row-even"><td><p>12-06-2024</p></td>
+<td><p>Decorator function refinement, Lazy loading research</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_06_12_kaustav_week_2.html">Week 2</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>19-06-2024</p></td>
+<td><p>Decorator implementation across modules, Lazy loading demo</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_06_19_kaustav_week_3.html">Week 3</a></p></td>
+</tr>
+<tr class="row-even"><td><p>30-06-2024</p></td>
+<td><p>Decorator implementation fixes</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_06_30_kaustav_week_4.html">Week 4</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>01-07-2024</p></td>
+<td><p>Health issues, Lazy loading preparation</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_07_01_kaustav_week_5.html">Week 5</a></p></td>
+</tr>
+<tr class="row-even"><td><p>07-07-2024</p></td>
+<td><p>Lazy loading implementation, Decorator bug fixes</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_07_07_kaustav_week_6.html">Week 6</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>15-07-2024</p></td>
+<td><p>Improvements in lazy loading</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_07_15_kaustav_week_7.html">Week 7</a></p></td>
+</tr>
+<tr class="row-even"><td><p>22-07-2024</p></td>
+<td><p>Blog-post migration, GSoC wiki migration</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_07_22_kaustav_week_8.html">Week 8</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>29-07-2024</p></td>
+<td><p>Docker research</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_07_29_kaustav_week_9.html">Week 9</a></p></td>
+</tr>
+<tr class="row-even"><td><p>05-08-2024</p></td>
+<td><p>Fixing tutorials for application of keyword-only-decorator</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_08_05_kaustav_week_10.html">Week 10</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>12-08-2024</p></td>
+<td><p>Docker PR</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_08_12_kaustav_week_11.html">Week 11</a></p></td>
+</tr>
+<tr class="row-even"><td><p>19-08-2024</p></td>
+<td><p>Final week</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_08_19_kaustav_week_12.html">Week 12</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </section>
 
@@ -1123,24 +1462,16 @@ Over the summer, I will be working with DIPY, and I am incredibly excited about 
   <span class="ablog__prev">
     
     
-    <a href="2024_05_27_Inigo_week_0.html">
+    <a href="2024_08_19_kaustav_week_12.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>Community Bonding Period Summary and first impressions</span>
+      <span>My Journey Continues: Week 12 Progress with DIPY</span>
     </a>
     
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-    
-    
-    <a href="2024_05_31_Inigo_week_1.html">
-      <span>First Week into GSoC 2024: Building the AutoEncoder, writing the training loop</span>
-      
-      <i class="fa fa-arrow-circle-right" ></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1176,15 +1507,43 @@ Over the summer, I will be working with DIPY, and I am incredibly excited about 
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#community-bonding-period-building-the-foundation">Community Bonding Period: Building the Foundation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-task-1-enhancing-keyword-only-arguments-with-decorators">Project-Task 1: Enhancing Keyword-Only Arguments with Decorators</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-keyword-only-arguments">What are Keyword-Only Arguments?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-role-of-decorators">The Role of Decorators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-abstract-title"><span class="gsoc-title">Project Abstract</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-objectives-title"><span class="gsoc-title">Proposed Objectives</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-completed-title"><span class="gsoc-title">Objectives Completed</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-only-arguments">1. Keyword-Only Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#website-improvements">2. Website Improvements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-blog-post-migration">a. Blog Post Migration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-image-organization-improvement">b. Image Organization Improvement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-dipy-wiki-migration">c. DIPY Wiki Migration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-adding-sidebars-to-blog-page">d. Adding Sidebars to Blog Page</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#progress-so-far">Progress So Far</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s Next?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts">Final Thoughts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-progress-title"><span class="gsoc-title">Objectives in Progress</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Keyword-Only Arguments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lazy-loading">2. Lazy Loading</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">Implementation Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-lazy-loading">Benefits of Lazy Loading</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-status">Current Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Next Steps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-integration">3. Docker Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Current Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Next Steps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work-title"><span class="gsoc-title">Future Works</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-of-tutorials">1. Addition of Tutorials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2d-registration">a. 2D Registration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-docker-usage">b. Docker Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline-title"><span class="gsoc-title">Timeline</span></a></li>
 </ul>
   </nav></div>
 
