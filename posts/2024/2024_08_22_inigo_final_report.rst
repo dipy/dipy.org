@@ -59,7 +59,7 @@
 
 .. image:: /_static/images/logos/gsoc-logo.png
    :height: 40
-   :target: https://summerofcode.withgoogle.com/programs/2024/projects/dHajBmW3
+   :target: https://summerofcode.withgoogle.com/myprojects/details/BpY78ovV
    :class: no-background
 
 .. image:: /_static/images/logos/python-logo.png
