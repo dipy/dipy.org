@@ -56,9 +56,10 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_08_12_kaustav_week_11';</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_08_22_inigo_final_report';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2024/2024_08_12_kaustav_week_11.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2024/2024_08_22_inigo_final_report.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -805,7 +806,7 @@ document.write(`
   
   <i class="fa fa-calendar"></i>
   
-  12 August 2024
+  22 August 2024
   
 </h2>
 <ul>
@@ -820,7 +821,7 @@ document.write(`
     </span>
   
   
-  <a href="../../blog/author/kaustav.html">Kaustav</a>
+  <a href="../../blog/author/inigo-tellaetxe-elorriaga.html">Iñigo Tellaetxe Elorriaga</a>
   
   
   
@@ -873,12 +874,6 @@ document.write(`
   
   
   <li>
-    <a href="2024_08_22_inigo_final_report.html">
-      22 August - <span class="gsoc-title">Google Summer of Code Final Work Product</span>
-    </a>
-  </li>
-  
-  <li>
     <a href="2024_08_21_kaustav_final_report.html">
       21 August - <span class="gsoc-title">Google Summer of Code Final Work Product</span>
     </a>
@@ -893,6 +888,12 @@ document.write(`
   <li>
     <a href="2024_08_16_Inigo_week_12.html">
       16 August - Week 12 into GSoC 2024: Last weeks of the coding phase and admin stuff
+    </a>
+  </li>
+  
+  <li>
+    <a href="2024_08_12_kaustav_week_11.html">
+      12 August - My Journey Continues: Week 11 Progress with DIPY
     </a>
   </li>
   
@@ -1062,38 +1063,271 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-<section id="my-journey-continues-week-11-progress-with-dipy">
-<h1>My Journey Continues: Week 11 Progress with DIPY<a class="headerlink" href="#my-journey-continues-week-11-progress-with-dipy" title="Link to this heading">#</a></h1>
-<p>Hello everyone! Week 11 has been another week of progress, although it came with its own set of challenges. I’ve been working on Docker, making updates to the tutorial fixes, and I also have some exciting news on the personal front. Let me take you through the highlights of this week.</p>
-<section id="creating-a-docker-image-for-dipy">
-<h2>Creating a Docker Image for DIPY<a class="headerlink" href="#creating-a-docker-image-for-dipy" title="Link to this heading">#</a></h2>
-<p>This week, I focused on creating a Docker image for DIPY. However, I ran into some issues related to the <cite>FURY</cite> and <cite>VTK</cite> packages due to version incompatibilities. These packages are crucial for the visualization components of DIPY, and ensuring they work correctly within the Docker environment has been a bit tricky.</p>
-<p>The version conflicts have caused some build failures, and I’ve been troubleshooting the issue by testing different configurations and dependencies. While I haven’t completely resolved the issue yet, I’m hopeful that I can find a solution soon. I’ll continue to work on this in the coming days, as getting this Docker image ready is important for our continuous integration processes.</p>
-<a class="reference internal image-reference" href="../../_images/docker_issue_fury.png"><img alt="Docker FURY VTK issue" src="../../_images/docker_issue_fury.png" style="width: 800px;" />
+<style>
+.custom-gsoc-margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+</style><a class="reference external image-reference" href="https://summerofcode.withgoogle.com/programs/2024/projects/BpY78ovV"><img alt="../../_images/gsoc-logo.png" class="no-background" src="../../_images/gsoc-logo.png" style="height: 40px;" />
 </a>
+<a class="reference external image-reference" href="https://summerofcode.withgoogle.com/programs/2024/organizations/python-software-foundation"><img alt="../../_images/python-logo.png" class="no-background" src="../../_images/python-logo.png" style="height: 40px;" />
+</a>
+<a class="reference external image-reference" href="http://dipy.org"><img alt="../../_images/dipy-logo-2.png" class="no-background" src="../../_images/dipy-logo-2.png" style="height: 30px;" />
+</a>
+<div style="margin-top: 20px;"></div><section id="main-title">
+<h1><span class="gsoc-title">Google Summer of Code Final Work Product</span><a class="headerlink" href="#main-title" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Name:</strong> <a class="reference external" href="https://github.com/itellaetxe">Iñigo Tellaetxe Elorriaga</a></p></li>
+<li><p><strong>Organization:</strong> <a class="reference external" href="https://www.python.org/psf-landing/">Python Software Foundation</a></p></li>
+<li><p><strong>Sub-Organization:</strong> <a class="reference external" href="https://dipy.org">DIPY</a></p></li>
+<li><p><strong>Project:</strong> <a class="reference external" href="https://github.com/dipy/dipy/wiki/Google-Summer-of-Code-2024#project-5-project-ideas-using-aiml-in-diffusion-mri-processing">AI/ML in diffusion MRI processing</a></p></li>
+<li><p><strong>Repository:</strong> <a class="reference external" href="https://github.com/itellaetxe/tractoencoder_gsoc">TractoEncoder GSoC</a></p></li>
+</ul>
+<section id="project-abstract-title">
+<h2><span class="gsoc-title">Project Abstract</span><a class="headerlink" href="#project-abstract-title" title="Link to this heading">#</a></h2>
+<p>The objective of the project is to generate synthetic human tractograms with tuneable age and neurodegeneration status properties, using deep learning models. The project is inspired by the <a class="reference external" href="https://doi.org/10.1016/j.media.2021.102126">FINTA</a> and <a class="reference external" href="https://doi.org/10.1016/j.media.2023.102761">GESTA</a> works, which propose a generative method using an AutoEncoder architecture for unconditional tractogram generation, and a robust sampling strategy, respectively. In our case, we replicated the results of the FINTA paper AutoEncoder in the FiberCup dataset using TensorFlow2 (TF2) as the deep learning backend, instead of the original PyTorch backend. We also investigated how to condition the AutoEncoder architecture on scalar and categorical variables to support conditional tractogram generation on age and neurodegeneration status. Finally, we also explored the use of Variational AutoEncoders, Regression AutoEncoders, and Adversarial AutoEncoders for tractogram generation under the mentioned conditions.</p>
 </section>
-<section id="tutorial-fixes-pr-update">
-<h2>Tutorial Fixes PR Update<a class="headerlink" href="#tutorial-fixes-pr-update" title="Link to this heading">#</a></h2>
-<p>In addition to Docker, I’ve been updating the PR for the tutorial fixes related to the keyword argument changes I made earlier. I’m happy to report that I’m about 60% done with the updates. The tutorials are shaping up well, and the changes are making them more robust and easier to follow.</p>
-<p>I plan to complete the remaining 40% by today or tomorrow, ensuring that all tutorials are fully updated.</p>
+<section id="proposed-objectives-title">
+<h2><span class="gsoc-title">Proposed Objectives</span><a class="headerlink" href="#proposed-objectives-title" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Replicate the results of the AutoEncoder architecture in the <a class="reference external" href="https://doi.org/10.1016/j.media.2021.102126">FINTA</a> paper using TensorFlow2 as the deep learning backend.</p></li>
+<li><p>Obtain publicly available data from the <a class="reference external" href="http://adni.loni.usc.edu/">ADNI</a>, the <a class="reference external" href="https://tractometer.org/fibercup/home/">FiberCup</a> and the <a class="reference external" href="https://tractometer.org/ismrm2015/home/">ISMRM2015 tractography challenge</a> to compute tractograms for training the deep learning models.</p></li>
+<li><p>Integrate the replicated unconditional AutoEncoder architecture and sampling algorithm into DIPY to generate synthetic human tractograms, after training it with extensive human tractogram data.</p></li>
+<li><p>Investigate how to condition the AutoEncoder architecture on scalar and categorical variables to support conditional tractogram generation on age and neurodegeneration status.</p></li>
+<li><p>Implement a conditional AutoEncoder architecture that can generate synthetic tractograms conditioned on age and neurodegeneration status.</p></li>
+</ul>
 </section>
-<section id="phd-application-submitted">
-<h2>PhD Application Submitted<a class="headerlink" href="#phd-application-submitted" title="Link to this heading">#</a></h2>
-<p>On a personal note, I successfully submitted my PhD application this week! This has been a significant milestone for me, and I’m thrilled to have it completed. Applying for a PhD is a rigorous process, and I’ve put a lot of effort into crafting the application. Now that it’s submitted, I’m hopeful for the best outcome.</p>
-<p>If I do get accepted, it would be a dream come true. I’m particularly excited about the prospect of learning from and working with leaders in the field, such as <a class="reference external" href="https://github.com/Garyfallidis">Dr. Eleftherios Garyfallidis</a>, whose work I greatly admire. The opportunity to contribute to and learn from such a program would be invaluable, and I’m eagerly looking forward to the possibility.</p>
+<section id="modified-objectives-title">
+<h2><span class="gsoc-title">Modified Objectives (Additional)</span><a class="headerlink" href="#modified-objectives-title" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Investigate the use of Variational AutoEncoders (VAE) for unconditional tractogram generation based on the FINTA architecture.</p></li>
+<li><p>Investigate the use of Conditional Variational AutoEncoders (CVAE) for conditional tractogram generation based on the FINTA architecture.</p></li>
+<li><p>Investigate the possibility to condition the tractogram generation on the fiber bundle for additional control over the process and the data generation, using Adversarial AutoEncoders with attribute-based regularization.</p></li>
+</ul>
 </section>
-<section id="next-week">
-<h2>Next Week<a class="headerlink" href="#next-week" title="Link to this heading">#</a></h2>
-<p>Looking ahead to next week, my priorities will be:</p>
-<ol class="arabic simple">
-<li><p><strong>Fixing the Docker Image Issues</strong>: I’ll continue troubleshooting the <cite>FURY</cite> and <cite>VTK</cite> package issues within the Docker environment, aiming to get a working Docker image for DIPY.</p></li>
-<li><p><strong>Completing the Tutorial Fixes</strong>: I plan to finish the remaining 40% of the tutorial updates, ensuring that the PR is ready for review and merging.</p></li>
-</ol>
+<section id="objectives-completed-title">
+<h2><span class="gsoc-title">Objectives Completed</span><a class="headerlink" href="#objectives-completed-title" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><strong>Literature Review on synthetic tractography generation using AutoEncoders</strong>. Main inspirations:</p>
+<ul class="simple">
+<li><p>The <a class="reference external" href="https://doi.org/10.1016/j.media.2021.102126">FINTA</a> and <a class="reference external" href="https://doi.org/10.1016/j.media.2023.102761">GESTA</a> papers because they provide a relatively simple AE architecture with an open source sampling algorithm, easy to reuse.</p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1007/978-3-030-32245-8_91">Variational AutoEncoders for Regression</a>, which provided a good starting point for conditional Variational AutoEncoders with direct application to brain aging, related to the project’s objectives.</p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1007/s00521-020-05270-2">Attribute-based Regularization of latent spaces for variational AutoEncoders</a> and <a class="reference external" href="http://arxiv.org/abs/1511.05644">Adversarial AutoEncoders</a>, which inspired the use of Attribute-based regularization for conditioning on a continuous variable (age); and the use of adversarial training for conditioning on categoric variables (fiber bundle or neurodegeneration status), respectively.</p></li>
+</ul>
+</li>
+<li><p><strong>Replicated the</strong> <a class="reference external" href="https://doi.org/10.1016/j.media.2021.102126">FINTA</a> <strong>architecture originally implemented in PyTorch (vanilla AutoEncoder, not variational) using TensorFlow2+Keras.</strong>
+Validated the results using the FiberCup dataset. The model is found in the <code class="docutils literal notranslate"><span class="pre">ae_model.py</span></code> module of the <a class="reference external" href="https://github.com/itellaetxe/tractoencoder_gsoc">TractoEncoder GSoC</a> repository. The architecture can be summarized as in the following image:</p>
+<a class="custom-gsoc-margin reference internal image-reference" href="../../_images/inigo_vanilla_autoencoder.png"><img alt="AE architecture diagram." class="custom-gsoc-margin align-center" src="../../_images/inigo_vanilla_autoencoder.png" style="width: 600px;" />
+</a>
+<ul>
+<li><p>Weight and bias initializers are different in PyTorch compared to TensorFlow2, so the PyTorch behavior was replicated using custom initializers. Different weight &amp; bias initialization strategies can lead to drastically different training results, so this step took extra care.</p></li>
+<li><p>The upsampling layers of the Decoder block use linear interpolation in PyTorch by default, whereas in TensorFlow2, there is no native implementation for this, and nearest neighbor (NN) interpolation is used instead. This is a significant difference in implementations, and to replicate the PyTorch behavior a custom linear interpolating upsampling layer was implemented in TF2. However, after training with both NN and linear interpolation, the results were very similar, so the custom layer was not used in the final implementation. This work was developed in a <a class="reference external" href="https://github.com/itellaetxe/tractoencoder_gsoc/tree/feature_linear_upsampling">separate branch</a>.</p></li>
+<li><p>Training was run for 120 epochs, using a data set containing plausible and implausible streamlines. All the training experiments in my GSoC work were done with this data set. The figure below shows a summary of the replication results, which consist of running a set of unseen plausible streamlines through the model (encoder and decoder):</p>
+<figure class="align-center" id="id18">
+<a class="custom-gsoc-margin reference internal image-reference" href="../../_images/fibercup_replicated.png"><img alt="Replication of the FINTA architecture results on the FiberCup dataset." class="custom-gsoc-margin" src="../../_images/fibercup_replicated.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">We see that the Keras result is very similar to the PyTorch result, though the fiber crossings are not as well resolved in the Keras result. This is not a thing to worry since this is not systematic, as seen in other sets of unseen data.</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p><strong>Implemented a Variational AutoEncoder (VAE) architecture based on the</strong> <a class="reference external" href="https://doi.org/10.1016/j.media.2021.102126">FINTA</a> <strong>AE architecture.</strong></p>
+<ul class="simple">
+<li><p>After thorough discussion with my mentors, we decided that regularizing the latent space could be a good idea due to two reasons: to avoid “white spaces” in the latent space it that could lead undefined points due to the possible discontinuity of the space; and to prevent the model from learning the identity function, what is a known issue with unregularized AutoEncoders, though it does not always happen. The only addition to the original AE architecture was the inclusion of the Kullback-Leibler divergence loss term in the loss function, and two dense layers after the convolutional layers of the encoder, to output the <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span> of the latent space vector <span class="math notranslate nohighlight">\(z\)</span>.</p></li>
+<li><p>The model is found in the <code class="docutils literal notranslate"><span class="pre">vae_model.py</span></code> module of the <a class="reference external" href="https://github.com/itellaetxe/tractoencoder_gsoc">TractoEncoder GSoC</a> repository. The architecture can be summarized in the figure below:</p></li>
+</ul>
+<a class="custom-gsoc-margin reference internal image-reference" href="../../_images/inigo_variational_autoencoder.png"><img alt="VAE architecture diagram." class="custom-gsoc-margin align-center" src="../../_images/inigo_variational_autoencoder.png" style="width: 600px;" />
+</a>
+<ul>
+<li><p>It was necessary to implement Batch Normalization after the Encoder convolutional layers and exponential operator clipping, to prevent gradient explosion while training the model. The figure above displays that the encoder outputs the variance of the latent space vector (<span class="math notranslate nohighlight">\(\sigma^2\)</span>), though it is a common practice to output the log-variance instead. This leads to using <span class="math notranslate nohighlight">\(\sigma = e^{\frac{1}{2}\text{log}{\sigma^2}}\)</span>, which can get numerically quite unstable as it can shoot up very quickly when a sufficiently big log-variance is input. This modification allowed stable training and it was a major contribution to the robustness of the architecture. Shout out to my lab colleague <a class="reference external" href="https://github.com/jgarciacondado">Jorge</a> for the ideas and discussions on the topic.</p></li>
+<li><p>Weighing the Kullback-Leibler loss component was also implemented, based on the <a class="reference external" href="https://openreview.net/forum?id=Sy2fzU9gl">Beta-VAE</a> work, aiming for a stronger disentanglement of the latent space. However, this parameter was never explored (it was always set to 1.0) due to its trade-off with the reconstruction accuracy, but it is a potential improvement for future work in the context of hyperparameter optimization.</p></li>
+<li><p>The figure below shows a summary of the VAE results, also using the FiberCup dataset:</p>
+<figure class="align-center" id="id19">
+<a class="custom-gsoc-margin reference internal image-reference" href="../../_images/vanilla_vae_120_epoch_results.png"><img alt="VAE architecture results on the FiberCup dataset." class="custom-gsoc-margin" src="../../_images/vanilla_vae_120_epoch_results.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">The bottom row shows a set of unseen test data, and its reconstruction, after running it through the model (encode &amp; decode). We can see that the reconstruction fidelity is not as good as the vanilla AE, but it is still acceptable, considering that the model was only trained for 120 epochs, which took around 2 hours in my GPU-less laptop.</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p><strong>Implemented a conditional Variational Autoencoder (condVAE) architecture based on the</strong> <a class="reference external" href="https://doi.org/10.1007/978-3-030-32245-8_91">Variational AutoEncoders for Regression</a> <strong>paper.</strong></p>
+<ul>
+<li><p>The model is found in the <code class="docutils literal notranslate"><span class="pre">cond_vae_model.py</span></code> module of the <a class="reference external" href="https://github.com/itellaetxe/tractoencoder_gsoc">TractoEncoder GSoC</a> repository. The model was trained on the FiberCup dataset, and the conditioning variable in this case was chosen to be the length of the streamlines, hypothesizing that this is a relatively simple feature to capture by the model based on their geometry. The majority of the architecture is based on the VAE from the previous point (also based on the <a class="reference external" href="https://doi.org/10.1016/j.media.2021.102126">FINTA</a> architecture), to which I added two dense layers to output the <span class="math notranslate nohighlight">\(\sigma_r\)</span> and <span class="math notranslate nohighlight">\(\text{log}\sigma^2_r\)</span> of the regressed attribute, as well as the <em>generator</em> block. A diagram of the architecture can be seen below:</p>
+<a class="custom-gsoc-margin reference internal image-reference" href="../../_images/conditional_vae_architecture_diagram.png"><img alt="condVAE architecture diagram." class="custom-gsoc-margin align-center" src="../../_images/conditional_vae_architecture_diagram.png" style="width: 600px;" />
+</a>
+</li>
+</ul>
+</li>
+<li><p><strong>Implemented validation strategies of the condVAE model</strong> to check that the model can capture the variability of the conditioning variable.</p>
+<ul>
+<li><p>By exploring the latent space of the VAE and condVAE models, we can compare the organization of the samples in the latent space, and see whether there is a difference aligned with the conditioning variable. After training for 64 epochs just to check how the model was progressing, I projected the 32-dimensional latent space using the t-SNE algorithm, to visualize it easily. This particular algorithm was chosen due to its popularity, speed, and availability in widespread libraries like <cite>scikit-learn</cite>. The projections only show the plausible fibers. The results are shown in the figures below:</p>
+<figure class="align-center" id="id20">
+<a class="custom-gsoc-margin reference internal image-reference" href="../../_images/latent_space_comparison_VAE_cVAE_colored_by_streamline_length.png"><img alt="t-SNE latent space comparison between condVAE and VAE models." class="custom-gsoc-margin" src="../../_images/latent_space_comparison_VAE_cVAE_colored_by_streamline_length.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">We observe that the condVAE model clusters are elongated, which made us arrive to the conclusion that the conditioning might be doing something, but it was yet not clear if it was what we wanted to achieve. Using the length of the streamlines as the conditioning variable was not the best choice because this parameter is very consistent inside each bundle of the FiberCup dataset, and knowing that each cluster corresponds to a bundle (7 clusters, 7 morphologically different bundles), we had not foreseen that each cluster was going to have a consistent coloring for the length attribute (which is quite obvious, once you know this). The conclusion of this exercise was that the model was doing something differently compared to the VAE, which could be good, or not.</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Another aspect to validate was the capability of the model to correctly capture the conditioning variable in the training data. To do so, we retrained the model until we got a close-to-zero <em>label loss</em> (in charge of capturing this variability), and computed the <span class="math notranslate nohighlight">\(MSE\)</span> and the <span class="math notranslate nohighlight">\(R^2\)</span> metrics between the predicted and the true conditioning variable. In addition, we plotted the latent space 2D projection again. The results are shown in the figure below:</p>
+<figure class="align-center" id="id21">
+<a class="custom-gsoc-margin reference internal image-reference" href="../../_images/vae_conditioning_validation.png"><img alt="condVAE conditioning validation results." class="custom-gsoc-margin" src="../../_images/vae_conditioning_validation.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">We got an <span class="math notranslate nohighlight">\(\text{MSE}=50.371\)</span> and an <span class="math notranslate nohighlight">\(R^2=0.941\)</span>, and the latent space was organized in 7 clusters (the middle line is actually 2 lines, there is a small separation in the middle), which correspond to the 7 bundles of the FiberCup dataset, thus we saw that the model was indeed capable of predicting the conditioning variable fairly well. From left to right, the streamlines get shorter (the color gets lighter) with a gradient in the latent space that is aligned with the conditioning variable. The morphology of the leftmost clusters would indicate that they are the most variable in length, contrary to the middle clusters (the straighter lines), which are almost in the same horizontal coordinate. Having the t-SNE projection aligned with the conditioning variable is a good sign, that some dimension in the latent space was correctly tied to the conditioning variable.</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>As the last experiment to validate the capabilities of this model and architecture, I proceeded to generate synthetic streamlines conditioned on their length. Theoretically, the model should be able to generate samples of specific lengths, and each length should be related to a specific bundle, as shorter fibers look different than the longer ones. Nonetheless, there was a major flaw in the generative process that my mentor <a class="reference external" href="https://github.com/pjsjongsung">Jong Sung</a> had detected just before going into this step. When looking at the architecture of the model, the generative process would start from the <span class="math notranslate nohighlight">\(r\)</span> variable, setting it to a desired quantity, and then running the input through <code class="docutils literal notranslate"><span class="pre">D5</span></code> and <code class="docutils literal notranslate"><span class="pre">D6</span></code>, then adding noise like <span class="math notranslate nohighlight">\(z=\mu_{p_z}+\sigma_{p_z}\odot\epsilon\)</span>, and decoding this output.</p></li>
+<li><p>Since the generator block is trying to predict the whole latent vector <span class="math notranslate nohighlight">\(z\)</span> from a single number (<span class="math notranslate nohighlight">\(r\)</span>), the model was going to probably have trouble getting the necessary geometrical variability, and overall problems for generating different things from the same number. The model was not designed for generating samples and rather to regress their associated conditioning variable, and this was a major issue that had not been foreseen. This was a good lesson to learn, and it was a good opportunity to think about the importance of the generative process in the model design, and how it should be aligned with the model’s objectives. The figure below shows a set of generated samples of lengths 30 and 300 (left and right), seeing that the model was generating a very constant shape, only scaled in length:</p>
+<a class="custom-gsoc-margin reference internal image-reference" href="../../_images/streamlines_short_long.png"><img alt="condVAE conditioning validation results." class="custom-gsoc-margin align-center" src="../../_images/streamlines_short_long.png" style="width: 600px;" />
+</a>
+</li>
+</ul>
+</li>
+<li><p><strong>Implemented an Adversarial AutoEncoder (AAE) architecture.</strong></p>
+<ul>
+<li><p>As the previous efforts with the conditional VAE were unfruitful, we resorted to using an adversarial framework. This was driven by the following reasons:</p>
+<ul>
+<li><p>The adversarial nature of the architecture implicitly introduces a prior to the data, so regularization with variational methods is not necessary, so the architecture and the loss computation of the model is simpler.</p></li>
+<li><p>It is easier to understand, because the original authors of the implemented conditional VAE did not provide a clear derivation of the loss function, so my understanding of its underlying mechanisms is not as deep as I would need to tune its behavior effectively. All in all, the adversarial framework is way more intuitive (at least for me).</p></li>
+<li><p>It is widespread and there are many resources out there to understand it and implement it. What is more, I quickly found several implementations of adversarial AutoEncoders in TensorFlow with a basic search in Google. I need to read through them and filter which one is the best for me.</p></li>
+<li><p>For sure there are ways to condition the network on categorical and continuous variables, which would be really convenient to condition both on the bundle and the attribute of the data. It had not been possible with the conditional VAE implementation, as it only conditions on the attribute. This would provide greater control when sampling from the latent space, and it would be more aligned with the original project proposal, which includes a continuous variable (age) and a categorical variable (neurodegeneration status).</p></li>
+<li><p>The model is found in the <code class="docutils literal notranslate"><span class="pre">adv_ae_model.py</span></code> module of the <a class="reference external" href="https://github.com/itellaetxe/tractoencoder_gsoc">TractoEncoder GSoC</a> repository. The proposed architecture can be summarized in the figure below:`</p>
+<a class="custom-gsoc-margin reference internal image-reference" href="../../_images/adversarial_ae_with_abr.png"><img alt="condVAE conditioning validation results." class="custom-gsoc-margin align-center" src="../../_images/adversarial_ae_with_abr.png" style="width: 600px;" />
+</a>
+</li>
+<li><p>Based on the <a class="reference external" href="http://arxiv.org/abs/1511.05644">Adversarial AutoEncoders</a> paper, the model consists of an encoder, a decoder, and a discriminator. The encoder and decoder are the same as in my VAE architecture, and the discriminator is a simple feedforward neural network that takes the latent space vector as input concatenated with a one-hot encoded vector expressing a class variable related to the input sample (bundle of the streamline, neurodegeneration status, etc.) and outputs a single scalar, which is the probability of the input being real or generated. The discriminator is trained to maximize the probability of the real samples and minimize the probability of the generated samples, while the encoder and decoder are trained to minimize the probability of the discriminator being able to distinguish between real and generated samples. Natively, this architecture supports conditioning the generative process on categorical variables, so it is appropriate for our use case.</p></li>
+<li><p>The attribute-based regularization (AR) is a term added to the loss function of the encoder, with which we try to tie a continuous attribute of choice found in the data space to a specific dimension of the latent space. To do this, we compute an attribute-distance matrix in the data space (<span class="math notranslate nohighlight">\(D_a\)</span>), and we compute a distance matrix from the chosen dimension of the latent space (<span class="math notranslate nohighlight">\(D_r\)</span>). By minimizing the mean absolute error (MAE) between the two matrices, we force the latent space to be organized in such a way that the chosen dimension is related to the chosen attribute. This way, we can generate samples conditioned on the attribute of choice, e.g.: we can generate a streamline with a specific attribute (length).</p></li>
+<li><p>After training for 64 epochs to see the progress and tendency of the model, we observed that the best reconstruction loss was very high, whereas the adversarial loss components were relatively low in comparison. I suspected that something was off with the generated samples, so I went on to check the training data reconstruction. To no surprise, the model generated the exact same sample every time, suggesting that the model had fallen into mode collapse, a typical problem with adversarial training.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </section>
-<section id="final-thoughts">
-<h2>Final Thoughts<a class="headerlink" href="#final-thoughts" title="Link to this heading">#</a></h2>
-<p>Week 11 has been a productive week, despite some challenges with Docker. I’m pleased with the progress I’ve made on the tutorials and excited about the future, both with DIPY and potentially with my PhD journey. As always, I’m grateful for the support from my mentor, <a class="reference external" href="https://github.com/skoudoro">Serge Koudoro</a>, and the DIPY community, who continue to provide invaluable guidance.</p>
-<p>Thank you for reading, and I look forward to sharing more updates next week as I continue working on these tasks!</p>
+<section id="objectives-progress-title">
+<h2><span class="gsoc-title">Objectives in Progress</span><a class="headerlink" href="#objectives-progress-title" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Solving the mode collapse issue in the AAE model using two strategies:</p>
+<ul>
+<li><p>Implementing a more complex discriminator architecture, with more layers and units, to increase the capacity of the model to distinguish between real and generated samples.</p></li>
+<li><p>Implementing a <a class="reference external" href="http://arxiv.org/abs/1701.07875">Wasserstein loss</a> function, which is known to be more stable than the original GAN loss function, and to prevent mode collapse.</p></li>
+</ul>
+</li>
+<li><p>Validating the AAE with the FiberCup data.</p></li>
+<li><p>Implementing and integrating the attribute-based regularization component inside the working AAE architecture.</p></li>
+</ul>
+</section>
+<section id="open-source-tasks-title">
+<h2><span class="gsoc-title">Open Source Tasks</span><a class="headerlink" href="#open-source-tasks-title" title="Link to this heading">#</a></h2>
+<p>Apart from my project, I got to contribute to the DIPY project in other ways too:</p>
+<ul class="simple">
+<li><p>I opened a PR that got merged into the main DIPY repository, which was a <a class="reference external" href="https://github.com/dipy/dipy/issues/2970">nomenclature issue with spherical harmonics</a>. It took some time to agree on how to solve it, but it was very nice to see that the community was open to discussing the issue and to find a solution that was good for everyone. This was the contribution that gave me access to GSoC with DIPY, and it was a very nice start to the journey. Link to the PR: <a class="github reference external" href="https://github.com/dipy/dipy/pull/3086">dipy/dipy#3086</a></p></li>
+<li><p>I reviewed the code of my fellow GSoC students <a class="reference external" href="https://github.com/deka27">Kaustav</a>, <a class="reference external" href="https://github.com/WassCodeur">Wachiou</a> and <a class="reference external" href="https://github.com/robinroy03">Robin</a>. It felt very good to understand their projects and to be able to help them with their work, which is completely different from my project. I also reviewed their blogs and participated in the reviews I got from them. It was very pleasant to see how engaging the community is, and how everyone is willing to help each other.</p></li>
+<li><p>Lastly, I opened an <a class="reference external" href="https://github.com/dipy/dipy.org/issues/40">issue in the dipy.org repository</a> that got solved thanks to a contribution from my mentor <a class="reference external" href="https://github.com/skoudoro">Serge</a>.</p></li>
+</ul>
+</section>
+<section id="future-work-title">
+<h2><span class="gsoc-title">Future Works</span><a class="headerlink" href="#future-work-title" title="Link to this heading">#</a></h2>
+<p>I plan to continue with this project until I arrive to a satisfactory solution to generate synthetic human tractograms with tuneable age and neurodegeneration status properties. This project has not only been a great learning experience, but it has also been a great challenge and a great addition to my PhD research, so I will for sure continue until I succeed.</p>
+<p>To complete the work, I will need to:</p>
+<ul class="simple">
+<li><p>Complete the objectives in progress.</p></li>
+<li><p>Train and validate the models with human tractograms.</p></li>
+<li><p>Integrate the models into DIPY.</p></li>
+</ul>
+</section>
+<section id="pull-requests-title">
+<h2><span class="gsoc-title">Pull Requests</span><a class="headerlink" href="#pull-requests-title" title="Link to this heading">#</a></h2>
+<p>Because the work is still in progress, no integration of the final version was done yet. However, a draft Pull Request was created to show the progress of the work in the main DIPY repository. For now, it contains the first validated AE, together with tests for the model class. <a class="reference external" href="https://github.com/dipy/dipy/pull/3328">LINK TO THE PR</a></p>
+</section>
+<section id="conclusions-title">
+<h2><span class="gsoc-title">Conclusions</span><a class="headerlink" href="#conclusions-title" title="Link to this heading">#</a></h2>
+<p>I am super grateful for the opportunity to participate in the Google Summer of Code program with DIPY. This journey has been amazing as learning and research experience. I am proud of the progress I have made and what I have achieved. Nevertheless, this is just the beginning of my journey with this project.</p>
+<p>I would like to thank again my mentors, <a class="reference external" href="https://github.com/jhlegarreta">Jon Haitz</a>, <a class="reference external" href="https://github.com/pjsjongsung">Jong Sung</a> and <a class="reference external" href="https://github.com/skoudoro">Serge</a>, their time, patience, attention, support, and expertise throughout the program. They have been a key part of my success. On the other hand, I would like to thank my fellow GSoC students, <a class="reference external" href="https://github.com/deka27">Kaustav</a>, <a class="reference external" href="https://github.com/WassCodeur">Wachiou</a>, and <a class="reference external" href="https://github.com/robinroy03">Robin</a>, for their support and collaboration. It has been a pleasure to work with them and to learn from them.</p>
+</section>
+<section id="blogging-title">
+<h2><span class="gsoc-title">Weekly Blogging</span><a class="headerlink" href="#blogging-title" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>My blog posts can be found at <a class="reference external" href="https://dipy.org/blog/author/inigo-tellaetxe.html">DIPY website</a> and <a class="reference external" href="https://social.python-gsoc.org/&#64;itellaetxe">Python GSoC Mastodon server</a>.</p></li>
+</ul>
+</section>
+<section id="timeline-title">
+<h2><span class="gsoc-title">Timeline</span><a class="headerlink" href="#timeline-title" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id22">
+<caption><span class="caption-text">Weekly Blogs</span><a class="headerlink" href="#id22" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 21.1%" />
+<col style="width: 63.2%" />
+<col style="width: 15.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Date</p></th>
+<th class="head"><p>Title</p></th>
+<th class="head"><p>Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>27-05-2024</p></td>
+<td><p>Community Bonding Period Summary and first impressions</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_05_27_Inigo_week_0.html">Week 0</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>31-05-2024</p></td>
+<td><p>Building the AutoEncoder, writing the training loop</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_05_31_Inigo_week_1.html">Week 1</a></p></td>
+</tr>
+<tr class="row-even"><td><p>07-06-2024</p></td>
+<td><p>Refactoring the AutoEncoder, preliminary results</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_06_07_Inigo_week_2.html">Week 2</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>14-06-2024</p></td>
+<td><p>Replicating training parameters, approaching replication</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_06_14_Inigo_week_3.html">Week 3</a></p></td>
+</tr>
+<tr class="row-even"><td><p>21-06-2024</p></td>
+<td><p>Weight transfer experiments, hardships, and results!</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_06_21_Inigo_week_4.html">Week 4</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>28-06-2024</p></td>
+<td><p>Vacation, starting with the conditional AutoEncoder</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_06_28_Inigo_week_5.html">Week 5</a></p></td>
+</tr>
+<tr class="row-even"><td><p>06-07-2024</p></td>
+<td><p>Stuck with the Variational AutoEncoder, problems with Keras</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_07_06_Inigo_week_6.html">Week 6</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>12-07-2024</p></td>
+<td><p>Starting to see the light at the end of the VAE</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_07_12_Inigo_week_7.html">Week 7</a></p></td>
+</tr>
+<tr class="row-even"><td><p>19-07-2024</p></td>
+<td><p>Further advances with the VAE model</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_07_19_Inigo_week_8.html">Week 8</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>26-07-2024</p></td>
+<td><p>The Conditional VAE implementation</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_08_02_Inigo_week_10.html">Week 9</a></p></td>
+</tr>
+<tr class="row-even"><td><p>02-08-2024</p></td>
+<td><p>Validating the conditional VAE results</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_08_02_Inigo_week_10.html">Week 10</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>09-08-2024</p></td>
+<td><p>The Adversarial AutoEncoder</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_08_09_Inigo_week_11.html">Week 11</a></p></td>
+</tr>
+<tr class="row-even"><td><p>16-08-2024</p></td>
+<td><p>Last weeks of the coding phase and admin stuff</p></td>
+<td><p><a class="reference external" href="https://dipy.org/posts/2024/2024_08_16_Inigo_week_12.html">Week 12</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </section>
 
@@ -1106,24 +1340,16 @@ document.write(`
   <span class="ablog__prev">
     
     
-    <a href="2024_08_09_Inigo_week_11.html">
+    <a href="2024_08_21_kaustav_final_report.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>Week 11 into GSoC 2024: The Adversarial AutoEncoder</span>
+      <span><span class="gsoc-title">Google Summer of Code Final Work Product</span></span>
     </a>
     
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-    
-    
-    <a href="2024_08_16_Inigo_week_12.html">
-      <span>Week 12 into GSoC 2024: Last weeks of the coding phase and admin stuff</span>
-      
-      <i class="fa fa-arrow-circle-right" ></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1159,11 +1385,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-docker-image-for-dipy">Creating a Docker Image for DIPY</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-fixes-pr-update">Tutorial Fixes PR Update</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phd-application-submitted">PhD Application Submitted</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-week">Next Week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts">Final Thoughts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-abstract-title"><span class="gsoc-title">Project Abstract</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-objectives-title"><span class="gsoc-title">Proposed Objectives</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-objectives-title"><span class="gsoc-title">Modified Objectives (Additional)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-completed-title"><span class="gsoc-title">Objectives Completed</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-progress-title"><span class="gsoc-title">Objectives in Progress</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-tasks-title"><span class="gsoc-title">Open Source Tasks</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work-title"><span class="gsoc-title">Future Works</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-requests-title"><span class="gsoc-title">Pull Requests</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions-title"><span class="gsoc-title">Conclusions</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blogging-title"><span class="gsoc-title">Weekly Blogging</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline-title"><span class="gsoc-title">Timeline</span></a></li>
 </ul>
   </nav></div>
 
