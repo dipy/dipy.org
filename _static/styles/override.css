@@ -18,6 +18,10 @@ a.btn-link, a.btn-link:hover {
   text-decoration: none;
 }
 
+h1, h2 {
+  color: var(--gst-color-primary);
+}
+
 .bd-footer {
   background: var(--pst-color-on-background);
   padding-bottom: 4em;

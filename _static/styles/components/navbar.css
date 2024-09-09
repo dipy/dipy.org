@@ -70,3 +70,8 @@ ol li>p:first-child, ul li>p:first-child {
     flex: 0 0 auto;
   }
 }
+
+button.version-switcher__button {
+  padding-right: 24px;
+  min-height: 38px;
+}
