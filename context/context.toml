@@ -6,10 +6,10 @@
 # link = "https://dipy.org/workshop/latest"
 
 [[carousel_slides]]
-caption = "EVAC+, ISMRM 2023"
+caption = "EVAC+, Communications Medicine 2024"
 description = ""
 img = "https://raw.githubusercontent.com/dipy/dipy_data/master/dipy_main_evac.png"
-link = "https://arxiv.org/abs/2206.02837"
+link = "https://www.nature.com/articles/s43856-024-00452-8"
 
 [[carousel_slides]]
 caption = "PNAS 2023"
