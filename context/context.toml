@@ -8,7 +8,7 @@
 [[carousel_slides]]
 caption = "Patch2Self2, CVPR 2024"
 description = ""
-img = "https://raw.githubusercontent.com/dipy/dipy_data/Patch2Self3/Patch2Self3.png"
+img = "https://raw.githubusercontent.com/dipy/dipy_data/a45bc26dc8d2225ffca494d7f38f05c3cc8dbf1c/P2S2.png"
 link = "https://openaccess.thecvf.com/content/CVPR2024/papers/Fadnavis_Patch2Self2_Self-supervised_Denoising_on_Coresets_via_Matrix_Sketching_CVPR_2024_paper.pdf"
 
 [[carousel_slides]]
