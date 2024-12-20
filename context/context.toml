@@ -6,6 +6,12 @@
 # link = "https://dipy.org/workshop/latest"
 
 [[carousel_slides]]
+caption = "Patch2Self2, CVPR 2024"
+description = ""
+img = "https://raw.githubusercontent.com/dipy/dipy_data/Patch2Self3/Patch2Self3.png"
+link = "https://openaccess.thecvf.com/content/CVPR2024/papers/Fadnavis_Patch2Self2_Self-supervised_Denoising_on_Coresets_via_Matrix_Sketching_CVPR_2024_paper.pdf"
+
+[[carousel_slides]]
 caption = "EVAC+, Communications Medicine 2024"
 description = ""
 img = "https://raw.githubusercontent.com/dipy/dipy_data/master/dipy_main_evac.png"
