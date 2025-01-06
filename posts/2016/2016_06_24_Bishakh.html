@@ -29,7 +29,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=2cbe46a9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -1098,7 +1098,7 @@ document.write(`
 </figcaption>
 </figure>
 <p>To make the the nav bar dynamic I had to pass the same context to every template. Thankfully this can be achieved with “context_processors” in a dry way. Also this allows the documentation links to be changed without changing the template.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nav_pages_processor</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">nav_pages_processor</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">pages</span> <span class="o">=</span> <span class="n">WebsiteSection</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">section_type</span><span class="o">=</span><span class="s2">&quot;page&quot;</span><span class="p">,</span>
                                           <span class="n">show_in_nav</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">all_doc_displayed</span> <span class="o">=</span> <span class="n">DocumentationLink</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">displayed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1106,7 +1106,7 @@ document.write(`
 </pre></div>
 </div>
 <p>For now the documentations are hosted in the dipy_web github repository. Different versions of documentations are linked automatically into django by checking the content of the repository using github API.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_documentations</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">update_documentations</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check list of documentations from gh-pages branches of the dipy_web</span>
 <span class="sd">    repository and update the database (DocumentationLink model).</span>

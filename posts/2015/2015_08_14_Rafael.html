@@ -29,7 +29,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=2cbe46a9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -1090,7 +1090,7 @@ document.write(`
 <h2>PIESNO<a class="headerlink" href="#piesno" title="Link to this heading">#</a></h2>
 <p>Given the issue mentioned above, I tried to replace the noise estimation procedure with a technique specifically developed for diffusion-weighted images - a technique called <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S1090780709000767">PIESNO</a>.
 This technique can be imported and used from DIPY using the following commands:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dipy.denoise.noise_estimate</span> <span class="kn">import</span> <span class="n">piesno</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dipy.denoise.noise_estimate</span><span class="w"> </span><span class="kn">import</span> <span class="n">piesno</span>
 <span class="n">sigma</span><span class="p">,</span> <span class="n">background_mask</span> <span class="o">=</span> <span class="n">piesno</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">return_mask</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>

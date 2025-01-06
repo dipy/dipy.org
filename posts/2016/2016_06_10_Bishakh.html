@@ -29,7 +29,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=2cbe46a9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -1092,7 +1092,7 @@ The target that was set according to the timeline of my proposal was setting up 
 <section id="website-sections">
 <h3>Website Sections<a class="headerlink" href="#website-sections" title="Link to this heading">#</a></h3>
 <p>The website sections contain some identifiers like which page it belongs to and in which position it should be placed. The content body of the website section is written in markdown. To change the markdown to HTML, the <a class="reference external" href="https://pythonhosted.org/Markdown/">markdown</a> library is used. The model’s <code class="docutils literal notranslate"><span class="pre">save()</span></code> method is overridden so that each time it is edited, the new HTML is generated from the markdown. The HTML is filtered using the <a class="reference external" href="https://bleach.readthedocs.io/en/latest/">bleach</a> library.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">html_content</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">body_markdown</span><span class="p">,</span>
                                      <span class="n">extensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;codehilite&#39;</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
@@ -1106,7 +1106,7 @@ The target that was set according to the timeline of my proposal was setting up 
 </div>
 <p>There is a requirement of embedding YouTube videos in the markdown content of website sections. But allowing iframes in markdown would allow embedding any kind of content from any arbitrary source. So I wrote a custom template filter for converting the YouTube links into embed codes. This also makes it simple to embed the videos as only pasting the URL is all that the user needs to do.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@register</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;youtube_embed_url&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">youtube_embed_url</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">youtube_embed_url</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="n">exp</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;((http|https)\:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9]*))&#39;</span><span class="p">)</span>
     <span class="n">matches</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="n">processed_str</span> <span class="o">=</span> <span class="n">value</span>

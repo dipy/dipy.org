@@ -29,7 +29,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=2cbe46a9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -1081,7 +1081,7 @@ I had initiated the review of the PR this week. I hope to get it merged ASAP, ma
 <p>While fixing the PRs, these were some of my thoughts</p>
 <p id="id1">1. <a class="reference external" href="https://github.com/dipy/dipy/pull/3257">PR #3257</a>
 - Most of the issues were fixed thanks to the review by my mentor. One clarification still remains about the <strong>fit_method</strong>. I was receiving an error as mentioned below, to fix it I applied an <cite>else</cite> clause for the <cite>fit_method</cite> in <cite>FreeWaterTensorModel</cite>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_fwdti_singlevoxel</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_fwdti_singlevoxel</span><span class="p">():</span>
     <span class="c1"># Simulation when water contamination is added</span>
     <span class="n">gtf</span> <span class="o">=</span> <span class="mf">0.44444</span>  <span class="c1"># ground truth volume fraction</span>
     <span class="n">mevals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0017</span><span class="p">,</span> <span class="mf">0.0003</span><span class="p">,</span> <span class="mf">0.0003</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.003</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">]])</span>
@@ -1115,7 +1115,7 @@ I had initiated the review of the PR this week. I hope to get it merged ASAP, ma
 
     <span class="nd">@multi_voxel_fit</span>
     <span class="nd">@warning_for_keywords</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit method of the free water elimination DTI model class</span>
 
 <span class="sd">        Parameters</span>

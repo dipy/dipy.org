@@ -29,7 +29,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=2cbe46a9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -1090,7 +1090,7 @@ document.write(`
 <li><p>When the intersection angle is 90 degrees, the first diffusion eigenvalue is equal to the second eigenvalue.</p></li>
 </ol>
 <p>Based on the work done by Tabesh et al., 2011, these MK estimation singularities can be mathematically resolved by detecting the problematic cases and using specific formulas for each detected situation. In the previous version of my codes, I was detecting the cases where two or three eigenvalues were equal by analyzing if their differences were three orders of magnitude larger than system’s epsilon. For example, to automatically check if the first eigenvalue equals the second eigenvalue, the following lines of code were used:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">er</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">L1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">eps</span> <span class="o">*</span> <span class="mf">1e3</span>
 <span class="n">cond1</span> <span class="o">=</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">L1</span> <span class="o">-</span> <span class="n">L2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">er</span><span class="p">)</span>
 </pre></div>

@@ -29,7 +29,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dipy.css?v=2cbe46a9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -1096,7 +1096,7 @@ document.write(`
 <section id="documentation-integration">
 <h2>Documentation Integration<a class="headerlink" href="#documentation-integration" title="Link to this heading">#</a></h2>
 <p>The documentations are now generated and uploaded to the dipy_web repository using a script. Previously html version of the docs were built, but this script builds the json docs that allows us to integrate them within the django templates very easily. Then using github API the list of documentations are synced with the django website models.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_documentations</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">update_documentations</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check list of documentations from gh-pages branches of the dipy_web</span>
 <span class="sd">    repository and update the database (DocumentationLink model).</span>
@@ -1134,7 +1134,7 @@ document.write(`
 </pre></div>
 </div>
 <p>Now the admins with proper permissions can select which documentation versions to display in the website. Those selected documentations are displayed in the navbar dropdown menu. This is done by passing the selected docs in the context in a context preprocessor.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nav_pages_processor</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">nav_pages_processor</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">pages</span> <span class="o">=</span> <span class="n">WebsiteSection</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">section_type</span><span class="o">=</span><span class="s2">&quot;page&quot;</span><span class="p">,</span>
                                           <span class="n">show_in_nav</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">all_doc_displayed</span> <span class="o">=</span> <span class="n">DocumentationLink</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">displayed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1143,7 +1143,7 @@ document.write(`
 </div>
 <p>Now when a user requests a documentation, the doc in json format is retrieved from github parsed and the urls in the docs are processed so that they work properly within the django site. Then the docs are rendered in a template.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@cache_page</span><span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># cache the view for 30 minutes</span>
-<span class="k">def</span> <span class="nf">documentation</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">documentation</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
     <span class="n">context</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">repo_info</span> <span class="o">=</span> <span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">DOCUMENTATION_REPO_OWNER</span><span class="p">,</span>
                  <span class="n">settings</span><span class="o">.</span><span class="n">DOCUMENTATION_REPO_NAME</span><span class="p">)</span>
@@ -1195,7 +1195,7 @@ document.write(`
 <p>For now we are using local memory cache, but in production it will be replaced with memcached.</p>
 <p>We are keeping the documentation view and the main page view in cache for 30 minutes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@cache_page</span><span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># cache the view for 30 minutes</span>
-<span class="k">def</span> <span class="nf">documentation</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">documentation</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
     <span class="n">context</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">repo_info</span> <span class="o">=</span> <span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">DOCUMENTATION_REPO_OWNER</span><span class="p">,</span>
                  <span class="n">settings</span><span class="o">.</span><span class="n">DOCUMENTATION_REPO_NAME</span><span class="p">)</span>
@@ -1204,7 +1204,7 @@ document.write(`
 </pre></div>
 </div>
 <p>But this creates a problem. When we change some section or news or publications in the admin panel then the changes are not reflected in the views and we need to wait for 30 minutes to see the changes. In order to solve the issue the cache is cleared whenever some changes are made to the sections, news etc.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NewsPost</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">NewsPost</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
     <span class="n">body_markdown</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">body_html</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">editable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1213,7 +1213,7 @@ document.write(`
     <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">editable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">modified</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">editable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">html_content</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">body_markdown</span><span class="p">,</span>
                                          <span class="n">extensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;codehilite&#39;</span><span class="p">])</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
@@ -1228,7 +1228,7 @@ document.write(`
         <span class="c1"># Call the &quot;real&quot; save() method.</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">NewsPost</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
 </pre></div>
 </div>
@@ -1238,7 +1238,7 @@ document.write(`
 <p>One of the most important steps for SEO is adding proper meta tags in every page of the website. These also include the open graph tags and the twitter card tags so that when a page is shared in a social network, it is properly rendered with the correct title, description, thumbnail etc.</p>
 <p>The django-meta app provides very useful template that can be included to render the meta tags properly provided a meta object is passed in the context. Ideally all pages should have its unique meta tags, but there must be a fallback so that if no meta attributes are specified then some default values are used.</p>
 <p>So in order to generate the meta objects we have this function:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_meta_tags_dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_TITLE</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_meta_tags_dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_TITLE</span><span class="p">,</span>
                        <span class="n">description</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_DESCRIPTION</span><span class="p">,</span>
                        <span class="n">keywords</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_KEYWORDS</span><span class="p">,</span>
                        <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_LOGO_URL</span><span class="p">,</span>
@@ -1302,7 +1302,7 @@ document.write(`
 <section id="google-analytics">
 <h2>Google Analytics<a class="headerlink" href="#google-analytics" title="Link to this heading">#</a></h2>
 <p>Adding google analytics is very simple. All we need to do is put a code snippet in every template or just the base template that is extended by all other templates. But in order to make it more easy to customize, I have kept it as a context preprocessor that will take the Tracking ID from settings.py and generate the code snippet in the templates.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">google_analytics_processor</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">google_analytics_processor</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">tracking_id</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">GOOGLE_ANALYTICS_TRACKING_ID</span>
     <span class="n">tracking_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;script&gt;</span>
 <span class="s2">      (function(i,s,o,g,r,a,m){i[&#39;GoogleAnalyticsObject&#39;]=r;i[r]=i[r]||function(){</span>
