@@ -57,4 +57,4 @@ Many thanks to my mentor for teaching me how to work with nose python testing. I
 
 4) Next steps
 
-After merging the DKI simulations to Dipy's master brunch, I will start working on the DKI reconstruction modules, based on some preliminary preparation work previously submitted by other dipy contributors. At the end of the week, I intend to finish the first part of the DKI reconstruction modules - the KT estimation from diffusion-weighted signals. For this I will implement the standard ordinary linear least-squares (OLS) solution of DKI.
+After merging the DKI simulations to Dipy's master branch, I will start working on the DKI reconstruction modules, based on some preliminary preparation work previously submitted by other dipy contributors. At the end of the week, I intend to finish the first part of the DKI reconstruction modules - the KT estimation from diffusion-weighted signals. For this I will implement the standard ordinary linear least-squares (OLS) solution of DKI.
