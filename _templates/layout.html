@@ -78,15 +78,4 @@
 <script type="text/javascript">$('#searchbox-site').show(0);</script>
 {%- endif %}
 
-{# The sidebarsearch block is the last one available in the default sidebar()
-   macro, so the only way to add something to the bottom of the sidebar is to
-   put it here, at the end of the sidebarsearch block (before it closes).
-   #}
-<script>
-     ((window.gitter = {}).chat = {}).options = {
-       room: 'dipy/dipy'
-     };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
 {%- endblock %}
