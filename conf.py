@@ -22,8 +22,8 @@ except ImportError:
 
 from packaging.version import Version
 import sphinx
-if Version(sphinx.__version__) < Version('6') or Version(sphinx.__version__) >= Version('8'):
-    raise RuntimeError('Needs 8 > Sphinx Version >= 6  for numpydoc to work correctly')
+if Version(sphinx.__version__) < Version('7'):
+    raise RuntimeError('Sphinx Version >= 7  for numpydoc to work correctly')
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -31,7 +31,7 @@ if Version(sphinx.__version__) < Version('6') or Version(sphinx.__version__) >= 
 sys.path.append(os.path.abspath('sphinxext'))
 
 # -- General configuration -----------------------------------------------------
-rel={}
+rel = {}
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['sphinx.ext.autodoc',
