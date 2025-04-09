@@ -181,8 +181,18 @@ html_theme_options = {
      {
         "name": "Workshops",
         "sections": [
+          # {
+          #   "name": "Upcoming",
+          #   "children": [
+          #     {
+          #       "name": "DIPY Workshop 2026",
+          #       "url": "#",
+          #       "link_type": "external"
+          #     }
+          #   ]
+          # },
           {
-            "name": "Upcoming",
+            "name": "Latest",
             "children": [
               {
                 "name": "DIPY Workshop 2025",
@@ -192,18 +202,13 @@ html_theme_options = {
             ]
           },
           {
-            "name": "Latest",
+            "name": "Past",
             "children": [
               {
                 "name": "DIPY Workshop 2024",
                 "url": "https://workshop.dipy.org/workshops/dipy-workshop-2024",
                 "link_type": "external"
-              }
-            ]
-          },
-          {
-            "name": "Past",
-            "children": [
+              },
               {
                 "name": "DIPY Workshop 2023",
                 "url": "https://workshop.dipy.org/workshops/dipy-workshop-2023",
