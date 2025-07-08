@@ -40,6 +40,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.ifconfig',
               'sphinx.ext.githubpages',
               'sphinx_reredirects',
+              'sphinx_sitemap',
               'math_dollar',  # has to go before numpydoc
               'github',
               'ablog',
@@ -546,6 +547,9 @@ html_use_modindex = False
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'dipydoc'
 
+# -- Sitemap options --------------------------------------------------
+sitemap_locales = [None]
+sitemap_url_scheme = "{link}"
 
 # -- Options for LaTeX output --------------------------------------------------
 
