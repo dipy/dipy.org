@@ -182,57 +182,62 @@ html_theme_options = {
      {
         "name": "Workshops",
         "sections": [
+          {
+            "name": "Upcoming",
+            "children": [
+              {
+                "name": "DIPY Workshop 2026",
+                "url": "https://workshop.dipy.org",
+                "link_type": "external"
+              }
+            ]
+          },
           # {
-          #   "name": "Upcoming",
+          #   "name": "Latest",
           #   "children": [
           #     {
-          #       "name": "DIPY Workshop 2026",
-          #       "url": "#",
+          #       "name": "DIPY Workshop 2025",
+          #       "url": "https://workshop.dipy.org/workshops/dipy-workshop-2025",
           #       "link_type": "external"
           #     }
           #   ]
           # },
           {
-            "name": "Latest",
-            "children": [
-              {
-                "name": "DIPY Workshop 2025",
-                "url": "https://workshop.dipy.org/workshops/dipy-workshop-2025",
-                "link_type": "external"
-              }
-            ]
-          },
-          {
             "name": "Past",
             "children": [
               {
+                "name": "DIPY Workshop 2025",
+                "url": "https://workshop.dipy.org/2025",
+                "link_type": "external"
+              },
+              {
                 "name": "DIPY Workshop 2024",
-                "url": "https://workshop.dipy.org/workshops/dipy-workshop-2024",
+                "url": "https://workshop.dipy.org/2024",
                 "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2023",
-                "url": "https://workshop.dipy.org/workshops/dipy-workshop-2023",
+                "url": "https://workshop.dipy.org/2023",
                 "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2022",
-                "url": "https://workshop.dipy.org/workshops/dipy-workshop-2022",
+                "url": "https://workshop.dipy.org/2022",
                 "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2021",
-                "url": "https://workshop.dipy.org/workshops/dipy-workshop-2021",
+                "url": "https://workshop.dipy.org/2021",
                 "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2020",
-                "url": "https://workshop.dipy.org/workshops/dipy-workshop-2020",
+                "url": "https://workshop.dipy.org/2020",
                 "link_type": "external"
               },
               {
                 "name": "DIPY Workshop 2019",
-                "url": "https://workshop.dipy.org/workshops/dipy-workshop-2019",
+                "url": "https://workshop.dipy.org/2019",
                 "link_type": "external"
               },
             ]
@@ -597,14 +602,14 @@ redirects = {
   "cli-tutorials": "https://docs.dipy.org/stable/interfaces/index.html",
   "installations": "https://docs.dipy.org/stable/user_guide/installation.html#installation",
   "installations-dev": "https://docs.dipy.org/stable/devel/installation_from_source.html#installation-from-source",
-  "workshop/latest": "https://workshop.dipy.org/workshops/dipy-workshop-2024",
-  "workshop/": "https://workshop.dipy.org/workshops/",
-  "workshop/index": "https://workshop.dipy.org/workshops/",
-  "workshops/dipy-workshop-2024": "https://workshop.dipy.org/workshops/dipy-workshop-2024",
-  "workshops/dipy-workshop-2023": "https://workshop.dipy.org/workshops/dipy-workshop-2023",
-  "workshops/dipy-workshop-2022": "https://workshop.dipy.org/workshops/dipy-workshop-2022",
-  "workshops/dipy-workshop-2021": "https://workshop.dipy.org/workshops/dipy-workshop-2021",
-  "workshops/dipy-workshop-2020": "https://workshop.dipy.org/workshops/dipy-workshop-2020",
-  "workshops/dipy-workshop-2019": "https://workshop.dipy.org/workshops/dipy-workshop-2019",
+  "workshop/latest": "https://workshop.dipy.org/",
+  "workshop/": "https://workshop.dipy.org/",
+  "workshop/index": "https://workshop.dipy.org/",
+  "workshops/dipy-workshop-2024": "https://workshop.dipy.org/2024",
+  "workshops/dipy-workshop-2023": "https://workshop.dipy.org/2023",
+  "workshops/dipy-workshop-2022": "https://workshop.dipy.org/2022",
+  "workshops/dipy-workshop-2021": "https://workshop.dipy.org/2021",
+  "workshops/dipy-workshop-2020": "https://workshop.dipy.org/2020",
+  "workshops/dipy-workshop-2019": "https://workshop.dipy.org/2019",
 }
 
