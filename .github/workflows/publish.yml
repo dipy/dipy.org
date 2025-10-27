@@ -37,7 +37,7 @@ jobs:
 
       - name: Upload the PULL REQUEST number
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: pull_request_number
           path: ./pull_request_number.txt
@@ -60,7 +60,7 @@ jobs:
             make -C . html
 
       - name: Upload HTML
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
             name: DocumentationHTML
             path: _build/html/
