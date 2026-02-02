@@ -274,11 +274,6 @@ html_theme_options = {
               "name": "Help",
               "children": [
                   {
-                    "name": "Live Chat (Gitter)",
-                    "url": "https://app.gitter.im/#/room/%23dipy_dipy:gitter.im",
-                    "link_type": "external"
-                  },
-                  {
                     "name": "Github Discussions",
                     "url": "https://github.com/dipy/dipy/discussions",
                     "link_type": "external"
@@ -599,6 +594,7 @@ redirects = {
   "contributors": "https://dipy.org/team.html",
   "developers": "https://dipy.org/team.html",
   "tutorials": "https://docs.dipy.org/stable/examples_built/index",
+  "tutorial": "https://docs.dipy.org/stable/examples_built/index",
   "cli-tutorials": "https://docs.dipy.org/stable/interfaces/index.html",
   "installations": "https://docs.dipy.org/stable/user_guide/installation.html#installation",
   "installations-dev": "https://docs.dipy.org/stable/devel/installation_from_source.html#installation-from-source",
@@ -612,4 +608,3 @@ redirects = {
   "workshops/dipy-workshop-2020": "https://workshop.dipy.org/2020",
   "workshops/dipy-workshop-2019": "https://workshop.dipy.org/2019",
 }
-
