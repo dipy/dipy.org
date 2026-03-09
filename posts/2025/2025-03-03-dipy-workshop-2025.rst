@@ -1,0 +1,38 @@
+:orphan:
+
+=======================================================
+Secure Your Spot for the Online 2025 DIPY Workshop!
+=======================================================
+
+:date: 2025-03-03
+:author: Eleftherios Garyfallidis
+:category: Workshop
+
+Dear All,
+
+The 2025 DIPY Workshop is fast approaching! We are excited to offer a unique opportunity for you to join us online from **March 17 to March 21, 2025**. 
+
+This year’s workshop features an in-depth focus on AI applications in advanced imaging, alongside hands-on sessions with the latest tools and techniques for diffusion and structural MRI analysis.
+
+Keynote Speakers
+================
+* **Prof. Simon Warfield** (Harvard Medical School)
+* **Prof. Alexandra Badea** (Duke University)
+* **Prof. Franco Pestilli** (University of Texas at Austin)
+* **Prof. Marco Palombo** (Cardiff University)
+* **Prof. Julien Cohen-Adad** (Polytechnique Montréal)
+* **Prof. Aris Sotiras** (Washington University)
+* **Dr. Maeliss Jallais** (Cardiff University)
+
+What You’ll Gain
+================
+* **Ultra-fast Tracking APIs:** A deep dive into our new tracking APIs (CPU & GPU).
+* **Cutting-edge Presentations:** Harmonization, Denoising, Reconstruction, and Tractography.
+* **Hands-on Training:** Guided sessions working through real-world challenges.
+* **Certification:** Receive a Certificate of Attendance.
+
+Registration
+============
+Click here to `Register Now <http://workshop.dipy.org>`_ and secure your spot!
+
+*Special international discounts are available for participants from regions where the USD conversion rate is a barrier. Please reach out to workshop@dipy.org for details.*
