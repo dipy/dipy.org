@@ -1,0 +1,44 @@
+====================================
+Happy 2025 with DIPY 1.10.0 is out!
+====================================
+
+:date: 2024-12-12
+:author: Eleftherios Garyfallidis
+:category: Release
+
+Hello and Happy 2025 to all! 
+
+We are excited to announce a new release of DIPY: DIPY 1.10.0! 
+The release 1.10.0 received contributions from 28 developers. We closed 258 issues and merged 187 pull requests.
+
+Highlights of 1.10.0 release include:
+=====================================
+
+* **NF: Patch2Self3** - Memory less denoising for dMRI is now available.
+* **NF: Fiber density and spread** from ODF using Bingham distributions method added.
+* **NF: Iteratively reweighted least squares** for robust fitting of diffusion models added.
+* **NF: NDC** - Neighboring DWI Correlation quality metric added.
+* **NF: DAM** - DWI-based tissue classification method added.
+* **Parallel Backends:** New support for Ray, Joblib, and Dask for fitting reconstruction.
+* **RF:** Deprecation of Tensorflow support; PyTorch is now the default.
+* **Style:** Adoption of ruff for automatic style enforcement and transition to f-strings.
+
+Installation
+============
+
+To upgrade or install DIPY, run:
+
+.. code-block:: bash
+
+    pip install --upgrade dipy
+
+This version depends on nibabel (3.0.0+) and FURY (0.12.0+) for visualization.
+
+Announcements
+=============
+
+Registration for the online **DIPY workshop 2025 (March 17-21)** is open! 
+The workshop will equip you with the skills and knowledge needed to master the latest techniques in structural and diffusion imaging. 
+See the program and `register here <https://workshop.dipy.org>`_.
+
+Please support us by citing DIPY in your papers using the following DOI: `10.3389/fninf.2014.00008 <https://www.ncbi.nlm.nih.gov/pubmed/24600385>`_.
