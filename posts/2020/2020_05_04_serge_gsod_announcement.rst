@@ -37,11 +37,11 @@ About our Documentation
 +===================+================================================+================================================+
 | Latest version    | https://dipy.org                               | https://fury.gl                                |
 +-------------------+------------------------------------------------+------------------------------------------------+
-| tutorials         | https://dipy.org/tutorials/                    | http://fury.gl/latest/auto_tutorials/index.html|
+| tutorials         | https://dipy.org/tutorials                     | http://fury.gl/latest/auto_tutorials/index.html|
 +-------------------+------------------------------------------------+------------------------------------------------+
-| reference guide   | https://dipy.org/documentation/latest/reference| http://fury.gl/latest/reference/index.html     |
+| reference guide   | https://docs.dipy.org/stable/reference/  | http://fury.gl/latest/reference/index.html     |
 +-------------------+------------------------------------------------+------------------------------------------------+
-| developer docs    | https://dipy.org/documentation/latest/devel/   | http://fury.gl/latest/symlink/contributing.html|
+| developer docs    | https://docs.dipy.org/stable/devel/            | http://fury.gl/latest/symlink/contributing.html|
 +-------------------+------------------------------------------------+------------------------------------------------+
 | GitHub repository | https://github.com/dipy/dipy                   | https://github.com/fury-gl/fury                |
 +-------------------+------------------------------------------------+------------------------------------------------+
@@ -84,7 +84,7 @@ Project idea 1: High-level restructuring and end-user focus
 
 - Improving the structure and content of https://dipy.org/
 - Reviewing and improving the structure of the documentation
-- Producing a roadmap or list of work items for engaging the community in further documentation work 
+- Producing a roadmap or list of work items for engaging the community in further documentation work
 - Rewriting the User and Developer Guides.
 - Adding non-textual images (illustrations, animations, graphics) to enhance the textual explanations
 - Improving consistency across the documentation.
