@@ -314,6 +314,10 @@ html_theme_options = {
             "url": "https://docs.dipy.org/stable/glossary",
             "link_type": "inter"
           },
+          {
+            "name": "Professional Support",
+            "url": "support",
+          },
         ]
      },
   ],
