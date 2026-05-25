@@ -20,7 +20,7 @@ have been doing during the Community Bonding period.
 About Me
 --------
 
-I am a Computer Vision Researcher in Medical Imaging at PORMISE -
+I am a Computer Vision Researcher in Medical Imaging at PROMISE -
 LAIMBIO, the medical imaging lab at Universidad Rey Juan Carlos in
 Madrid, Spain. Before that, I studied at Universidad de Sevilla, where I
 completed a double Bachelor's Degree in Mathematics and Computer Science,
