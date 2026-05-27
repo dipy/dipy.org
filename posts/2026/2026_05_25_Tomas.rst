@@ -1,0 +1,129 @@
+Starting My GSoC Journey with DIPY
+==================================
+
+.. post:: May 25 2026
+    :author: Tomas Guija-Valiente
+    :tags: google
+    :category: gsoc
+
+Hello everyone!
+
+My name is Tomás Guija Valiente, and I am excited to share that I have
+been selected as a `Google Summer of Code <https://summerofcode.withgoogle.com/>`_ contributor with `DIPY <https://github.com/dipy/dipy>`_ under the `Python Software Foundation <https://www.python.org/psf-landing/>`_. Over the
+next few months, I will be working on improving DIPY's image registration
+tools by adding new similarity metrics, with a special focus on Mutual
+Information for deformable registration.
+
+This first post is a short introduction to me, the project, and what I
+have been doing during the Community Bonding period.
+
+About Me
+--------
+
+I am a Computer Vision Researcher in Medical Imaging at `PROMISE -
+LAIMBIO <https://www.linkedin.com/company/promise-laimbio/>`_, the medical imaging lab at `Universidad Rey Juan Carlos <https://www.urjc.es/>`_ in
+Madrid, Spain. Before that, I studied at `Universidad de Sevilla <https://www.us.es/>`_, where I
+completed a double Bachelor's Degree in Mathematics and Computer Science,
+and later earned a Master's Degree in Artificial Intelligence at
+`Universidad Politecnica de Madrid <https://www.upm.es/>`_.
+
+During my Master's, I became increasingly interested in open source and
+research. That eventually led me to my current work, where I focus on
+deep learning techniques for medical image processing and generative
+methods. GSoC felt like a very natural next step: it combines open source,
+medical imaging, scientific software, and the chance to learn from a
+strong technical community.
+
+My selected project is titled `**Adding New Similarity Metrics for DIPY's
+Image Registration Frameworks** <https://summerofcode.withgoogle.com/programs/2026/projects/wtuoFjpU>`_ (see full details `here <https://github.com/satwiksps/GSoC_archive_2026/blob/main/Python%20Software%20Foundation/Accepted/DIPY.pdf>`_). It is planned as a short GSoC project,
+with an initial scope of 90 hours and an expected end date near the
+beginning of August. If needed, the project scope may be expanded as the
+work progresses.
+
+Community Bonding Period
+------------------------
+
+The Community Bonding period has been a great way to enter the project
+step by step. These first weeks were dedicated to meeting mentors,
+understanding the project goals more clearly, getting familiar with
+DIPY's development workflow, and turning the initial proposal into a more
+concrete implementation plan.
+
+The first meetings were a warm welcome for both me and my colleague
+`Medha <https://github.com/medha-14>`_, who will be contributing to `FURY <https://github.com/fury-gl/fury>`_, a closely related project.
+We had time to introduce ourselves, discuss expectations,
+ask questions, and of course start looking at code.
+
+Project Overview
+----------------
+
+The main goal of my project is to implement a new similarity metric for
+deformable medical image registration in DIPY. In particular, I will work
+on **Mutual Information**, a metric that is especially useful for
+multimodal registration problems.
+
+DIPY already includes a Mutual Information implementation for affine
+registration. However, deformable registration currently relies on other
+metrics. Adding Mutual Information to this part of the registration
+framework could make DIPY more flexible for real medical imaging
+workflows, where images from different modalities often need to be
+aligned accurately.
+
+Alongside the main implementation, I also plan to explore a few secondary
+goals:
+
+- Build a fair benchmark for comparing DIPY's registration framework
+  against other well-known open source solutions.
+- Use those comparisons to better understand the strengths, limitations,
+  and possible improvements of the current optimization strategies.
+- Continue working, if time allows, on my existing pull request:
+  `Cython implementation for the Python nested triple loop on localpca eig path <https://github.com/dipy/dipy/pull/3806>`_.
+
+Progress So Far
+---------------
+
+During the Community Bonding period, I started by studying the existing
+registration code and reading more about how DIPY currently structures
+its affine and deformable registration tools. I also began setting up a
+benchmarking workflow for SyN registration comparisons, which should help
+evaluate future changes in a more systematic way.
+
+In parallel, I have been thinking through the design of the Mutual
+Information implementation. One of the important questions is how to make
+the metric cleanly integrated with the current codebase while keeping the
+solution general enough to be useful beyond a single registration path.
+
+What's Next?
+------------
+
+As the Coding period begins, my next steps are:
+
+- Finalize the implementation plan for Mutual Information in deformable
+  registration.
+- Study existing approaches in DIPY and in other open source registration
+  tools to identify useful design patterns.
+- Start implementing the metric in a way that fits naturally into DIPY's
+  current registration framework.
+- Add tests and examples so the new functionality is easier to review,
+  maintain, and use.
+- Continue refining the benchmarking setup for fair comparisons.
+
+First Impressions
+-----------------
+
+These first weeks have already made me feel welcome in the DIPY
+community. I am especially grateful to `Serge <https://sergekoudoro.com/>`_ and `Atharva <https://atharva-shah-2298.github.io/>`_ for their trust,
+guidance, and encouragement as I get started.
+
+I am looking forward to learning a lot, contributing useful code, and
+sharing the process as the project develops. There is still plenty to
+discover, but that is exactly what makes the beginning of this journey so
+exciting.
+
+Find Me Online
+--------------
+
+- GitHub: `TomasGuija <https://github.com/TomasGuija>`_
+- LinkedIn: `Tomás Guija Valiente <https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/>`_
+
+Thank you for reading!
