@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Community Bonding and Week 1 Insights &#8212; Diffusion Imaging in Python  documentation</title>
+    <title>Starting My GSoC Journey with DIPY &#8212; Diffusion Imaging in Python  documentation</title>
   
   
   
@@ -56,9 +56,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_05_29_Shilpi_Week_0_1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2026/2026_05_25_Tomas';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2023/2023_05_29_Shilpi_Week_0_1.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2026/2026_05_25_Tomas.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -799,7 +799,7 @@ document.write(`
      
     <i class="fa fa-calendar"></i>
     
-    <span>29 May 2023</span>
+    <span>25 May 2026</span>
     
   </h2>
   <ul>
@@ -812,7 +812,7 @@ document.write(`
       
     </span>
      
-    <a href="../../blog/author/shilpi-prasad.html">Shilpi Prasad</a>
+    <a href="../../blog/author/tomas-guija-valiente.html">Tomas Guija-Valiente</a>
       
   </li>
      
@@ -850,12 +850,6 @@ document.write(`
   <ul>
      
     <li>
-      <a href="../2026/2026_05_25_Tomas.html">
-        25 May - Starting My GSoC Journey with DIPY
-      </a>
-    </li>
-    
-    <li>
       <a href="../2024/2024_08_22_inigo_final_report.html">
         22 August - <span class="gsoc-title">Google Summer of Code Final Work Product</span>
       </a>
@@ -876,6 +870,12 @@ document.write(`
     <li>
       <a href="../2024/2024_08_16_Inigo_week_12.html">
         16 August - Week 12 into GSoC 2024: Last weeks of the coding phase and admin stuff
+      </a>
+    </li>
+    
+    <li>
+      <a href="../2024/2024_08_12_kaustav_week_11.html">
+        12 August - My Journey Continues: Week 11 Progress with DIPY
       </a>
     </li>
     
@@ -1005,7 +1005,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Community...</li>
+    <li class="breadcrumb-item active" aria-current="page">Starting My...</li>
   </ul>
 </nav>
 </div>
@@ -1021,67 +1021,115 @@ document.write(`
                 
 <div id="searchbox"></div>
                 <article class="bd-article">
-                   <section id="community-bonding-and-week-1-insights">
-<h1>Community Bonding and Week 1 Insights<a class="headerlink" href="#community-bonding-and-week-1-insights" title="Link to this heading">#</a></h1>
-<section id="about-myself">
-<h2>About Myself<a class="headerlink" href="#about-myself" title="Link to this heading">#</a></h2>
-<p>Hey there! I’m Shilpi, a Computer Science and Engineering undergrad at Dayananda Sagar College of Engineering, Bangalore. I’m on track to grab my degree in 2024.
-My relationship with Python started just before I started college - got my hands dirty with this awesome Python Specialization course on Coursera.
-When it comes to what makes me tick, it’s all things tech. I mean, new technology always excites me. Ubuntu, with its fancy terminal and all, used to intimidate me at first, but now, I get a thrill out of using it to do even the simplest things.
-Up until 2nd year I used to do competitive programming and a bit of ML. But from 3rd year I’ve been into ML very seriously, doing several courses on ML as well solving ML problems on Kaggle. ML is very fun and I’ve done a few project on ML as well.
-Coding? Absolutely love it. It’s like, this is what I was meant to do, y’know? I got introduced to git and GitHub in my first year - was super curious about how the whole version control thing worked. And then, I stumbled upon the world of open source in my second year and made my first contribution to Tardis: (<a class="github reference external" href="https://github.com/tardis-sn/tardis/pull/1825">tardis-sn/tardis#1825</a>)
-Initially, I intended on doing GSoC during my second year but ended up stepping back for reasons. This time, though, I was fired up to send in a proposal to at least one organization in GSoC. And, well, here we are!</p>
+                   <section id="starting-my-gsoc-journey-with-dipy">
+<h1>Starting My GSoC Journey with DIPY<a class="headerlink" href="#starting-my-gsoc-journey-with-dipy" title="Link to this heading">#</a></h1>
+<p>Hello everyone!</p>
+<p>My name is Tomás Guija Valiente, and I am excited to share that I have
+been selected as a <a class="reference external" href="https://summerofcode.withgoogle.com/">Google Summer of Code</a> contributor with <a class="reference external" href="https://github.com/dipy/dipy">DIPY</a> under the <a class="reference external" href="https://www.python.org/psf-landing/">Python Software Foundation</a>. Over the
+next few months, I will be working on improving DIPY’s image registration
+tools by adding new similarity metrics, with a special focus on Mutual
+Information for deformable registration.</p>
+<p>This first post is a short introduction to me, the project, and what I
+have been doing during the Community Bonding period.</p>
+<section id="about-me">
+<h2>About Me<a class="headerlink" href="#about-me" title="Link to this heading">#</a></h2>
+<p>I am a Computer Vision Researcher in Medical Imaging at <a class="reference external" href="https://www.linkedin.com/company/promise-laimbio/">PROMISE -
+LAIMBIO</a>, the medical imaging lab at <a class="reference external" href="https://www.urjc.es/">Universidad Rey Juan Carlos</a> in
+Madrid, Spain. Before that, I studied at <a class="reference external" href="https://www.us.es/">Universidad de Sevilla</a>, where I
+completed a double Bachelor’s Degree in Mathematics and Computer Science,
+and later earned a Master’s Degree in Artificial Intelligence at
+<a class="reference external" href="https://www.upm.es/">Universidad Politecnica de Madrid</a>.</p>
+<p>During my Master’s, I became increasingly interested in open source and
+research. That eventually led me to my current work, where I focus on
+deep learning techniques for medical image processing and generative
+methods. GSoC felt like a very natural next step: it combines open source,
+medical imaging, scientific software, and the chance to learn from a
+strong technical community.</p>
+<p>My selected project is titled <a class="reference external" href="https://summerofcode.withgoogle.com/programs/2026/projects/wtuoFjpU">**Adding New Similarity Metrics for DIPY’s
+Image Registration Frameworks**</a> (see full details <a class="reference external" href="https://github.com/satwiksps/GSoC_archive_2026/blob/main/Python%20Software%20Foundation/Accepted/DIPY.pdf">here</a>). It is planned as a short GSoC project,
+with an initial scope of 90 hours and an expected end date near the
+beginning of August. If needed, the project scope may be expanded as the
+work progresses.</p>
 </section>
-<section id="intro-to-open-source-and-gsoc">
-<h2>Intro to Open-Source and GSoC<a class="headerlink" href="#intro-to-open-source-and-gsoc" title="Link to this heading">#</a></h2>
-<p>So, I started off finding out about GSoC - how many hours do selected folks put in, the kind of projects people usually tackle, and all that stuff. To get a handle on what they want in a proposal, I turned to some successful ones from previous years. Really gave me an idea of the kind of stuff they expect you to bring to the table.
-Trying to find the organization that’d go with my skill set, I stumbled upon Python Software Foundation, and I was like, “This is it!”. And under PSF, there was DIPY.
-Diving into DIPY’s docs was a breeze as they’ve got it so well put together that I managed to get my head around a completely new topic, “Diffusion MRI”, just by going through their introductory docs and a bit of gpt.
-While exploring DIPY, I noticed this issue that needed a new feature. It took a good bit of reading to really understand what they were looking for and how to actually build that feature. And then, I submitted my first PR (<a class="reference external" href="https://github.com/dipy/dipy/pull/2749">check it out here</a>)! Getting it merged wasn’t exactly easy - there was a lot of room for improvement up in my code, but honestly, I feel like it’s all part of the learning curve.
-I was a bit of a latecomer to GSoC, so I didn’t have much time to make up a ton of PRs. Plus, by the time I’d submitted my first PR, the proposal submission period had already begun. So, I focused all my energy on increasing my knowledge on the topic and polishing my proposal. Plus, I’d wanted to get my proposal reviewed at least once before I submitted it.</p>
-<p>Code contributions:</p>
-<ol class="arabic simple">
-<li><p>[<a class="github reference external" href="https://github.com/dipy/dipy/pull/2749">dipy/dipy#2749</a>]</p></li>
-</ol>
+<section id="community-bonding-period">
+<h2>Community Bonding Period<a class="headerlink" href="#community-bonding-period" title="Link to this heading">#</a></h2>
+<p>The Community Bonding period has been a great way to enter the project
+step by step. These first weeks were dedicated to meeting mentors,
+understanding the project goals more clearly, getting familiar with
+DIPY’s development workflow, and turning the initial proposal into a more
+concrete implementation plan.</p>
+<p>The first meetings were a warm welcome for both me and my colleague
+<a class="reference external" href="https://github.com/medha-14">Medha</a>, who will be contributing to <a class="reference external" href="https://github.com/fury-gl/fury">FURY</a>, a closely related project.
+We had time to introduce ourselves, discuss expectations,
+ask questions, and of course start looking at code.</p>
 </section>
-<section id="the-day">
-<h2>The Day<a class="headerlink" href="#the-day" title="Link to this heading">#</a></h2>
-<p>May 4th: I woke up feeling like a nervous wreck. That interview with my organization? Let’s just say it didn’t go very well. Yet, I couldn’t help but hope for the best. The results were supposed to drop at 11:45pm, a moment I wasn’t exactly looking forward to.
-I tried logging into Google to check, but couldn’t. Too many people doing the same thing. I threw my hands up, gave up on the login battle, and got back to work, hoping to distract myself.
-Fast forward to 1:30am - I figured by now, the log-in rush should have calmed down. I gave it another shot and… I got in! I clicked over to the dashboard, and there it was. My project. Right there, listed under the Projects section. I had heard that if you get selected, your proposal shows up there.
-To confirm that it was actually happening, I picked my phone to check if I’d gotten any official email yet. And yes!! I’d gotten it at 12:49 am. I just hadn’t checked.
-I whooped, woke up my roomies, rushed to call my parents.
-Honestly, words can’t even begin to capture how I felt at that moment.
-Pure, undiluted joy, that’s what it was. My parents, surprisingly actually picked up my call. But the minute I told them I’d made the cut, they congratulated me. It was heck of a day, (^^).</p>
+<section id="project-overview">
+<h2>Project Overview<a class="headerlink" href="#project-overview" title="Link to this heading">#</a></h2>
+<p>The main goal of my project is to implement a new similarity metric for
+deformable medical image registration in DIPY. In particular, I will work
+on <strong>Mutual Information</strong>, a metric that is especially useful for
+multimodal registration problems.</p>
+<p>DIPY already includes a Mutual Information implementation for affine
+registration. However, deformable registration currently relies on other
+metrics. Adding Mutual Information to this part of the registration
+framework could make DIPY more flexible for real medical imaging
+workflows, where images from different modalities often need to be
+aligned accurately.</p>
+<p>Alongside the main implementation, I also plan to explore a few secondary
+goals:</p>
+<ul class="simple">
+<li><p>Build a fair benchmark for comparing DIPY’s registration framework
+against other well-known open source solutions.</p></li>
+<li><p>Use those comparisons to better understand the strengths, limitations,
+and possible improvements of the current optimization strategies.</p></li>
+<li><p>Continue working, if time allows, on my existing pull request:
+<a class="reference external" href="https://github.com/dipy/dipy/pull/3806">Cython implementation for the Python nested triple loop on localpca eig path</a>.</p></li>
+</ul>
 </section>
-<section id="what-i-did-this-week">
-<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
-<p>As this was my first week I majorly spent a lot of time knowing about the codebase of the organization. I also went through a couple of research papers of projects which have already been implemented to get information related to my branch.
-I’m currently in the middle of reading through the research paper, which is directly related to my project: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811920300926">here</a>
-I also went through some of the videos related to information on cti, a couple of them are: <a class="reference external" href="https://www.youtube.com/watch?v=bTFLGdbSi9M">this</a> and also, <a class="reference external" href="https://www.youtube.com/watch?v=2WtGl3YQou8&amp;list=PLRZ9VSqV-6srrTAcDh4JYwrlef2Zpjucw&amp;index=16">this</a>
-I also submitted <a class="reference external" href="https://github.com/dipy/dipy/pull/2813">this</a> PR. In this PR members of my organization are supposed to submit all the
-blogs.
-But mostly I spent a lot of time in implementing the already existing MultiTensor Simulation on my local system , and also completing the assignment which my mentor gave me.
-In this assignment, I was given a specific number of directions, ‘n’ and some steps on how to produce bvals and bvecs. I had to create <code class="docutils literal notranslate"><span class="pre">gtab1</span></code> and <code class="docutils literal notranslate"><span class="pre">gtab2</span></code>. and then taking <code class="docutils literal notranslate"><span class="pre">gtab1</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">gtab2</span></code> as input, I was supposed to create a function which would give output btensor i.e btens.
-The purpose of this assignment was to strengthen my knowledge on concepts I’ve already read and also to give me some coding experience, as this is critical in order for me to be able to implement the rest of my project.</p>
+<section id="progress-so-far">
+<h2>Progress So Far<a class="headerlink" href="#progress-so-far" title="Link to this heading">#</a></h2>
+<p>During the Community Bonding period, I started by studying the existing
+registration code and reading more about how DIPY currently structures
+its affine and deformable registration tools. I also began setting up a
+benchmarking workflow for SyN registration comparisons, which should help
+evaluate future changes in a more systematic way.</p>
+<p>In parallel, I have been thinking through the design of the Mutual
+Information implementation. One of the important questions is how to make
+the metric cleanly integrated with the current codebase while keeping the
+solution general enough to be useful beyond a single registration path.</p>
 </section>
-<section id="what-is-coming-up-next-week">
-<h2>What is coming up next Week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
-<p>These simulations were basically the first task of the proposal.
-So after the btensor I intend on producing the synthetic signals using the qti model (hint on how
-it is done in qti tests).
-make a figure similar to figure 1 of the 2021 CTI paper:
-<a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1002/mrm.28938">here</a></p>
+<section id="what-s-next">
+<h2>What’s Next?<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
+<p>As the Coding period begins, my next steps are:</p>
+<ul class="simple">
+<li><p>Finalize the implementation plan for Mutual Information in deformable
+registration.</p></li>
+<li><p>Study existing approaches in DIPY and in other open source registration
+tools to identify useful design patterns.</p></li>
+<li><p>Start implementing the metric in a way that fits naturally into DIPY’s
+current registration framework.</p></li>
+<li><p>Add tests and examples so the new functionality is easier to review,
+maintain, and use.</p></li>
+<li><p>Continue refining the benchmarking setup for fair comparisons.</p></li>
+</ul>
 </section>
-<section id="did-i-get-stuck-anywhere">
-<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
-<p>I got stuck while creating <a class="reference external" href="https://github.com/dipy/dipy/pull/2813">this</a> PR. I had to rebase a bunch of commits, and this was a new concept to me, so it took me a while to figure it out. Due to rebasing, I ended up creating a bunch of other commits, which made the commit history of this PR a mess. So, I had to learn about the concept of squashing the commits.</p>
-<p>I also got stuck a lot while trying to find out the perpendicular directions to the vectors used in <code class="docutils literal notranslate"><span class="pre">gtab1</span></code>. I was supposed to implement the following formula:</p>
-<a class="reference internal image-reference" href="../../_images/formula_.png"><img alt="formula cti gtab" src="../../_images/formula_.png" style="width: 400px;" />
-</a>
-<p>I had to spend a lot of time figuring out how to combine 3 vectors of shape (81, 3) to get V. And also working on the function which would give me the perpendicular vector to the vector in <code class="docutils literal notranslate"><span class="pre">gtab1</span></code>.</p>
-<p>I got a bunch of <code class="docutils literal notranslate"><span class="pre">ValueErrors</span></code> saying: could not broadcast input array from shape (3,3,1) into shape (3,3) and some <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> saying: shape mismatch: indexing arrays could not be broadcast together with shapes (81,) (3,1) (3,).</p>
-<p>I also had to experiment on how to concatenate different vectors to get the vector of the right shape, since there are a bunch of possible options while stacking, such as vstack, hstack, stack, etc.</p>
+<section id="first-impressions">
+<h2>First Impressions<a class="headerlink" href="#first-impressions" title="Link to this heading">#</a></h2>
+<p>These first weeks have already made me feel welcome in the DIPY
+community. I am especially grateful to <a class="reference external" href="https://sergekoudoro.com/">Serge</a> and <a class="reference external" href="https://atharva-shah-2298.github.io/">Atharva</a> for their trust,
+guidance, and encouragement as I get started.</p>
+<p>I am looking forward to learning a lot, contributing useful code, and
+sharing the process as the project develops. There is still plenty to
+discover, but that is exactly what makes the beginning of this journey so
+exciting.</p>
+</section>
+<section id="find-me-online">
+<h2>Find Me Online<a class="headerlink" href="#find-me-online" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>GitHub: <a class="reference external" href="https://github.com/TomasGuija">TomasGuija</a></p></li>
+<li><p>LinkedIn: <a class="reference external" href="https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/">Tomás Guija Valiente</a></p></li>
+</ul>
+<p>Thank you for reading!</p>
 </section>
 </section>
 
@@ -1090,23 +1138,16 @@ make a figure similar to figure 1 of the 2021 CTI paper:
 <div class="section ablog__prev-next">
   <span class="ablog__prev">
      
-    <a href="2023_05_19_vara_week0.html">
+    <a href="../2024/2024_08_22_inigo_final_report.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>Journey of GSOC application & acceptance : Week 0</span>
+      <span><span class="gsoc-title">Google Summer of Code Final Work Product</span></span>
     </a>
     
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-     
-    <a href="2023_05_29_vara_week1.html">
-      <span>Community bonding and Project kickstart : Week 1</span>
-      
-      <i class="fa fa-arrow-circle-right"></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1140,12 +1181,13 @@ make a figure similar to figure 1 of the 2021 CTI paper:
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-myself">About Myself</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-open-source-and-gsoc">Intro to Open-Source and GSoC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-day">The Day</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next Week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-me">About Me</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#community-bonding-period">Community Bonding Period</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-overview">Project Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#progress-so-far">Progress So Far</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">What’s Next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-impressions">First Impressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-me-online">Find Me Online</a></li>
 </ul>
   </nav></div>
 
