@@ -2,29 +2,49 @@
 
 .. _support:
 
-Professional Support & Services
-================================
+Support & Partnerships
+======================
 
-The following organizations offer professional services related to DIPY —
-including consulting, custom algorithm development, and training.
-They employ long-term DIPY contributors and have a proven track record
-in diffusion MRI research and software development.
-
-.. note::
-   This list is not exhaustive. Inclusion does not imply endorsement by the DIPY project.
-   If your organization offers DIPY-related services and employs active DIPY contributors,
-   please open a pull request on `dipy.org <https://github.com/dipy/dipy.org>`_.
+DIPY is an open-source project built and maintained by a community of researchers
+and developers. We welcome sponsorships, collaborations, and hiring opportunities
+that help sustain and grow the project.
 
 ----
 
-GRG — Garyfallidis Research Group
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sponsor Us
+----------
 
-| **Institution:** Indiana University
-| **Website:** https://grg.luddy.indiana.edu
-| **Services:** https://grg.luddy.indiana.edu/partnerships.html
+Want to support DIPY's development and ensure its long-term sustainability?
+Sponsorship helps fund maintenance, new features, documentation, and community events.
 
-Led by DIPY's founder, Eleftherios Garyfallidis. The group offers consulting,
-custom algorithm development, and hands-on DIPY workshop training.
-GRG members are core DIPY maintainers with deep expertise in diffusion MRI
-reconstruction, tractography, and machine learning pipelines.
+Contact us at `admins@dipy.org <mailto:admins@dipy.org>`_ to discuss sponsorship options.
+
+----
+
+Collaborate With Us
+-------------------
+
+Interested in a research collaboration involving diffusion MRI, tractography,
+or neuroimaging? DIPY contributors bring deep expertise in algorithm development,
+machine learning pipelines, and large-scale data processing.
+
+Reach out at `admins@dipy.org <mailto:admins@dipy.org>`_ to explore collaboration opportunities.
+
+----
+
+Hire Us
+-------
+
+Looking for expert consulting, custom algorithm development, or hands-on training
+with DIPY? Our team includes long-term contributors with proven track records in
+diffusion MRI research and software engineering.
+
+Get in touch at `admins@dipy.org <mailto:admins@dipy.org>`_ to discuss your needs.
+
+----
+
+Contact
+-------
+
+For all inquiries — sponsorship, collaboration, hiring, or general questions —
+email us at `admins@dipy.org <mailto:admins@dipy.org>`_.
