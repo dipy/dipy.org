@@ -6,6 +6,12 @@
 #link = "https://workshop.dipy.org"
 
 [[carousel_slides]]
+caption = "BundleWarp, Medical Image Analysis 2026"
+description = ""
+img = "../bundlewarp.png"
+link = "https://www.sciencedirect.com/science/article/pii/S1361841526001830"
+
+[[carousel_slides]]
 caption = "Patch2Self2, CVPR 2024"
 description = ""
 img = "https://raw.githubusercontent.com/dipy/dipy_data/a45bc26dc8d2225ffca494d7f38f05c3cc8dbf1c/P2S2.png"
