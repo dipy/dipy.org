@@ -1,0 +1,101 @@
+First Coding Week: Benchmarking and MI Study
+============================================
+
+.. post:: June 01 2026
+    :author: Tomas Guija-Valiente
+    :tags: google
+    :category: gsoc
+
+Hello everyone once again!
+
+After the Community Bonding period, it is time to start coding and
+implementing. This was a very busy week for me, since I attended the
+`CEIG 2026 <https://eurographics.es/CEIG26/>`_ conference to present my
+paper, `DesigNet: Learning to draw vector graphics as designers do <https://www.sciencedirect.com/science/article/abs/pii/S0097849326000981>`_,
+which I developed during my Master's thesis. Still, I found some time to
+get things started.
+
+My main goals for this past week, as well as for the next one, are:
+
+- Continue studying how to create a fair benchmarking baseline between
+  DIPY and other registration frameworks.
+- Study DIPY's Mutual Information implementation and compare it with the
+  SyN-compatible Mutual Information implementation available in ANTs/ITK
+  to further refine the implementation plan.
+- Open a new PR I to fix a potential bug in DIPY's
+  CCMetric.
+
+Benchmarking strategy
+---------------------
+
+While studying the codebases of DIPY and other frameworks, I compared
+their registration interfaces in order to build a fair parameter-matching
+strategy for running SyN registration algorithms under conditions that
+are as similar as possible. In particular, I looked at
+`ANTs <https://github.com/ANTsX/ANTs>`_ and
+`ITK <https://github.com/InsightSoftwareConsortium/ITK>`_, focusing on
+how their interfaces work.
+
+I built a first approximation of this benchmarking strategy in a new
+branch of my DIPY fork, named
+`registration-benchmark <https://github.com/TomasGuija/dipy/tree/registration-benchmark>`_.
+There is still work to do, but the current pipeline looks like a strong
+starting point. The branch is documented with Markdown files explaining
+the data I am currently using
+(`OASIS 2 <https://sites.wustl.edu/oasisbrains/home/oasis-2/>`_), the
+preprocessing steps, including skull stripping with
+`SynthSeg <https://github.com/BBillot/SynthSeg>`_ and rigid
+prealignment, and an in-depth study of both interfaces.
+
+
+MI Study
+--------
+
+I also carried out an in-depth study of the Mutual Information
+implementation in both frameworks, which helped me begin to formalize an
+implementation plan for DIPY's SyN registration.
+
+In principle, the short-term GSoC scope will include implementing Mutual
+Information as a new ``SimilarityMetric`` class, reusing as much of the
+existing code as possible. It will also involve refactoring any
+global-deformation assumptions made during the computation of derivatives
+with respect to the deformation parameters.
+
+New PR
+------
+
+I also opened a new PR named
+`Update CCMetric energy after backward step <https://github.com/dipy/dipy/pull/4047>`_.
+In this fix, I store the energy computed during the
+``CCMetric.compute_backward()`` call in the ``self.energy`` variable. The
+value was previously being saved in a local variable inside the function,
+so the class-level energy value was not being updated correctly.
+
+Additionally, I added a couple of tests to make sure the energy values
+from both ``CCMetric`` and ``SSDMetric`` are updated properly after the
+backward and forward steps.
+
+
+What's Next?
+------------
+
+For the next week, during which I expect to have more time, I have the
+following goals:
+
+- Finalize the implementation plan for Mutual Information in deformable
+  registration.
+- Potentially begin coding the new Mutual Information implementation, or
+  at least a first approximation.
+- Run several benchmarking experiments to compare optimization outcomes
+  against other frameworks, independently of the metric used during
+  optimization.
+
+
+
+Find Me Online
+--------------
+
+- GitHub: `TomasGuija <https://github.com/TomasGuija>`_
+- LinkedIn: `Tomás Guija Valiente <https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/>`_
+
+Thank you very much for reading! See you next week.

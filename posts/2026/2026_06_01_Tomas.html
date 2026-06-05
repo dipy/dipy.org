@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Signal Creation &amp; Paper Research: Week2 Discoveries &#8212; Diffusion Imaging in Python  documentation</title>
+    <title>First Coding Week: Benchmarking and MI Study &#8212; Diffusion Imaging in Python  documentation</title>
   
   
   
@@ -56,9 +56,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2023/2023_06_05_Shilpi_week2';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2026/2026_06_01_Tomas';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2023/2023_06_05_Shilpi_week2.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2026/2026_06_01_Tomas.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -799,7 +799,7 @@ document.write(`
      
     <i class="fa fa-calendar"></i>
     
-    <span>05 June 2023</span>
+    <span>01 June 2026</span>
     
   </h2>
   <ul>
@@ -812,7 +812,7 @@ document.write(`
       
     </span>
      
-    <a href="../../blog/author/shilpi-prasad.html">Shilpi Prasad</a>
+    <a href="../../blog/author/tomas-guija-valiente.html">Tomas Guija-Valiente</a>
       
   </li>
      
@@ -850,13 +850,7 @@ document.write(`
   <ul>
      
     <li>
-      <a href="../2026/2026_06_01_Tomas.html">
-        01 June - First Coding Week: Benchmarking and MI Study
-      </a>
-    </li>
-    
-    <li>
-      <a href="../2026/2026_05_25_Tomas.html">
+      <a href="2026_05_25_Tomas.html">
         25 May - Starting My GSoC Journey with DIPY
       </a>
     </li>
@@ -876,6 +870,12 @@ document.write(`
     <li>
       <a href="../2024/2024_08_19_kaustav_week_12.html">
         19 August - My Journey Continues: Week 12 Progress with DIPY
+      </a>
+    </li>
+    
+    <li>
+      <a href="../2024/2024_08_16_Inigo_week_12.html">
+        16 August - Week 12 into GSoC 2024: Last weeks of the coding phase and admin stuff
       </a>
     </li>
     
@@ -1005,7 +1005,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Signal...</li>
+    <li class="breadcrumb-item active" aria-current="page">First...</li>
   </ul>
 </nav>
 </div>
@@ -1021,20 +1021,89 @@ document.write(`
                 
 <div id="searchbox"></div>
                 <article class="bd-article">
-                   <section id="signal-creation-paper-research-week2-discoveries">
-<h1>Signal Creation &amp; Paper Research: Week2 Discoveries<a class="headerlink" href="#signal-creation-paper-research-week2-discoveries" title="Link to this heading">#</a></h1>
-<section id="what-i-did-this-week">
-<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
-<p>I worked through this research paper, and found some relevant facts to the tasks at hand, such as the different sources of kurtosis. One other important fact I found out was that DDE comprises 2 diffusion encoding modules characterized by different q-vectors (q1 and q2 ) and diffusion times. This fact is important because, CTI approach is based on DDE’s cumulant expansion, and the signal is expressed in terms of 5 unique second and fourth-order tensors. I also found out about how the synthetic signals could be created using 2 different scenarios, which comprises a mix of Gaussian components and a mix of Gaussian and/or restricted compartments.
-The major time I spent this week was in creating synthetic signals, and therefore in creating simulations.</p>
+                   <section id="first-coding-week-benchmarking-and-mi-study">
+<h1>First Coding Week: Benchmarking and MI Study<a class="headerlink" href="#first-coding-week-benchmarking-and-mi-study" title="Link to this heading">#</a></h1>
+<p>Hello everyone once again!</p>
+<p>After the Community Bonding period, it is time to start coding and
+implementing. This was a very busy week for me, since I attended the
+<a class="reference external" href="https://eurographics.es/CEIG26/">CEIG 2026</a> conference to present my
+paper, <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0097849326000981">DesigNet: Learning to draw vector graphics as designers do</a>,
+which I developed during my Master’s thesis. Still, I found some time to
+get things started.</p>
+<p>My main goals for this past week, as well as for the next one, are:</p>
+<ul class="simple">
+<li><p>Continue studying how to create a fair benchmarking baseline between
+DIPY and other registration frameworks.</p></li>
+<li><p>Study DIPY’s Mutual Information implementation and compare it with the
+SyN-compatible Mutual Information implementation available in ANTs/ITK
+to further refine the implementation plan.</p></li>
+<li><p>Open a new PR I to fix a potential bug in DIPY’s
+CCMetric.</p></li>
+</ul>
+<section id="benchmarking-strategy">
+<h2>Benchmarking strategy<a class="headerlink" href="#benchmarking-strategy" title="Link to this heading">#</a></h2>
+<p>While studying the codebases of DIPY and other frameworks, I compared
+their registration interfaces in order to build a fair parameter-matching
+strategy for running SyN registration algorithms under conditions that
+are as similar as possible. In particular, I looked at
+<a class="reference external" href="https://github.com/ANTsX/ANTs">ANTs</a> and
+<a class="reference external" href="https://github.com/InsightSoftwareConsortium/ITK">ITK</a>, focusing on
+how their interfaces work.</p>
+<p>I built a first approximation of this benchmarking strategy in a new
+branch of my DIPY fork, named
+<a class="reference external" href="https://github.com/TomasGuija/dipy/tree/registration-benchmark">registration-benchmark</a>.
+There is still work to do, but the current pipeline looks like a strong
+starting point. The branch is documented with Markdown files explaining
+the data I am currently using
+(<a class="reference external" href="https://sites.wustl.edu/oasisbrains/home/oasis-2/">OASIS 2</a>), the
+preprocessing steps, including skull stripping with
+<a class="reference external" href="https://github.com/BBillot/SynthSeg">SynthSeg</a> and rigid
+prealignment, and an in-depth study of both interfaces.</p>
 </section>
-<section id="what-is-coming-up-next-week">
-<h2>What Is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
-<p>I intend on finishing the simulations with appropriate documentation and theory lines. If time permits, I’ll resume working on the cti.py file and its tests section.</p>
+<section id="mi-study">
+<h2>MI Study<a class="headerlink" href="#mi-study" title="Link to this heading">#</a></h2>
+<p>I also carried out an in-depth study of the Mutual Information
+implementation in both frameworks, which helped me begin to formalize an
+implementation plan for DIPY’s SyN registration.</p>
+<p>In principle, the short-term GSoC scope will include implementing Mutual
+Information as a new <code class="docutils literal notranslate"><span class="pre">SimilarityMetric</span></code> class, reusing as much of the
+existing code as possible. It will also involve refactoring any
+global-deformation assumptions made during the computation of derivatives
+with respect to the deformation parameters.</p>
 </section>
-<section id="did-i-get-stuck-anywhere">
-<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
-<p>I didn’t get stuck, however it did take me a while to go through all the code that I could possibly be needing in my simulations, and also in understanding the theory behind those codes.</p>
+<section id="new-pr">
+<h2>New PR<a class="headerlink" href="#new-pr" title="Link to this heading">#</a></h2>
+<p>I also opened a new PR named
+<a class="reference external" href="https://github.com/dipy/dipy/pull/4047">Update CCMetric energy after backward step</a>.
+In this fix, I store the energy computed during the
+<code class="docutils literal notranslate"><span class="pre">CCMetric.compute_backward()</span></code> call in the <code class="docutils literal notranslate"><span class="pre">self.energy</span></code> variable. The
+value was previously being saved in a local variable inside the function,
+so the class-level energy value was not being updated correctly.</p>
+<p>Additionally, I added a couple of tests to make sure the energy values
+from both <code class="docutils literal notranslate"><span class="pre">CCMetric</span></code> and <code class="docutils literal notranslate"><span class="pre">SSDMetric</span></code> are updated properly after the
+backward and forward steps.</p>
+</section>
+<section id="what-s-next">
+<h2>What’s Next?<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
+<p>For the next week, during which I expect to have more time, I have the
+following goals:</p>
+<ul class="simple">
+<li><p>Finalize the implementation plan for Mutual Information in deformable
+registration.</p></li>
+<li><p>Potentially begin coding the new Mutual Information implementation, or
+at least a first approximation.</p></li>
+<li><p>Run several benchmarking experiments to compare optimization outcomes
+against other frameworks, independently of the metric used during
+optimization.</p></li>
+</ul>
+</section>
+<section id="find-me-online">
+<h2>Find Me Online<a class="headerlink" href="#find-me-online" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>GitHub: <a class="reference external" href="https://github.com/TomasGuija">TomasGuija</a></p></li>
+<li><p>LinkedIn: <a class="reference external" href="https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/">Tomás Guija Valiente</a></p></li>
+</ul>
+<p>Thank you very much for reading! See you next week.</p>
 </section>
 </section>
 
@@ -1043,23 +1112,16 @@ The major time I spent this week was in creating synthetic signals, and therefor
 <div class="section ablog__prev-next">
   <span class="ablog__prev">
      
-    <a href="2023_06_05_vara_week2.html">
+    <a href="2026_05_25_Tomas.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>Deep Dive into VQ-VAE : Week 2</span>
+      <span>Starting My GSoC Journey with DIPY</span>
     </a>
     
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-     
-    <a href="2023_06_12_vara_week3.html">
-      <span>VQ-VAE results and study on Diffusion models : Week 3</span>
-      
-      <i class="fa fa-arrow-circle-right"></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1093,9 +1155,11 @@ The major time I spent this week was in creating synthetic signals, and therefor
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What Is coming up next week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking-strategy">Benchmarking strategy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mi-study">MI Study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-pr">New PR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">What’s Next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-me-online">Find Me Online</a></li>
 </ul>
   </nav></div>
 
