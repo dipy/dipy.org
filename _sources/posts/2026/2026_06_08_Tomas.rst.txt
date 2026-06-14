@@ -1,0 +1,109 @@
+Second Coding Week: First MI Implementation
+============================================
+
+.. post:: June 08 2026
+    :author: Tomas Guija-Valiente
+    :tags: google
+    :category: gsoc
+
+Hi there!
+
+Once again, welcome to a new blog post on my GSoC 2026 journey. This
+was another busy week, but a productive one. My main goals for this past
+week were focused on:
+
+- Making a first attempt at implementing a SyN-compatible MI metric for
+  `DIPY <https://github.com/dipy/dipy>`_.
+- Improving our benchmarking strategy.
+
+First MI Implementation
+-----------------------
+
+After an in-depth study of the Mutual Information implementation in
+`ITK <https://github.com/InsightSoftwareConsortium/ITK>`_, this time
+going well beyond the interface level, I was able to understand how ITK
+manages to offer one shared metric structure for both parameter-based
+global registration and diffeomorphic, displacement-field-based
+registration.
+
+The key idea lies behind the ``LocalSupport`` configuration. ITK
+considers two paths when computing the derivatives of the metric with
+respect to the parameters being optimized:
+
+- For global transforms, such as affine transforms, it can directly
+  compute the derivative of the joint histogram with respect to a small
+  parameter vector.
+- For dense displacement fields, it does something smarter and avoids
+  storing a full derivative tensor for all parameters. This is important
+  because not every displacement vector in the field affects every bin
+  in the joint histogram. Instead, ITK stores only the local
+  contributions of the displacement parameters that actually affect the
+  relevant histogram bins.
+
+Inspired by this strategy, I built a first implementation, simple and
+not yet as efficient as it could be, in a new
+`double-loop-MI <https://github.com/TomasGuija/dipy/tree/double-loop-MI>`_
+branch on my DIPY fork.
+
+This first version follows a two-pass strategy. It loops over the image
+once to build the joint histogram and compute the MI weights associated
+with the histogram bins. It then loops over the image a second time to
+compute the dense update field directly, using the moving-image
+gradient, the Parzen-window derivative, and the previously computed MI
+bin weights.
+
+For now, I tested it against ITK's implementation using toy examples
+built from smooth shifted Gaussian images and running one step under
+identical initial conditions. Up to now, both frameworks return nearly
+the same update direction, with the first local tests showing a cosine
+similarity close to 0.999 between the DIPY and ITK derivative fields.
+
+This does not yet mean that the implementation is ready to be merged,
+but it does represent a strong start.
+
+Benchmarking
+------------
+
+I also studied Omar Ocegueda's past
+`experiments <https://github.com/omarocegueda/experiments/tree/master>`_
+repository, which was previously used for registration benchmarking.
+Inspired by the evaluation strategy used there, I decided to add
+label-overlap-based metrics to my benchmarking pipeline.
+
+In my case, I started using
+`SynthSeg <https://github.com/BBillot/SynthSeg>`_-generated labels over
+`OASIS 2 <https://sites.wustl.edu/oasisbrains/home/oasis-2/>`_ data.
+The idea is to save the generated anatomical label maps during
+preprocessing, apply the same prealignment and SyN warps to the moving
+labels using nearest-neighbor interpolation, and then compare them
+against the fixed labels.
+
+For this, I added Dice and Jaccard overlap scores to the benchmark
+results, including both whole-brain overlap and mean per-label overlap.
+
+New PR
+------
+
+Finally, I opened a PR for
+`removing holes and islands from SynthSeg masks <https://github.com/dipy/dipy/pull/4052>`_.
+
+What's Next?
+------------
+
+For the next week, I have the following goals:
+
+- Test the MI implementation with real examples and compare it against
+  `ANTs <https://github.com/ANTsX/ANTsPy>`_.
+- Inspired by Omar's repository, build a cluster-based workflow for
+  faster, more efficient, and more reproducible remote benchmarking.
+- Complete the recently opened PR after discussing the details with my
+  mentors `Serge <https://sergekoudoro.com/>`_ and
+  `Jong Sung <https://pjsjongsung.github.io/>`_.
+
+Find Me Online
+--------------
+
+- GitHub: `TomasGuija <https://github.com/TomasGuija>`_
+- LinkedIn: `Tomás Guija Valiente <https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/>`_
+
+Thank you for reading once again!
