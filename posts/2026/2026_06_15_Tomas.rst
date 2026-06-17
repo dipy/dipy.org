@@ -1,0 +1,176 @@
+Third Coding Week: MI testing and Benchmarking
+==============================================
+
+.. post:: June 15 2026
+    :author: Tomas Guija-Valiente
+    :tags: google
+    :category: gsoc
+
+Hello everyone! 
+
+I'm almost halfway there now, with the midterm evaluation very close for short projects, so 
+it is time to focus. In this new blog post I will make a summary of my work on the third Coding Period week. 
+Overall, my work focused on: 
+
+- Further testing my first SyN-compatible MI metric implementation for `DIPY <https://github.com/dipy/dipy>`_.
+- Continuing the development of the registration benchmarking pipeline, with a particular focus on preparing a cluster-based
+  large-scale experiment to make future runs faster, more reproducible and easier to analyze. 
+- Updating the `SynthSeg brain-mask PR <https://github.com/dipy/dipy/pull/4052>`_.
+
+
+MI for SyN: preliminar results
+------------------------------
+
+Following last week's work, I now tried my own MI implementation (developed under 
+`double-loop-MI <https://github.com/TomasGuija/dipy/tree/double-loop-MI>`_) on real data. 
+
+Overall, the implementation seems to be working. The scalar MI values match `ITK <https://github.com/InsightSoftwareConsortium/ITK>`_, although the dense
+derivative fields are not numerically identical on real images. The main preliminary observations are the following: 
+
+- I first compared the dense derivative fields computed by DIPY and ITK. Following last week's setup for toy examples, 
+  I used two already skull-stripped images from the same subject, initialized both MI metrics at the identity transform, and
+  computed one single dense derivative step. Depending on crop size, the cosine similarity between the derivative fields varied. 
+  However, I do not think that getting unequal results means the new implementation must be incorrect. The differences may be due to several
+  implementation details, such as image-gradient conventions, boundary handling, interpolation details etc.
+- I also ran a single fixed-moving image pair from the `OASIS 2 <https://sites.wustl.edu/oasisbrains/home/oasis-2/>`_ dataset, using
+  the same general benchmarking pipeline as before. The resulting metrics are shown on the following table:
+  
+  .. list-table:: Preliminary results for one OASIS2 fixed--moving pair using MI-SyN.
+    :name: tab-oasis2-mi-syn-results
+    :header-rows: 1
+
+    * - Method
+      - NCC ↑
+      - NMI ↑
+      - Brain Dice ↑
+      - Brain Jaccard ↑
+      - Label Dice ↑
+      - Label Jaccard ↑
+    * - Baseline
+      - 0.9242
+      - 1.1691
+      - 0.9848
+      - 0.9701
+      - 0.8938
+      - 0.8102
+    * - **ANTs MI-SyN**
+      - **0.9441**
+      - **1.1862**
+      - **0.9905**
+      - **0.9812**
+      - **0.8966**
+      - **0.8144**
+    * - DIPY MI-SyN
+      - 0.9423
+      - 1.1830
+      - 0.9894
+      - 0.9790
+      - 0.8946
+      - 0.8113
+
+As shown in the table above, the current implementation seems to be working properly, but results are slightly worse than those obtained with 
+`ANTs <https://github.com/ANTsX/ANTsPy>`_. Further benchmarking will be needed to determine whether those differences come trom the MI implementation itself or from other
+optimization differences between both frameworks. 
+
+Benchmarking
+------------
+
+The cluster benchmarking work is carried out under the
+`registration-benchmark <https://github.com/TomasGuija/dipy/tree/registration-benchmark>`_
+branch. A small SLURM layer was added around the existing registration benchmark
+code, without changing the benchmarking logic itself.
+
+The cluster workflow uses a SLURM job array, where each task processes one
+fixed--moving image pair from the benchmark CSV file. The array index is provided
+by SLURM through ``SLURM_ARRAY_TASK_ID`` and passed to the benchmark script as
+``--pair-index``. For example:
+
+.. code-block:: bash
+
+   sbatch --array=0-9 benchmarks/registration/cluster/slurm_pair_job.sh
+
+This launches ten independent benchmark jobs, one for each pair index from 0 to
+9. The same script can be reused for different datasets and configurations by
+setting environment variables such as ``BENCHMARK_PAIRS``, ``BENCHMARK_CONFIG``,
+``BENCHMARK_OUT``, ``DOWNSAMPLE_FACTOR``, and ``USE_CUDA``. GPU execution can be
+requested with ``--gres=gpu:1``, while CPU execution simply omits this option and
+sets ``USE_CUDA=0``.
+
+Each array task writes separate ``.out`` and ``.err`` files using the SLURM job
+and task identifiers, making failed samples easy to inspect independently. Once
+the jobs finish, ``collect_results.py`` scans the output directory and aggregates
+the per-pair results into a single summary JSON file.
+
+.. list-table:: Mean benchmark metrics across 10 OASIS-2 registration pairs.
+   :name: tab-oasis2-benchmark
+   :header-rows: 1
+
+   * - Method
+     - NCC ↑
+     - NMI ↑
+     - Whole Dice ↑
+     - Whole Jaccard ↑
+     - Label Dice ↑
+     - Label Jaccard ↑
+   * - Baseline
+     - 0.9443
+     - 1.1897
+     - 0.9912
+     - 0.9826
+     - 0.9228
+     - 0.8588
+   * - **ANTs**
+     - **0.9560**
+     - **1.2074**
+     - **0.9936**
+     - **0.9872**
+     - **0.9230**
+     - **0.8591**
+   * - DIPY
+     - 0.9528
+     - 1.2009
+     - 0.9925
+     - 0.9852
+     - 0.9213
+     - 0.8563
+
+As shown in the table above, ANTs obtains slightly better overall
+results. This suggests that the differences observed previously may not be caused
+by the MI implementation alone, but could also be related to other
+optimization-related differences.
+
+SynthSeg PR
+-----------
+
+The `SynthSeg brain mask PR <https://github.com/dipy/dipy/pull/4052>`_ was
+updated following the discussion from the last meeting. The ``predict`` method now
+includes an explicit ``return_masks`` flag, so mask generation is optional.
+
+By default, masks are not returned, preserving the original prediction output.
+When ``return_masks=True``, the method returns the corresponding brain masks
+after applying the existing ``remove_holes_and_islands`` post-processing step. A
+warning is also raised to inform users that the final post-processed mask may
+include voxels originally predicted as background by the model.
+
+What's Next?
+------------
+
+Next week's work will focus on two main directions:
+
+* Running the benchmark under different experimental conditions to better
+  understand the differences between the DIPY and ANTs SyN implementations. This
+  will also include merging the MI double-loop branch with the
+  ``registration-benchmark`` branch, so that the current MI implementation can be
+  tested within the benchmark workflow.
+
+* Continuing the MI implementation for DIPY, with the next step being the removal
+  of the double loop to improve runtime performance while keeping the optimized
+  version numerically close to the current implementation.
+
+Find Me Online
+--------------
+
+- GitHub: `TomasGuija <https://github.com/TomasGuija>`_
+- LinkedIn: `Tomás Guija Valiente <https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/>`_
+
+Thank you for reading!
