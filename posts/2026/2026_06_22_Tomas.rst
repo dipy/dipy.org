@@ -65,7 +65,7 @@ changes produced much smaller quantitative differences in the proxy benchmark.
 
 However, part of this process was affected by a benchmark interpretation issue:
 I initially focused on individual outputs instead of the aggregated benchmark
-summaries by misstake. As a result, some intermediate decisions were guided by misleading
+summaries by mistake. As a result, some intermediate decisions were guided by misleading
 evidence.
 
 Despite this issue, after selecting a set of changes, I was still able to obtain
