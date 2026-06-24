@@ -1,0 +1,221 @@
+Fourth Coding Week: Halfway there!
+==================================
+
+.. post:: June 22 2026
+    :author: Tomas Guija-Valiente
+    :tags: google
+    :category: gsoc
+
+Hello everyone! 
+
+I am now halfway through the coding period, and things are going well. This week was challenging, since I was very busy with work and also ran into some issues that I will explain later. Still, my work during the fourth coding week focused on:
+
+- Experimenting with benchmarking against `ANTs <https://github.com/ANTsX/ANTsPy>`_ using the NCC metric and monomodal data, tuning and introducing changes to improve the quantitative performance of
+  `DIPY's <https://github.com/dipy/dipy>`_ framework.
+- Testing whether my MI implementation from last week can work with multimodal data.
+- Updating the `SynthSeg brain-mask PR <https://github.com/dipy/dipy/pull/4052>`_.
+- Studying the possibility of updating `SynthSeg's <https://github.com/BBillot/SynthSeg>`_ behaviour in DIPY, since it currently crops input data, which can introduce cropping artifacts in the output labels
+  and masks.
+
+Benchmarking
+-------------
+
+To evaluate the registration pipeline beyond isolated examples, I ran a larger
+OASIS-2 monomodal benchmark using the CC metric. The first experiment used 100
+registration pairs and confirmed the trend observed in the previous week: ANTs
+still performed slightly better than the current DIPY configuration.
+
+.. list-table:: Initial metrics from the 100-pair OASIS-2 benchmark. Higher values are better.
+   :header-rows: 1
+
+   * - Method
+     - NCC
+     - NMI
+     - Label Dice
+     - Label Jaccard
+   * - Baseline
+     - 0.9366
+     - 1.1833
+     - 0.9234
+     - 0.8598
+   * - ANTs
+     - **0.9506**
+     - **1.2008**
+     - **0.9236**
+     - **0.8600**
+   * - DIPY
+     - 0.9471
+     - 1.1942
+     - 0.9219
+     - 0.8572
+
+Since running the full benchmark repeatedly is expensive, I used the 10-pair
+benchmark from the previous week as a faster proxy to test possible changes
+before launching longer experiments. I explored several implementation paths:
+matching the nominal update-field smoothing scale between DIPY and ANTs,
+replacing ``ScaleSpace`` with ``IsotropicScaleSpace``, revising the scale-space
+intensity normalization strategy, and testing a custom implementation for
+update-field smoothing.
+
+Across these experiments, the largest changes were observed when modifying the
+smoothing applied to the update fields at each optimization step. This happened
+both when tuning the relevant smoothing parameters and when replacing the
+smoothing algorithm itself. In contrast, the scale-space and normalization
+changes produced much smaller quantitative differences in the proxy benchmark.
+
+However, part of this process was affected by a benchmark interpretation issue:
+I initially focused on individual outputs instead of the aggregated benchmark
+summaries by mistake. As a result, some intermediate decisions were guided by misleading
+evidence.
+
+Despite this issue, after selecting a set of changes, I was still able to obtain
+promising results with the updated DIPY configuration. The corresponding changes
+are available in the
+`ants-syn-improvements <https://github.com/TomasGuija/dipy/tree/ants-syn-improvements>`_
+branch. For 100 pairs, the updated DIPY configuration slightly outperformed ANTs in the intensity-based
+metrics.
+
+.. list-table:: Final benchmark metrics for one collected OASIS-2 pair from the 100-sample experiment. Higher values are better.
+   :header-rows: 1
+
+   * - Method
+     - NCC
+     - NMI
+     - Label Dice
+     - Label Jaccard
+   * - Baseline
+     - 0.9366
+     - 1.1833
+     - 0.9234
+     - 0.8598
+   * - ANTs
+     - 0.9506
+     - 1.2008
+     - **0.9236**
+     - **0.8600**
+   * - DIPY
+     - **0.9508**
+     - **1.2011**
+     - 0.9219
+     - 0.8571
+
+Overall, these results suggest that the explored changes can reduce the
+image-similarity gap between DIPY and ANTs. The next step should be to isolate the smallest change that
+consistently improves DIPY before proposing a minimal PR.
+
+MI on multimodal data
+---------------------
+
+To assess the behaviour of my `double-loop-MI <https://github.com/TomasGuija/dipy/tree/double-loop-MI>`_
+implementation on multimodal data, I ran a preliminary registration experiment
+using the data available through ``read_syn_data()``. This example contains a T1
+image and a B0 image, making it a useful first test case for mutual information
+registration.
+
+My original goal for this week was to begin implementing the single-loop MI
+metric for DIPY's SyN framework. I did not have enough time to start that
+implementation, but I was able to test the current double-loop implementation on
+this multimodal pair and compare it against ANTs MI.
+
+.. _tab_multimodal_mi_results:
+
+.. list-table:: Multimodal registration metrics for baseline, ANTs MI, and DIPY MI on the B0-to-T1 pair.
+   :header-rows: 1
+
+   * - Method
+     - NCC
+     - NMI
+     - Dice
+     - Jaccard
+   * - Baseline
+     - -0.4415
+     - 1.0782
+     - 0.9597
+     - 0.9225
+   * - ANTs MI
+     - -0.5965
+     - 1.1198
+     - **0.9801**
+     - **0.9611**
+   * - DIPY MI
+     - -0.5900
+     - **1.1224**
+     - 0.9796
+     - 0.9601
+
+Although this is only a single-pair experiment, the results are encouraging. The
+current DIPY MI implementation achieved the best NMI value and produced overlap
+metrics very close to ANTs MI. This suggests that the implementation behaves
+reasonably on a multimodal example, even though more extensive testing will be
+needed before drawing stronger conclusions.
+
+SynthSeg PR
+-----------
+
+The `PR #4052 <https://github.com/dipy/dipy/pull/4052>`_ was updated to address
+the review comments. The ``SynthSeg.predict`` API now follows a consistent return
+contract with three items: the prediction, the label dictionary, and an optional
+brain mask. When ``return_masks=False``, the mask is returned as ``None``.
+
+The ``return_prob`` and ``return_masks`` options are also compatible, so users can
+request probability maps and a brain mask at the same time. The related workflows
+and tests were updated to follow this fixed return structure, and redundant mask
+post-processing was removed from the SynthSeg workflow.
+
+SynthSeg Input Size
+-------------------
+
+Last week, I found that the fixed input size currently used for SynthSeg is
+unnecessary and potentially harmful. The current preprocessing crops or pads
+all inputs to a fixed ``192 x 192 x 192`` shape, but SynthSeg only requires each
+spatial dimension to be compatible with the network downsampling operations,
+meaning that each dimension should be a multiple of 32.
+
+Based on this, I opened the
+`flexible-input-synthseg <https://github.com/TomasGuija/dipy/tree/flexible-input-synthseg>`_
+branch, where each input image is padded to the smallest valid shape whose
+dimensions are multiples of 32. This avoids imposing an unnecessarily small
+field of view and reduces the risk of removing relevant anatomy before
+segmentation.
+
+A more efficient solution would be to compute a deterministic foreground mask
+from the input image, estimate the smallest bounding box containing the relevant
+anatomy, and then apply padding or cropping around that region. This would make
+the preprocessing both memory-efficient and anatomy-aware. However, the current
+version already solves the main issue by preserving the complete input anatomy
+while still satisfying the dimensional constraints required by the model.
+
+Next Week's Work
+----------------
+
+Next week, I expect to have more time to dedicate to GSoC. My main goals are:
+
+- Further analyze which of the proposed registration changes are actually
+  beneficial, with special attention to update-field smoothing, since it showed
+  the strongest effect on the benchmark results.
+
+- Run additional experiments on a different dataset, or on inter-session OASIS-2
+  pairs, to check whether the observed improvements generalize beyond the
+  current setup.
+
+- Test other monomodal metrics to better separate metric-related differences
+  from optimizer-related differences.
+
+- Prepare a minimal PR with the changes that are clearly shown to improve
+  NCC-based registration accuracy.
+
+- Start implementing the single-loop version of the MI metric.
+
+- Build a merged benchmarking branch to evaluate MI as the SyN similarity
+  metric.
+
+- As a secondary task, continue investigating flexible SynthSeg input sizes and
+  discuss whether this should be opened as a separate PR.
+
+Find Me Online
+--------------
+
+- GitHub: `TomasGuija <https://github.com/TomasGuija>`_
+- LinkedIn: `Tomás Guija Valiente <https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/>`_
+
+Thank you for reading!
