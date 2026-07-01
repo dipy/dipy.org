@@ -1,0 +1,249 @@
+Fifth Coding Week: First MI Implementation PR
+=================================================
+
+.. post:: June 29 2026
+    :author: Tomas Guija-Valiente
+    :tags: google
+    :category: gsoc
+
+Hello everyone!
+
+This was the fifth coding week of my GSoC project with
+`DIPY <https://github.com/dipy/dipy>`_, and the work focused on moving the
+Mutual Information (MI) implementation closer to a usable pull request while also
+expanding the registration benchmarks. In particular, this week's work focused
+on:
+
+- Opening a draft pull request with a working MI implementation for SyN
+  registration.
+- Merging the MI implementation branch with the registration benchmarking branch
+  to create a combined branch for MI benchmarking experiments.
+- Running new benchmarking experiments with the MI implementation and further
+  comparing DIPY against `ANTs <https://github.com/ANTsX/ANTsPy>`_.
+- Measuring and comparing the average runtime of DIPY and ANTs under the same
+  benchmark setup.
+
+
+New MI PR
+----------
+
+This week I reorganized the MI implementation work into a cleaner branch and
+opened a draft pull request. The previous implementation was developed in the
+`double-loop-MI <https://github.com/TomasGuija/dipy/tree/double-loop-MI>`_
+branch. Starting from that work, I created the
+`single-loop-MI <https://github.com/TomasGuija/dipy/tree/single-loop-MI>`_
+branch and opened
+`draft PR #4067 <https://github.com/dipy/dipy/pull/4067>`_ in DIPY.
+
+The goal of this branch is to provide a clearer and more efficient
+implementation of MI as a SyN-compatible similarity metric. The earlier
+``double-loop-MI`` version was useful as an initial prototype, but it followed a
+more direct structure in which the dense MI derivative computation was split into
+separate stages. This made the implementation easier to develop and debug, but
+it was not ideal as a final version.
+
+In the new ``single-loop-MI`` branch, the dense MI update computation was
+reorganized so that the relevant local-support information is computed in a
+tighter path. The implementation now builds the joint intensity statistics and
+stores the local derivative contributions needed for the dense displacement
+update, which are later combined with the MI weights. This removes the initial
+prototype structure and makes the code closer to what should eventually be
+merged.
+
+The branch also adds a new ``MIMetric`` class in ``metrics.py``, exposing Mutual
+Information through the same interface used by the existing SyN metrics such as
+``CCMetric``, ``SSDMetric``, and ``EMMetric``. This allows MI to be used directly
+with ``SymmetricDiffeomorphicRegistration``.
+
+LPBA40 Benchmark
+----------------
+
+I prepared a new monomodal inter-patient benchmark using `LPBA40 <https://resource.loni.usc.edu/resources/atlases-downloads/>`_ dataset. The dataset was
+downloaded in its original format, with paired ``.hdr`` and ``.img`` files for
+each subject. I converted these files to NIfTI while preserving the original
+voxel grid, spacing, affine information, and label datatypes. During conversion,
+labels 181 and 182 were removed from the anatomical label maps, since they were
+mostly outside the brain foreground and would otherwise distort the
+overlap-based evaluation.
+
+For each subject, I used the skull-stripped anatomical image in delineation space
+together with its corresponding manual structure label map. I also generated a
+binary brain mask from the nonzero foreground of the skull-stripped image. Thus,
+each subject has an image, a mask, and a cleaned label map in the same space.
+
+The benchmark is defined as an inter-patient monomodal registration task. I
+generated all unordered subject pairs from the 40 LPBA40 subjects, resulting in
+780 registration pairs.
+
+As in the other benchmarks, the moving image and labels are first rigidly
+prealigned to the fixed image, using nearest-neighbour interpolation for labels.
+DIPY SyN and ANTs SyN are then run from the same prealigned inputs. Results are
+evaluated using image-based metrics and overlap-based metrics, including Dice and
+Jaccard between the warped moving labels and the fixed labels.
+
+One of the main goals of this benchmark is to test whether the findings observed
+in the previous `OASIS-2 <https://sites.wustl.edu/oasisbrains/home/oasis-2/>`_ experiments generalize to a different data distribution.
+In OASIS-2, ANTs performed better than the current state of DIPY, while DIPY
+became competitive or better after the changes collected in
+`ants-syn-improvements <https://github.com/TomasGuija/dipy/tree/ants-syn-improvements>`_.
+Interestingly, this behaviour was not reproduced on LPBA40: in the initial
+100-pair run, DIPY already obtained better intensity-based metrics and slightly
+better mean label overlap than ANTs, without applying those additional changes.
+
+.. list-table:: Initial LPBA40 benchmark results over 100 inter-patient monomodal registration pairs. Values are reported as mean +/- standard deviation. Higher values are better, except for runtime.
+   :header-rows: 1
+
+   * - Method
+     - NCC
+     - NMI
+     - Label Dice
+     - Label Jaccard
+     - Time (s)
+   * - Baseline
+     - 0.653 +/- 0.058
+     - 1.051 +/- 0.010
+     - 0.583 +/- 0.042
+     - 0.421 +/- 0.040
+     - --
+   * - ANTs
+     - 0.933 +/- 0.010
+     - 1.157 +/- 0.012
+     - 0.705 +/- 0.017
+     - 0.551 +/- 0.019
+     - **129.9 +/- 25.0**
+   * - DIPY
+     - **0.937 +/- 0.009**
+     - **1.165 +/- 0.012**
+     - **0.709 +/- 0.015**
+     - **0.555 +/- 0.018**
+     - 157.7 +/- 12.3
+
+Multimodal MI Benchmarking
+--------------------------
+
+I also opened a new branch,
+`mi-benchmarking <https://github.com/TomasGuija/dipy/tree/mi-benchmarking>`_,
+which extends the previous benchmarking work with support for MI-based
+registration experiments. This branch uses the ``single-loop-MI`` implementation
+and will replace the older ``registration-benchmark`` branch for future
+experiments.
+
+For the initial multimodal tests, I used the MRBrainS18 dataset, downloaded from
+`DataverseNL <https://dataverse.nl/dataset.xhtml?persistentId=doi\%3A10.34894\%2FE0U32Q>`_. Each subject includes FLAIR, IR, T1, and a manual
+segmentation. I created a cleaned multimodal NIfTI folder containing
+skull-stripped versions of these images, using the foreground mask defined by
+``segm.nii.gz > 0``. The same segmentation is also used as the label map for
+overlap-based evaluation.
+
+Because modalities from the same subject are already aligned, the benchmark is
+defined as an inter-patient task. I generated all unordered subject pairs and,
+for each pair, all ordered cross-modality combinations among FLAIR, IR, and T1,
+excluding same-modality pairs. With seven subjects, this gives 126
+registration pairs.
+
+The moving image and labels are first rigidly prealigned to the fixed image, after which DIPY SyN
+and ANTs SyN are run from the same initialization. Results are evaluated with
+image-based metrics and with Dice/Jaccard overlap between the warped moving
+labels and the fixed labels.
+
+For the initial 100-pair experiment using MI as the registration metric, the
+behaviour differed from the LPBA40 monomodal benchmark: ANTs obtained slightly
+better intensity-based metrics, while DIPY gave slightly better mean label
+overlap.
+
+.. list-table:: Initial multimodal MI benchmark results over 100 inter-patient cross-modality registration pairs from MRBrainS18.
+   :header-rows: 1
+
+   * - Method
+     - NCC
+     - NMI
+     - Label Dice
+     - Label Jaccard
+     - Time (s)
+   * - Baseline
+     - 0.362 +/- 0.086
+     - 1.021 +/- 0.006
+     - 0.506 +/- 0.056
+     - 0.369 +/- 0.051
+     - --
+   * - ANTs
+     - **0.561 +/- 0.087**
+     - **1.044 +/- 0.013**
+     - 0.565 +/- 0.049
+     - 0.430 +/- 0.046
+     - **39.5 +/- 3.6**
+   * - DIPY
+     - 0.549 +/- 0.084
+     - 1.043 +/- 0.012
+     - **0.567 +/- 0.051**
+     - **0.432 +/- 0.048**
+     - 67.2 +/- 4.5
+
+Time Bottlenecks
+----------------
+
+Profiling showed that a major metric-independent bottleneck in DIPY's SyN
+implementation is the fixed-point inversion of displacement fields. Each SyN
+optimization iteration computes four field inversions, and every inversion
+performs several internal fixed-point iterations. In the original implementation, 
+all these voxel-wise loops are executed serially.
+
+A preliminary optimization is available in the
+`speed-syn <https://github.com/TomasGuija/dipy/tree/speed-syn>`_ branch. It
+introduces OpenMP parallelization through Cython's ``prange`` for the internal
+displacement-field composition used by inversion, the computation of
+residual-vector norms, and the update of the inverse displacement field. A ``num_threads`` parameter
+was also added and propagated through ``SymmetricDiffeomorphicRegistration``.
+
+This optimization does not modify the fixed-point inversion equations or the SyN
+optimization algorithm. It only parallelizes independent voxel-wise operations
+and is therefore applicable independently of the selected similarity metric.
+
+.. list-table:: Preliminary SyN runtime comparison using the same input images and a multiresolution iteration schedule of 20, 20, 10.
+   :header-rows: 1
+
+   * - Method
+     - Time (s)
+     - NCC
+   * - DIPY serial
+     - 301.155
+     - 0.95494
+   * - DIPY threaded
+     - 243.676
+     - 0.95494
+   * - ANTs
+     - 195.268
+     - 0.95765
+
+Threading produced a 1.24x speed-up over serial DIPY. In this preliminary test,
+serial and threaded DIPY required respectively 1.54x and 1.25x the ANTs execution
+time.
+
+Next Week's Work
+----------------
+
+Given the latest results, there does not seem to be a clear and consistent
+accuracy improvement for DIPY across datasets. However, the experiments do
+suggest a more consistent opportunity for improvement in terms of efficiency.
+Based on this, next week's work will focus on:
+
+- Continuing the benchmarking experiments, with the goal of better understanding
+  when and why accuracy differences appear, and whether specific optimization
+  choices can improve DIPY's performance.
+
+- Preparing a PR focused on improving the runtime efficiency of DIPY's
+  registration pipeline.
+
+- Continuing work on the new MI PR, including the implementation of the sparse
+  path if it becomes necessary.
+
+- Looking for larger and more suitable datasets for multimodal registration
+  benchmarking.
+
+Find Me Online
+--------------
+
+- GitHub: `TomasGuija <https://github.com/TomasGuija>`_
+- LinkedIn: `Tomás Guija Valiente <https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/>`_
+
+Thank you for reading!
