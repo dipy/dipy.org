@@ -1,5 +1,5 @@
 Sixth Coding Week: Profiling, Performance, and New Metric for Affine Registration
-================================================================================
+==================================================================================
 
 .. post:: July 6 2026
     :author: Tomas Guija-Valiente
