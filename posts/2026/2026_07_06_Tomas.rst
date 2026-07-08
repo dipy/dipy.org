@@ -1,0 +1,187 @@
+Sixth Coding Week: Profiling, Performance, and New Metric for Affine Registration
+================================================================================
+
+.. post:: July 6 2026
+    :author: Tomas Guija-Valiente
+    :tags: google
+    :category: gsoc
+
+Hello everyone!
+
+This was the sixth coding week of my GSoC project with
+`DIPY <https://github.com/dipy/dipy>`_. This week, I shifted my focus to
+performance improvements and to the implementation of a new metric for affine
+registration. In particular, my work focused on:
+
+- Opening a small optimization PR for DIPY's Parzen-window MI histogram
+  computation.
+- Opening a PR to parallelize displacement-field composition in DIPY's
+  registration backend.
+- Adding a profiling script to measure where 3D SyN registration spends most of
+  its time.
+- Opening a draft PR adding local cross-correlation as a metric for DIPY's
+  affine registration framework.
+
+MI Small Fix
+------------
+
+In addition to the main Mutual Information (MI) work, I opened a small
+optimization PR,
+`PR #4071 <https://github.com/dipy/dipy/pull/4071>`_, for DIPY's Parzen joint
+histogram computation.
+
+The issue is that the current implementation evaluates one extra histogram bin
+that can never contribute to the cubic B-spline Parzen window. This does not
+change the numerical result, since the contribution is always zero, but it adds
+unnecessary work in both the probability-density and gradient computations.
+
+The PR updates the loop so that only the four bins that can actually contribute
+are evaluated. It also makes the padding logic clearer by reusing the existing
+``padding`` variable instead of relying on hardcoded values.
+
+To confirm the change, I added debug counters to the original implementation and
+checked the redundant bin during a real MI run. Its contribution was always
+exactly zero, which confirmed that the simplification preserves the original
+result while avoiding unnecessary computation.
+
+Field Composition Threading
+---------------------------
+
+Last week I introduced the
+`speed-syn <https://github.com/TomasGuija/dipy/tree/speed-syn>`_ branch, which
+explored OpenMP-based threading for parts of DIPY's SyN registration pipeline.
+This week I continued that work and opened it as a ready pull request:
+`PR #4073 <https://github.com/dipy/dipy/pull/4073>`_.
+
+The PR focuses on displacement-field composition, an operation that is called
+repeatedly during SyN registration and can become expensive in 3D. The change
+keeps the original computation unchanged, but parallelizes independent parts of
+the loop using Cython's ``prange``.
+
+I also added tests comparing one-thread and multi-thread executions for both 2D
+and 3D fields. These tests check that the threaded version produces the same
+composed fields and the same composition statistics as the single-thread
+reference.
+
+Overall, this PR turns the previous ``speed-syn`` prototype into a smaller and
+more focused contribution aimed at improving the runtime of DIPY's registration
+backend without changing the registration algorithm itself.
+
+Profiling 3D SyN
+----------------
+
+To evaluate the effect of the field-composition changes, I added a small
+profiling script in the
+`profiling-syn <https://github.com/TomasGuija/dipy/tree/profiling-syn>`_
+branch. The goal of this script is not to provide a full benchmark, but to
+identify which parts of the 3D SyN registration pipeline dominate the runtime.
+
+The script runs a 3D SyN registration using DIPY's standard
+``SymmetricDiffeomorphicRegistration`` class with the ``CCMetric``. When no input
+images are provided, it uses the same example data as DIPY's 3D SyN example: the
+Stanford HARDI b0 volume as the fixed image and the synthetic b0 image as the
+moving image.
+
+The registration call is wrapped with Python's ``cProfile`` module, producing a
+``.prof`` file that can later be inspected with ``pstats``. Since the functions
+of interest are implemented in Cython, I also enabled Cython-level profiling in
+the relevant ``.pyx`` files with ``# cython: profile=True``. Without this
+directive, ``cProfile`` can show the Python-level call stack, but gives much less
+useful information about time spent inside individual Cython functions.
+
+The profiling results show that the threading change substantially reduces the
+cost of field composition.
+
+.. list-table:: Profiling results for ``compose_vector_fields_3d`` before and after the threading change.
+   :header-rows: 1
+
+   * - Version
+     - Calls
+     - Internal time (s)
+     - Profiled runtime share
+   * - Before threading
+     - 55
+     - 1.36
+     - 28%
+   * - After threading
+     - 55
+     - 0.27
+     - 4%
+
+The same function was called 55 times in both runs, but its internal time dropped
+from approximately 1.36 seconds to 0.27 seconds. This corresponds to an
+approximate 5.1x speed-up for ``compose_vector_fields_3d`` itself.
+
+Affine Cross-Correlation Registration
+-------------------------------------
+
+This week I opened a new draft PR,
+`PR #4078 <https://github.com/dipy/dipy/pull/4078>`_, adding local
+cross-correlation as a metric for DIPY's affine registration framework. The goal
+is to provide an affine registration metric better suited to monomodal
+registration problems, where local normalized cross-correlation is often more
+appropriate than mutual information.
+
+Until now, DIPY's affine registration framework provided mutual information as
+the main metric available through the object-oriented affine registration API.
+The new implementation introduces a ``CrossCorrelationMetric`` class under
+``imaffine``, following the same optimizer-facing structure as the existing
+``MutualInformationMetric``. In particular, the new metric implements the same
+core methods expected by ``AffineRegistration``: ``setup``, ``distance``,
+``gradient``, and ``distance_and_gradient``.
+
+The implementation was designed to remain as close as possible to the existing
+DIPY registration code. On the Cython side, it reuses the local
+cross-correlation factors computed in ``crosscorr.pyx``, as well as the same
+negative-energy convention used by the SyN cross-correlation path. The
+affine-specific part consists of projecting the local cross-correlation
+image-space gradient onto the affine transform parameters using the transform
+Jacobian.
+
+As a first smoke test, I followed the structure of DIPY's existing 3D affine
+registration example. I registered the Stanford HARDI b0 volume against the SyN
+b0 sample volume, both downloaded through DIPY. This provides a monomodal test
+case, since both images are b0 MRI volumes. The registration was initialized with
+center-of-mass alignment and then refined with translation, rigid, and affine
+stages using the new cross-correlation metric.
+
+.. list-table:: Global normalized cross-correlation across the affine registration pipeline. Higher values are better.
+   :header-rows: 1
+
+   * - Stage
+     - Global NCC
+   * - Identity / pre-registration
+     - 0.190317
+   * - Center of mass
+     - 0.477166
+   * - Translation CC
+     - 0.558438
+   * - Rigid CC
+     - 0.665606
+   * - Affine CC
+     - **0.675099**
+
+These results suggest that the new metric is able to drive affine registration
+and improve alignment on the tested DIPY sample data. The next step is to add
+proper automated tests, including a small controlled registration case and, if
+possible, a finite-difference check of the affine gradient.
+
+Next Week's Work
+----------------
+
+For next week, I plan to focus on two main tasks:
+
+- Improve the test coverage for the affine cross-correlation implementation.
+
+- Continue investigating possible efficiency improvements for DIPY's
+  registration pipeline, with a particular focus on understanding the relevance
+  of the 2018 OpenMP PRs and identifying which parts of that work can still be
+  useful for the current implementation.
+
+Find Me Online
+--------------
+
+- GitHub: `TomasGuija <https://github.com/TomasGuija>`_
+- LinkedIn: `Tomás Guija Valiente <https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/>`_
+
+Thank you for reading!
