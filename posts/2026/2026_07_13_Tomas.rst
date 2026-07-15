@@ -1,0 +1,133 @@
+Seventh Coding Week: Cleaning Up Near the Finish Line!
+======================================================
+
+.. post:: July 13 2026
+    :author: Tomas Guija-Valiente
+    :tags: google
+    :category: gsoc
+
+Hey there!
+
+This was the seventh coding week of my GSoC project with
+`DIPY <https://github.com/dipy/dipy>`_. This week's work was less exploratory
+and research-focused than during previous weeks, but it was still very
+important. As the project moves closer to its final stages, I focused on
+cleaning up implementations, improving tests, addressing review feedback, and
+preparing the remaining pull requests for review.
+
+The main contributions were:
+
+- Finalizing the Mutual Information implementation for SyN registration and
+  marking the PR as ready for review.
+- Opening a new PR to parallelize DIPY's 2D and 3D image-warping operations.
+- Cleaning up the affine cross-correlation implementation.
+- Refining two SynthSeg PRs related to flexible input sizes and brain-mask
+  postprocessing.
+- Getting the first performance-related contribution of my GSoC project merged
+  into DIPY.
+
+First Performance Contribution Merged
+-------------------------------------
+
+The week started with some good news: my small Parzen-window optimization,
+`PR #4071 <https://github.com/dipy/dipy/pull/4071>`_, was merged into DIPY's
+``master`` branch.
+
+As described in my previous GSoC post, the PR removes a redundant cubic
+B-spline bin evaluation from DIPY's Parzen-window Mutual Information
+implementation.
+
+This was the first PR from my GSoC performance work to be merged, so it was a
+great way to begin the week!
+
+Parallelizing Image Warping
+---------------------------
+
+I also continued the performance work started in
+`PR #4073 <https://github.com/dipy/dipy/pull/4073>`_, which parallelizes
+displacement-field composition and fixed-point inversion in DIPY's registration
+backend.
+
+After reviewing the 2018
+`OpenMP PR #1613 <https://github.com/dipy/dipy/pull/1613>`_, I identified image
+warping as another important operation that could benefit from threading. SyN
+repeatedly warps the static and moving images into a common reference space, so
+these operations form another relevant part of the registration runtime.
+
+I therefore opened
+`PR #4083 <https://github.com/dipy/dipy/pull/4083>`_, developed in the
+`speed-syn-warp <https://github.com/TomasGuija/dipy/tree/speed-syn-warp>`_
+branch.
+
+The PR adds OpenMP parallelization to DIPY's low-level 2D and 3D image-warping
+functions, covering both linear and nearest-neighbor interpolation.
+
+The outer rows in 2D and slices in 3D can be processed independently, allowing
+the loops to be parallelized using Cython's ``prange``.
+
+The PR also propagates the existing ``num_threads`` configuration through
+``DiffeomorphicMap.transform()``, ``transform_inverse()``, and the image warps
+performed internally during SyN registration.
+
+I also ran a small timing experiment on 3D SyN:
+
+.. list-table:: SyN runtime comparison after threading the warping operations.
+   :header-rows: 1
+
+   * - Revision and mode
+     - Time
+     - NCC
+   * - DIPY branch, one thread
+     - 101.249 s
+     - 0.95741
+   * - DIPY branch, four threads
+     - 76.864 s
+     - 0.95741
+   * - DIPY ``master``
+     - 110.465 s
+     - 0.95741
+
+Using four threads reduced runtime while preserving the final NCC.
+
+Reviewing and Updating Existing Pull Requests
+---------------------------------------------
+
+This week, I also had a meeting with my mentors to review the current state of
+the open pull requests and identify the main changes needed before they can be
+merged.
+
+Following this review, I focused on updating and cleaning several existing
+contributions:
+
+- `PR #4067 <https://github.com/dipy/dipy/pull/4067>`_, adding Mutual
+  Information for SyN registration.
+- `PR #4078 <https://github.com/dipy/dipy/pull/4078>`_, adding
+  cross-correlation to affine registration.
+- `PR #4052 <https://github.com/dipy/dipy/pull/4052>`_, improving the brain mask
+  returned by SynthSeg.
+- `PR #4080 <https://github.com/dipy/dipy/pull/4080>`_, supporting flexible
+  SynthSeg input sizes.
+
+The changes mainly involved simplifying implementations, improving dtype and
+input validation, refining APIs and documentation, extending test coverage, and
+addressing specific reviewer feedback. Some of these PRs are now ready for
+review, while the remaining ones continue to be updated based on the discussion.
+
+Next Week's Work
+----------------
+
+For next week, I plan to focus on bringing the remaining open pull requests to
+completion by addressing the latest review comments, polishing the
+implementations, and making sure that the tests and documentation are ready.
+
+I will also begin writing the final GSoC report, summarizing the work completed
+during the project, the main results, and the current status of each
+contribution.
+
+Find Me Online
+--------------
+
+- GitHub: `TomasGuija <https://github.com/TomasGuija>`_
+- LinkedIn: `Tomás Guija Valiente <https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/>`_
+
+Thank you for reading!
