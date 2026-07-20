@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Week 9 into GSoC 2024: The Conditional VAE implementation &#8212; Diffusion Imaging in Python  documentation</title>
+    <title>Seventh Coding Week: Cleaning Up Near the Finish Line! &#8212; Diffusion Imaging in Python  documentation</title>
   
   
   
@@ -56,9 +56,9 @@
                 gtag('js', new Date());
                 gtag('config', 'G-D610GKJZRC');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2024/2024_07_26_Inigo_week_9';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/2026/2026_07_13_Tomas';</script>
     <script src="../../_static/js/dipy.js?v=4b4dfe59"></script>
-    <link rel="canonical" href="https://dipy.org/posts/2024/2024_07_26_Inigo_week_9.html" />
+    <link rel="canonical" href="https://dipy.org/posts/2026/2026_07_13_Tomas.html" />
     <link rel="icon" href="../../_static/dipy-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -799,7 +799,7 @@ document.write(`
      
     <i class="fa fa-calendar"></i>
     
-    <span>26 July 2024</span>
+    <span>13 July 2026</span>
     
   </h2>
   <ul>
@@ -812,7 +812,7 @@ document.write(`
       
     </span>
      
-    <a href="../../blog/author/inigo-tellaetxe.html">Iñigo Tellaetxe</a>
+    <a href="../../blog/author/tomas-guija-valiente.html">Tomas Guija-Valiente</a>
       
   </li>
      
@@ -850,32 +850,32 @@ document.write(`
   <ul>
      
     <li>
-      <a href="../2026/2026_07_13_Tomas.html">
-        13 July - Seventh Coding Week: Cleaning Up Near the Finish Line!
-      </a>
-    </li>
-    
-    <li>
-      <a href="../2026/2026_07_06_Tomas.html">
+      <a href="2026_07_06_Tomas.html">
         06 July - Sixth Coding Week: Profiling, Performance, and New Metric for Affine Registration
       </a>
     </li>
     
     <li>
-      <a href="../2026/2026_06_29_Tomas.html">
+      <a href="2026_06_29_Tomas.html">
         29 June - Fifth Coding Week: First MI Implementation PR
       </a>
     </li>
     
     <li>
-      <a href="../2026/2026_06_22_Tomas.html">
+      <a href="2026_06_22_Tomas.html">
         22 June - Fourth Coding Week: Halfway there!
       </a>
     </li>
     
     <li>
-      <a href="../2026/2026_06_15_Tomas.html">
+      <a href="2026_06_15_Tomas.html">
         15 June - Third Coding Week: MI testing and Benchmarking
+      </a>
+    </li>
+    
+    <li>
+      <a href="2026_06_08_Tomas.html">
+        08 June - Second Coding Week: First MI Implementation
       </a>
     </li>
     
@@ -1005,7 +1005,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Week 9 into...</li>
+    <li class="breadcrumb-item active" aria-current="page">Seventh...</li>
   </ul>
 </nav>
 </div>
@@ -1021,47 +1021,124 @@ document.write(`
                 
 <div id="searchbox"></div>
                 <article class="bd-article">
-                   <section id="week-9-into-gsoc-2024-the-conditional-vae-implementation">
-<h1>Week 9 into GSoC 2024: The Conditional VAE implementation<a class="headerlink" href="#week-9-into-gsoc-2024-the-conditional-vae-implementation" title="Link to this heading">#</a></h1>
-<section id="what-i-did-this-week">
-<h2>What I did this week<a class="headerlink" href="#what-i-did-this-week" title="Link to this heading">#</a></h2>
-<p>This week was a bit shorter than usual because Thursday was a holiday in the Basque Country, and today we had an outdoor activity with my lab mates (we went kayaking to the Urdaibai Biosphere Reserve). Nevertheless, it was full of advances and interesting scientific matters.</p>
-<p>As I mentioned in my last blog post, this week I worked on the implementation of the conditional VAE based on <a class="reference external" href="https://github.com/QingyuZhao/VAE-for-Regression/tree/master">this implementation</a> .</p>
-<p>As a refresher, the main idea behind conditional generative models is being able to generate new data with some desired properties or parameters. To achieve this, it is common to organize the latent representation in a way that allows locating the regions in which the desired properties are found.</p>
-<p>For example, imagine our VAE learned a latent representation of images of cats with different fur lengths. If we do not condition our latent space on the fur length, our model might not learn about this distinctive feature found in the data space, and cats with drastically different fur lengths may be closely clustered together in the latent space. But with conditioning, we can tell the model to cluster the images along a “fur-length” dimension, so if we sample 2 images from a line that varies along that dimension but in opposite sides, we get a cat with very short fur, and another one, with very long fur. This results in a generative process that can be tuned on demand!</p>
-<p>However, there are many methods to condition a Variational AutoEncoder, and they usually depend on the type of variable we want to condition on, so the methods for categoric variables (cat vs. dog, bundle_1_fiber vs. bundle_2_fiber, etc.) and continuous ones (age of the person, length of a streamline) are normally not applicable to both types.</p>
-<p>In the case of the FiberCup dataset, I chose to condition the latent space on the length of the streamlines, which is a continuous variable and it is a fairly easy thing to learn from the morphology of the streamlines.</p>
-<p>After implementing the conditional VAE as in the provided reference and training it for 64 epochs (early stopped due to lack of improvement in the MSE) I did not get a decent reconstruction, but the latent space seems to be organized differently compared to the vanilla VAE, which suggests that the conditioning is doing something (good or not, we will see…).</p>
-<a class="reference internal image-reference" href="../../_images/cvae_first_reconstruction_result.png"><img alt="First reconstruction of the training data of the conditional VAE (cVAE)." src="../../_images/cvae_first_reconstruction_result.png" style="width: 600px;" />
-</a>
-<p>On the other hand, note that the FiberCup has 7 distinct bundles, and both latent spaces show (when 2D-projected with the t-SNE algorithm) 7 clusters, suggesting that the network does know about the different bundles. Samples/streamlines are colored according to their length, and even if the bundle to which they belong is not plotted, we know that each cluster is formed by streamlines of different bundles because each bundle has a distinctive length.</p>
-<p>Note that the t-SNE representation may have aligned other dimensions more meaningful to the algorithm that do not necessarily include the conditioning variable (streamline length). Maybe the authors of the code I based mine were lucky to get the alignment, or smart enough to manipulate the conditioning variable (normalization, Z-scoring, etc.) to make t-SNE grab this information and put it along an axis in their plots.</p>
-<a class="reference internal image-reference" href="../../_images/latent_space_comparison_VAE_cVAE_colored_by_streamline_length.png"><img alt="t-SNE projections of the latent space (only plausible fibers) of the conditional VAE and the vanilla VAE." src="../../_images/latent_space_comparison_VAE_cVAE_colored_by_streamline_length.png" style="width: 600px;" />
-</a>
-</section>
-<section id="what-is-coming-up-next-week">
-<h2>What is coming up next week<a class="headerlink" href="#what-is-coming-up-next-week" title="Link to this heading">#</a></h2>
-<p>After discussing with my mentors, we decided to take two steps:</p>
-<ol class="arabic">
-<li><dl>
-<dt>Validate reliably whether the conditioning is working or not. For this, there are two strategies:</dt><dd><ul class="simple">
-<li><p>Checking that the predicted conditioning variable matches the input. In other words, measuring the MSE between the “true age” VS the “predicted age”, their correlation, and plotting one against the other. This way you know how good the encoder is capturing the conditioning variable variation in the training data. The authors of the paper I based my implementation on do it like this:</p></li>
-</ul>
-<a class="reference internal image-reference" href="../../_images/conditioning_validation_using_mse.png"><img alt="Scatter plot of true vs predicted conditioning variable for validation." src="../../_images/conditioning_validation_using_mse.png" style="width: 600px;" />
-</a>
+                   <section id="seventh-coding-week-cleaning-up-near-the-finish-line">
+<h1>Seventh Coding Week: Cleaning Up Near the Finish Line!<a class="headerlink" href="#seventh-coding-week-cleaning-up-near-the-finish-line" title="Link to this heading">#</a></h1>
+<p>Hey there!</p>
+<p>This was the seventh coding week of my GSoC project with
+<a class="reference external" href="https://github.com/dipy/dipy">DIPY</a>. This week’s work was less exploratory
+and research-focused than during previous weeks, but it was still very
+important. As the project moves closer to its final stages, I focused on
+cleaning up implementations, improving tests, addressing review feedback, and
+preparing the remaining pull requests for review.</p>
+<p>The main contributions were:</p>
 <ul class="simple">
-<li><p>Visual checking fiber generation for specific bundles. Knowing that different bundles have different fiber lengths, we try to generate fibers of specific length, and see whether the generated fibers belong to the desired bundle (no matter if they are plausible or implausible). Having length as the conditioning variable allows us to perform this trick, what would not be so intuitive to check if we had used Fractional Anisotropy or other DTI-derived metrics, as these are not visually as intuitive as length.</p></li>
+<li><p>Finalizing the Mutual Information implementation for SyN registration and
+marking the PR as ready for review.</p></li>
+<li><p>Opening a new PR to parallelize DIPY’s 2D and 3D image-warping operations.</p></li>
+<li><p>Cleaning up the affine cross-correlation implementation.</p></li>
+<li><p>Refining two SynthSeg PRs related to flexible input sizes and brain-mask
+postprocessing.</p></li>
+<li><p>Getting the first performance-related contribution of my GSoC project merged
+into DIPY.</p></li>
 </ul>
-</dd>
-</dl>
-</li>
-<li><p>To try out an adversarial framework, which is 1) easier to implement 2) easier to understand, and 3) likely to also work (we’ll see if better or not). The idea is to have a discriminator that tries to predict the conditioning variable from the latent space, and the encoder tries to fool the discriminator. This way, the encoder learns to encode the conditioning variable in the latent space, and the discriminator learns to predict it. This is a very common approach in GANs, and it is called “Conditional GAN” (cGAN). As a result, we would have what I would call a conditional adversarial VAE (CA-VAE). You can read more about adversarial VAEs <a class="reference external" href="https://arxiv.org/pdf/2012.11551">in this work</a> or <a class="reference external" href="https://arxiv.org/pdf/1702.08423">in this one</a>.</p></li>
-</ol>
+<section id="first-performance-contribution-merged">
+<h2>First Performance Contribution Merged<a class="headerlink" href="#first-performance-contribution-merged" title="Link to this heading">#</a></h2>
+<p>The week started with some good news: my small Parzen-window optimization,
+<a class="reference external" href="https://github.com/dipy/dipy/pull/4071">PR #4071</a>, was merged into DIPY’s
+<code class="docutils literal notranslate"><span class="pre">master</span></code> branch.</p>
+<p>As described in my previous GSoC post, the PR removes a redundant cubic
+B-spline bin evaluation from DIPY’s Parzen-window Mutual Information
+implementation.</p>
+<p>This was the first PR from my GSoC performance work to be merged, so it was a
+great way to begin the week!</p>
 </section>
-<section id="did-i-get-stuck-anywhere">
-<h2>Did I get stuck anywhere<a class="headerlink" href="#did-i-get-stuck-anywhere" title="Link to this heading">#</a></h2>
-<p>Luckily this week I also did not get stuck in any problem, but I am a bit worried about the quality of the reconstructions of the cVAE. I hope that the adversarial framework will help with this.</p>
-<p>Until next week!</p>
+<section id="parallelizing-image-warping">
+<h2>Parallelizing Image Warping<a class="headerlink" href="#parallelizing-image-warping" title="Link to this heading">#</a></h2>
+<p>I also continued the performance work started in
+<a class="reference external" href="https://github.com/dipy/dipy/pull/4073">PR #4073</a>, which parallelizes
+displacement-field composition and fixed-point inversion in DIPY’s registration
+backend.</p>
+<p>After reviewing the 2018
+<a class="reference external" href="https://github.com/dipy/dipy/pull/1613">OpenMP PR #1613</a>, I identified image
+warping as another important operation that could benefit from threading. SyN
+repeatedly warps the static and moving images into a common reference space, so
+these operations form another relevant part of the registration runtime.</p>
+<p>I therefore opened
+<a class="reference external" href="https://github.com/dipy/dipy/pull/4083">PR #4083</a>, developed in the
+<a class="reference external" href="https://github.com/TomasGuija/dipy/tree/speed-syn-warp">speed-syn-warp</a>
+branch.</p>
+<p>The PR adds OpenMP parallelization to DIPY’s low-level 2D and 3D image-warping
+functions, covering both linear and nearest-neighbor interpolation.</p>
+<p>The outer rows in 2D and slices in 3D can be processed independently, allowing
+the loops to be parallelized using Cython’s <code class="docutils literal notranslate"><span class="pre">prange</span></code>.</p>
+<p>The PR also propagates the existing <code class="docutils literal notranslate"><span class="pre">num_threads</span></code> configuration through
+<code class="docutils literal notranslate"><span class="pre">DiffeomorphicMap.transform()</span></code>, <code class="docutils literal notranslate"><span class="pre">transform_inverse()</span></code>, and the image warps
+performed internally during SyN registration.</p>
+<p>I also ran a small timing experiment on 3D SyN:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-text">SyN runtime comparison after threading the warping operations.</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Revision and mode</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>NCC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DIPY branch, one thread</p></td>
+<td><p>101.249 s</p></td>
+<td><p>0.95741</p></td>
+</tr>
+<tr class="row-odd"><td><p>DIPY branch, four threads</p></td>
+<td><p>76.864 s</p></td>
+<td><p>0.95741</p></td>
+</tr>
+<tr class="row-even"><td><p>DIPY <code class="docutils literal notranslate"><span class="pre">master</span></code></p></td>
+<td><p>110.465 s</p></td>
+<td><p>0.95741</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Using four threads reduced runtime while preserving the final NCC.</p>
+</section>
+<section id="reviewing-and-updating-existing-pull-requests">
+<h2>Reviewing and Updating Existing Pull Requests<a class="headerlink" href="#reviewing-and-updating-existing-pull-requests" title="Link to this heading">#</a></h2>
+<p>This week, I also had a meeting with my mentors to review the current state of
+the open pull requests and identify the main changes needed before they can be
+merged.</p>
+<p>Following this review, I focused on updating and cleaning several existing
+contributions:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/dipy/dipy/pull/4067">PR #4067</a>, adding Mutual
+Information for SyN registration.</p></li>
+<li><p><a class="reference external" href="https://github.com/dipy/dipy/pull/4078">PR #4078</a>, adding
+cross-correlation to affine registration.</p></li>
+<li><p><a class="reference external" href="https://github.com/dipy/dipy/pull/4052">PR #4052</a>, improving the brain mask
+returned by SynthSeg.</p></li>
+<li><p><a class="reference external" href="https://github.com/dipy/dipy/pull/4080">PR #4080</a>, supporting flexible
+SynthSeg input sizes.</p></li>
+</ul>
+<p>The changes mainly involved simplifying implementations, improving dtype and
+input validation, refining APIs and documentation, extending test coverage, and
+addressing specific reviewer feedback. Some of these PRs are now ready for
+review, while the remaining ones continue to be updated based on the discussion.</p>
+</section>
+<section id="next-week-s-work">
+<h2>Next Week’s Work<a class="headerlink" href="#next-week-s-work" title="Link to this heading">#</a></h2>
+<p>For next week, I plan to focus on bringing the remaining open pull requests to
+completion by addressing the latest review comments, polishing the
+implementations, and making sure that the tests and documentation are ready.</p>
+<p>I will also begin writing the final GSoC report, summarizing the work completed
+during the project, the main results, and the current status of each
+contribution.</p>
+</section>
+<section id="find-me-online">
+<h2>Find Me Online<a class="headerlink" href="#find-me-online" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>GitHub: <a class="reference external" href="https://github.com/TomasGuija">TomasGuija</a></p></li>
+<li><p>LinkedIn: <a class="reference external" href="https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/">Tomás Guija Valiente</a></p></li>
+</ul>
+<p>Thank you for reading!</p>
 </section>
 </section>
 
@@ -1070,23 +1147,16 @@ document.write(`
 <div class="section ablog__prev-next">
   <span class="ablog__prev">
      
-    <a href="2024_07_22_kaustav_week_8.html">
+    <a href="2026_07_06_Tomas.html">
       
       <i class="fa fa-arrow-circle-left"></i>
       
-      <span>My Journey Continues: Week 8 Progress with DIPY</span>
+      <span>Sixth Coding Week: Profiling, Performance, and New Metric for Affine Registration</span>
     </a>
     
   </span>
   <span class="ablog__spacer">&nbsp;</span>
   <span class="ablog__next">
-     
-    <a href="2024_07_29_kaustav_week_9.html">
-      <span>My Journey Continues: Week 9 Progress with DIPY</span>
-      
-      <i class="fa fa-arrow-circle-right"></i>
-      
-    </a>
     
   </span>
 </div>
@@ -1120,9 +1190,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-did-this-week">What I did this week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-coming-up-next-week">What is coming up next week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-get-stuck-anywhere">Did I get stuck anywhere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-performance-contribution-merged">First Performance Contribution Merged</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelizing-image-warping">Parallelizing Image Warping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-and-updating-existing-pull-requests">Reviewing and Updating Existing Pull Requests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-week-s-work">Next Week’s Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-me-online">Find Me Online</a></li>
 </ul>
   </nav></div>
 
