@@ -14,3 +14,10 @@ override the pydata-theme and sphinx.
 .gsoc-title {
   color: #fd8d25 !important;
 }
+
+/* Theme only underlines links on hover, so inline links in blog post
+   body text are easy to miss. Underline them by default; skip buttons
+   and heading-anchor icons which have their own styling. */
+.bd-article a:not(.btn-link):not(.headerlink) {
+  text-decoration: underline;
+}
