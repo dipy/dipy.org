@@ -1,0 +1,116 @@
+Eighth Coding Week: The Final Coding Week!
+==========================================
+
+.. post:: July 20 2026
+    :author: Tomas Guija-Valiente
+    :tags: google
+    :category: gsoc
+
+Hello everyone, one last time!
+
+This was the eighth and final coding week of my GSoC project with
+`DIPY <https://github.com/dipy/dipy>`_.
+
+Most of the main implementations had already been completed, so, as in the
+previous week, my work focused on polishing the remaining contributions,
+addressing review comments, improving tests and documentation, and discussing
+some final design decisions with my mentors.
+
+Alongside the coding work, I started preparing the final report for my project.
+It brings together the main implementations, experiments, results, and lessons
+from the summer. The report is already publicly available here:
+
+- `A Summer of Scientific Software: My GSoC Journey with DIPY
+  <https://tomasguija.github.io/gsoc-2026-dipy/>`_
+
+It will also be published through the DIPY website once it is complete.
+
+Contributions Summary
+---------------------
+
+During my GSoC project, I opened ten pull requests covering registration
+metrics, performance improvements, bug fixes, documentation, and SynthSeg
+utilities. The following table summarizes these contributions:
+
+.. list-table:: Summary of my GSoC contributions.
+   :header-rows: 1
+   :widths: 12 58 30
+
+   * - PR
+     - Contribution
+     - Area
+   * - `#4047 <https://github.com/dipy/dipy/pull/4047>`_
+     - Update the ``CCMetric`` energy after the backward step
+     - Registration fix
+   * - `#4052 <https://github.com/dipy/dipy/pull/4052>`_
+     - Remove holes and disconnected islands from SynthSeg masks
+     - SynthSeg
+   * - `#4067 <https://github.com/dipy/dipy/pull/4067>`_
+     - Add Mutual Information to SyN registration
+     - Deformable registration
+   * - `#4071 <https://github.com/dipy/dipy/pull/4071>`_
+     - Remove a redundant Parzen spline-bin evaluation
+     - Registration performance
+   * - `#4073 <https://github.com/dipy/dipy/pull/4073>`_
+     - Parallelize displacement-field composition and fixed-point inversion
+     - SyN performance
+   * - `#4078 <https://github.com/dipy/dipy/pull/4078>`_
+     - Add local cross-correlation to affine registration
+     - Affine registration
+   * - `#4080 <https://github.com/dipy/dipy/pull/4080>`_
+     - Support flexible SynthSeg input dimensions
+     - SynthSeg
+   * - `#4083 <https://github.com/dipy/dipy/pull/4083>`_
+     - Parallelize 2D and 3D image-warping operations
+     - SyN performance
+   * - `#4085 <https://github.com/dipy/dipy/pull/4085>`_
+     - Clarify 2D support in the Parzen-histogram docstrings
+     - Documentation
+   * - `#4086 <https://github.com/dipy/dipy/pull/4086>`_
+     - Clarify the return values of ``MutualInformationMetric``
+     - Documentation
+
+Final Thoughts
+--------------
+
+With the coding period coming to an end, it feels like the right moment to look
+back at everything these last months have taught me.
+
+This project showed me that implementing an idea is only one part of contributing
+to scientific software. In many cases, the most difficult and valuable work
+comes afterwards: simplifying the implementation, testing unusual cases,
+documenting decisions, discussing APIs, responding to reviews, and making sure
+that every change fits naturally into a large and established codebase.
+
+GSoC has been my first real experience contributing to open-source software, and
+it has completely changed how I see this kind of work. I came into the program
+hoping to implement a project and learn from the process, but I leave it wanting
+to keep contributing, collaborating, and improving software that can be useful
+to others.
+
+Although the official coding period is coming to an end, this does not really
+feel like an ending. I still plan to support the pull requests that remain under
+review, stay involved with DIPY, and continue participating in the wider
+open-source community.
+
+In that sense, the end of GSoC feels much more like the beginning of a longer
+journey—one that I am very excited to continue.
+
+I am very grateful to my mentors,
+`Serge Koudoro <https://sergekoudoro.com/>`_,
+`Atharva Shah <https://atharva-shah-2298.github.io/>`_, and
+`Jong Sung Park <https://pjsjongsung.github.io/>`_, for their guidance,
+patience, thoughtful reviews, and trust throughout the project, and for making
+me feel welcome from the very beginning.
+
+Find Me Online
+--------------
+
+- Final report: `A Summer of Scientific Software
+  <https://tomasguija.github.io/gsoc-2026-dipy/>`_
+- GitHub: `TomasGuija <https://github.com/TomasGuija>`_
+- LinkedIn: `Tomás Guija-Valiente
+  <https://www.linkedin.com/in/tom%C3%A1s-guija-valiente-155180260/>`_
+
+Thank you for following my work throughout the summer, and thank you for
+reading!
