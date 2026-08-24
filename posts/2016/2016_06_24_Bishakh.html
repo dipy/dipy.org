@@ -1058,31 +1058,31 @@ document.write(`
 </figure>
 <p>To make the the nav bar dynamic I had to pass the same context to every template. Thankfully this can be achieved with “context_processors” in a dry way. Also this allows the documentation links to be changed without changing the template.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">nav_pages_processor</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">pages</span> <span class="o">=</span> <span class="n">WebsiteSection</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">section_type</span><span class="o">=</span><span class="s2">&quot;page&quot;</span><span class="p">,</span>
+    <span class="n">pages</span> <span class="o">=</span> <span class="n">WebsiteSection</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">section_type</span><span class="o">=</span><span class="s2">"page"</span><span class="p">,</span>
                                           <span class="n">show_in_nav</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">all_doc_displayed</span> <span class="o">=</span> <span class="n">DocumentationLink</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">displayed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;pages_in_nav&#39;</span><span class="p">:</span> <span class="n">pages</span><span class="p">,</span> <span class="s1">&#39;all_doc_displayed&#39;</span><span class="p">:</span> <span class="n">all_doc_displayed</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">'pages_in_nav'</span><span class="p">:</span> <span class="n">pages</span><span class="p">,</span> <span class="s1">'all_doc_displayed'</span><span class="p">:</span> <span class="n">all_doc_displayed</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>For now the documentations are hosted in the dipy_web github repository. Different versions of documentations are linked automatically into django by checking the content of the repository using github API.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">update_documentations</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Check list of documentations from gh-pages branches of the dipy_web</span>
 <span class="sd">    repository and update the database (DocumentationLink model).</span>
 
 <span class="sd">    To change the url of the repository in which the documentations will be</span>
 <span class="sd">    hosted change the DOCUMENTATION_REPO_OWNER and DOCUMENTATION_REPO_NAME</span>
 <span class="sd">    in settings.py</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.github.com/repos/</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">/contents/?ref=gh-pages&quot;</span> <span class="o">%</span> <span class="p">(</span>
+<span class="sd">    """</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">"https://api.github.com/repos/</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">/contents/?ref=gh-pages"</span> <span class="o">%</span> <span class="p">(</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">DOCUMENTATION_REPO_OWNER</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">DOCUMENTATION_REPO_NAME</span><span class="p">)</span>
-    <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;http://</span><span class="si">%s</span><span class="s2">.github.io/</span><span class="si">%s</span><span class="s2">/&quot;</span> <span class="o">%</span> <span class="p">(</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="s2">"http://</span><span class="si">%s</span><span class="s2">.github.io/</span><span class="si">%s</span><span class="s2">/"</span> <span class="o">%</span> <span class="p">(</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">DOCUMENTATION_REPO_OWNER</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">DOCUMENTATION_REPO_NAME</span><span class="p">)</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="n">response_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">response_json</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">content</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;dir&quot;</span><span class="p">:</span>
-            <span class="n">version_name</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">content</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"dir"</span><span class="p">:</span>
+            <span class="n">version_name</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
             <span class="n">page_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">version_name</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">DocumentationLink</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="n">version_name</span><span class="p">)</span>

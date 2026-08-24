@@ -1052,7 +1052,7 @@ I had initiated the review of the PR this week. I hope to get it merged ASAP, ma
         <span class="n">fractions</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">gtf</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">gtf</span> <span class="o">*</span> <span class="mi">100</span><span class="p">],</span>
         <span class="n">snr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="n">fwdm</span> <span class="o">=</span> <span class="n">fwdti</span><span class="o">.</span><span class="n">FreeWaterTensorModel</span><span class="p">(</span><span class="n">gtab_2s</span><span class="p">,</span> <span class="s2">&quot;WLS&quot;</span><span class="p">)</span>
+    <span class="n">fwdm</span> <span class="o">=</span> <span class="n">fwdti</span><span class="o">.</span><span class="n">FreeWaterTensorModel</span><span class="p">(</span><span class="n">gtab_2s</span><span class="p">,</span> <span class="s2">"WLS"</span><span class="p">)</span>
     <span class="n">fwefit</span> <span class="o">=</span> <span class="n">fwdm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">S_conta</span><span class="p">)</span>
 
 <span class="n">dipy</span><span class="o">/</span><span class="n">reconst</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_fwdti</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span>
@@ -1075,7 +1075,7 @@ I had initiated the review of the PR this week. I hope to get it merged ASAP, ma
     <span class="nd">@multi_voxel_fit</span>
     <span class="nd">@warning_for_keywords</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit method of the free water elimination DTI model class</span>
+<span class="w">        </span><span class="sd">"""Fit method of the free water elimination DTI model class</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1084,12 +1084,12 @@ I had initiated the review of the PR this week. I hope to get it merged ASAP, ma
 <span class="sd">        mask : array</span>
 <span class="sd">            A boolean array used to mark the coordinates in the data that</span>
 <span class="sd">            should be analyzed that has the shape data.shape[:-1]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">S0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">gtab</span><span class="o">.</span><span class="n">b0s_mask</span><span class="p">])</span>
         <span class="n">fwdti_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit_method</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">design_matrix</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">S0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span>
         <span class="p">)</span>
-<span class="n">E</span>       <span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;str&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">callable</span>
+<span class="n">E</span>       <span class="ne">TypeError</span><span class="p">:</span> <span class="s1">'str'</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">callable</span>
 
 <span class="n">dipy</span><span class="o">/</span><span class="n">reconst</span><span class="o">/</span><span class="n">fwdti</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">161</span><span class="p">:</span> <span class="ne">TypeError</span>
 </pre></div>

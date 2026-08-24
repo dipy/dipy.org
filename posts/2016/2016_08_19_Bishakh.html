@@ -1041,10 +1041,10 @@ document.write(`
 {% load github_stats_tags %}
 
 <span class="cm">&lt;!-- load css and js --&gt;</span>
-{% include &quot;github_visualization/github_stats_includes.html&quot; %}
+{% include "github_visualization/github_stats_includes.html" %}
 
 <span class="cm">&lt;!-- render the visualizations --&gt;</span>
-{% github_stats_block &quot;username&quot; &quot;repository_name&quot; %}
+{% github_stats_block "username" "repository_name" %}
 </pre></div>
 </div>
 <p>Just change the ‘username’ and ‘repository_name’ to point to the GitHub repository you want to see visualizations for.</p>

@@ -1034,10 +1034,10 @@ The target that was set according to the timeline of my proposal was setting up 
 </pre></div>
 </div>
 <p>The response contains permission information like:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;admin&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;push&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;pull&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"push"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"pull"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">}</span>
 </pre></div>
 </div>
@@ -1053,25 +1053,25 @@ The target that was set according to the timeline of my proposal was setting up 
 <p>The website sections contain some identifiers like which page it belongs to and in which position it should be placed. The content body of the website section is written in markdown. To change the markdown to HTML, the <a class="reference external" href="https://pythonhosted.org/Markdown/">markdown</a> library is used. The model’s <code class="docutils literal notranslate"><span class="pre">save()</span></code> method is overridden so that each time it is edited, the new HTML is generated from the markdown. The HTML is filtered using the <a class="reference external" href="https://bleach.readthedocs.io/en/latest/">bleach</a> library.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">html_content</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">body_markdown</span><span class="p">,</span>
-                                     <span class="n">extensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;codehilite&#39;</span><span class="p">])</span>
+                                     <span class="n">extensions</span><span class="o">=</span><span class="p">[</span><span class="s1">'codehilite'</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
     <span class="c1"># bleach is used to filter html tags like &lt;script&gt; for security</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">body_html</span> <span class="o">=</span> <span class="n">bleach</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">html_content</span><span class="p">,</span> <span class="n">allowed_html_tags</span><span class="p">,</span>
                                   <span class="n">allowed_attrs</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">modified</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-    <span class="c1"># Call the &quot;real&quot; save() method.</span>
+    <span class="c1"># Call the "real" save() method.</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">WebsiteSection</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>There is a requirement of embedding YouTube videos in the markdown content of website sections. But allowing iframes in markdown would allow embedding any kind of content from any arbitrary source. So I wrote a custom template filter for converting the YouTube links into embed codes. This also makes it simple to embed the videos as only pasting the URL is all that the user needs to do.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@register</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;youtube_embed_url&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@register</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'youtube_embed_url'</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">youtube_embed_url</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-    <span class="n">exp</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;((http|https)\:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9]*))&#39;</span><span class="p">)</span>
+    <span class="n">exp</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'((http|https)\:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9]*))'</span><span class="p">)</span>
     <span class="n">matches</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="n">processed_str</span> <span class="o">=</span> <span class="n">value</span>
-    <span class="n">template</span> <span class="o">=</span> <span class="s1">&#39;&lt;div class=&quot;youtube-wrapper&quot;&gt;&lt;iframe class=&quot;youtube-embed&quot; width=&quot;640&quot; height=&quot;360&quot; </span><span class="se">\</span>
-<span class="s1">                src=&quot;https://www.youtube.com/embed/</span><span class="si">%s</span><span class="s1">?rel=0&amp;modestbranding=1&quot; </span><span class="se">\</span>
-<span class="s1">                frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&#39;</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="s1">'&lt;div class="youtube-wrapper"&gt;&lt;iframe class="youtube-embed" width="640" height="360" </span><span class="se">\</span>
+<span class="s1">                src="https://www.youtube.com/embed/</span><span class="si">%s</span><span class="s1">?rel=0&amp;modestbranding=1" </span><span class="se">\</span>
+<span class="s1">                frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;'</span>
     <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
         <span class="n">processed_str</span> <span class="o">=</span> <span class="n">processed_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">template</span> <span class="o">%</span> <span class="n">match</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">processed_str</span>
